@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16573B91409801B5E88BB386 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */; };
 		39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7425A22222000F3E65 /* AppDelegate.swift */; };
 		39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7625A22222000F3E65 /* SceneDelegate.swift */; };
 		39BB0B7925A22222000F3E65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7825A22222000F3E65 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadConditionsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadConditionsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB0B7425A22222000F3E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BB0B7625A22222000F3E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		39BB0B8025A22222000F3E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39BB0B8325A22222000F3E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39BB0B8525A22222000F3E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C55C7A4D500C48E0C623C29 /* Pods-BosniaRoadConditionsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.release.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.release.xcconfig"; sourceTree = "<group>"; };
+		73EFF976B0AEC8EC16356F98 /* Pods-BosniaRoadConditionsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16573B91409801B5E88BB386 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */,
 				39BB0B7225A22222000F3E65 /* Products */,
+				585DFAB00C34C8CA286937FA /* Pods */,
+				DAAAF1DB7814F250D70DD144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +65,57 @@
 		39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */ = {
 			isa = PBXGroup;
 			children = (
-				39BB0B7425A22222000F3E65 /* AppDelegate.swift */,
-				39BB0B7625A22222000F3E65 /* SceneDelegate.swift */,
-				39BB0B7825A22222000F3E65 /* ViewController.swift */,
-				39BB0B7A25A22222000F3E65 /* Main.storyboard */,
+				39BB0BA225A2265C000F3E65 /* AppBackground */,
+				39BB0BA625A227C0000F3E65 /* Controllers */,
+				39BB0BA725A227D3000F3E65 /* Storyboards */,
 				39BB0B8025A22222000F3E65 /* Assets.xcassets */,
-				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
 				39BB0B8525A22222000F3E65 /* Info.plist */,
-				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
 			);
 			path = BosniaRoadConditionsApp;
+			sourceTree = "<group>";
+		};
+		39BB0BA225A2265C000F3E65 /* AppBackground */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
+				39BB0B7625A22222000F3E65 /* SceneDelegate.swift */,
+				39BB0B7425A22222000F3E65 /* AppDelegate.swift */,
+			);
+			path = AppBackground;
+			sourceTree = "<group>";
+		};
+		39BB0BA625A227C0000F3E65 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7825A22222000F3E65 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		39BB0BA725A227D3000F3E65 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7A25A22222000F3E65 /* Main.storyboard */,
+				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		585DFAB00C34C8CA286937FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73EFF976B0AEC8EC16356F98 /* Pods-BosniaRoadConditionsApp.debug.xcconfig */,
+				4C55C7A4D500C48E0C623C29 /* Pods-BosniaRoadConditionsApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DAAAF1DB7814F250D70DD144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39BB0B8825A22222000F3E65 /* Build configuration list for PBXNativeTarget "BosniaRoadConditionsApp" */;
 			buildPhases = (
+				B8AD43AE99C08C48027CA97A /* [CP] Check Pods Manifest.lock */,
 				39BB0B6D25A22222000F3E65 /* Sources */,
 				39BB0B6E25A22222000F3E65 /* Frameworks */,
 				39BB0B6F25A22222000F3E65 /* Resources */,
+				D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,6 +184,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8AD43AE99C08C48027CA97A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BosniaRoadConditionsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39BB0B6D25A22222000F3E65 /* Sources */ = {
@@ -220,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,6 +379,7 @@
 		};
 		39BB0B8925A22222000F3E65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73EFF976B0AEC8EC16356F98 /* Pods-BosniaRoadConditionsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +399,7 @@
 		};
 		39BB0B8A25A22222000F3E65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C55C7A4D500C48E0C623C29 /* Pods-BosniaRoadConditionsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
