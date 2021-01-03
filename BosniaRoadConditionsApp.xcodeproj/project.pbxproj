@@ -1,0 +1,363 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7425A22222000F3E65 /* AppDelegate.swift */; };
+		39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7625A22222000F3E65 /* SceneDelegate.swift */; };
+		39BB0B7925A22222000F3E65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7825A22222000F3E65 /* ViewController.swift */; };
+		39BB0B7C25A22222000F3E65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B7A25A22222000F3E65 /* Main.storyboard */; };
+		39BB0B7F25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */; };
+		39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B8025A22222000F3E65 /* Assets.xcassets */; };
+		39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadConditionsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		39BB0B7425A22222000F3E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		39BB0B7625A22222000F3E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		39BB0B7825A22222000F3E65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		39BB0B7B25A22222000F3E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		39BB0B7E25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BosniaRoadConditionsApp.xcdatamodel; sourceTree = "<group>"; };
+		39BB0B8025A22222000F3E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		39BB0B8325A22222000F3E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		39BB0B8525A22222000F3E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		39BB0B6E25A22222000F3E65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39BB0B6825A22222000F3E65 = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */,
+				39BB0B7225A22222000F3E65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		39BB0B7225A22222000F3E65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7425A22222000F3E65 /* AppDelegate.swift */,
+				39BB0B7625A22222000F3E65 /* SceneDelegate.swift */,
+				39BB0B7825A22222000F3E65 /* ViewController.swift */,
+				39BB0B7A25A22222000F3E65 /* Main.storyboard */,
+				39BB0B8025A22222000F3E65 /* Assets.xcassets */,
+				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
+				39BB0B8525A22222000F3E65 /* Info.plist */,
+				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
+			);
+			path = BosniaRoadConditionsApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39BB0B7025A22222000F3E65 /* BosniaRoadConditionsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39BB0B8825A22222000F3E65 /* Build configuration list for PBXNativeTarget "BosniaRoadConditionsApp" */;
+			buildPhases = (
+				39BB0B6D25A22222000F3E65 /* Sources */,
+				39BB0B6E25A22222000F3E65 /* Frameworks */,
+				39BB0B6F25A22222000F3E65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BosniaRoadConditionsApp;
+			productName = BosniaRoadConditionsApp;
+			productReference = 39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39BB0B6925A22222000F3E65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					39BB0B7025A22222000F3E65 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = 39BB0B6C25A22222000F3E65 /* Build configuration list for PBXProject "BosniaRoadConditionsApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 39BB0B6825A22222000F3E65;
+			productRefGroup = 39BB0B7225A22222000F3E65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39BB0B7025A22222000F3E65 /* BosniaRoadConditionsApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39BB0B6F25A22222000F3E65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */,
+				39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */,
+				39BB0B7C25A22222000F3E65 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39BB0B6D25A22222000F3E65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39BB0B7925A22222000F3E65 /* ViewController.swift in Sources */,
+				39BB0B7F25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld in Sources */,
+				39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */,
+				39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		39BB0B7A25A22222000F3E65 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39BB0B7B25A22222000F3E65 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39BB0B8325A22222000F3E65 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		39BB0B8625A22222000F3E65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		39BB0B8725A22222000F3E65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39BB0B8925A22222000F3E65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N79B4JKWQG;
+				INFOPLIST_FILE = BosniaRoadConditionsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosniaRoadConditionsApp.BosniaRoadConditionsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39BB0B8A25A22222000F3E65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N79B4JKWQG;
+				INFOPLIST_FILE = BosniaRoadConditionsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosniaRoadConditionsApp.BosniaRoadConditionsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39BB0B6C25A22222000F3E65 /* Build configuration list for PBXProject "BosniaRoadConditionsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BB0B8625A22222000F3E65 /* Debug */,
+				39BB0B8725A22222000F3E65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39BB0B8825A22222000F3E65 /* Build configuration list for PBXNativeTarget "BosniaRoadConditionsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BB0B8925A22222000F3E65 /* Debug */,
+				39BB0B8A25A22222000F3E65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39BB0B7E25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodel */,
+			);
+			currentVersion = 39BB0B7E25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodel */;
+			path = BosniaRoadConditionsApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 39BB0B6925A22222000F3E65 /* Project object */;
+}
