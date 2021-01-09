@@ -65,11 +65,10 @@
 		39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */ = {
 			isa = PBXGroup;
 			children = (
+				39E05C8925AA13B200026E05 /* Supporting Files */,
 				39BB0BA225A2265C000F3E65 /* AppBackground */,
 				39BB0BA625A227C0000F3E65 /* Controllers */,
 				39BB0BA725A227D3000F3E65 /* Storyboards */,
-				39BB0B8025A22222000F3E65 /* Assets.xcassets */,
-				39BB0B8525A22222000F3E65 /* Info.plist */,
 			);
 			path = BosniaRoadConditionsApp;
 			sourceTree = "<group>";
@@ -77,7 +76,6 @@
 		39BB0BA225A2265C000F3E65 /* AppBackground */ = {
 			isa = PBXGroup;
 			children = (
-				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
 				39BB0B7625A22222000F3E65 /* SceneDelegate.swift */,
 				39BB0B7425A22222000F3E65 /* AppDelegate.swift */,
 			);
@@ -99,6 +97,16 @@
 				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		39E05C8925AA13B200026E05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
+				39BB0B8025A22222000F3E65 /* Assets.xcassets */,
+				39BB0B8525A22222000F3E65 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		585DFAB00C34C8CA286937FA /* Pods */ = {
@@ -385,7 +393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = BosniaRoadConditionsApp/Info.plist;
+				INFOPLIST_FILE = "BosniaRoadConditionsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,7 +413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = BosniaRoadConditionsApp/Info.plist;
+				INFOPLIST_FILE = "BosniaRoadConditionsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
