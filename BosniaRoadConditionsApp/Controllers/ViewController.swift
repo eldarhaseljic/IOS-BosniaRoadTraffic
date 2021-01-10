@@ -9,10 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        AppManager.shared.getRadars {
+            allPokemons in
+            
+            switch allPokemons {
+            case .failure(let error):
+                print(error)
+            case .success(_):
+                print("done")
+            }
+        }
     }
 }
 
