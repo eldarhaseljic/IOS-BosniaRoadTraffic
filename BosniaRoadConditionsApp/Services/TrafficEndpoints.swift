@@ -8,18 +8,15 @@
 
 import Foundation
 
-let apiToken = String()
-//
-// "b0aomDjZPKuHs3NCNS8YTzvQMEeLsChAFGQYjiX8CtqjGRSOnkhap8OjIGrQ"
+let apiToken = "b0aomDjZPKuHs3NCNS8YTzvQMEeLsChAFGQYjiX8CtqjGRSOnkhap8OjIGrQ"
 
 enum TrafficEndponins: String {
     case radars = "http://bihamk.ba/api/v1/spi/radars?api_token=%@"
     
-    var endpoint: URL {
+    var endpoint: String {
         switch self {
         case .radars:
-            guard let url = URL(string: String(format: rawValue, apiToken)) else { fatalError() }
-            return url
+            return String(format: rawValue, apiToken)
         }
     }
 }

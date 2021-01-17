@@ -10,17 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let persistanceService = PersistanceService.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        AppManager.shared.getRadars {
-            allPokemons in
-            
-            switch allPokemons {
-            case .failure(let error):
-                print(error)
-            case .success(_):
-                print("done")
+        
+        MainManager.shared.getRadars() { [weak self] success, error in
+            guard let self = self else { return }
+            if success {
+                let newRadars = MainManager.shared.fetchRadars(objectContext: self.persistanceService.context)
+                print("Number of new radars: \(newRadars.count) \n \(newRadars)")
+                print("Done")
+            } else {
+                print((String(describing: error?.description)))
             }
         }
     }
