@@ -1,0 +1,28 @@
+//
+//  MainViewController.swift
+//  BosniaRoadConditionsApp
+//
+//  Created by Eldar Haseljic on 1/3/21.
+//  Copyright © 2021 Fakultet Elektrotehnike Tuzla. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+class MainViewController: UIViewController {
+    
+    @IBOutlet var radarsButton: UIButton!
+    private let disposeBag = DisposeBag()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setupObservers()
+    }
+    
+    func setupObservers() {
+        radarsButton.rx.tap.bind { [unowned self] in
+            self.navigationController?.pushViewController(RadarsMapViewController.getViewController(), animated: true)
+        }.disposed(by: disposeBag)
+    }
+}
+
