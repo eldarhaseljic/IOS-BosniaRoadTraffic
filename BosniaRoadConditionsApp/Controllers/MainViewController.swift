@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         title = BOSNIA_ROAD_CONDITIONS
         setupObservers()
@@ -22,7 +23,7 @@ class MainViewController: UIViewController {
     
     func setupObservers() {
         radarsButton.rx.tap.bind { [unowned self] in
-            self.navigationController?.pushViewController(RadarsMapViewController.getViewController(), animated: true)
+            pushView(viewController: RadarsMapViewController.getViewController())
         }.disposed(by: disposeBag)
     }
 }

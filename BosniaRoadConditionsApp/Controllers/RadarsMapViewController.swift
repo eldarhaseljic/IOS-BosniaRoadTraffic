@@ -13,13 +13,14 @@ class RadarsMapViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         setupNavigationBar()
     }
     
     func setupNavigationBar() {
         title = BOSNIA_ROAD_CONDITIONS
-        navigationItem.leftBarButtonItem?.title = BACK
+        navigationItem.leftBarButtonItem = backButton
     }
 
     /*
