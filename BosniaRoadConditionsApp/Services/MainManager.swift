@@ -3,7 +3,7 @@
 //  BosniaRoadConditionsApp
 //
 //  Created by Eldar Haseljic on 1/16/21.
-//  Copyright © 2021 Fakultet Elektrotehnike Tuzla. All rights reserved.
+//  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
 import Foundation
@@ -11,11 +11,12 @@ import CoreData
 import UIKit
 
 class MainManager {
+    
     static let shared = MainManager()
     private let networkService = NetworkService.shared
     private let persistanceService = PersistanceService.shared
     
-    func fetchRadars( objectContext: NSManagedObjectContext) -> [Radar] {
+    func fetchRadars(objectContext: NSManagedObjectContext = PersistanceService.shared.context) -> [Radar] {
         let fetchRequest = NSFetchRequest<Radar>(entityName: Radar.entityName)
         
         var radars = [Radar]()

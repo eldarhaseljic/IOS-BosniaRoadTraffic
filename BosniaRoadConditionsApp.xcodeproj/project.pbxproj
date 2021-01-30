@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16573B91409801B5E88BB386 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */; };
+		39219CD225C58A1900B55096 /* RadarsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */; };
+		39219CD425C58FED00B55096 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */; };
+		39219CD825C596E300B55096 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */; };
+		39219CD925C596E300B55096 /* Pods_BosniaRoadConditionsApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		392937D025B324E80030F33F /* Radar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392937CE25B324E80030F33F /* Radar+CoreDataClass.swift */; };
 		392937D125B324E80030F33F /* Radar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392937CF25B324E80030F33F /* Radar+CoreDataProperties.swift */; };
 		392937D625B3263F0030F33F /* TrafficEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392937D525B3263F0030F33F /* TrafficEndpoints.swift */; };
@@ -40,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				39219CD925C596E300B55096 /* Pods_BosniaRoadConditionsApp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadConditionsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarsMapViewModel.swift; sourceTree = "<group>"; };
+		39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		392937CE25B324E80030F33F /* Radar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radar+CoreDataClass.swift"; sourceTree = "<group>"; };
 		392937CF25B324E80030F33F /* Radar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		392937D525B3263F0030F33F /* TrafficEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEndpoints.swift; sourceTree = "<group>"; };
@@ -61,9 +67,9 @@
 		3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarsMapViewController.swift; sourceTree = "<group>"; };
 		3931A27425B4B8C500F9E38F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3933E05425BCAFEE008ABBB3 /* myLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myLocation.gpx; sourceTree = "<group>"; };
 		39B5AB9E25B8C51000AEB23B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39B5ABA125B8C52600AEB23B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		39B5ABA325B8C55900AEB23B /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39B5ABA425B8C57C00AEB23B /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		39B5ABA725B8CE4A00AEB23B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadConditionsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,13 +90,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16573B91409801B5E88BB386 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */,
+				39219CD825C596E300B55096 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39219CD025C589FC00B55096 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		392A6FF325AAF841000361EA /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +131,7 @@
 				392A6FFE25AB18D3000361EA /* Array+Extensions.swift */,
 				392937F725B376390030F33F /* NSManagedObjectContext+Extensions.swift */,
 				3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */,
+				39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -126,7 +141,6 @@
 			children = (
 				392937F025B3757A0030F33F /* ManagedObject.swift */,
 				39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */,
-				39BB0B8525A22222000F3E65 /* Info.plist */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -173,11 +187,11 @@
 				39BB0BA225A2265C000F3E65 /* AppBackground */,
 				39BB0BA625A227C0000F3E65 /* Controllers */,
 				392A6FFD25AB18B0000361EA /* Extensions */,
-				392A6FF325AAF841000361EA /* Services */,
 				392A6FF925AAF950000361EA /* Model */,
+				392A6FF325AAF841000361EA /* Services */,
 				39BB0BA725A227D3000F3E65 /* Storyboards */,
 				39E05C8925AA13B200026E05 /* Supporting Files */,
-				3931A27425B4B8C500F9E38F /* Constants.swift */,
+				39219CD025C589FC00B55096 /* ViewModels */,
 			);
 			path = BosniaRoadConditionsApp;
 			sourceTree = "<group>";
@@ -185,8 +199,10 @@
 		39BB0BA225A2265C000F3E65 /* AppBackground */ = {
 			isa = PBXGroup;
 			children = (
+				39BB0B8525A22222000F3E65 /* Info.plist */,
 				39BB0B7625A22222000F3E65 /* SceneDelegate.swift */,
 				39BB0B7425A22222000F3E65 /* AppDelegate.swift */,
+				3933E05425BCAFEE008ABBB3 /* myLocation.gpx */,
 			);
 			path = AppBackground;
 			sourceTree = "<group>";
@@ -213,6 +229,7 @@
 		39E05C8925AA13B200026E05 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3931A27425B4B8C500F9E38F /* Constants.swift */,
 				39B5ABAA25B8CE4F00AEB23B /* Database */,
 				39B5ABAB25B8CE6700AEB23B /* MaterialDesign */,
 				39B5ABAC25B8CE8100AEB23B /* Translations */,
@@ -268,6 +285,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = "Eldar Haseljic";
 				TargetAttributes = {
 					39BB0B7025A22222000F3E65 = {
 						CreatedOnToolsVersion = 12.2;
@@ -282,7 +300,6 @@
 				en,
 				Base,
 				de,
-				bs,
 			);
 			mainGroup = 39BB0B6825A22222000F3E65;
 			productRefGroup = 39BB0B7225A22222000F3E65 /* Products */;
@@ -359,6 +376,8 @@
 			files = (
 				392937F125B3757A0030F33F /* ManagedObject.swift in Sources */,
 				392937DF25B328630030F33F /* NetworkService.swift in Sources */,
+				39219CD225C58A1900B55096 /* RadarsMapViewModel.swift in Sources */,
+				39219CD425C58FED00B55096 /* UIStoryboard+Extensions.swift in Sources */,
 				3931A27225B4B6C500F9E38F /* RadarsMapViewController.swift in Sources */,
 				392937E225B331020030F33F /* PersistanceService.swift in Sources */,
 				392937D625B3263F0030F33F /* TrafficEndpoints.swift in Sources */,
@@ -385,7 +404,6 @@
 			children = (
 				39B5AB9E25B8C51000AEB23B /* en */,
 				39B5ABA125B8C52600AEB23B /* de */,
-				39B5ABA325B8C55900AEB23B /* bs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -535,7 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = "BosniaRoadConditionsApp/Supporting Files/Database/Info.plist";
+				INFOPLIST_FILE = BosniaRoadConditionsApp/AppBackground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,7 +573,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = "BosniaRoadConditionsApp/Supporting Files/Database/Info.plist";
+				INFOPLIST_FILE = BosniaRoadConditionsApp/AppBackground/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

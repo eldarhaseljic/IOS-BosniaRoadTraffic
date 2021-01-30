@@ -3,7 +3,7 @@
 //  BosniaRoadConditionsApp
 //
 //  Created by Eldar Haseljic on 1/16/21.
-//  Copyright © 2021 Fakultet Elektrotehnike Tuzla. All rights reserved.
+//  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,9 @@ class PersistanceService {
     
     private init() { }
     static let shared = PersistanceService()
-    var context: NSManagedObjectContext { persistentContainer.viewContext }
+    lazy var context: NSManagedObjectContext = {
+        return persistentContainer.viewContext
+    }()
     
     // MARK: - Core Data stack
     

@@ -3,6 +3,7 @@
 //  BosniaRoadConditionsApp
 //
 //  Created by Eldar Haseljic on 1/20/21.
+//  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
 import Foundation
