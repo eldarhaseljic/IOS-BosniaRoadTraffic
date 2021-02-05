@@ -6,29 +6,45 @@
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
+import MapKit
 import RxSwift
 import RxCocoa
 import CoreData
 import Foundation
 import CoreLocation
 
-class RadarsMapViewModel: NSObject {
+final class RadarsMapViewModel: NSObject {
     
-    private var manager: MainManager!
-    private var locationManager: CLLocationManager!
+    private var radarsFRC: NSFetchedResultsController<Radar>!
+    private let persistanceService: PersistanceService!
+    private let locationManager: CLLocationManager!
+    private let manager: MainManager!
     
     let userLocationStatus = PublishSubject<Bool>()
+    let radarsArray = PublishSubject<[Radar]>()
     
-    var radars: [Radar] = []
+    private let locationDistance: CLLocationDistance = 50000
     
     init(manager: MainManager = MainManager.shared,
+         persistanceService: PersistanceService = PersistanceService.shared,
          locationManager: CLLocationManager = CLLocationManager()) {
         
         self.manager = manager
+        self.persistanceService = persistanceService
         self.locationManager = locationManager
         
         super.init()
-        radars = manager.fetchRadars()
+        setupFetchController()
+    }
+    
+    private func setupFetchController() {
+        radarsFRC = NSFetchedResultsController(fetchRequest: Radar.sortedFetchRequest, managedObjectContext: persistanceService.context, sectionNameKeyPath: nil, cacheName: nil)
+        radarsFRC.delegate = self
+        do {
+            try radarsFRC.performFetch()
+        } catch {
+            fatalError("Suggested Teams fetch request failed")
+        }
     }
     
     func checkLocationServices() {
@@ -66,6 +82,39 @@ class RadarsMapViewModel: NSObject {
             break
         }
     }
+    
+    var userCurrentLocation: MKCoordinateRegion? {
+        // Zoom to user location
+        guard let userLocation = locationManager.location?.coordinate else { return nil }
+        return MKCoordinateRegion(center: userLocation,
+                                  latitudinalMeters: locationDistance,
+                                  longitudinalMeters: locationDistance)
+    }
+    
+    private func handleTeamsData() {
+        // Error message
+        radarsArray.onNext(radarsFRC.fetchedObjects ?? [])
+    }
+    
+    func fetchNewRadars(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        manager.getRadars { (_, error) in
+            guard
+                let error = error
+            else {
+                print("Radars updated successfully")
+                return
+            }
+            // Error message
+            print(error.localizedDescription)
+        }
+    }
+}
+
+extension RadarsMapViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        handleTeamsData()
+    }
+    
 }
 
 extension RadarsMapViewModel: CLLocationManagerDelegate {

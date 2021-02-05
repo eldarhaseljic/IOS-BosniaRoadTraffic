@@ -23,6 +23,10 @@ extension Radar {
 }
 
 extension Radar: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
+    }
+    
     static func radarByIdPredicate(for radarId: NSNumber) -> NSPredicate {
         return NSPredicate(format: "%K == %@", #keyPath(id), radarId)
     }

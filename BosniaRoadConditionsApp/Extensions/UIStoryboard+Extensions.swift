@@ -5,7 +5,8 @@
 //  Created by Eldar Haseljic on 1/30/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
-//  User from https://stackoverflow.com/questions/26056062/uiviewcontroller-extension-to-instantiate-from-storyboard
+//  User from
+//  https://stackoverflow.com/questions/26056062/uiviewcontroller-extension-to-instantiate-from-storyboard
 
 import Foundation
 import UIKit

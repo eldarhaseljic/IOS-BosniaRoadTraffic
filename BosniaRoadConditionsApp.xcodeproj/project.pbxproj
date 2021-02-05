@@ -24,6 +24,8 @@
 		3931A27225B4B6C500F9E38F /* RadarsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */; };
 		3931A27525B4B8C500F9E38F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3931A27425B4B8C500F9E38F /* Constants.swift */; };
 		3933E04B25BC8C4F008ABBB3 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */; };
+		395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */; };
+		395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8325CD7ED700060A73 /* String+Extensions.swift */; };
 		39B5AB9D25B8C51000AEB23B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39B5AB9F25B8C51000AEB23B /* Localizable.strings */; };
 		39B5ABA525B8C57C00AEB23B /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5ABA425B8C57C00AEB23B /* Localization.swift */; };
 		39B5ABA825B8CE4A00AEB23B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B5ABA725B8CE4A00AEB23B /* Colors.xcassets */; };
@@ -68,6 +70,8 @@
 		3931A27425B4B8C500F9E38F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3933E05425BCAFEE008ABBB3 /* myLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myLocation.gpx; sourceTree = "<group>"; };
+		395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		395ACB8325CD7ED700060A73 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		39B5AB9E25B8C51000AEB23B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39B5ABA125B8C52600AEB23B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39B5ABA425B8C57C00AEB23B /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -130,8 +134,10 @@
 			children = (
 				392A6FFE25AB18D3000361EA /* Array+Extensions.swift */,
 				392937F725B376390030F33F /* NSManagedObjectContext+Extensions.swift */,
-				3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */,
+				395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */,
+				395ACB8325CD7ED700060A73 /* String+Extensions.swift */,
 				39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */,
+				3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +381,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				392937F125B3757A0030F33F /* ManagedObject.swift in Sources */,
+				395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */,
+				395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */,
 				392937DF25B328630030F33F /* NetworkService.swift in Sources */,
 				39219CD225C58A1900B55096 /* RadarsMapViewModel.swift in Sources */,
 				39219CD425C58FED00B55096 /* UIStoryboard+Extensions.swift in Sources */,

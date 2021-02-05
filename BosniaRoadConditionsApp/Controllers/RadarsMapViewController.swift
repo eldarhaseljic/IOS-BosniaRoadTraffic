@@ -13,7 +13,6 @@ import RxSwift
 class RadarsMapViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
-   
     private let disposeBag = DisposeBag()
     var viewModel: RadarsMapViewModel!
     
@@ -23,12 +22,19 @@ class RadarsMapViewController: UIViewController {
         setupNavigationBar()
         setupObservers()
         viewModel.checkLocationServices()
-        print(viewModel.radars.count)
+        viewModel.fetchNewRadars()
     }
     
     func setupObservers() {
         viewModel.userLocationStatus.bind(onNext: { [unowned self] isVisible in
-            self.mapView.showsUserLocation = isVisible
+            mapView.showsUserLocation = isVisible
+            if let currentLocation = viewModel.userCurrentLocation {
+                mapView.setRegion(currentLocation, animated: true)
+            }
+        }).disposed(by: disposeBag)
+        
+        viewModel.radarsArray.bind(onNext: { [unowned self] radars in
+            mapView.addAnnotations(radars)
         }).disposed(by: disposeBag)
     }
     
@@ -44,14 +50,35 @@ class RadarsMapViewController: UIViewController {
 
 extension RadarsMapViewController {
     static func getViewController() -> RadarsMapViewController {
-        return UIStoryboard(name: Constants.StoryboardIdentifiers.RadarsMapStoryboard,
-                            bundle: nil)
+        return UIStoryboard(name: Constants.StoryboardIdentifiers.RadarsMapStoryboard, bundle: nil)
             .instantiateViewControllerWithIdentifier(RadarsMapViewController.self)!
+
     }
     
     static func showRadars() -> RadarsMapViewController {
         let radarsViewController = RadarsMapViewController.getViewController()
         radarsViewController.setViewModel()
         return radarsViewController
+    }
+}
+
+extension RadarsMapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? Radar else { return nil}
+        
+        let identifier = Constants.Identifiers.Radar
+        var view: MKMarkerAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
     }
 }

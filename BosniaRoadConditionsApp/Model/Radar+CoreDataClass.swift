@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Contacts
 import MapKit
 
 enum RadarJSON: String {
@@ -24,11 +25,16 @@ enum RadarJSON: String {
     case updatedAt = "updated_at"
 }
 
+enum RadarType: String {
+    case stationary
+    case nonstationary
+}
+
 public class Radar: NSManagedObject, MKAnnotation {
     
-    @NSManaged public var categoryID: NSNumber?
-    @NSManaged public var categoryName: String?
-    @NSManaged public var coordinateString: String?
+    @NSManaged public var policeDepartmentID: NSNumber?
+    @NSManaged public var policeDepartmentName: String?
+    @NSManaged public var coordinates: String?
     @NSManaged public var id: NSNumber?
     @NSManaged public var road: String?
     @NSManaged public var text: String?
@@ -38,9 +44,33 @@ public class Radar: NSManagedObject, MKAnnotation {
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
     
+    public var locationName: String? {
+        if text.isNotNilNotEmpty {
+            return text
+        } else if road.isNotNilNotEmpty {
+            return road
+        } else {
+            return policeDepartmentName
+        }
+    }
+    
+    public var discipline: String? {
+        if validFrom.isNotNilNotEmpty,
+           validTo.isNotNilNotEmpty,
+           text.isNotNilNotEmpty {
+            return RadarType.nonstationary.rawValue
+        } else {
+            return RadarType.stationary.rawValue
+        }
+    }
+    
+    public var subtitle: String? {
+        return locationName?.withoutHtmlTags
+    }
+    
     public var coordinate: CLLocationCoordinate2D {
         guard
-            let latitudeAndLongitude = coordinateString?.split(separator: ","),
+            let latitudeAndLongitude = coordinates?.split(separator: ","),
             let latitudeString = latitudeAndLongitude[safeIndex: 0],
             let longitudeString = latitudeAndLongitude[safeIndex: 1],
             let latitude = Double(latitudeString),
@@ -49,25 +79,29 @@ public class Radar: NSManagedObject, MKAnnotation {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    var isRegular: Bool {
-        return text?.isEmpty == true
-    }
-    
     func fillRadarInfo(_ radarJSON: [String: Any]) {
         if let categoryID = radarJSON[RadarJSON.categoryID.rawValue] as? NSNumber {
-            self.categoryID = categoryID
+            self.policeDepartmentID = categoryID
         }
         
-        if let categoryName = radarJSON[RadarJSON.categoryName.rawValue] as? String {
-            self.categoryName = categoryName
+        if let policeDepartmentName = radarJSON[RadarJSON.categoryName.rawValue] as? String {
+            self.policeDepartmentName = policeDepartmentName
         }
         
-        if let coordinateString = radarJSON[RadarJSON.coordinates.rawValue] as? String {
-            self.coordinateString = coordinateString
+        if let coordinates = radarJSON[RadarJSON.coordinates.rawValue] as? String {
+            self.coordinates = coordinates
         }
         
         if let road = radarJSON[RadarJSON.road.rawValue] as? String {
             self.road = road
+        }
+        
+        if let validFrom = radarJSON[RadarJSON.validFrom.rawValue] as? String {
+            self.validFrom = validFrom
+        }
+        
+        if let validTo = radarJSON[RadarJSON.validTo.rawValue] as? String {
+            self.validTo = validTo
         }
         
         if let text = radarJSON[RadarJSON.text.rawValue] as? String {
@@ -85,20 +119,12 @@ public class Radar: NSManagedObject, MKAnnotation {
         if let updatedAt = radarJSON[RadarJSON.updatedAt.rawValue] as? String {
             self.updatedAt = updatedAt
         }
-        
-        if let validFrom = radarJSON[RadarJSON.validFrom.rawValue] as? String {
-            self.validFrom = validFrom
-        }
-        
-        if let validTo = radarJSON[RadarJSON.validTo.rawValue] as? String {
-            self.validTo = validTo
-        }
     }
     
     public override var description: String {
         return "{ \n\t'id':\(String(describing: id)),\n"
             + "\t'title':'\(String(describing: title))',\n"
-            + "\t'coordinates':'\(String(describing: coordinateString))',\n"
+            + "\t'coordinates':'\(String(describing: coordinates))',\n"
             + "\t'latitude':\(coordinate.latitude.description),\n"
             + "\t'longitude':\(coordinate.longitude.description),\n"
             + "\t'type':\(String(describing: type)),\n"
@@ -106,8 +132,8 @@ public class Radar: NSManagedObject, MKAnnotation {
             + "\t'valid_from':\(String(describing: validFrom)),\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"
-            + "\t'category_id':\(String(describing: categoryID)),\n"
-            + "\t'category_name':'\(String(describing: categoryName))',\n"
+            + "\t'category_id':\(String(describing: policeDepartmentID)),\n"
+            + "\t'category_name':'\(String(describing: policeDepartmentName))',\n"
             + "\t'updated_at':'\(String(describing: updatedAt))' \n }"
     }
 }

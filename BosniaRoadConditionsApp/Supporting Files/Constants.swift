@@ -11,5 +11,10 @@ import Foundation
 final class Constants {
     class StoryboardIdentifiers {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
+        static let DetailsStoryboard = "DetailsStoryboard"
+    }
+    
+    class Identifiers {
+        static let Radar = "Radar"
     }
 }
