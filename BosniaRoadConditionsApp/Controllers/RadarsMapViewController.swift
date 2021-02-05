@@ -12,7 +12,13 @@ import RxSwift
 
 class RadarsMapViewController: UIViewController {
     
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var mapView: MKMapView! {
+        didSet {
+            mapView.register(RadarMarkerView.self,
+                             forAnnotationViewWithReuseIdentifier:
+                                MKMapViewDefaultAnnotationViewReuseIdentifier)
+        }
+    }
     private let disposeBag = DisposeBag()
     var viewModel: RadarsMapViewModel!
     
@@ -35,6 +41,7 @@ class RadarsMapViewController: UIViewController {
         
         viewModel.radarsArray.bind(onNext: { [unowned self] radars in
             mapView.addAnnotations(radars)
+            funkcijaZaProvjeru(radars)
         }).disposed(by: disposeBag)
     }
     
@@ -45,6 +52,21 @@ class RadarsMapViewController: UIViewController {
     
     private func setViewModel() {
         viewModel = RadarsMapViewModel()
+    }
+    
+    // Error message
+    private func funkcijaZaProvjeru(_ radars: [Radar]) {
+        var stacionarni = 0
+        var nestacionarni = 0
+        radars.forEach({ radar in
+            if radar.type == 1 {
+                stacionarni += 1
+            } else {
+                nestacionarni += 1
+            }
+        })
+        
+        print("Stacionarni \(stacionarni) ne \(nestacionarni)")
     }
 }
 
@@ -59,26 +81,5 @@ extension RadarsMapViewController {
         let radarsViewController = RadarsMapViewController.getViewController()
         radarsViewController.setViewModel()
         return radarsViewController
-    }
-}
-
-extension RadarsMapViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? Radar else { return nil}
-        
-        let identifier = Constants.Identifiers.Radar
-        var view: MKMarkerAnnotationView
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        }
-        return view
     }
 }

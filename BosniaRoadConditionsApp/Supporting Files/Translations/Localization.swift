@@ -9,3 +9,4 @@
 import Foundation
 
 let BOSNIA_ROAD_CONDITIONS: String = NSLocalizedString("bosnia_road_conditions", comment: "Bosnia road conditions")
+let ANNOUNCED_RADAR_CONTROLS: String = NSLocalizedString("announced_radar_controls", comment: "Announced radar controls")

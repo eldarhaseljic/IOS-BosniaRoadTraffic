@@ -27,7 +27,7 @@ enum RadarJSON: String {
 
 enum RadarType: String {
     case stationary
-    case nonstationary
+    case temporary
 }
 
 public class Radar: NSManagedObject, MKAnnotation {
@@ -54,18 +54,30 @@ public class Radar: NSManagedObject, MKAnnotation {
         }
     }
     
-    public var discipline: String? {
-        if validFrom.isNotNilNotEmpty,
-           validTo.isNotNilNotEmpty,
-           text.isNotNilNotEmpty {
-            return RadarType.nonstationary.rawValue
-        } else {
-            return RadarType.stationary.rawValue
+    public var subtitle: String? {
+        return locationName?.withoutHtmlTags
+    }
+    
+    var markerTintColor: UIColor {
+        switch type {
+        case 1:
+            return .red
+        default:
+            return .yellow
         }
     }
     
-    public var subtitle: String? {
-        return locationName?.withoutHtmlTags
+    var image: UIImage {
+        return #imageLiteral(resourceName: "speed_camera")
+    }
+    
+    var radarType: RadarType {
+        switch type {
+        case 1:
+            return .stationary
+        default:
+            return .temporary
+        }
     }
     
     public var coordinate: CLLocationCoordinate2D {
@@ -79,48 +91,6 @@ public class Radar: NSManagedObject, MKAnnotation {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    func fillRadarInfo(_ radarJSON: [String: Any]) {
-        if let categoryID = radarJSON[RadarJSON.categoryID.rawValue] as? NSNumber {
-            self.policeDepartmentID = categoryID
-        }
-        
-        if let policeDepartmentName = radarJSON[RadarJSON.categoryName.rawValue] as? String {
-            self.policeDepartmentName = policeDepartmentName
-        }
-        
-        if let coordinates = radarJSON[RadarJSON.coordinates.rawValue] as? String {
-            self.coordinates = coordinates
-        }
-        
-        if let road = radarJSON[RadarJSON.road.rawValue] as? String {
-            self.road = road
-        }
-        
-        if let validFrom = radarJSON[RadarJSON.validFrom.rawValue] as? String {
-            self.validFrom = validFrom
-        }
-        
-        if let validTo = radarJSON[RadarJSON.validTo.rawValue] as? String {
-            self.validTo = validTo
-        }
-        
-        if let text = radarJSON[RadarJSON.text.rawValue] as? String {
-            self.text = text
-        }
-        
-        if let title = radarJSON[RadarJSON.title.rawValue] as? String {
-            self.title = title
-        }
-        
-        if let type = radarJSON[RadarJSON.type.rawValue] as? NSNumber {
-            self.type = type
-        }
-        
-        if let updatedAt = radarJSON[RadarJSON.updatedAt.rawValue] as? String {
-            self.updatedAt = updatedAt
-        }
-    }
-    
     public override var description: String {
         return "{ \n\t'id':\(String(describing: id)),\n"
             + "\t'title':'\(String(describing: title))',\n"
@@ -128,6 +98,7 @@ public class Radar: NSManagedObject, MKAnnotation {
             + "\t'latitude':\(coordinate.latitude.description),\n"
             + "\t'longitude':\(coordinate.longitude.description),\n"
             + "\t'type':\(String(describing: type)),\n"
+            + "\t'convertedType':\(String(describing: radarType.rawValue)),\n"
             + "\t'road':'\(String(describing: road))',\n"
             + "\t'valid_from':\(String(describing: validFrom)),\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"

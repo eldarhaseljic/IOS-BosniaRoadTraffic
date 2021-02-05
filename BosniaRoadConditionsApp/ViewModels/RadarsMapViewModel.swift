@@ -43,7 +43,7 @@ final class RadarsMapViewModel: NSObject {
         do {
             try radarsFRC.performFetch()
         } catch {
-            fatalError("Suggested Teams fetch request failed")
+            fatalError("Radars fetch request failed")
         }
     }
     

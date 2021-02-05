@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "speed-camera_without_sing.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
