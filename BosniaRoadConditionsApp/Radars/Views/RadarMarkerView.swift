@@ -26,7 +26,7 @@ class RadarMarkerView: MKMarkerAnnotationView {
     
     func getDescriptionLabel(text: String?) -> UILabel {
         let detailLabel = UILabel()
-        detailLabel.numberOfLines = 0
+        detailLabel.numberOfLines = .zero
         detailLabel.font = detailLabel.font.withSize(12)
         detailLabel.text = text
         return detailLabel

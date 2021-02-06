@@ -30,6 +30,9 @@
 		39B5AB9D25B8C51000AEB23B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39B5AB9F25B8C51000AEB23B /* Localizable.strings */; };
 		39B5ABA525B8C57C00AEB23B /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5ABA425B8C57C00AEB23B /* Localization.swift */; };
 		39B5ABA825B8CE4A00AEB23B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39B5ABA725B8CE4A00AEB23B /* Colors.xcassets */; };
+		39B750FC25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B750FB25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift */; };
+		39B7510425CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B7510325CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard */; };
+		39B7510625CF2CCB00DAA99A /* RadarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7510525CF2CCB00DAA99A /* RadarDetailsViewController.swift */; };
 		39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7425A22222000F3E65 /* AppDelegate.swift */; };
 		39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7625A22222000F3E65 /* SceneDelegate.swift */; };
 		39BB0B7925A22222000F3E65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7825A22222000F3E65 /* MainViewController.swift */; };
@@ -78,6 +81,9 @@
 		39B5ABA125B8C52600AEB23B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39B5ABA425B8C57C00AEB23B /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		39B5ABA725B8CE4A00AEB23B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		39B750FB25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extensions.swift"; sourceTree = "<group>"; };
+		39B7510325CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RadarDetailsStoryboard.storyboard; sourceTree = "<group>"; };
+		39B7510525CF2CCB00DAA99A /* RadarDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarDetailsViewController.swift; sourceTree = "<group>"; };
 		39BB0B7125A22222000F3E65 /* BosniaRoadConditionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadConditionsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39BB0B7425A22222000F3E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39BB0B7625A22222000F3E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				392937F725B376390030F33F /* NSManagedObjectContext+Extensions.swift */,
 				395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */,
 				395ACB8325CD7ED700060A73 /* String+Extensions.swift */,
+				39B750FB25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift */,
 				39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */,
 				3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */,
 			);
@@ -179,6 +186,37 @@
 			path = Translations;
 			sourceTree = "<group>";
 		};
+		39B750F525CF1E6000DAA99A /* Radars */ = {
+			isa = PBXGroup;
+			children = (
+				3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */,
+				392A6FF925AAF950000361EA /* Model */,
+				39B750FD25CF2A5500DAA99A /* Storyboards */,
+				39219CD025C589FC00B55096 /* ViewModels */,
+				395ACB8525CD907000060A73 /* Views */,
+				39B7510525CF2CCB00DAA99A /* RadarDetailsViewController.swift */,
+			);
+			path = Radars;
+			sourceTree = "<group>";
+		};
+		39B750FD25CF2A5500DAA99A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3931A26A25B4B66800F9E38F /* RadarsMapStoryboard.storyboard */,
+				39B7510325CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		39B750FE25CF2B2E00DAA99A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
+				39BB0B7A25A22222000F3E65 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		39BB0B6825A22222000F3E65 = {
 			isa = PBXGroup;
 			children = (
@@ -200,15 +238,13 @@
 		39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */ = {
 			isa = PBXGroup;
 			children = (
-				395ACB8525CD907000060A73 /* Views */,
+				39BB0B7825A22222000F3E65 /* MainViewController.swift */,
 				39BB0BA225A2265C000F3E65 /* AppBackground */,
-				39BB0BA625A227C0000F3E65 /* Controllers */,
 				392A6FFD25AB18B0000361EA /* Extensions */,
-				392A6FF925AAF950000361EA /* Model */,
+				39B750F525CF1E6000DAA99A /* Radars */,
 				392A6FF325AAF841000361EA /* Services */,
-				39BB0BA725A227D3000F3E65 /* Storyboards */,
+				39B750FE25CF2B2E00DAA99A /* Storyboards */,
 				39E05C8925AA13B200026E05 /* Supporting Files */,
-				39219CD025C589FC00B55096 /* ViewModels */,
 			);
 			path = BosniaRoadConditionsApp;
 			sourceTree = "<group>";
@@ -222,25 +258,6 @@
 				3933E05425BCAFEE008ABBB3 /* myLocation.gpx */,
 			);
 			path = AppBackground;
-			sourceTree = "<group>";
-		};
-		39BB0BA625A227C0000F3E65 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				39BB0B7825A22222000F3E65 /* MainViewController.swift */,
-				3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		39BB0BA725A227D3000F3E65 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				39BB0B7A25A22222000F3E65 /* Main.storyboard */,
-				39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */,
-				3931A26A25B4B66800F9E38F /* RadarsMapStoryboard.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		39E05C8925AA13B200026E05 /* Supporting Files */ = {
@@ -337,6 +354,7 @@
 				39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */,
 				3931A26B25B4B66800F9E38F /* RadarsMapStoryboard.storyboard in Resources */,
 				39B5ABA825B8CE4A00AEB23B /* Colors.xcassets in Resources */,
+				39B7510425CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard in Resources */,
 				39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */,
 				39BB0B7C25A22222000F3E65 /* Main.storyboard in Resources */,
 			);
@@ -402,6 +420,8 @@
 				392937D625B3263F0030F33F /* TrafficEndpoints.swift in Sources */,
 				3933E04B25BC8C4F008ABBB3 /* UIViewController+Extensions.swift in Sources */,
 				3931A27525B4B8C500F9E38F /* Constants.swift in Sources */,
+				39B750FC25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift in Sources */,
+				39B7510625CF2CCB00DAA99A /* RadarDetailsViewController.swift in Sources */,
 				39B5ABA525B8C57C00AEB23B /* Localization.swift in Sources */,
 				392937D125B324E80030F33F /* Radar+CoreDataProperties.swift in Sources */,
 				39BB0B7925A22222000F3E65 /* MainViewController.swift in Sources */,

@@ -13,6 +13,15 @@ import CoreData
 import Foundation
 import CoreLocation
 
+enum AuthorizationStatus {
+    case authorizedWhenInUse
+    case denied
+    case notDetermined
+    case restricted
+    case authorizedAlways
+    case error
+}
+
 final class RadarsMapViewModel: NSObject {
     
     private var radarsFRC: NSFetchedResultsController<Radar>!
@@ -20,7 +29,7 @@ final class RadarsMapViewModel: NSObject {
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
     
-    let userLocationStatus = PublishSubject<Bool>()
+    let userLocationStatus = PublishSubject<AuthorizationStatus>()
     let radarsArray = PublishSubject<[Radar]>()
     
     private let locationDistance: CLLocationDistance = 50000
@@ -65,21 +74,18 @@ final class RadarsMapViewModel: NSObject {
     private func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            userLocationStatus.onNext(true)
+            userLocationStatus.onNext(.authorizedWhenInUse)
         case .denied:
-            // Error message
-            break
+            userLocationStatus.onNext(.denied)
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
-            // Error message
-            break
+            userLocationStatus.onNext(.restricted)
         case .authorizedAlways:
-            // Error message
-            break
+            userLocationStatus.onNext(.authorizedAlways)
+        @unknown
         default:
-            // Error message
-            break
+            userLocationStatus.onNext(.error)
         }
     }
     
@@ -123,5 +129,6 @@ extension RadarsMapViewModel: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
     }
 }

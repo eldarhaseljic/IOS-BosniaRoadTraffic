@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,17 +24,27 @@
                                     <outlet property="delegate" destination="dIW-vn-KOz" id="XcJ-jd-Tbo"/>
                                 </connections>
                             </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-qM-MQx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
+                                <color key="color" name="DavysGrey"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ynl-iG-PQb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="K5Q-Ar-IAG" secondAttribute="bottom" id="IcI-FA-c5b"/>
+                            <constraint firstItem="eGh-qM-MQx" firstAttribute="leading" secondItem="Ynl-iG-PQb" secondAttribute="leading" id="K55-rK-AGh"/>
+                            <constraint firstAttribute="bottom" secondItem="eGh-qM-MQx" secondAttribute="bottom" id="KeB-9e-1fh"/>
                             <constraint firstItem="K5Q-Ar-IAG" firstAttribute="leading" secondItem="hPP-YS-giO" secondAttribute="leading" id="Wxb-RT-diZ"/>
+                            <constraint firstItem="eGh-qM-MQx" firstAttribute="trailing" secondItem="Ynl-iG-PQb" secondAttribute="trailing" id="YE3-nR-ZjZ"/>
+                            <constraint firstItem="eGh-qM-MQx" firstAttribute="top" secondItem="hPP-YS-giO" secondAttribute="top" id="eck-jw-q4q"/>
                             <constraint firstItem="K5Q-Ar-IAG" firstAttribute="top" secondItem="hPP-YS-giO" secondAttribute="top" id="fZm-ao-0JX"/>
                             <constraint firstAttribute="trailing" secondItem="K5Q-Ar-IAG" secondAttribute="trailing" id="qtb-zJ-jbD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="eGh-qM-MQx" id="ZL7-SR-qQ1"/>
                         <outlet property="mapView" destination="K5Q-Ar-IAG" id="gda-5j-j3X"/>
                     </connections>
                 </viewController>
@@ -43,6 +54,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="DavysGrey">
+            <color red="0.28627450980392155" green="0.31372549019607843" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

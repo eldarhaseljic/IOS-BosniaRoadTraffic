@@ -12,6 +12,12 @@ import RxSwift
 
 class RadarsMapViewController: UIViewController {
     
+    @IBOutlet var loadingIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            loadingIndicatorView.appendBlurredBackground()
+            loadingIndicatorView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        }
+    }
     @IBOutlet var mapView: MKMapView! {
         didSet {
             mapView.register(RadarMarkerView.self,
@@ -28,21 +34,36 @@ class RadarsMapViewController: UIViewController {
         setupNavigationBar()
         setupObservers()
         viewModel.checkLocationServices()
-        viewModel.fetchNewRadars()
     }
     
     func setupObservers() {
         viewModel.userLocationStatus.bind(onNext: { [unowned self] isVisible in
-            mapView.showsUserLocation = isVisible
-            if let currentLocation = viewModel.userCurrentLocation {
-                mapView.setRegion(currentLocation, animated: true)
+            switch isVisible {
+            case .authorizedWhenInUse, .authorizedAlways:
+                loadingIndicatorView.startAnimating()
+                mapView.showsUserLocation = true
+                viewModel.fetchNewRadars()
+            case .denied: break
+            // Error message
+            case .notDetermined: break
+            // Error message
+            case .restricted: break
+            // Error message
+            case .error: break
+            // Error message
             }
-        }).disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
         
         viewModel.radarsArray.bind(onNext: { [unowned self] radars in
             mapView.addAnnotations(radars)
+            if let currentLocation = viewModel.userCurrentLocation {
+                mapView.setRegion(currentLocation, animated: true)
+            }
+            loadingIndicatorView.stopAnimating()
             funkcijaZaProvjeru(radars)
-        }).disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
     }
     
     func setupNavigationBar() {
@@ -81,5 +102,13 @@ extension RadarsMapViewController {
         let radarsViewController = RadarsMapViewController.getViewController()
         radarsViewController.setViewModel()
         return radarsViewController
+    }
+}
+
+extension RadarsMapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let radar = view.annotation as? Radar else { return }
+        presentView(viewController: RadarDetailsViewController.showDetails(for: radar))
     }
 }
