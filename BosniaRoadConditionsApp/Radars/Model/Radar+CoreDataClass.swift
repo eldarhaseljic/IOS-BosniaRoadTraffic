@@ -28,6 +28,15 @@ enum RadarJSON: String {
 enum RadarType: String {
     case stationary
     case temporary
+    
+    var rawValue: String {
+        switch self {
+        case .stationary:
+            return STATIONARY
+        case .temporary:
+            return TEMPORARY
+        }
+    }
 }
 
 public class Radar: NSManagedObject, MKAnnotation {

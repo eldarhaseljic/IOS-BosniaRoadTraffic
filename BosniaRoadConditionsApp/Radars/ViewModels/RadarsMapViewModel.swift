@@ -31,6 +31,7 @@ final class RadarsMapViewModel: NSObject {
     
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     let radarsArray = PublishSubject<[Radar]>()
+    var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     
     private let locationDistance: CLLocationDistance = 50000
     
@@ -75,14 +76,19 @@ final class RadarsMapViewModel: NSObject {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             userLocationStatus.onNext(.authorizedWhenInUse)
+            currentAuthorizationStatus = .authorizedWhenInUse
         case .denied:
             userLocationStatus.onNext(.denied)
+            currentAuthorizationStatus = .denied
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
+            currentAuthorizationStatus = .notDetermined
         case .restricted:
             userLocationStatus.onNext(.restricted)
+            currentAuthorizationStatus = .restricted
         case .authorizedAlways:
             userLocationStatus.onNext(.authorizedAlways)
+            currentAuthorizationStatus = .authorizedAlways
         @unknown
         default:
             userLocationStatus.onNext(.error)
@@ -129,6 +135,8 @@ extension RadarsMapViewModel: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
+        if status != currentAuthorizationStatus {
+            checkLocationAuthorization()
+        }
     }
 }

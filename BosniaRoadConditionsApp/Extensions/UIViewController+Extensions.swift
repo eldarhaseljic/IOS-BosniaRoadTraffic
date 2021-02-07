@@ -11,30 +11,30 @@ import UIKit
 
 extension UIViewController {
     
-    func pushView(viewController: UIViewController) {
+    public func  pushView(viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func presentView(viewController: UIViewController) {
+    public func  presentView(viewController: UIViewController) {
         navigationController?.present(viewController, animated: true, completion: nil)
     }
     
-    var backButton: UIBarButtonItem {
+    public var backButton: UIBarButtonItem {
         UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self,
                         action: #selector(tapBackButton))
     }
     
-    var closeButton: UIBarButtonItem {
+    public var closeButton: UIBarButtonItem {
         UIBarButtonItem(title: CLOSE, style: .done, target: self, action: #selector(tapCloseButton))
     }
     
     @objc
-    func tapCloseButton(_ sender: Any) {
+    public func  tapCloseButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @objc
-    func tapBackButton(_ sender: Any) {
+    public func  tapBackButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 }

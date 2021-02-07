@@ -10,3 +10,8 @@
 bosnia_road_conditions = "Bosnia Road Conditions";
 announced_radar_controls = "Announced radar controls";
 close = "Close";
+street_name = "Street name: %@";
+stationary = "Stationary";
+temporary = "Temporary";
+radar_type = "Radar type: %@";
+radar_duration = "Radar active from: %@ \nRadar active until: %@";

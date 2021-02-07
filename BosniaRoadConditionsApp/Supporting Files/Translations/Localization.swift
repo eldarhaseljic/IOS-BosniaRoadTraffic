@@ -11,3 +11,8 @@ import Foundation
 let BOSNIA_ROAD_CONDITIONS: String = NSLocalizedString("bosnia_road_conditions", comment: "Bosnia road conditions")
 let ANNOUNCED_RADAR_CONTROLS: String = NSLocalizedString("announced_radar_controls", comment: "Announced radar controls")
 let CLOSE: String = NSLocalizedString("close", comment: "Close")
+let STREET_NAME: String = NSLocalizedString("street_name", comment: "Street name: %@")
+let STATIONARY: String = NSLocalizedString("stationary", comment: "Stationary")
+let TEMPORARY: String = NSLocalizedString("temporary", comment: "Temporary")
+let RADAR_TYPE: String = NSLocalizedString("radar_type", comment: "Radar type: %@")
+let RADAR_DURATION: String = NSLocalizedString("radar_duration", comment: "Radar active from: %@ \nRadar active until: %@")

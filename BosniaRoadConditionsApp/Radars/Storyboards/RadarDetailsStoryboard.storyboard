@@ -18,20 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exi-0w-Ias">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exi-0w-Ias">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="White"/>
                                 <color key="barTintColor" name="SlateGray"/>
                                 <items>
                                     <navigationItem id="jo8-it-9S2"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-c0-pXq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jc0-cm-9bU" id="OXQ-4P-uy5"/>
+                                    <outlet property="delegate" destination="Jc0-cm-9bU" id="Jci-w8-5dm"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VSW-Io-trp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="exi-0w-Ias" firstAttribute="top" secondItem="Q63-qj-PfO" secondAttribute="top" id="0HU-de-aFh"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="top" secondItem="exi-0w-Ias" secondAttribute="bottom" id="Esx-mb-uyx"/>
+                            <constraint firstItem="exi-0w-Ias" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="Oy3-vE-sU9"/>
+                            <constraint firstAttribute="bottom" secondItem="vEz-c0-pXq" secondAttribute="bottom" id="arj-R6-xPs"/>
+                            <constraint firstAttribute="trailing" secondItem="exi-0w-Ias" secondAttribute="trailing" id="bbd-TZ-0Wv"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="trailing" secondItem="VSW-Io-trp" secondAttribute="trailing" id="lHe-0O-2kb"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="leading" secondItem="VSW-Io-trp" secondAttribute="leading" id="sNX-Lc-u9c"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="contextView" destination="vEz-c0-pXq" id="JAy-7a-HdA"/>
                         <outlet property="navigationBarItem" destination="jo8-it-9S2" id="kUw-rf-j1e"/>
                     </connections>
                 </viewController>

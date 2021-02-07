@@ -10,3 +10,8 @@
 bosnia_road_conditions = "Straßenbedingungen in Bosnien";
 announced_radar_controls = "Angekündigte Radarsteuerunge";
 close = "Schließen";
+street_name = "Straßenname: %@";
+stationary = "Stationär";
+temporary = "Vorübergehend";
+radar_type = "Radartyp: %@";
+radar_duration = "Radar aktiv von: %@ \nRadar aktiv bis: %@";

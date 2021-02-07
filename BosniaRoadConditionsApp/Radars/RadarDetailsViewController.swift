@@ -11,6 +11,11 @@ import UIKit
 class RadarDetailsViewController: UIViewController {
 
     @IBOutlet var navigationBarItem: UINavigationItem!
+    @IBOutlet var contextView: UITableView! {
+        didSet {
+            contextView.registerCell(cellType: RadarDetailsViewCell.self)
+        }
+    }
     private var currentRadar: Radar!
     
     override func viewDidLoad() {
@@ -34,5 +39,18 @@ extension RadarDetailsViewController {
         let radarDetailsViewController = RadarDetailsViewController.getViewController()
         radarDetailsViewController.setData(for: radar)
         return radarDetailsViewController
+    }
+}
+
+extension RadarDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(with: RadarDetailsViewCell.self,
+                                                 for: indexPath)
+        cell.configure(for: currentRadar)
+        return cell
     }
 }

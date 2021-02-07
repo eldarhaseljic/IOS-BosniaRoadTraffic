@@ -11,7 +11,7 @@ import UIKit
 
 extension UIActivityIndicatorView {
     
-    func appendBlurredBackground() {
+    public func appendBlurredBackground() {
         let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurEffectView.frame = frame
         insertSubview(blurEffectView, at: .zero)

@@ -10,7 +10,7 @@ import Foundation
 
 extension String: Emptiable {
     
-    var withoutHtmlTags: String {
+    public var withoutHtmlTags: String {
         return self
             .replacingOccurrences(of: "<br />", with: "\r\n")
             .replacingOccurrences(of: "<[^>]+>", with: "",

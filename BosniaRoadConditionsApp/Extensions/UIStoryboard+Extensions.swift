@@ -13,7 +13,7 @@ import UIKit
 
 extension UIStoryboard {
     
-    func instantiateViewControllerWithIdentifier<T>(_ identifier: T.Type) -> T? where T: UIViewController {
+    public func instantiateViewControllerWithIdentifier<T>(_ identifier: T.Type) -> T? where T: UIViewController {
         return instantiateViewController(withIdentifier: String(describing: identifier)) as? T
     }
 }
