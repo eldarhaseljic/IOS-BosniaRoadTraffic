@@ -12,6 +12,7 @@ final class Constants {
     class StoryboardIdentifiers {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
         static let RadarDetailsStoryboard = "RadarDetailsStoryboard"
+        static let RadarFilterStoryboard = "RadarFilterStoryboard"
     }
     
     class Identifiers {

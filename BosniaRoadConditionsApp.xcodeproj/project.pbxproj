@@ -43,6 +43,8 @@
 		39BB0B7F25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39BB0B7D25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld */; };
 		39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B8025A22222000F3E65 /* Assets.xcassets */; };
 		39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */; };
+		39E0083925D33B3F00C86635 /* RadarFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */; };
+		39E0083B25D33B5600C86635 /* RadarFilterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +101,8 @@
 		39BB0B8025A22222000F3E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39BB0B8325A22222000F3E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39BB0B8525A22222000F3E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarFilterViewController.swift; sourceTree = "<group>"; };
+		39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RadarFilterStoryboard.storyboard; sourceTree = "<group>"; };
 		4C55C7A4D500C48E0C623C29 /* Pods-BosniaRoadConditionsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.release.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.release.xcconfig"; sourceTree = "<group>"; };
 		73EFF976B0AEC8EC16356F98 /* Pods-BosniaRoadConditionsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,14 +119,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39219CD025C589FC00B55096 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		392A6FF325AAF841000361EA /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,14 +152,6 @@
 				3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		395ACB8525CD907000060A73 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				395ACB8625CD908C00060A73 /* RadarMarkerView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		39AB6C1425D05B1C001683C9 /* Cell */ = {
@@ -205,24 +193,15 @@
 		39B750F525CF1E6000DAA99A /* Radars */ = {
 			isa = PBXGroup;
 			children = (
+				39E0083725D33B0800C86635 /* Filter */,
+				3931A26A25B4B66800F9E38F /* RadarsMapStoryboard.storyboard */,
+				395ACB8625CD908C00060A73 /* RadarMarkerView.swift */,
 				3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */,
+				39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */,
+				39E0083625D33AA400C86635 /* Details */,
 				392A6FF925AAF950000361EA /* Model */,
-				39B750FD25CF2A5500DAA99A /* Storyboards */,
-				39219CD025C589FC00B55096 /* ViewModels */,
-				395ACB8525CD907000060A73 /* Views */,
-				39B7510525CF2CCB00DAA99A /* RadarDetailsViewController.swift */,
 			);
 			path = Radars;
-			sourceTree = "<group>";
-		};
-		39B750FD25CF2A5500DAA99A /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				39AB6C1425D05B1C001683C9 /* Cell */,
-				3931A26A25B4B66800F9E38F /* RadarsMapStoryboard.storyboard */,
-				39B7510325CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		39B750FE25CF2B2E00DAA99A /* Storyboards */ = {
@@ -275,6 +254,25 @@
 				3933E05425BCAFEE008ABBB3 /* myLocation.gpx */,
 			);
 			path = AppBackground;
+			sourceTree = "<group>";
+		};
+		39E0083625D33AA400C86635 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				39B7510325CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard */,
+				39B7510525CF2CCB00DAA99A /* RadarDetailsViewController.swift */,
+				39AB6C1425D05B1C001683C9 /* Cell */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		39E0083725D33B0800C86635 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */,
+				39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		39E05C8925AA13B200026E05 /* Supporting Files */ = {
@@ -369,6 +367,7 @@
 			files = (
 				39B5AB9D25B8C51000AEB23B /* Localizable.strings in Resources */,
 				39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */,
+				39E0083B25D33B5600C86635 /* RadarFilterStoryboard.storyboard in Resources */,
 				3931A26B25B4B66800F9E38F /* RadarsMapStoryboard.storyboard in Resources */,
 				39B5ABA825B8CE4A00AEB23B /* Colors.xcassets in Resources */,
 				39AB6C1825D05B34001683C9 /* RadarDetailsViewCell.xib in Resources */,
@@ -428,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				392937F125B3757A0030F33F /* ManagedObject.swift in Sources */,
+				39E0083925D33B3F00C86635 /* RadarFilterViewController.swift in Sources */,
 				395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */,
 				395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */,
 				392937DF25B328630030F33F /* NetworkService.swift in Sources */,

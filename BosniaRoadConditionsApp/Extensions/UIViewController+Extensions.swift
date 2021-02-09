@@ -24,6 +24,10 @@ extension UIViewController {
                         action: #selector(tapBackButton))
     }
     
+    public func getFilterButton(image: UIImage = #imageLiteral(resourceName: "slider.horizontal"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector?) -> UIBarButtonItem {
+        return UIBarButtonItem(image: image, style: style, target: target, action: action)
+    }
+    
     public var closeButton: UIBarButtonItem {
         UIBarButtonItem(title: CLOSE, style: .done, target: self, action: #selector(tapCloseButton))
     }

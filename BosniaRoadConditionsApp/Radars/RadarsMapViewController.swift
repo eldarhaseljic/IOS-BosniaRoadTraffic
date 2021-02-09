@@ -69,10 +69,17 @@ class RadarsMapViewController: UIViewController {
     func setupNavigationBar() {
         title = BOSNIA_ROAD_CONDITIONS
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = getFilterButton(target: self,
+                                                            action: #selector(tapEditButton))
     }
     
     private func setViewModel() {
         viewModel = RadarsMapViewModel()
+    }
+    
+    @objc
+    public func tapEditButton(_ sender: Any) {
+        presentView(viewController: RadarFilterViewController.showFilters())
     }
     
     // Error message
@@ -95,7 +102,6 @@ extension RadarsMapViewController {
     static func getViewController() -> RadarsMapViewController {
         return UIStoryboard(name: Constants.StoryboardIdentifiers.RadarsMapStoryboard, bundle: nil)
             .instantiateViewControllerWithIdentifier(RadarsMapViewController.self)!
-
     }
     
     static func showRadars() -> RadarsMapViewController {
