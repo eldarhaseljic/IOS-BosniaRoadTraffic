@@ -10,19 +10,21 @@ import UIKit
 
 class RadarDetailsViewController: UIViewController {
 
-    @IBOutlet var navigationBarItem: UINavigationItem!
+    @IBOutlet var navigationBarItem: UINavigationItem! {
+        didSet {
+            navigationBarItem.leftBarButtonItem = closeButton
+        }
+    }
+    
     @IBOutlet var contextView: UITableView! {
         didSet {
             contextView.registerCell(cellType: RadarDetailsViewCell.self)
         }
     }
+    
     private var currentRadar: Radar!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        navigationBarItem.leftBarButtonItem = closeButton
-    }
+    override func viewDidLoad() { super.viewDidLoad() }
     
     func setData(for radar: Radar) {
         currentRadar = radar

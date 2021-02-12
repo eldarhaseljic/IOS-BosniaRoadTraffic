@@ -199,12 +199,12 @@
 		39B750F525CF1E6000DAA99A /* Radars */ = {
 			isa = PBXGroup;
 			children = (
-				39E0083725D33B0800C86635 /* Filter */,
 				3931A26A25B4B66800F9E38F /* RadarsMapStoryboard.storyboard */,
 				395ACB8625CD908C00060A73 /* RadarMarkerView.swift */,
 				3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */,
 				39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */,
 				39E0083625D33AA400C86635 /* Details */,
+				39E0083725D33B0800C86635 /* Filter */,
 				392A6FF925AAF950000361EA /* Model */,
 			);
 			path = Radars;
