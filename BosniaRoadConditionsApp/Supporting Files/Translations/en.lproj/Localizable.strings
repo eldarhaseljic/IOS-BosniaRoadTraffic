@@ -15,3 +15,5 @@ stationary = "Stationary";
 temporary = "Temporary";
 radar_type = "Radar type: %@";
 radar_duration = "Radar active from: %@ \nRadar active until: %@";
+apply = "Apply";
+cancel = "Cancel";

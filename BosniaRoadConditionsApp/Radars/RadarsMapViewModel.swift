@@ -29,10 +29,10 @@ final class RadarsMapViewModel: NSObject {
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
     
-    let userLocationStatus = PublishSubject<AuthorizationStatus>()
     let radarsArray = PublishSubject<[Radar]>()
+    let userLocationStatus = PublishSubject<AuthorizationStatus>()
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
-    
+    var radarsInDatabase: [Radar] = []
     private let locationDistance: CLLocationDistance = 50000
     
     init(manager: MainManager = MainManager.shared,
@@ -105,7 +105,8 @@ final class RadarsMapViewModel: NSObject {
     
     private func handleTeamsData() {
         // Error message
-        radarsArray.onNext(radarsFRC.fetchedObjects ?? [])
+        radarsInDatabase = radarsFRC.fetchedObjects ?? []
+        radarsArray.onNext(radarsInDatabase)
     }
     
     func fetchNewRadars(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
@@ -126,7 +127,6 @@ extension RadarsMapViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         handleTeamsData()
     }
-    
 }
 
 extension RadarsMapViewModel: CLLocationManagerDelegate {

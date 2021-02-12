@@ -135,32 +135,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CF64B97D-EA5B-4259-B215-CDD5F325CDDA"
-            shouldBeEnabled = "Yes"
+            uuid = "040DEA9C-FF5B-45F2-827D-1C60BB7DA2C0"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BosniaRoadConditionsApp/Radars/Filter/RadarFilterViewController.swift"
+            filePath = "BosniaRoadConditionsApp/Radars/RadarsMapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "showFilters()"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "tapEditButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "040DEA9C-FF5B-45F2-827D-1C60BB7DA2C0"
+            uuid = "992DC57D-9EB9-4362-9802-FF634B91C758"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BosniaRoadConditionsApp/Radars/Filter/RadarFilterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F40B5B9C-9CDC-4434-AEDF-64A72DDF5C32"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BosniaRoadConditionsApp/Radars/RadarsMapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "tapEditButton(_:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setupObservers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

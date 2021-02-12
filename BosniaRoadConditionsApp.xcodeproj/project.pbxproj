@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3903432025D6776B0038E33F /* RadarFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3903431F25D6776B0038E33F /* RadarFilterViewModel.swift */; };
 		39219CD225C58A1900B55096 /* RadarsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */; };
 		39219CD425C58FED00B55096 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */; };
 		39219CD825C596E300B55096 /* Pods_BosniaRoadConditionsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */; };
@@ -45,6 +46,8 @@
 		39BB0B8425A22222000F3E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BB0B8225A22222000F3E65 /* LaunchScreen.storyboard */; };
 		39E0083925D33B3F00C86635 /* RadarFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */; };
 		39E0083B25D33B5600C86635 /* RadarFilterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */; };
+		39ECC8AD25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECC8AB25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift */; };
+		39ECC8AE25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39ECC8AC25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		0B25B1E391B4C30EFA37B5AC /* Pods_BosniaRoadConditionsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadConditionsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3903431F25D6776B0038E33F /* RadarFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarFilterViewModel.swift; sourceTree = "<group>"; };
 		39219CD125C58A1900B55096 /* RadarsMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarsMapViewModel.swift; sourceTree = "<group>"; };
 		39219CD325C58FED00B55096 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
 		392937CE25B324E80030F33F /* Radar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radar+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		39BB0B8525A22222000F3E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarFilterViewController.swift; sourceTree = "<group>"; };
 		39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RadarFilterStoryboard.storyboard; sourceTree = "<group>"; };
+		39ECC8AB25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarFilterOptionTableViewCell.swift; sourceTree = "<group>"; };
+		39ECC8AC25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarFilterOptionTableViewCell.xib; sourceTree = "<group>"; };
 		4C55C7A4D500C48E0C623C29 /* Pods-BosniaRoadConditionsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.release.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.release.xcconfig"; sourceTree = "<group>"; };
 		73EFF976B0AEC8EC16356F98 /* Pods-BosniaRoadConditionsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadConditionsApp.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadConditionsApp/Pods-BosniaRoadConditionsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,8 +275,10 @@
 		39E0083725D33B0800C86635 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */,
 				39E0083A25D33B5600C86635 /* RadarFilterStoryboard.storyboard */,
+				39E0083825D33B3F00C86635 /* RadarFilterViewController.swift */,
+				3903431F25D6776B0038E33F /* RadarFilterViewModel.swift */,
+				39ECC8AA25D3FB420002E48A /* Cell */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -284,6 +292,15 @@
 				39B5ABAC25B8CE8100AEB23B /* Translations */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39ECC8AA25D3FB420002E48A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39ECC8AB25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift */,
+				39ECC8AC25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		585DFAB00C34C8CA286937FA /* Pods */ = {
@@ -372,6 +389,7 @@
 				39B5ABA825B8CE4A00AEB23B /* Colors.xcassets in Resources */,
 				39AB6C1825D05B34001683C9 /* RadarDetailsViewCell.xib in Resources */,
 				39B7510425CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard in Resources */,
+				39ECC8AE25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib in Resources */,
 				39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */,
 				39BB0B7C25A22222000F3E65 /* Main.storyboard in Resources */,
 			);
@@ -439,6 +457,7 @@
 				3933E04B25BC8C4F008ABBB3 /* UIViewController+Extensions.swift in Sources */,
 				3931A27525B4B8C500F9E38F /* Constants.swift in Sources */,
 				39B750FC25CF256700DAA99A /* UIActivityIndicatorView+Extensions.swift in Sources */,
+				3903432025D6776B0038E33F /* RadarFilterViewModel.swift in Sources */,
 				39B7510625CF2CCB00DAA99A /* RadarDetailsViewController.swift in Sources */,
 				39B5ABA525B8C57C00AEB23B /* Localization.swift in Sources */,
 				39AB6C1725D05B34001683C9 /* RadarDetailsViewCell.swift in Sources */,
@@ -449,6 +468,7 @@
 				392937E625B333330030F33F /* MainManager.swift in Sources */,
 				395ACB8725CD908C00060A73 /* RadarMarkerView.swift in Sources */,
 				39AB6C1325D04FC4001683C9 /* UITableView+Extensions.swift in Sources */,
+				39ECC8AD25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift in Sources */,
 				39BB0B7F25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld in Sources */,
 				39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */,
 				39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */,

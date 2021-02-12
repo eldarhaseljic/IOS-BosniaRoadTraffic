@@ -18,6 +18,7 @@ class RadarsMapViewController: UIViewController {
             loadingIndicatorView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
         }
     }
+    
     @IBOutlet var mapView: MKMapView! {
         didSet {
             mapView.register(RadarMarkerView.self,
@@ -25,6 +26,11 @@ class RadarsMapViewController: UIViewController {
                                 MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
     }
+    
+    lazy var radarFilterViewController: RadarFilterViewController = {
+        return RadarFilterViewController.getViewController()
+    }()
+    
     private let disposeBag = DisposeBag()
     var viewModel: RadarsMapViewModel!
     
@@ -60,8 +66,17 @@ class RadarsMapViewController: UIViewController {
             if let currentLocation = viewModel.userCurrentLocation {
                 mapView.setRegion(currentLocation, animated: true)
             }
+            radarFilterViewController.setData(viewModel: RadarFilterViewModel(radars: radars))
+            navigationItem.rightBarButtonItem?.isEnabled = true
             loadingIndicatorView.stopAnimating()
-            funkcijaZaProvjeru(radars)
+        })
+        .disposed(by: disposeBag)
+        
+        radarFilterViewController.filteredRadarsArray.bind(onNext: { [unowned self] radars in
+            loadingIndicatorView.startAnimating()
+            mapView.removeAnnotations(viewModel.radarsInDatabase)
+            mapView.addAnnotations(radars)
+            loadingIndicatorView.stopAnimating()
         })
         .disposed(by: disposeBag)
     }
@@ -69,8 +84,9 @@ class RadarsMapViewController: UIViewController {
     func setupNavigationBar() {
         title = BOSNIA_ROAD_CONDITIONS
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = getFilterButton(target: self,
+        navigationItem.rightBarButtonItem = filterButton(target: self,
                                                             action: #selector(tapEditButton))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func setViewModel() {
@@ -79,22 +95,7 @@ class RadarsMapViewController: UIViewController {
     
     @objc
     public func tapEditButton(_ sender: Any) {
-        presentView(viewController: RadarFilterViewController.showFilters())
-    }
-    
-    // Error message
-    private func funkcijaZaProvjeru(_ radars: [Radar]) {
-        var stacionarni = 0
-        var nestacionarni = 0
-        radars.forEach({ radar in
-            if radar.type == 1 {
-                stacionarni += 1
-            } else {
-                nestacionarni += 1
-            }
-        })
-        
-        print("Stacionarni \(stacionarni) ne \(nestacionarni)")
+        presentView(viewController: radarFilterViewController)
     }
 }
 

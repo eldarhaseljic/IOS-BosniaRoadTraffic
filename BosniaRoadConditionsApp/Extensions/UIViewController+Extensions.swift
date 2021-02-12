@@ -20,25 +20,32 @@ extension UIViewController {
     }
     
     public var backButton: UIBarButtonItem {
-        UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self,
-                        action: #selector(tapBackButton))
-    }
-    
-    public func getFilterButton(image: UIImage = #imageLiteral(resourceName: "slider.horizontal"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector?) -> UIBarButtonItem {
-        return UIBarButtonItem(image: image, style: style, target: target, action: action)
+        UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self, action: #selector(tapBackButton))
     }
     
     public var closeButton: UIBarButtonItem {
-        UIBarButtonItem(title: CLOSE, style: .done, target: self, action: #selector(tapCloseButton))
+        return UIBarButtonItem(title: CLOSE, style: .done, target: self, action: #selector(tapCloseButton))
+    }
+    
+    public func filterButton(image: UIImage = #imageLiteral(resourceName: "slider.horizontal"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector?) -> UIBarButtonItem {
+        return UIBarButtonItem(image: image, style: style, target: target, action: action)
+    }
+    
+    public func cancelButton(image: UIImage = #imageLiteral(resourceName: "slider.horizontal"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector = #selector(tapCloseButton)) -> UIBarButtonItem {
+        return UIBarButtonItem(title: CANCEL, style: .done, target: self, action: action)
+    }
+    
+    public func applyButton(action: Selector) -> UIBarButtonItem {
+        return UIBarButtonItem(title: APPLY, style: .done, target: self, action: action)
     }
     
     @objc
-    public func  tapCloseButton(_ sender: Any) {
+    public func tapCloseButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @objc
-    public func  tapBackButton(_ sender: Any) {
+    public func tapBackButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 }
