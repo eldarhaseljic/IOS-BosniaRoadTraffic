@@ -1,8 +1,8 @@
 //
-//  RadarsMapViewModel.swift
+//  RoadConditionsViewModel.swift
 //  BosniaRoadConditionsApp
 //
-//  Created by Eldar Haseljic on 1/30/21.
+//  Created by Eldar Haseljic on 2/16/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
@@ -13,27 +13,18 @@ import CoreData
 import Foundation
 import CoreLocation
 
-enum AuthorizationStatus {
-    case authorizedWhenInUse
-    case denied
-    case notDetermined
-    case restricted
-    case authorizedAlways
-    case error
-}
-
-final class RadarsMapViewModel: NSObject {
+final class RoadConditionsViewModel: NSObject {
     
-    private var radarsFRC: NSFetchedResultsController<Radar>!
+    private var roadSignFRC: NSFetchedResultsController<RoadSign>!
+    private let locationDistance: CLLocationDistance = 50000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
     
-    let radarsArray = PublishSubject<[Radar]>()
+    let roadSignsArray = PublishSubject<[RoadSign]>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
-    var radarsInDatabase: [Radar] = []
-    private let locationDistance: CLLocationDistance = 50000
+    var roadSignsInDatabase: [RoadSign] = []
     
     init(manager: MainManager = MainManager.shared,
          persistanceService: PersistanceService = PersistanceService.shared,
@@ -48,10 +39,10 @@ final class RadarsMapViewModel: NSObject {
     }
     
     private func setupFetchController() {
-        radarsFRC = NSFetchedResultsController(fetchRequest: Radar.sortedFetchRequest, managedObjectContext: persistanceService.context, sectionNameKeyPath: nil, cacheName: nil)
-        radarsFRC.delegate = self
+        roadSignFRC = NSFetchedResultsController(fetchRequest: RoadSign.sortedFetchRequest, managedObjectContext: persistanceService.context, sectionNameKeyPath: nil, cacheName: nil)
+        roadSignFRC.delegate = self
         do {
-            try radarsFRC.performFetch()
+            try roadSignFRC.performFetch()
         } catch {
             fatalError("Radars fetch request failed")
         }
@@ -103,35 +94,34 @@ final class RadarsMapViewModel: NSObject {
                                   longitudinalMeters: locationDistance)
     }
     
-    private func handleRadarsData() {
+    private func handleRoadSignData() {
         // Error message
-        radarsInDatabase = radarsFRC.fetchedObjects ?? []
-        radarsArray.onNext(radarsInDatabase)
+        roadSignsInDatabase = roadSignFRC.fetchedObjects ?? []
+        roadSignsArray.onNext(roadSignsInDatabase)
     }
     
-    func fetchNewRadars(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
-        manager.getRadars { (_, error) in
+    func fetchRoadConditions(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        manager.getRoadConditions { (_, error) in
             guard
                 let error = error
             else {
-                print("Radars updated successfully")
-                completion?(true, nil)
+                print("Road Conditions updated successfully")
                 return
             }
             // Error message
             print(error.localizedDescription)
-            completion?(false, error)
         }
     }
 }
 
-extension RadarsMapViewModel: NSFetchedResultsControllerDelegate {
+extension RoadConditionsViewModel: NSFetchedResultsControllerDelegate {
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        handleRadarsData()
+        handleRoadSignData()
     }
 }
 
-extension RadarsMapViewModel: CLLocationManagerDelegate {
+extension RoadConditionsViewModel: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }

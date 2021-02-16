@@ -10,50 +10,50 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Radar Details View Controller-->
-        <scene sceneID="Adx-Zu-dsk">
+        <!--Road Conditions Details View Controller-->
+        <scene sceneID="hBm-NC-wRz">
             <objects>
-                <viewController storyboardIdentifier="RadarDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jc0-cm-9bU" customClass="RadarDetailsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q63-qj-PfO">
+                <viewController storyboardIdentifier="RoadConditionsDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FRt-4V-W9e" customClass="RoadConditionsDetailsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H3H-lX-PKD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exi-0w-Ias">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLb-bS-1os">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="tintColor" name="White"/>
                                 <color key="barTintColor" name="SlateGray"/>
                                 <items>
-                                    <navigationItem id="jo8-it-9S2"/>
+                                    <navigationItem id="JeY-Uj-N8M"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-c0-pXq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ibB-1W-w8p">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="Jc0-cm-9bU" id="OXQ-4P-uy5"/>
-                                    <outlet property="delegate" destination="Jc0-cm-9bU" id="Jci-w8-5dm"/>
+                                    <outlet property="dataSource" destination="FRt-4V-W9e" id="Q7l-9O-Bu0"/>
+                                    <outlet property="delegate" destination="FRt-4V-W9e" id="vKE-pm-Hm9"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="VSW-Io-trp"/>
+                        <viewLayoutGuide key="safeArea" id="hrv-sT-uWs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="exi-0w-Ias" firstAttribute="top" secondItem="Q63-qj-PfO" secondAttribute="top" id="0HU-de-aFh"/>
-                            <constraint firstItem="vEz-c0-pXq" firstAttribute="top" secondItem="exi-0w-Ias" secondAttribute="bottom" id="Esx-mb-uyx"/>
-                            <constraint firstItem="exi-0w-Ias" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="Oy3-vE-sU9"/>
-                            <constraint firstAttribute="bottom" secondItem="vEz-c0-pXq" secondAttribute="bottom" id="arj-R6-xPs"/>
-                            <constraint firstAttribute="trailing" secondItem="exi-0w-Ias" secondAttribute="trailing" id="bbd-TZ-0Wv"/>
-                            <constraint firstItem="vEz-c0-pXq" firstAttribute="trailing" secondItem="VSW-Io-trp" secondAttribute="trailing" id="lHe-0O-2kb"/>
-                            <constraint firstItem="vEz-c0-pXq" firstAttribute="leading" secondItem="VSW-Io-trp" secondAttribute="leading" id="sNX-Lc-u9c"/>
+                            <constraint firstItem="KLb-bS-1os" firstAttribute="leading" secondItem="H3H-lX-PKD" secondAttribute="leading" id="BAK-ad-ufw"/>
+                            <constraint firstItem="ibB-1W-w8p" firstAttribute="leading" secondItem="hrv-sT-uWs" secondAttribute="leading" id="CTK-oG-eVo"/>
+                            <constraint firstItem="ibB-1W-w8p" firstAttribute="trailing" secondItem="hrv-sT-uWs" secondAttribute="trailing" id="EHD-ld-Svd"/>
+                            <constraint firstItem="KLb-bS-1os" firstAttribute="top" secondItem="H3H-lX-PKD" secondAttribute="top" id="IY4-wp-WnQ"/>
+                            <constraint firstAttribute="bottom" secondItem="ibB-1W-w8p" secondAttribute="bottom" id="P8Z-Y0-tgd"/>
+                            <constraint firstAttribute="trailing" secondItem="KLb-bS-1os" secondAttribute="trailing" id="TM3-64-4a3"/>
+                            <constraint firstItem="ibB-1W-w8p" firstAttribute="top" secondItem="KLb-bS-1os" secondAttribute="bottom" id="etl-SO-jws"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contextView" destination="vEz-c0-pXq" id="JAy-7a-HdA"/>
-                        <outlet property="navigationBarItem" destination="jo8-it-9S2" id="kUw-rf-j1e"/>
+                        <outlet property="contextView" destination="ibB-1W-w8p" id="qBV-d3-fm5"/>
+                        <outlet property="navigationBarItem" destination="JeY-Uj-N8M" id="i1Y-Qk-0Gp"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W2p-K5-aZi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDI-xm-cxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-181.15942028985509" y="82.366071428571431"/>
         </scene>

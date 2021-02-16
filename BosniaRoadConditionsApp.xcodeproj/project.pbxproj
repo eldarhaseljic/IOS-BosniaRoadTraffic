@@ -25,6 +25,12 @@
 		3931A27225B4B6C500F9E38F /* RadarsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3931A27125B4B6C500F9E38F /* RadarsMapViewController.swift */; };
 		3931A27525B4B8C500F9E38F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3931A27425B4B8C500F9E38F /* Constants.swift */; };
 		3933E04B25BC8C4F008ABBB3 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */; };
+		395810C925DBD12B00A59B5F /* RoadConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395810C825DBD12B00A59B5F /* RoadConditionsViewModel.swift */; };
+		395810D025DBD3F600A59B5F /* RoadSignMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395810CF25DBD3F600A59B5F /* RoadSignMarkerView.swift */; };
+		395810D725DBEB6200A59B5F /* RoadConditionsDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 395810D625DBEB6200A59B5F /* RoadConditionsDetailsStoryboard.storyboard */; };
+		395810D925DBEB7100A59B5F /* RoadConditionsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395810D825DBEB7100A59B5F /* RoadConditionsDetailsViewController.swift */; };
+		395810DD25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395810DB25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.swift */; };
+		395810DE25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 395810DC25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.xib */; };
 		395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */; };
 		395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8325CD7ED700060A73 /* String+Extensions.swift */; };
 		395ACB8725CD908C00060A73 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8625CD908C00060A73 /* RadarMarkerView.swift */; };
@@ -89,6 +95,12 @@
 		3931A27425B4B8C500F9E38F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3933E04A25BC8C4F008ABBB3 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3933E05425BCAFEE008ABBB3 /* myLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myLocation.gpx; sourceTree = "<group>"; };
+		395810C825DBD12B00A59B5F /* RoadConditionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadConditionsViewModel.swift; sourceTree = "<group>"; };
+		395810CF25DBD3F600A59B5F /* RoadSignMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadSignMarkerView.swift; sourceTree = "<group>"; };
+		395810D625DBEB6200A59B5F /* RoadConditionsDetailsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RoadConditionsDetailsStoryboard.storyboard; sourceTree = "<group>"; };
+		395810D825DBEB7100A59B5F /* RoadConditionsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadConditionsDetailsViewController.swift; sourceTree = "<group>"; };
+		395810DB25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadConditionsDetailsViewCell.swift; sourceTree = "<group>"; };
+		395810DC25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoadConditionsDetailsViewCell.xib; sourceTree = "<group>"; };
 		395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		395ACB8325CD7ED700060A73 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		395ACB8625CD908C00060A73 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
@@ -172,6 +184,25 @@
 				39C3E22D25D9874C000160B7 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		395810D125DBEAFE00A59B5F /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				395810DA25DBEC4000A59B5F /* Cell */,
+				395810D625DBEB6200A59B5F /* RoadConditionsDetailsStoryboard.storyboard */,
+				395810D825DBEB7100A59B5F /* RoadConditionsDetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		395810DA25DBEC4000A59B5F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				395810DB25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.swift */,
+				395810DC25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		39AB6C1425D05B1C001683C9 /* Cell */ = {
@@ -289,9 +320,12 @@
 		39C3E21E25D978BF000160B7 /* RoadConditions */ = {
 			isa = PBXGroup;
 			children = (
+				395810D125DBEAFE00A59B5F /* Details */,
 				39AE349D25D9DF5F0089417C /* Model */,
 				39C3E21F25D978E1000160B7 /* RoadConditionsStoryboard.storyboard */,
 				39C3E22525D9797E000160B7 /* RoadConditionsViewController.swift */,
+				395810C825DBD12B00A59B5F /* RoadConditionsViewModel.swift */,
+				395810CF25DBD3F600A59B5F /* RoadSignMarkerView.swift */,
 			);
 			path = RoadConditions;
 			sourceTree = "<group>";
@@ -424,8 +458,10 @@
 				39C3E22025D978E1000160B7 /* RoadConditionsStoryboard.storyboard in Resources */,
 				39AB6C1825D05B34001683C9 /* RadarDetailsViewCell.xib in Resources */,
 				39B7510425CF2CAB00DAA99A /* RadarDetailsStoryboard.storyboard in Resources */,
+				395810D725DBEB6200A59B5F /* RoadConditionsDetailsStoryboard.storyboard in Resources */,
 				39ECC8AE25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.xib in Resources */,
 				39BB0B8125A22222000F3E65 /* Assets.xcassets in Resources */,
+				395810DE25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.xib in Resources */,
 				39BB0B7C25A22222000F3E65 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,14 +537,18 @@
 				392937D125B324E80030F33F /* Radar+CoreDataProperties.swift in Sources */,
 				39BB0B7925A22222000F3E65 /* MainViewController.swift in Sources */,
 				392937D025B324E80030F33F /* Radar+CoreDataClass.swift in Sources */,
+				395810D925DBEB7100A59B5F /* RoadConditionsDetailsViewController.swift in Sources */,
 				392A6FFF25AB18D3000361EA /* Array+Extensions.swift in Sources */,
 				392937E625B333330030F33F /* MainManager.swift in Sources */,
 				39C3E22625D9797E000160B7 /* RoadConditionsViewController.swift in Sources */,
 				395ACB8725CD908C00060A73 /* RadarMarkerView.swift in Sources */,
+				395810DD25DBEC6300A59B5F /* RoadConditionsDetailsViewCell.swift in Sources */,
+				395810C925DBD12B00A59B5F /* RoadConditionsViewModel.swift in Sources */,
 				39AB6C1325D04FC4001683C9 /* UITableView+Extensions.swift in Sources */,
 				39ECC8AD25D3FBBA0002E48A /* RadarFilterOptionTableViewCell.swift in Sources */,
 				39AE34A025D9DF5F0089417C /* RoadSign+CoreDataClass.swift in Sources */,
 				39BB0B7F25A22222000F3E65 /* BosniaRoadConditionsApp.xcdatamodeld in Sources */,
+				395810D025DBD3F600A59B5F /* RoadSignMarkerView.swift in Sources */,
 				39BB0B7525A22222000F3E65 /* AppDelegate.swift in Sources */,
 				39BB0B7725A22222000F3E65 /* SceneDelegate.swift in Sources */,
 				392937F825B376390030F33F /* NSManagedObjectContext+Extensions.swift in Sources */,

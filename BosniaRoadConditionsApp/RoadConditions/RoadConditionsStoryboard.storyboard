@@ -4,28 +4,59 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Road Conditions View Controller-->
-        <scene sceneID="sR5-Qr-bpy">
+        <scene sceneID="tcb-mH-Zoq">
             <objects>
-                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zey-Nt-Y8e" customClass="RoadConditionsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rFd-g4-5ke">
+                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2r-RN-LVI" customClass="RoadConditionsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ruA-29-zgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="owT-z9-fGw"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9r-Lo-3H1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <outlet property="delegate" destination="u2r-RN-LVI" id="Nz6-d5-Nrd"/>
+                                </connections>
+                            </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6K3-6A-miO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
+                                <color key="color" name="DavysGrey"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="efY-Bq-eke"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6K3-6A-miO" secondAttribute="bottom" id="4DE-6K-aWA"/>
+                            <constraint firstAttribute="trailing" secondItem="F9r-Lo-3H1" secondAttribute="trailing" id="6fA-19-oPt"/>
+                            <constraint firstAttribute="bottom" secondItem="F9r-Lo-3H1" secondAttribute="bottom" id="85n-Uf-S5s"/>
+                            <constraint firstItem="6K3-6A-miO" firstAttribute="leading" secondItem="efY-Bq-eke" secondAttribute="leading" id="9Hh-J4-8tc"/>
+                            <constraint firstItem="6K3-6A-miO" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="EpW-c7-yGr"/>
+                            <constraint firstItem="F9r-Lo-3H1" firstAttribute="leading" secondItem="ruA-29-zgj" secondAttribute="leading" id="LKj-sM-Nbt"/>
+                            <constraint firstItem="F9r-Lo-3H1" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="PZ9-fp-CFP"/>
+                            <constraint firstItem="6K3-6A-miO" firstAttribute="trailing" secondItem="efY-Bq-eke" secondAttribute="trailing" id="QWA-2N-Hsr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loadingIndicatorView" destination="6K3-6A-miO" id="iwK-FE-4ok"/>
+                        <outlet property="mapView" destination="F9r-Lo-3H1" id="xRi-bg-Cra"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B0j-tj-ipu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4Q-fr-yKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="42"/>
+            <point key="canvasLocation" x="754" y="34"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="DavysGrey">
+            <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

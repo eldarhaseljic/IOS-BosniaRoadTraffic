@@ -36,9 +36,22 @@ public class RoadSign: NSManagedObject, MKAnnotation {
     @NSManaged public var road: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
-    @NSManaged public var updatedAt: String?
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
+    
+    public var locationName: String? {
+        if text.isNotNilNotEmpty {
+            return text
+        } else if categoryName.isNotNilNotEmpty {
+            return categoryName
+        } else {
+            return road
+        }
+    }
+    
+    public var subtitle: String? {
+        return locationName?.withoutHtmlTags
+    }
     
     public var coordinate: CLLocationCoordinate2D {
         guard
@@ -82,6 +95,5 @@ public class RoadSign: NSManagedObject, MKAnnotation {
             + "\t'text':\(String(describing: text)),\n"
             + "\t'category_id':\(String(describing: categoryID)),\n"
             + "\t'category_name':'\(String(describing: categoryName))',\n"
-            + "\t'updated_at':'\(String(describing: updatedAt))' \n }"
     }
 }

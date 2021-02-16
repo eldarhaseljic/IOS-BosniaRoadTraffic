@@ -55,10 +55,6 @@ extension Radar {
             self.type = type
         }
         
-        if let updatedAt = radarJSON[RadarJSON.updatedAt.rawValue] as? String {
-            self.updatedAt = updatedAt
-        }
-        
         if let title = radarJSON[RadarJSON.title.rawValue] as? String {
             self.title = self.radarType == .temporary ? ANNOUNCED_RADAR_CONTROLS : title
         }
@@ -75,7 +71,6 @@ extension Radar {
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
             lhs.text == rhs.text &&
-            lhs.updatedAt == rhs.updatedAt &&
             lhs.type == rhs.type
     }
 }

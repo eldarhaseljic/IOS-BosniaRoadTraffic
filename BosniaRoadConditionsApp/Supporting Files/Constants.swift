@@ -14,6 +14,7 @@ final class Constants {
         static let RadarDetailsStoryboard = "RadarDetailsStoryboard"
         static let RadarFilterStoryboard = "RadarFilterStoryboard"
         static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
+        static let RoadConditionsDetailsStoryboard = "RoadConditionsDetailsStoryboard"
     }
     
     class Identifiers {

@@ -1,21 +1,20 @@
 //
-//  RadarDetailsViewCell.swift
+//  RoadConditionsDetailsViewCell.swift
 //  BosniaRoadConditionsApp
 //
-//  Created by Eldar Haseljic on 2/7/21.
+//  Created by Eldar Haseljic on 2/16/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
 import UIKit
 
-class RadarDetailsViewCell: UITableViewCell {
-    
+class RoadConditionsDetailsViewCell: UITableViewCell {
+
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var policeDepartmentLabel: UILabel!
+    @IBOutlet var typeLabel: UILabel!
     @IBOutlet var roadLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
-    @IBOutlet var typeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,42 +26,40 @@ class RadarDetailsViewCell: UITableViewCell {
         clear()
     }
     
-    func configure(for radar: Radar) {
-        titleLabel.text = radar.title
-        typeLabel.text = String(format: RADAR_TYPE, radar.radarType.rawValue)
+    func configure(for roadSign: RoadSign) {
+        titleLabel.text = roadSign.title
         
-        if let policeDepartmentName = radar.policeDepartmentName {
-            policeDepartmentLabel.text = policeDepartmentName
-            policeDepartmentLabel.isHidden = false
+        if let type = roadSign.categoryName {
+            typeLabel.text = type
+            typeLabel.isHidden = false
         }
         
-        if let road = radar.road, road.isNotEmpty {
+        if let road = roadSign.road, road.isNotEmpty {
             roadLabel.text = String(format: STREET_NAME, road.withoutHtmlTags)
             roadLabel.isHidden = false
         }
         
-        if let text = radar.text, text.isNotEmpty {
+        if let text = roadSign.text, text.isNotEmpty {
             descriptionLabel.text = text.withoutHtmlTags
             descriptionLabel.isHidden = false
         }
         
-        if let validFrom = radar.validFrom, validFrom.isNotEmpty,
-           let validTo = radar.validTo, validTo.isNotEmpty {
-            durationLabel.text = String(format: RADAR_DURATION, validFrom, validTo)
+        if let validFrom = roadSign.validFrom, validFrom.isNotEmpty,
+           let validTo = roadSign.validTo.isNotNilNotEmpty ? roadSign.validTo : NOT_DEFINED {
+            durationLabel.text = String(format: ROAD_ROAD_CONDITIONS_DURATION, validFrom, validTo)
             durationLabel.isHidden = false
         }
     }
     
     private func clear() {
         titleLabel.text = String()
-        policeDepartmentLabel.text = String()
-        policeDepartmentLabel.isHidden = true
+        typeLabel.text = String()
+        typeLabel.isHidden = true
         roadLabel.text = String()
         roadLabel.isHidden = true
         descriptionLabel.text = String()
         descriptionLabel.isHidden = true
         durationLabel.text = String()
         durationLabel.isHidden = true
-        typeLabel.text = String()
     }
 }

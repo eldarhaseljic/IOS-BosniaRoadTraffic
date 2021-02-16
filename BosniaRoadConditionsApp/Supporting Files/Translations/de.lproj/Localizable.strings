@@ -19,3 +19,5 @@ apply = "Anwenden";
 cancel = "Stornieren";
 radar_locations = "Radarstandorte";
 road_conditions = "Straßenzustand";
+road_conditions_duration = "Von: %@ \nBis: %@";
+not_defined = "Nicht definiert";

@@ -9,7 +9,6 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" usesScalarValueType="NO"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
         <attribute name="validFrom" optional="YES" attributeType="String"/>
         <attribute name="validTo" optional="YES" attributeType="String"/>
     </entity>
@@ -23,12 +22,11 @@
         <attribute name="road" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
         <attribute name="validFrom" optional="YES" attributeType="String"/>
         <attribute name="validTo" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Radar" positionX="-54" positionY="-9" width="128" height="208"/>
-        <element name="RoadSign" positionX="-54" positionY="72" width="128" height="223"/>
+        <element name="Radar" positionX="-54" positionY="-9" width="128" height="193"/>
+        <element name="RoadSign" positionX="-54" positionY="72" width="128" height="208"/>
     </elements>
 </model>

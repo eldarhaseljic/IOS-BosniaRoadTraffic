@@ -52,12 +52,8 @@ extension RoadSign {
             self.text = text
         }
         
-        if let updatedAt = roadSignJSON[RoadSignJSON.updatedAt.rawValue] as? String {
-            self.updatedAt = updatedAt
-        }
-        
         if let title = roadSignJSON[RoadSignJSON.title.rawValue] as? String {
-            self.title = title
+            self.title = title.capitalized
         }
         
         if let iconString = roadSignJSON[RoadSignJSON.icon.rawValue] as? String {
@@ -80,7 +76,6 @@ extension RoadSign {
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
             lhs.text == rhs.text &&
-            lhs.updatedAt == rhs.updatedAt &&
             lhs.iconData == rhs.iconData &&
             lhs.iconTitle == rhs.iconTitle
     }

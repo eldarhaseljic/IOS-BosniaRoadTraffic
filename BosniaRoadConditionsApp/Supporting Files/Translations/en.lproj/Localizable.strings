@@ -19,3 +19,5 @@ apply = "Apply";
 cancel = "Cancel";
 radar_locations = "Radar locations";
 road_conditions = "Road conditions";
+road_conditions_duration = "From: %@ \nUntil: %@";
+not_defined = "Not defined";

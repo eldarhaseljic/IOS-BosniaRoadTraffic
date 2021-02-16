@@ -1,31 +1,30 @@
 //
-//  RadarMarkerView.swift
+//  RoadSignMarkerView.swift
 //  BosniaRoadConditionsApp
 //
-//  Created by Eldar Haseljic on 2/5/21.
+//  Created by Eldar Haseljic on 2/16/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
+import Foundation
 import MapKit
-import UIKit
 
-class RadarMarkerView: MKMarkerAnnotationView {
-    
+class RoadSignMarkerView: MKAnnotationView {
+   
     override var annotation: MKAnnotation? {
         willSet {
-            guard let radar = newValue as? Radar else { return }
+            guard let roadSign = newValue as? RoadSign else { return }
             canShowCallout = true
-            calloutOffset = CGPoint(x: 0, y: 0)
-            markerTintColor = radar.markerTintColor
-            detailCalloutAccessoryView = getDescriptionLabel(text: radar.subtitle)
+            calloutOffset = CGPoint(x: 0, y: -2)
+            detailCalloutAccessoryView = getDescriptionLabel(text: roadSign.subtitle)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            glyphImage = radar.image
+            image = roadSign.image
         }
     }
     
     func getDescriptionLabel(text: String?) -> UILabel {
         let detailLabel = UILabel()
-        detailLabel.numberOfLines = .zero
+        detailLabel.numberOfLines = 2
         detailLabel.font = detailLabel.font.withSize(12)
         detailLabel.text = text
         return detailLabel

@@ -49,7 +49,6 @@ public class Radar: NSManagedObject, MKAnnotation {
     @NSManaged public var text: String?
     @NSManaged public var title: String?
     @NSManaged public var type: NSNumber?
-    @NSManaged public var updatedAt: String?
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
     
@@ -118,8 +117,7 @@ public class Radar: NSManagedObject, MKAnnotation {
             + "\t'valid_from':\(String(describing: validFrom)),\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"
-            + "\t'category_id':\(String(describing: policeDepartmentID)),\n"
-            + "\t'category_name':'\(String(describing: policeDepartmentName))',\n"
-            + "\t'updated_at':'\(String(describing: updatedAt))' \n }"
+            + "\t'policeDepartmentID':\(String(describing: policeDepartmentID)),\n"
+            + "\t'policeDepartmentName':'\(String(describing: policeDepartmentName))',\n"
     }
 }
