@@ -12,10 +12,12 @@ import UIKit
 extension UITableView {
     
     public func registerCell<T>(cellType: T.Type) where T: UITableViewCell {
-        self.register(UINib(nibName: String(describing: cellType.self), bundle: nil), forCellReuseIdentifier: String(describing: cellType.self))
+        register(UINib(nibName: String(describing: cellType.self), bundle: nil),
+                 forCellReuseIdentifier: String(describing: cellType.self))
     }
     
     public func dequeueReusableCell<T>(with type: T.Type, for indexPath: IndexPath) -> T where T: UITableViewCell {
-        return self.dequeueReusableCell(withIdentifier: String(describing: T.self), for: indexPath) as! T
+        return dequeueReusableCell(withIdentifier: String(describing: T.self),
+                                   for: indexPath) as! T
     }
 }

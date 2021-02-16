@@ -11,8 +11,30 @@ import RxCocoa
 
 class MainViewController: UIViewController {
     
-    @IBOutlet var radarsButton: UIButton!
+    private let borderWidth: CGFloat = 2.0
+    private let shadowRadius: CGFloat = 3.0
+    @IBOutlet var radarsButton: UIButton! {
+        didSet {
+            radarsButton.setTitle(RADAR_LOCATIONS,for: .normal)
+            radarsButton.setRoundedBorder(borderWidth: borderWidth,
+                                          borderColor: CustomColor.black.cgColor)
+            radarsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                   shadowRadius: shadowRadius)
+        }
+    }
+    
+    @IBOutlet var roadConditionsButton: UIButton! {
+        didSet {
+            roadConditionsButton.setTitle(ROAD_CONDITIONS, for: .normal)
+            roadConditionsButton.setRoundedBorder(borderWidth: borderWidth,
+                                                  borderColor: CustomColor.black.cgColor)
+            roadConditionsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                           shadowRadius: shadowRadius)
+        }
+    }
+    
     private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +46,13 @@ class MainViewController: UIViewController {
     func setupObservers() {
         radarsButton.rx.tap.bind { [unowned self] in
             pushView(viewController: RadarsMapViewController.showRadars())
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
+        
+        roadConditionsButton.rx.tap.bind { [unowned self] in
+            pushView(viewController: RoadConditionsViewController.showRoadConditions())
+        }
+        .disposed(by: disposeBag)
     }
 }
 

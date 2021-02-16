@@ -13,9 +13,14 @@ final class Constants {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
         static let RadarDetailsStoryboard = "RadarDetailsStoryboard"
         static let RadarFilterStoryboard = "RadarFilterStoryboard"
+        static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
     }
     
     class Identifiers {
         static let Radar = "Radar"
+    }
+    
+    class URLPaths {
+        static let roadSignIcon = "https://bihamk.ba/assets/img/road-icons/%@"
     }
 }

@@ -14,6 +14,7 @@ extension String: Emptiable {
         return self
             .replacingOccurrences(of: "<br />", with: "\r\n")
             .replacingOccurrences(of: "\r\n\r\n", with: "\r\n")
+            .replacingOccurrences(of: "\n\n", with: "\n")
             .replacingOccurrences(of: "<[^>]+>", with: "",
                                   options: .regularExpression, range: nil)
             .replacingOccurrences(of: "&[^;]+;", with: "",

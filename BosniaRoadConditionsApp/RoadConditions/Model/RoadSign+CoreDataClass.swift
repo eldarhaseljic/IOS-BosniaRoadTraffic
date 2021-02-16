@@ -1,21 +1,21 @@
 //
-//  Radar+CoreDataClass.swift
+//  RoadSign+CoreDataClass.swift
 //  BosniaRoadConditionsApp
 //
-//  Created by Eldar Haseljic on 1/16/21.
+//  Created by Eldar Haseljic on 2/14/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
+//
 //
 
 import Foundation
 import CoreData
-import Contacts
 import MapKit
 
-enum RadarJSON: String {
+enum RoadSignJSON: String {
     case id
+    case icon
     case title
     case coordinates
-    case type
     case road
     case validFrom = "valid_from"
     case validTo = "valid_to"
@@ -25,69 +25,20 @@ enum RadarJSON: String {
     case updatedAt = "updated_at"
 }
 
-enum RadarType: String {
-    case stationary
-    case temporary
+public class RoadSign: NSManagedObject, MKAnnotation {
     
-    var rawValue: String {
-        switch self {
-        case .stationary:
-            return STATIONARY
-        case .temporary:
-            return TEMPORARY
-        }
-    }
-}
-
-public class Radar: NSManagedObject, MKAnnotation {
-    
-    @NSManaged public var policeDepartmentID: NSNumber?
-    @NSManaged public var policeDepartmentName: String?
+    @NSManaged public var categoryID: NSNumber?
+    @NSManaged public var categoryName: String?
     @NSManaged public var coordinates: String?
+    @NSManaged public var iconTitle: String?
+    @NSManaged public var iconData: Data?
     @NSManaged public var id: NSNumber?
     @NSManaged public var road: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
-    @NSManaged public var type: NSNumber?
     @NSManaged public var updatedAt: String?
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
-    
-    public var locationName: String? {
-        if text.isNotNilNotEmpty {
-            return text
-        } else if road.isNotNilNotEmpty {
-            return road
-        } else {
-            return policeDepartmentName
-        }
-    }
-    
-    public var subtitle: String? {
-        return locationName?.withoutHtmlTags
-    }
-    
-    var markerTintColor: UIColor {
-        switch type {
-        case 1:
-            return .red
-        default:
-            return .yellow
-        }
-    }
-    
-    var image: UIImage {
-        return #imageLiteral(resourceName: "speed_camera")
-    }
-    
-    var radarType: RadarType {
-        switch type {
-        case 1:
-            return .stationary
-        default:
-            return .temporary
-        }
-    }
     
     public var coordinate: CLLocationCoordinate2D {
         guard
@@ -102,24 +53,35 @@ public class Radar: NSManagedObject, MKAnnotation {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    public var isCoordinateZero: Bool {
+    var isCoordinateZero: Bool {
         return coordinate.latitude.isZero && coordinate.latitude.isZero
+    }
+    
+    var hasNoIcon: Bool {
+        return iconData == nil
+    }
+    
+    var image: UIImage {
+        guard
+            let data = iconData,
+            let image = UIImage(data: data)
+        else { return #imageLiteral(resourceName: "danger_sign") }
+        return image
     }
     
     public override var description: String {
         return "{ \n\t'id':\(String(describing: id)),\n"
             + "\t'title':'\(String(describing: title))',\n"
             + "\t'coordinates':'\(String(describing: coordinates))',\n"
+            + "\t'icon':'\(String(describing: iconTitle))',\n"
             + "\t'latitude':\(coordinate.latitude.description),\n"
             + "\t'longitude':\(coordinate.longitude.description),\n"
-            + "\t'type':\(String(describing: type)),\n"
-            + "\t'convertedType':\(String(describing: radarType.rawValue)),\n"
             + "\t'road':'\(String(describing: road))',\n"
             + "\t'valid_from':\(String(describing: validFrom)),\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"
-            + "\t'category_id':\(String(describing: policeDepartmentID)),\n"
-            + "\t'category_name':'\(String(describing: policeDepartmentName))',\n"
+            + "\t'category_id':\(String(describing: categoryID)),\n"
+            + "\t'category_name':'\(String(describing: categoryName))',\n"
             + "\t'updated_at':'\(String(describing: updatedAt))' \n }"
     }
 }

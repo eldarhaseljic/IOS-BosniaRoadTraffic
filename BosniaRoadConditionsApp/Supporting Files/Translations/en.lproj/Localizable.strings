@@ -17,3 +17,5 @@ radar_type = "Radar type: %@";
 radar_duration = "Radar active from: %@ \nRadar active until: %@";
 apply = "Apply";
 cancel = "Cancel";
+radar_locations = "Radar locations";
+road_conditions = "Road conditions";

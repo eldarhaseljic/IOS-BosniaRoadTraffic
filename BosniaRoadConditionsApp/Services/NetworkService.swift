@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum RaradError: Error {
-    case noDataAvailable
-    case canNotProcessData
-}
-
 final class NetworkService {
     
     static let shared = NetworkService()

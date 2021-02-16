@@ -11,7 +11,8 @@ import CoreData
 
 extension Radar {
     
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Radar> {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<Radar> {
         return NSFetchRequest<Radar>(entityName: entityName)
     }
     

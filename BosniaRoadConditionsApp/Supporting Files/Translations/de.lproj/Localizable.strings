@@ -17,3 +17,5 @@ radar_type = "Radartyp: %@";
 radar_duration = "Radar aktiv von: %@ \nRadar aktiv bis: %@";
 apply = "Anwenden";
 cancel = "Stornieren";
+radar_locations = "Radarstandorte";
+road_conditions = "Straßenzustand";

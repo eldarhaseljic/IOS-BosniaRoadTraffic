@@ -18,3 +18,5 @@ let RADAR_TYPE: String = NSLocalizedString("radar_type", comment: "Radar type: %
 let RADAR_DURATION: String = NSLocalizedString("radar_duration", comment: "Radar active from: %@ \nRadar active until: %@")
 let APPLY: String = NSLocalizedString("apply", comment: "Apply")
 let CANCEL: String = NSLocalizedString("cancel", comment: "Cancel")
+let RADAR_LOCATIONS: String = NSLocalizedString("radar_locations", comment: "Radar locations")
+let ROAD_CONDITIONS: String = NSLocalizedString("road_conditions", comment: "Road conditions")
