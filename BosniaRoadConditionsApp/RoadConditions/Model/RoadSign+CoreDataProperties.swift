@@ -59,10 +59,6 @@ extension RoadSign {
         if let iconString = roadSignJSON[RoadSignJSON.icon.rawValue] as? String {
             iconTitle = String(format: Constants.URLPaths.roadSignIcon, iconString)
         }
-        
-        if let icon = iconTitle, let url = URL(string: icon) {
-            iconData = try? Data(contentsOf: url)
-        }
     }
     
     public static func ==(lhs: RoadSign, rhs: RoadSign) -> Bool {
@@ -76,7 +72,6 @@ extension RoadSign {
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
             lhs.text == rhs.text &&
-            lhs.iconData == rhs.iconData &&
             lhs.iconTitle == rhs.iconTitle
     }
 }
@@ -93,5 +88,32 @@ extension RoadSign: Managed {
     
     public static var entityName: String {
         return "RoadSign"
+    }
+}
+
+enum RoadSignType: String {
+    
+    case carina
+    case sanacijaKolovoza
+    case potpunaObustava
+    case zabranaZaTeretnaVozila
+    case zagusenje
+    case odron
+    
+    var rawValue: String {
+        switch self {
+        case .carina:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.carina)
+        case .sanacijaKolovoza:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.sanacijaKolovoza)
+        case .potpunaObustava:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.potpunaObustava)
+        case .zabranaZaTeretnaVozila:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.zabranaZaTeretnaVozila)
+        case .zagusenje:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.zagusenje)
+        case .odron:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.odron)
+        }
     }
 }

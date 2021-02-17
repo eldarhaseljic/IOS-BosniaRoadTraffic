@@ -44,9 +44,6 @@ class RoadConditionsViewController: UIViewController {
             case .authorizedWhenInUse, .authorizedAlways:
                 loadingIndicatorView.startAnimating()
                 mapView.showsUserLocation = true
-                if let currentLocation = viewModel.userCurrentLocation {
-                    mapView.setRegion(currentLocation, animated: false)
-                }
                 viewModel.fetchRoadConditions()
             case .denied: break
             // Error message
@@ -62,6 +59,9 @@ class RoadConditionsViewController: UIViewController {
         
         viewModel.roadSignsArray.bind(onNext: { [unowned self] roadSigns in
             mapView.addAnnotations(roadSigns)
+            if let currentLocation = viewModel.userCurrentLocation {
+                mapView.setRegion(currentLocation, animated: true)
+            }
             loadingIndicatorView.stopAnimating()
         })
         .disposed(by: disposeBag)

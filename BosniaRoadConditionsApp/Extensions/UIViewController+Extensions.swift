@@ -48,4 +48,16 @@ extension UIViewController {
     public func tapBackButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    public func presentAlert(title: String?, message: String?, buttonTitle: String, type: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: type)
+        let action = UIAlertAction(title: buttonTitle,
+                                   style: .default,
+                                   handler: handler)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

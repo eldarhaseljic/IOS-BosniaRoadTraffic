@@ -22,3 +22,6 @@ let RADAR_LOCATIONS: String = NSLocalizedString("radar_locations", comment: "Rad
 let ROAD_CONDITIONS: String = NSLocalizedString("road_conditions", comment: "Road conditions")
 let ROAD_ROAD_CONDITIONS_DURATION: String = NSLocalizedString("road_conditions_duration", comment: "From: %@ \nUntil: %@")
 let NOT_DEFINED: String = NSLocalizedString("not_defined", comment: "Not defined")
+let RADARS_INFO: String = NSLocalizedString("radars_info", comment: "Radars info")
+let NO_RADARS_FOUND: String = NSLocalizedString("no_radars_found", comment: "No radars found, please try later")
+let OK: String = NSLocalizedString("ok", comment: "OK")

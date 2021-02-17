@@ -30,6 +30,7 @@ final class RadarsMapViewModel: NSObject {
     private let manager: MainManager!
     
     let radarsArray = PublishSubject<[Radar]>()
+    let messageTransmitter = PublishSubject<String>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     var radarsInDatabase: [Radar] = []
@@ -106,7 +107,11 @@ final class RadarsMapViewModel: NSObject {
     private func handleRadarsData() {
         // Error message
         radarsInDatabase = radarsFRC.fetchedObjects ?? []
-        radarsArray.onNext(radarsInDatabase)
+        if radarsInDatabase.isEmpty {
+            messageTransmitter.onNext(NO_RADARS_FOUND)
+        } else {
+            radarsArray.onNext(radarsInDatabase)
+        }
     }
     
     func fetchNewRadars(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {

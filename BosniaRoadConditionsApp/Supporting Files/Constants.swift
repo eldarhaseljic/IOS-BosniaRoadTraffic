@@ -24,4 +24,13 @@ final class Constants {
     class URLPaths {
         static let roadSignIcon = "https://bihamk.ba/assets/img/road-icons/%@"
     }
+    
+    class ImageTitles {
+        static let carina = "carina.png"
+        static let sanacijaKolovoza = "sanacija-kolovoza.png"
+        static let potpunaObustava = "potpuna-obustava.png"
+        static let zabranaZaTeretnaVozila = "zabrana-za-teretna-vozila.png"
+        static let zagusenje = "zagusenje.png"
+        static let odron = "odron.png"
+    }
 }

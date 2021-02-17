@@ -72,6 +72,14 @@ class RadarsMapViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
+        viewModel.messageTransmitter.bind(onNext: { [unowned self] message in
+            presentAlert(title: RADARS_INFO, message: message, buttonTitle: OK, handler: { action in
+                tapBackButton(self)
+                
+            })
+        })
+        .disposed(by: disposeBag)
+        
         radarFilterViewController.filteredRadarsArray.bind(onNext: { [unowned self] radars in
             loadingIndicatorView.startAnimating()
             mapView.removeAnnotations(viewModel.radarsInDatabase)
@@ -85,7 +93,7 @@ class RadarsMapViewController: UIViewController {
         title = BOSNIA_ROAD_CONDITIONS
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = filterButton(target: self,
-                                                            action: #selector(tapEditButton))
+                                                         action: #selector(tapEditButton))
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     

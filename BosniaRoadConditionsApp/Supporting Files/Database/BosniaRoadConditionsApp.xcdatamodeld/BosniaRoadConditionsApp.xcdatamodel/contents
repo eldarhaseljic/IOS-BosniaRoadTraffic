@@ -16,7 +16,6 @@
         <attribute name="categoryID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="categoryName" optional="YES" attributeType="String"/>
         <attribute name="coordinates" optional="YES" attributeType="String"/>
-        <attribute name="iconData" optional="YES" attributeType="Binary"/>
         <attribute name="iconTitle" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="road" optional="YES" attributeType="String"/>
@@ -27,6 +26,6 @@
     </entity>
     <elements>
         <element name="Radar" positionX="-54" positionY="-9" width="128" height="193"/>
-        <element name="RoadSign" positionX="-54" positionY="72" width="128" height="208"/>
+        <element name="RoadSign" positionX="-54" positionY="72" width="128" height="193"/>
     </elements>
 </model>

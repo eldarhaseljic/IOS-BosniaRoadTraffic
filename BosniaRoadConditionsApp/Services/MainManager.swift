@@ -15,6 +15,7 @@ class MainManager {
     static let shared = MainManager()
     private let networkService = NetworkService.shared
     private let persistanceService = PersistanceService.shared
+    private var mainRoadConditionsDetails: RoadSign? = nil
     
     func fetchRadars(objectContext: NSManagedObjectContext = PersistanceService.shared.context) -> [Radar] {
         let fetchRequest = NSFetchRequest<Radar>(entityName: Radar.entityName)
@@ -102,6 +103,7 @@ class MainManager {
                         let newSign = RoadSign.findOrCreate(signID, context: self.persistanceService.context)
                         newSign.fillSignInfo(currentSign)
                         if newSign.isCoordinateZero || newSign.hasNoIcon {
+                            self.mainRoadConditionsDetails = newSign
                             newRoadSignsIDs.removeLast()
                         }
                     }
@@ -123,6 +125,10 @@ class MainManager {
                 // Error message
                 completion?(false, error)
             }
+        }
+        
+        func getRoadConditionsInfo() -> RoadSign? {
+            return mainRoadConditionsDetails
         }
     }
 }

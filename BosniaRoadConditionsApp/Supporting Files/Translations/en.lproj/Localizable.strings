@@ -21,3 +21,6 @@ radar_locations = "Radar locations";
 road_conditions = "Road conditions";
 road_conditions_duration = "From: %@ \nUntil: %@";
 not_defined = "Not defined";
+radars_info = "Radars info";
+no_radars_found = "No radars found, please try later";
+ok = "OK";
