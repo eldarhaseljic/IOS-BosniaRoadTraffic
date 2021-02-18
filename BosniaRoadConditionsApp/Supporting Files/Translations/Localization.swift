@@ -25,3 +25,7 @@ let NOT_DEFINED: String = NSLocalizedString("not_defined", comment: "Not defined
 let RADARS_INFO: String = NSLocalizedString("radars_info", comment: "Radars info")
 let NO_RADARS_FOUND: String = NSLocalizedString("no_radars_found", comment: "No radars found, please try later")
 let OK: String = NSLocalizedString("ok", comment: "OK")
+let ERROR_DESCRIPTION: String = NSLocalizedString("error_description", comment: "Error description")
+let LOCATION_SERVICE_DISABLED: String = NSLocalizedString("location_service_disabled", comment: "The location service is disabled, please turn it on so the app can determine your location")
+let LOCATION_SERVICE: String = NSLocalizedString("location_service", comment: "The location service set to %@, please update the location service status so the app can determine your location")
+let UNKNOWN: String = NSLocalizedString("unknown", comment: "Unknown")

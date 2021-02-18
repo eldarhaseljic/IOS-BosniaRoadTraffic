@@ -24,3 +24,7 @@ not_defined = "Not defined";
 radars_info = "Radars info";
 no_radars_found = "No radars found, please try later";
 ok = "OK";
+error_description = "Error description";
+location_service_disabled = "The location service is disabled, please turn it on so the app can determine your location";
+location_service = "The location service set to %@, please update the location service status so the app can determine your location";
+unknown = "Unknown";

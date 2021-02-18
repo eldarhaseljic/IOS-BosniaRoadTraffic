@@ -13,13 +13,13 @@ import CoreData
 import Foundation
 import CoreLocation
 
-enum AuthorizationStatus {
+enum AuthorizationStatus: String {
     case authorizedWhenInUse
     case denied
     case notDetermined
     case restricted
     case authorizedAlways
-    case error
+    case error 
 }
 
 final class RadarsMapViewModel: NSObject {
@@ -30,7 +30,7 @@ final class RadarsMapViewModel: NSObject {
     private let manager: MainManager!
     
     let radarsArray = PublishSubject<[Radar]>()
-    let messageTransmitter = PublishSubject<String>()
+    let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     var radarsInDatabase: [Radar] = []
@@ -63,8 +63,7 @@ final class RadarsMapViewModel: NSObject {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // Error message
-            // Show alert letting the user know they have to turn this on
+            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: LOCATION_SERVICE_DISABLED ))
         }
     }
     
@@ -104,27 +103,28 @@ final class RadarsMapViewModel: NSObject {
                                   longitudinalMeters: locationDistance)
     }
     
-    private func handleRadarsData() {
-        // Error message
+    func handleRadarsData() {
         radarsInDatabase = radarsFRC.fetchedObjects ?? []
         if radarsInDatabase.isEmpty {
-            messageTransmitter.onNext(NO_RADARS_FOUND)
+            messageTransmitter.onNext(Adviser(title: RADARS_INFO, message: NO_RADARS_FOUND))
         } else {
             radarsArray.onNext(radarsInDatabase)
         }
     }
     
     func fetchNewRadars(_ completion:((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
-        manager.getRadars { (_, error) in
+        manager.getRadars { [weak self] (_, error) in
             guard
+                let self = self,
                 let error = error
             else {
                 print("Radars updated successfully")
                 completion?(true, nil)
                 return
             }
-            // Error message
-            print(error.localizedDescription)
+            DispatchQueue.main.async {
+                self.messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: error.localizedDescription))
+            }
             completion?(false, error)
         }
     }

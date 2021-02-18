@@ -34,6 +34,7 @@
 		395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */; };
 		395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8325CD7ED700060A73 /* String+Extensions.swift */; };
 		395ACB8725CD908C00060A73 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395ACB8625CD908C00060A73 /* RadarMarkerView.swift */; };
+		3991D08625DE83E90013626C /* Adviser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991D08525DE83E90013626C /* Adviser.swift */; };
 		39AB6C1325D04FC4001683C9 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AB6C1225D04FC4001683C9 /* UITableView+Extensions.swift */; };
 		39AB6C1725D05B34001683C9 /* RadarDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AB6C1525D05B34001683C9 /* RadarDetailsViewCell.swift */; };
 		39AB6C1825D05B34001683C9 /* RadarDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AB6C1625D05B34001683C9 /* RadarDetailsViewCell.xib */; };
@@ -104,6 +105,7 @@
 		395ACB8125CD7E5C00060A73 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		395ACB8325CD7ED700060A73 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		395ACB8625CD908C00060A73 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		3991D08525DE83E90013626C /* Adviser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adviser.swift; sourceTree = "<group>"; };
 		39AB6C1225D04FC4001683C9 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		39AB6C1525D05B34001683C9 /* RadarDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarDetailsViewCell.swift; sourceTree = "<group>"; };
 		39AB6C1625D05B34001683C9 /* RadarDetailsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarDetailsViewCell.xib; sourceTree = "<group>"; };
@@ -205,6 +207,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3991D08425DE83610013626C /* Adviser */ = {
+			isa = PBXGroup;
+			children = (
+				3991D08525DE83E90013626C /* Adviser.swift */,
+			);
+			path = Adviser;
+			sourceTree = "<group>";
+		};
 		39AB6C1425D05B1C001683C9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +304,7 @@
 		39BB0B7325A22222000F3E65 /* BosniaRoadConditionsApp */ = {
 			isa = PBXGroup;
 			children = (
+				3991D08425DE83610013626C /* Adviser */,
 				39BB0B7825A22222000F3E65 /* MainViewController.swift */,
 				39BB0BA225A2265C000F3E65 /* AppBackground */,
 				392A6FFD25AB18B0000361EA /* Extensions */,
@@ -518,6 +529,7 @@
 				392937F125B3757A0030F33F /* ManagedObject.swift in Sources */,
 				39E0083925D33B3F00C86635 /* RadarFilterViewController.swift in Sources */,
 				395ACB8425CD7ED700060A73 /* String+Extensions.swift in Sources */,
+				3991D08625DE83E90013626C /* Adviser.swift in Sources */,
 				395ACB8225CD7E5C00060A73 /* Optional+Extensions.swift in Sources */,
 				392937DF25B328630030F33F /* NetworkService.swift in Sources */,
 				39219CD225C58A1900B55096 /* RadarsMapViewModel.swift in Sources */,

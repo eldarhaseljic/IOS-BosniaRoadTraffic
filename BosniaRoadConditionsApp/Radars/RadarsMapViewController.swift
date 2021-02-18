@@ -49,14 +49,22 @@ class RadarsMapViewController: UIViewController {
                 loadingIndicatorView.startAnimating()
                 mapView.showsUserLocation = true
                 viewModel.fetchNewRadars()
-            case .denied: break
-            // Error message
+            case .denied:
+                presentAlert(title: ERROR_DESCRIPTION,
+                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.denied.rawValue),
+                             buttonTitle: OK,
+                             handler: { _ in tapBackButton(self) })
+            case .restricted:
+                presentAlert(title: ERROR_DESCRIPTION,
+                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.restricted.rawValue),
+                             buttonTitle: OK,
+                             handler: { _ in tapBackButton(self) })
+            case .error:
+                presentAlert(title: ERROR_DESCRIPTION,
+                             message: String(format: LOCATION_SERVICE, UNKNOWN),
+                             buttonTitle: OK,
+                             handler: { _ in tapBackButton(self) })
             case .notDetermined: break
-            // Error message
-            case .restricted: break
-            // Error message
-            case .error: break
-            // Error message
             }
         })
         .disposed(by: disposeBag)
@@ -72,11 +80,11 @@ class RadarsMapViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        viewModel.messageTransmitter.bind(onNext: { [unowned self] message in
-            presentAlert(title: RADARS_INFO, message: message, buttonTitle: OK, handler: { action in
-                tapBackButton(self)
-                
-            })
+        viewModel.messageTransmitter.bind(onNext: { [unowned self] adviser in
+            presentAlert(title: adviser.title,
+                         message: adviser.message,
+                         buttonTitle: OK,
+                         handler: { _ in tapBackButton(self) })
         })
         .disposed(by: disposeBag)
         
