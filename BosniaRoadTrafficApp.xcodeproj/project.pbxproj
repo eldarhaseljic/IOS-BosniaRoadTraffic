@@ -33,7 +33,6 @@
 		39089E6B25E1A4A8006E5603 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2825E1A4A8006E5603 /* Array+Extensions.swift */; };
 		39089E6C25E1A4A8006E5603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */; };
 		39089E6D25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */; };
-		39089E6E25E1A4A8006E5603 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2B25E1A4A8006E5603 /* UIButton+Extensions.swift */; };
 		39089E6F25E1A4A8006E5603 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2C25E1A4A8006E5603 /* String+Extensions.swift */; };
 		39089E7025E1A4A8006E5603 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */; };
 		39089E7125E1A4A8006E5603 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */; };
@@ -62,6 +61,7 @@
 		39089E8C25E1A4F8006E5603 /* Pods_BosniaRoadTrafficApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */; };
 		39089E8D25E1A4F8006E5603 /* Pods_BosniaRoadTrafficApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39089EA825E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39089EA625E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodeld */; };
+		393A9DAF25E2E42500A3F952 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,7 +107,6 @@
 		39089E2825E1A4A8006E5603 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extensions.swift"; sourceTree = "<group>"; };
-		39089E2B25E1A4A8006E5603 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		39089E2C25E1A4A8006E5603 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
@@ -135,6 +134,7 @@
 		39089E5125E1A4A8006E5603 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		39089E5225E1A4A8006E5603 /* PersistanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		39089EA725E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BosniaRoadTrafficApp.xcdatamodel; sourceTree = "<group>"; };
+		393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		39BB0B7125A22222000F3E65 /* BosniaRoadTrafficApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadTrafficApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779A78CFFA97A097ACF31340 /* Pods-BosniaRoadTrafficApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTrafficApp.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTrafficApp/Pods-BosniaRoadTrafficApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTrafficApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,15 +162,14 @@
 		39089E0325E1A4A8006E5603 /* BosniaRoadTrafficApp */ = {
 			isa = PBXGroup;
 			children = (
-				39089E0425E1A4A8006E5603 /* Storyboards */,
-				39089E0925E1A4A8006E5603 /* Adviser */,
-				39089E0B25E1A4A8006E5603 /* AppBackground */,
 				39089E1025E1A4A8006E5603 /* MainViewController.swift */,
-				39089E1125E1A4A8006E5603 /* Radars */,
+				39089E0B25E1A4A8006E5603 /* AppBackground */,
 				39089E2625E1A4A8006E5603 /* Extensions */,
-				39089E3125E1A4A8006E5603 /* Supporting Files */,
+				39089E1125E1A4A8006E5603 /* Radars */,
 				39089E4025E1A4A8006E5603 /* RoadConditions */,
 				39089E4E25E1A4A8006E5603 /* Services */,
+				39089E0425E1A4A8006E5603 /* Storyboards */,
+				39089E3125E1A4A8006E5603 /* Supporting Files */,
 			);
 			path = BosniaRoadTrafficApp;
 			sourceTree = "<group>";
@@ -196,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				39089E0C25E1A4A8006E5603 /* myLocation.gpx */,
-				39089E0D25E1A4A8006E5603 /* AppDelegate.swift */,
 				39089E0E25E1A4A8006E5603 /* Info.plist */,
+				39089E0D25E1A4A8006E5603 /* AppDelegate.swift */,
 				39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */,
 			);
 			path = AppBackground;
@@ -206,13 +205,13 @@
 		39089E1125E1A4A8006E5603 /* Radars */ = {
 			isa = PBXGroup;
 			children = (
+				39089E2525E1A4A8006E5603 /* RadarsMapStoryboard.storyboard */,
+				39089E1425E1A4A8006E5603 /* RadarMarkerView.swift */,
 				39089E1225E1A4A8006E5603 /* RadarsMapViewController.swift */,
 				39089E1325E1A4A8006E5603 /* RadarsMapViewModel.swift */,
-				39089E1425E1A4A8006E5603 /* RadarMarkerView.swift */,
 				39089E1525E1A4A8006E5603 /* Details */,
-				39089E1B25E1A4A8006E5603 /* Model */,
 				39089E1E25E1A4A8006E5603 /* Filter */,
-				39089E2525E1A4A8006E5603 /* RadarsMapStoryboard.storyboard */,
+				39089E1B25E1A4A8006E5603 /* Model */,
 			);
 			path = Radars;
 			sourceTree = "<group>";
@@ -221,8 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				39089E1625E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard */,
-				39089E1725E1A4A8006E5603 /* Cell */,
 				39089E1A25E1A4A8006E5603 /* RadarDetailsViewController.swift */,
+				39089E1725E1A4A8006E5603 /* Cell */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -239,8 +238,8 @@
 		39089E1B25E1A4A8006E5603 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39089E1C25E1A4A8006E5603 /* Radar+CoreDataProperties.swift */,
 				39089E1D25E1A4A8006E5603 /* Radar+CoreDataClass.swift */,
+				39089E1C25E1A4A8006E5603 /* Radar+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,9 +248,9 @@
 			isa = PBXGroup;
 			children = (
 				39089E1F25E1A4A8006E5603 /* RadarFilterStoryboard.storyboard */,
-				39089E2025E1A4A8006E5603 /* Cell */,
 				39089E2325E1A4A8006E5603 /* RadarFilterViewController.swift */,
 				39089E2425E1A4A8006E5603 /* RadarFilterViewModel.swift */,
+				39089E2025E1A4A8006E5603 /* Cell */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -259,8 +258,8 @@
 		39089E2025E1A4A8006E5603 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				39089E2125E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib */,
 				39089E2225E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift */,
+				39089E2125E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -268,16 +267,16 @@
 		39089E2625E1A4A8006E5603 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				39089E2725E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift */,
 				39089E2825E1A4A8006E5603 /* Array+Extensions.swift */,
-				39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */,
-				39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */,
-				39089E2B25E1A4A8006E5603 /* UIButton+Extensions.swift */,
+				39089E2725E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift */,
+				39089E3025E1A4A8006E5603 /* Optional+Extensions.swift */,
 				39089E2C25E1A4A8006E5603 /* String+Extensions.swift */,
+				39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */,
 				39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */,
 				39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */,
 				39089E2F25E1A4A8006E5603 /* UITableView+Extensions.swift */,
-				39089E3025E1A4A8006E5603 /* Optional+Extensions.swift */,
+				39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */,
+				393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,8 +295,8 @@
 		39089E3325E1A4A8006E5603 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				39089EA625E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodeld */,
 				39089E3625E1A4A8006E5603 /* ManagedObject.swift */,
+				39089EA625E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -305,8 +304,8 @@
 		39089E3725E1A4A8006E5603 /* MaterialDesign */ = {
 			isa = PBXGroup;
 			children = (
-				39089E3825E1A4A8006E5603 /* Colors.xcassets */,
 				39089E3925E1A4A8006E5603 /* Assets.xcassets */,
+				39089E3825E1A4A8006E5603 /* Colors.xcassets */,
 			);
 			path = MaterialDesign;
 			sourceTree = "<group>";
@@ -314,8 +313,8 @@
 		39089E3A25E1A4A8006E5603 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
-				39089E3B25E1A4A8006E5603 /* Localizable.strings */,
 				39089E3E25E1A4A8006E5603 /* Localization.swift */,
+				39089E3B25E1A4A8006E5603 /* Localizable.strings */,
 			);
 			path = Translations;
 			sourceTree = "<group>";
@@ -323,12 +322,12 @@
 		39089E4025E1A4A8006E5603 /* RoadConditions */ = {
 			isa = PBXGroup;
 			children = (
-				39089E4125E1A4A8006E5603 /* RoadConditionsViewController.swift */,
-				39089E4225E1A4A8006E5603 /* Details */,
-				39089E4825E1A4A8006E5603 /* RoadConditionsViewModel.swift */,
 				39089E4925E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard */,
-				39089E4A25E1A4A8006E5603 /* Model */,
+				39089E4125E1A4A8006E5603 /* RoadConditionsViewController.swift */,
+				39089E4825E1A4A8006E5603 /* RoadConditionsViewModel.swift */,
 				39089E4D25E1A4A8006E5603 /* RoadSignMarkerView.swift */,
+				39089E4225E1A4A8006E5603 /* Details */,
+				39089E4A25E1A4A8006E5603 /* Model */,
 			);
 			path = RoadConditions;
 			sourceTree = "<group>";
@@ -364,10 +363,11 @@
 		39089E4E25E1A4A8006E5603 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				39089E4F25E1A4A8006E5603 /* TrafficEndpoints.swift */,
 				39089E5025E1A4A8006E5603 /* MainManager.swift */,
 				39089E5125E1A4A8006E5603 /* NetworkService.swift */,
 				39089E5225E1A4A8006E5603 /* PersistanceService.swift */,
+				39089E4F25E1A4A8006E5603 /* TrafficEndpoints.swift */,
+				39089E0925E1A4A8006E5603 /* Adviser */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -542,7 +542,6 @@
 				39089E7625E1A4A8006E5603 /* ManagedObject.swift in Sources */,
 				39089E7B25E1A4A8006E5603 /* RoadConditionsViewController.swift in Sources */,
 				39089E6725E1A4A8006E5603 /* RadarFilterViewController.swift in Sources */,
-				39089E6E25E1A4A8006E5603 /* UIButton+Extensions.swift in Sources */,
 				39089E5C25E1A4A8006E5603 /* RadarsMapViewModel.swift in Sources */,
 				39089E5F25E1A4A8006E5603 /* RadarDetailsViewCell.swift in Sources */,
 				39089E5725E1A4A8006E5603 /* AppDelegate.swift in Sources */,
@@ -558,6 +557,7 @@
 				39089E5B25E1A4A8006E5603 /* RadarsMapViewController.swift in Sources */,
 				39089E8425E1A4A8006E5603 /* RoadSignMarkerView.swift in Sources */,
 				39089E7025E1A4A8006E5603 /* UIColor+Extensions.swift in Sources */,
+				393A9DAF25E2E42500A3F952 /* UIView+Extensions.swift in Sources */,
 				39089E6A25E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				39089E6225E1A4A8006E5603 /* Radar+CoreDataProperties.swift in Sources */,
 				39089E7425E1A4A8006E5603 /* Constants.swift in Sources */,

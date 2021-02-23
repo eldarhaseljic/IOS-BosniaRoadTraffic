@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +14,7 @@
         <!--Radars Map View Controller-->
         <scene sceneID="uJq-jz-lpR">
             <objects>
-                <viewController storyboardIdentifier="RadarsMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dIW-vn-KOz" customClass="RadarsMapViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RadarsMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dIW-vn-KOz" customClass="RadarsMapViewController" customModule="BosniaRoadTrafficApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hPP-YS-giO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +25,45 @@
                                     <outlet property="delegate" destination="dIW-vn-KOz" id="XcJ-jd-Tbo"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkY-Lk-o7G">
+                                <rect key="frame" x="309" y="812" width="95" height="40"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LVP-0R-wjM">
+                                        <rect key="frame" x="5" y="0.0" width="85" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyv-7d-9WO">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="9fy-qC-Jf1"/>
+                                                    <constraint firstAttribute="width" constant="40" id="iGu-DV-B3K"/>
+                                                </constraints>
+                                                <color key="tintColor" name="DavysGrey"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="arrow.clockwise" catalog="system" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vem-F3-FsI">
+                                                <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="BEB-Jp-J1m"/>
+                                                    <constraint firstAttribute="height" constant="40" id="PC1-ej-blj"/>
+                                                </constraints>
+                                                <color key="tintColor" name="DavysGrey"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="map" catalog="system" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LVP-0R-wjM" firstAttribute="top" secondItem="pkY-Lk-o7G" secondAttribute="top" id="8Dg-QN-loG"/>
+                                    <constraint firstAttribute="bottom" secondItem="LVP-0R-wjM" secondAttribute="bottom" id="QGe-Dv-64n"/>
+                                    <constraint firstAttribute="trailing" secondItem="LVP-0R-wjM" secondAttribute="trailing" constant="5" id="WKn-E5-LXa"/>
+                                    <constraint firstItem="LVP-0R-wjM" firstAttribute="leading" secondItem="pkY-Lk-o7G" secondAttribute="leading" constant="5" id="XiO-yR-xCM"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-qM-MQx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
@@ -33,6 +73,7 @@
                         <viewLayoutGuide key="safeArea" id="Ynl-iG-PQb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ynl-iG-PQb" firstAttribute="bottom" secondItem="pkY-Lk-o7G" secondAttribute="bottom" constant="10" id="9VK-WK-d8f"/>
                             <constraint firstAttribute="bottom" secondItem="K5Q-Ar-IAG" secondAttribute="bottom" id="IcI-FA-c5b"/>
                             <constraint firstItem="eGh-qM-MQx" firstAttribute="leading" secondItem="Ynl-iG-PQb" secondAttribute="leading" id="K55-rK-AGh"/>
                             <constraint firstAttribute="bottom" secondItem="eGh-qM-MQx" secondAttribute="bottom" id="KeB-9e-1fh"/>
@@ -40,12 +81,16 @@
                             <constraint firstItem="eGh-qM-MQx" firstAttribute="trailing" secondItem="Ynl-iG-PQb" secondAttribute="trailing" id="YE3-nR-ZjZ"/>
                             <constraint firstItem="eGh-qM-MQx" firstAttribute="top" secondItem="hPP-YS-giO" secondAttribute="top" id="eck-jw-q4q"/>
                             <constraint firstItem="K5Q-Ar-IAG" firstAttribute="top" secondItem="hPP-YS-giO" secondAttribute="top" id="fZm-ao-0JX"/>
+                            <constraint firstItem="Ynl-iG-PQb" firstAttribute="trailing" secondItem="pkY-Lk-o7G" secondAttribute="trailing" constant="10" id="gJI-P9-MjJ"/>
                             <constraint firstAttribute="trailing" secondItem="K5Q-Ar-IAG" secondAttribute="trailing" id="qtb-zJ-jbD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="pkY-Lk-o7G" id="rM6-iV-c1z"/>
                         <outlet property="loadingIndicatorView" destination="eGh-qM-MQx" id="ZL7-SR-qQ1"/>
+                        <outlet property="mapTypeButton" destination="vem-F3-FsI" id="8yc-qC-yws"/>
                         <outlet property="mapView" destination="K5Q-Ar-IAG" id="gda-5j-j3X"/>
+                        <outlet property="reloadMapButton" destination="Nyv-7d-9WO" id="5ML-HK-VpO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJn-So-DBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -54,6 +99,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <namedColor name="DavysGrey">
             <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

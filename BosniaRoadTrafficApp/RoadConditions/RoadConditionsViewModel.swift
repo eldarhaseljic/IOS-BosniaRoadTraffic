@@ -19,6 +19,7 @@ final class RoadConditionsViewModel: NSObject {
     private let locationDistance: CLLocationDistance = 50000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
+    private var mainRoadConditionsDetails: RoadSign? = nil
     private let manager: MainManager!
     
     let roadSignsArray = PublishSubject<[RoadSign]>()
@@ -96,8 +97,22 @@ final class RoadConditionsViewModel: NSObject {
                                   longitudinalMeters: locationDistance)
     }
     
-    func handleRoadSignData() {
-        showRoadConditons(roadConditions: roadSignFRC.fetchedObjects ?? [])
+    private func handleRoadSignData() {
+        var roadData = roadSignFRC.fetchedObjects ?? []
+        
+        mainRoadConditionsDetails = roadData.first(where: { sign in
+            sign.isCoordinateZero || sign.hasNoIcon
+        })
+        
+        roadData.removeAll(where: { sign in
+            sign.isCoordinateZero || sign.hasNoIcon
+        })
+        
+        showRoadConditons(roadConditions: roadData)
+    }
+    
+    func getRoadConditionsInfo() -> RoadSign? {
+        return mainRoadConditionsDetails
     }
     
     private func showRoadConditons(roadConditions: [RoadSign], errorAdviser: Adviser? = nil) {

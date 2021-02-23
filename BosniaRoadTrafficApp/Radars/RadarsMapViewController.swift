@@ -12,6 +12,17 @@ import RxSwift
 
 class RadarsMapViewController: UIViewController {
     
+    @IBOutlet var reloadMapButton: UIButton!
+    @IBOutlet var mapTypeButton: UIButton!
+    
+    @IBOutlet var containerView: UIView! {
+        didSet {
+            containerView.setRoundedBorder(borderWidth: borderWidth,
+                                           cornerRadius: cornerRadius,
+                                           borderColor: CustomColor.slateGray.cgColor)
+        }
+    }
+    
     @IBOutlet var loadingIndicatorView: UIActivityIndicatorView! {
         didSet {
             loadingIndicatorView.appendBlurredBackground()
@@ -27,12 +38,16 @@ class RadarsMapViewController: UIViewController {
         }
     }
     
+    private let disposeBag = DisposeBag()
+    private let borderWidth: CGFloat = 1.0
+    private let cornerRadius: CGFloat = 8.0
+    private let delayTime: Double = 10.0
+    
+    var viewModel: RadarsMapViewModel!
+    
     lazy var radarFilterViewController: RadarFilterViewController = {
         return RadarFilterViewController.getViewController()
     }()
-    
-    private let disposeBag = DisposeBag()
-    var viewModel: RadarsMapViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +85,7 @@ class RadarsMapViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.radarsArray.bind(onNext: { [unowned self] radars in
+            print("Number of new radars: \(radars.count) \n \(radars)")
             self.prepareMapAndFilter(with: radars)
         })
         .disposed(by: disposeBag)
@@ -84,14 +100,31 @@ class RadarsMapViewController: UIViewController {
         
         radarFilterViewController.filteredRadarsArray.bind(onNext: { [unowned self] radars in
             loadingIndicatorView.startAnimating()
-            mapView.removeAnnotations(viewModel.radarsInDatabase)
+            mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations(radars)
             loadingIndicatorView.stopAnimating()
         })
         .disposed(by: disposeBag)
+        
+        reloadMapButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.loadingIndicatorView.startAnimating()
+            self.reloadMapButton.isEnabled = false
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.viewModel.fetchData()
+        }
+        .disposed(by: disposeBag)
+        
+        mapTypeButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.mapView.mapType = self.viewModel.currentMapType
+        }
+        .disposed(by: disposeBag)
     }
     
+    
     private func prepareMapAndFilter(with radars: [Radar]) {
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(radars)
         
         if let currentLocation = viewModel.userCurrentLocation {
@@ -105,6 +138,10 @@ class RadarsMapViewController: UIViewController {
         }
         
         loadingIndicatorView.stopAnimating()
+        delay(delayTime) { [weak self] in
+            guard let self = self else { return }
+            self.reloadMapButton.isEnabled = true
+        }
     }
     
     private func setupNavigationBar() {

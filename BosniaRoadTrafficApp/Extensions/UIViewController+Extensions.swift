@@ -31,6 +31,10 @@ extension UIViewController {
         return UIBarButtonItem(image: image, style: style, target: target, action: action)
     }
     
+    public func infoButton(image: UIImage = #imageLiteral(resourceName: "info.circle"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector?) -> UIBarButtonItem {
+        return UIBarButtonItem(image: image, style: style, target: target, action: action)
+    }
+    
     public func cancelButton(image: UIImage = #imageLiteral(resourceName: "slider.horizontal"), style: UIBarButtonItem.Style = .done, target: Any = self, action: Selector = #selector(tapCloseButton)) -> UIBarButtonItem {
         return UIBarButtonItem(title: CANCEL, style: .done, target: self, action: action)
     }

@@ -67,9 +67,15 @@ class RoadConditionsViewController: UIViewController {
         
         viewModel.roadSignsArray.bind(onNext: { [unowned self] roadSigns in
             mapView.addAnnotations(roadSigns)
+            
             if let currentLocation = viewModel.userCurrentLocation {
                 mapView.setRegion(currentLocation, animated: true)
             }
+            
+            if viewModel.getRoadConditionsInfo() != nil {
+                navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+            
             loadingIndicatorView.stopAnimating()
         })
         .disposed(by: disposeBag)
@@ -86,6 +92,17 @@ class RoadConditionsViewController: UIViewController {
     func setupNavigationBar() {
         title = ROAD_CONDITIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = infoButton(target: self,
+                                                         action: #selector(tapInfoButton))
+        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    @objc
+    public func tapInfoButton(_ sender: Any) {
+        guard let roadSign = viewModel.getRoadConditionsInfo() else {
+            return
+        }
+        presentView(viewController: RoadConditionsDetailsViewController.showDetails(for: roadSign)) 
     }
     
     private func setViewModel() {

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NVB-pI-cyz" customClass="RoadConditionsDetailsViewCell" customModule="BosniaRoadConditionsApp" customModuleProvider="target">
+        <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NVB-pI-cyz" customClass="RoadConditionsDetailsViewCell" customModule="BosniaRoadTrafficApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="365" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NVB-pI-cyz" id="Prn-0M-Nyk">
@@ -21,15 +21,15 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XBz-FP-3Xb">
                         <rect key="frame" x="16" y="0.0" width="333" height="87"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12r-VO-sxl">
-                                <rect key="frame" x="0.0" y="0.0" width="333" height="56.5"/>
-                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="17"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O88-Wo-mqO">
+                                <rect key="frame" x="0.0" y="0.0" width="333" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="24"/>
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O88-Wo-mqO">
-                                <rect key="frame" x="0.0" y="61.5" width="333" height="0.0"/>
-                                <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12r-VO-sxl">
+                                <rect key="frame" x="0.0" y="0.0" width="333" height="56.5"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>

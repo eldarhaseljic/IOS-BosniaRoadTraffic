@@ -25,8 +25,8 @@ class RadarFilterViewController: UIViewController {
     }
     
     private var viewModel: RadarFilterViewModel!
-    
     let filteredRadarsArray = PublishSubject<[Radar]>()
+    override func viewDidLoad() { super .viewDidLoad() }
     
     @objc
     private func tapCancelButton(_ sender: Any) {
@@ -41,12 +41,9 @@ class RadarFilterViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super .viewDidLoad()
-    }
-    
     func setData(viewModel: RadarFilterViewModel) {
         self.viewModel = viewModel
+        if let view = contextView { view.reloadData() }
     }
 }
 
@@ -76,8 +73,10 @@ extension RadarFilterViewController: UITableViewDelegate, UITableViewDataSource 
             .changed
             .distinctUntilChanged()
             .bind { [weak self] isOn in
-                self?.viewModel.selectRadarType(index: indexPath.row, selected: isOn)
-                self?.contextView.reloadData()
+                guard let self = self else { return }
+                self.viewModel.selectRadarType(index: indexPath.row,
+                                               selected: isOn)
+                self.contextView.reloadData()
             }
             .disposed(by: cell.disposeBag)
         return cell

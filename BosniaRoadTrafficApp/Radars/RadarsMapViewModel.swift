@@ -29,12 +29,15 @@ final class RadarsMapViewModel: NSObject {
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
+    private var currentMapTypeID = 1
     
     let radarsArray = PublishSubject<[Radar]>()
     let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     var radarsInDatabase: [Radar] = []
+    
+    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
     
     init(manager: MainManager = MainManager.shared,
          persistanceService: PersistanceService = PersistanceService.shared,
@@ -152,6 +155,16 @@ final class RadarsMapViewModel: NSObject {
             }
             completion?(response,errorMessage)
         }
+    }
+    
+    var currentMapType: MKMapType {
+        let mapType = mapTypes[currentMapTypeID]
+        if currentMapTypeID + 1 == mapTypes.count {
+            currentMapTypeID = .zero
+        } else {
+            currentMapTypeID += 1
+        }
+        return mapType
     }
 }
 

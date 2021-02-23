@@ -15,9 +15,8 @@ class MainManager {
     static let shared = MainManager()
     private let networkService = NetworkService.shared
     private let persistanceService = PersistanceService.shared
-    private var mainRoadConditionsDetails: RoadSign? = nil
     
-    func fetchRadars(objectContext: NSManagedObjectContext) -> [Radar] {
+    private func fetchRadars(objectContext: NSManagedObjectContext) -> [Radar] {
         let fetchRequest = NSFetchRequest<Radar>(entityName: Radar.entityName)
         
         var radars = [Radar]()
@@ -29,7 +28,7 @@ class MainManager {
         return radars
     }
     
-    func fetchRoadSigns(objectContext: NSManagedObjectContext) -> [RoadSign] {
+    private func fetchRoadSigns(objectContext: NSManagedObjectContext) -> [RoadSign] {
         let fetchRequest = NSFetchRequest<RoadSign>(entityName: RoadSign.entityName)
         
         var roadSigns = [RoadSign]()
@@ -47,7 +46,9 @@ class MainManager {
                 completion?([], CustomError.internalError.errorDescription)
                 return
             }
+            
             let writeManagedObjectContext = self.persistanceService.backgroundContext
+            
             writeManagedObjectContext.perform {
                 let oldRadars = self.fetchRadars(objectContext: writeManagedObjectContext)
                 print("Number of old radars: \(oldRadars.count) \n \(oldRadars)")
@@ -65,7 +66,8 @@ class MainManager {
                             newRadarsIDs.append(radarID)
                             let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
                             newRadar.fillRadarInfo(currentRadar)
-                            if newRadar.isCoordinateZero { newRadarsIDs.removeLast() }
+                            if newRadar.isCoordinateZero {  writeManagedObjectContext.delete(newRadar)
+                            }
                         }
                         
                         for oldRadar in oldRadars {
@@ -93,8 +95,13 @@ class MainManager {
     
     func getRoadConditions(_ completion: ((_ success: [RoadSign]?, _ error: String?) -> Void)?) {
         networkService.request(TrafficEndponins.rodarInfo.endpoint) { [weak self] (result) in
-            guard let self = self else { return }
+            guard let self = self else {
+                completion?([], CustomError.internalError.errorDescription)
+                return
+            }
+            
             let writeManagedObjectContext = self.persistanceService.backgroundContext
+            
             writeManagedObjectContext.perform {
                 let oldRoadSigns = self.fetchRoadSigns(objectContext: writeManagedObjectContext)
                 print("Number of old radars: \(oldRoadSigns.count) \n \(oldRoadSigns)")
@@ -112,10 +119,6 @@ class MainManager {
                             newRoadSignsIDs.append(signID)
                             let newSign = RoadSign.findOrCreate(signID, context: writeManagedObjectContext)
                             newSign.fillSignInfo(currentSign)
-                            if newSign.isCoordinateZero || newSign.hasNoIcon {
-                                self.mainRoadConditionsDetails = newSign
-                                newRoadSignsIDs.removeLast()
-                            }
                         }
                         
                         for oldSign in oldRoadSigns {
@@ -139,9 +142,5 @@ class MainManager {
                 }
             }
         }
-    }
-    
-    func getRoadConditionsInfo() -> RoadSign? {
-        return mainRoadConditionsDetails
     }
 }
