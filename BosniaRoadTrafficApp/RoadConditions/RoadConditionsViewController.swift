@@ -57,12 +57,12 @@ class RoadConditionsViewController: UIViewController {
                 viewModel.fetchData()
             case .denied:
                 presentAlert(title: ERROR_DESCRIPTION,
-                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.denied.rawValue),
+                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.denied.translation),
                              buttonTitle: OK,
                              handler: { _ in tapBackButton(self) })
             case .restricted:
                 presentAlert(title: ERROR_DESCRIPTION,
-                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.restricted.rawValue),
+                             message: String(format: LOCATION_SERVICE, AuthorizationStatus.restricted.translation),
                              buttonTitle: OK,
                              handler: { _ in tapBackButton(self) })
             case .error:

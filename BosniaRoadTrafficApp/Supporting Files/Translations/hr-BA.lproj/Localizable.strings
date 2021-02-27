@@ -1,0 +1,41 @@
+/* 
+ Localizable.strings
+ BosniaRoadTrafficApp
+ 
+ Created by Eldar Haseljic on 1/20/21.
+ Copyright © 2021 Eldar Haseljic. All rights reserved.
+ */
+
+bosnia_road_traffic = "Stanje na putevima u BIH";
+announced_radar_controls = "Najavljene radarske kontrole";
+close = "Zatvori";
+street_name = "Naziv ulice: %@";
+stationary = "Stacionarni";
+announced = "Najavljeni";
+radar_type = "Tip radara: %@";
+radar_duration = "Radar aktivan od: %@ \nRadar aktivan do: %@";
+apply = "Primijeni";
+cancel = "Otkaži";
+radar_locations = "Lokacije radara";
+road_conditions = "Uvjeti na cesti";
+road_conditions_duration = "Od: %@ \nDo: %@";
+not_defined = "Nije definirano";
+radars_info = "Podaci o radarima";
+no_radars_found = "Nisu pronađeni radari, pokušajte kasnije";
+ok = "U redu";
+error_description = "Opis pogreške";
+location_service_disabled = "Usluga lokacije je onemogućena, uključite je kako bi aplikacija mogla utvrditi vašu lokaciju";
+location_service = "Lokacijska usluga je trenutno u stanju '%@', ažurirajte status usluge lokacije kako bi aplikacija mogla odrediti vašu lokaciju";
+unknown = "Nepoznato";
+database_error = "Došlo je do pogreške prilikom spremanja novih podataka u bazu podataka. Tom prilikom prikazujemo vam stare lokacije podataka na karti. Hvala na razumijevanju.";
+can_not_process_data = "Došlo je do pogreške prilikom obrade podataka. Tom prilikom prikazujemo vam stare lokacije podataka na karti. Hvala na razumijevanju.";
+internal_error = "Dogodila se interna pogreška. Tom prilikom prikazujemo vam stare lokacije podataka na karti. Hvala vam na razumijevanju.";
+thank_you_for_understanding = "%@ \nTom prilikom prikazujemo vam stare podatkovne lokacije na karti. Hvala na razumijevanju.";
+request_error = "Došlo je do pogreške u zahtjevu.";
+element_count = "%@ (%d)";
+error_url_message = "Došlo je do pogreške pri obradi URL-a s web mjesta, pokušajte kasnije.";
+authorizedWhenInUse = "Ovlašteno kad se koristi";
+denied = "Odbijeno";
+notDetermined = "Nije određeno";
+restricted = "Ograničeno";
+authorizedAlways = "Ovlašteni uvijek";

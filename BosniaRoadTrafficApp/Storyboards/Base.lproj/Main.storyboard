@@ -38,8 +38,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="nD9-DR-hVM">
-                                <rect key="frame" x="16" y="715" width="382" height="123"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trafficSign" translatesAutoresizingMaskIntoConstraints="NO" id="32M-Kv-qn5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="584"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nD9-DR-hVM">
+                                <rect key="frame" x="16" y="672" width="382" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Is-JS-fT3">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -53,7 +56,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERJ-eU-rAK">
-                                        <rect key="frame" x="0.0" y="73" width="382" height="50"/>
+                                        <rect key="frame" x="0.0" y="70" width="382" height="50"/>
                                         <color key="backgroundColor" name="SlateGray"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="a0a-Qi-Ydf"/>
@@ -65,19 +68,66 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9da-Zf-uIU">
+                                <rect key="frame" x="117" y="812" width="180" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XC3-4K-cpf">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="UfK-4d-Qg2"/>
+                                            <constraint firstAttribute="height" constant="30" id="bBy-uU-KgR"/>
+                                        </constraints>
+                                        <state key="normal" image="facebook"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLQ-dF-Qg0">
+                                        <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="634-5l-Oi1"/>
+                                            <constraint firstAttribute="height" constant="30" id="DIb-Fm-5dL"/>
+                                        </constraints>
+                                        <state key="normal" image="instagram"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unY-tD-7WJ">
+                                        <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="oYN-Lp-qoo"/>
+                                            <constraint firstAttribute="height" constant="30" id="p1E-3H-zPB"/>
+                                        </constraints>
+                                        <state key="normal" image="twitter"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-tN-kt2">
+                                        <rect key="frame" x="150" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7aO-sy-0aH"/>
+                                            <constraint firstAttribute="width" constant="30" id="J6c-c3-G57"/>
+                                        </constraints>
+                                        <state key="normal" image="linkedIn"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
+                            <constraint firstItem="9da-Zf-uIU" firstAttribute="centerX" secondItem="nD9-DR-hVM" secondAttribute="centerX" id="1Rm-BM-li0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nD9-DR-hVM" secondAttribute="trailing" constant="16" id="6pj-jR-29T"/>
                             <constraint firstItem="nD9-DR-hVM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UK3-K3-O4c"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nD9-DR-hVM" secondAttribute="bottom" constant="24" id="lcW-G8-Hv2"/>
+                            <constraint firstItem="32M-Kv-qn5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z1t-Qg-zMX"/>
+                            <constraint firstItem="32M-Kv-qn5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aYs-dP-BEC"/>
+                            <constraint firstItem="9da-Zf-uIU" firstAttribute="top" secondItem="nD9-DR-hVM" secondAttribute="bottom" constant="20" id="c1A-qI-OaE"/>
+                            <constraint firstItem="nD9-DR-hVM" firstAttribute="top" secondItem="32M-Kv-qn5" secondAttribute="bottom" id="gIF-o7-tUp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9da-Zf-uIU" secondAttribute="bottom" constant="20" id="sZX-Nt-5CR"/>
+                            <constraint firstItem="32M-Kv-qn5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vQh-bM-ZW6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oa0-yH-JXv"/>
                     <connections>
+                        <outlet property="facebookButton" destination="XC3-4K-cpf" id="KCD-9L-eCI"/>
+                        <outlet property="instagramButton" destination="aLQ-dF-Qg0" id="MQm-7Z-dLd"/>
+                        <outlet property="linkedInButton" destination="fBz-tN-kt2" id="CGV-M0-Ck6"/>
                         <outlet property="radarsButton" destination="5Is-JS-fT3" id="qZX-g6-42L"/>
                         <outlet property="roadConditionsButton" destination="ERJ-eU-rAK" id="Is1-gn-PYg"/>
+                        <outlet property="twitterButton" destination="unY-tD-7WJ" id="EtF-Ti-ir8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,6 +136,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="facebook" width="48" height="48"/>
+        <image name="instagram" width="48" height="48"/>
+        <image name="linkedIn" width="48" height="48"/>
+        <image name="trafficSign" width="920" height="920"/>
+        <image name="twitter" width="48" height="48"/>
         <namedColor name="SlateGray">
             <color red="0.42399999499320984" green="0.45899999141693115" blue="0.49000000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

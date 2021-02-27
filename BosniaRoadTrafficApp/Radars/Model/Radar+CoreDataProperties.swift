@@ -56,7 +56,7 @@ extension Radar {
         }
         
         if let title = radarJSON[RadarJSON.title.rawValue] as? String {
-            self.title = self.radarType == .temporary ? ANNOUNCED_RADAR_CONTROLS : title
+            self.title = self.radarType == .announced ? ANNOUNCED_RADAR_CONTROLS : title
         }
     }
     

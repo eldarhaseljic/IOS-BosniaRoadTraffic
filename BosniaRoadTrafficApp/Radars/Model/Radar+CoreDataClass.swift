@@ -27,14 +27,14 @@ enum RadarJSON: String {
 
 enum RadarType: String {
     case stationary
-    case temporary
+    case announced
     
     var rawValue: String {
         switch self {
         case .stationary:
             return STATIONARY
-        case .temporary:
-            return TEMPORARY
+        case .announced:
+            return ANNOUNCED
         }
     }
 }
@@ -84,7 +84,7 @@ public class Radar: NSManagedObject, MKAnnotation {
         case 1:
             return .stationary
         default:
-            return .temporary
+            return .announced
         }
     }
     

@@ -11,25 +11,28 @@ import RxCocoa
 
 class MainViewController: UIViewController {
     
-    private let borderWidth: CGFloat = 2.0
-    private let shadowRadius: CGFloat = 3.0
+    @IBOutlet var facebookButton: UIButton!
+    @IBOutlet var instagramButton: UIButton!
+    @IBOutlet var twitterButton: UIButton!
+    @IBOutlet var linkedInButton: UIButton!
+    
     @IBOutlet var radarsButton: UIButton! {
         didSet {
             radarsButton.setTitle(RADAR_LOCATIONS,for: .normal)
-            radarsButton.setRoundedBorder(borderWidth: borderWidth,
+            radarsButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
                                           borderColor: CustomColor.black.cgColor)
             radarsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
-                                   shadowRadius: shadowRadius)
+                                   shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
     
     @IBOutlet var roadConditionsButton: UIButton! {
         didSet {
             roadConditionsButton.setTitle(ROAD_CONDITIONS, for: .normal)
-            roadConditionsButton.setRoundedBorder(borderWidth: borderWidth,
+            roadConditionsButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
                                                   borderColor: CustomColor.black.cgColor)
             roadConditionsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
-                                           shadowRadius: shadowRadius)
+                                           shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
     
@@ -38,7 +41,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         title = BOSNIA_ROAD_TRAFFIC.localizedUppercase
         setupObservers()
     }
@@ -51,6 +53,30 @@ class MainViewController: UIViewController {
         
         roadConditionsButton.rx.tap.bind { [unowned self] in
             pushView(viewController: RoadConditionsViewController.showRoadConditions())
+        }
+        .disposed(by: disposeBag)
+        
+        facebookButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.openExternalUrl(urlString: Constants.URLPaths.facebookURL)
+        }
+        .disposed(by: disposeBag)
+        
+        instagramButton.rx.tap.bind {  [weak self] in
+            guard let self = self else { return }
+            self.openExternalUrl(urlString: Constants.URLPaths.instagramURL)
+        }
+        .disposed(by: disposeBag)
+        
+        twitterButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.openExternalUrl(urlString: Constants.URLPaths.twitterURL)
+        }
+        .disposed(by: disposeBag)
+        
+        linkedInButton.rx.tap.bind {  [weak self] in
+            guard let self = self else { return }
+            self.openExternalUrl(urlString: Constants.URLPaths.errorURL)
         }
         .disposed(by: disposeBag)
     }

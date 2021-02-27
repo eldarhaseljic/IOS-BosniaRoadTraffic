@@ -136,6 +136,7 @@
 		39089EA725E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BosniaRoadTrafficApp.xcdatamodel; sourceTree = "<group>"; };
 		393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		39BB0B7125A22222000F3E65 /* BosniaRoadTrafficApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosniaRoadTrafficApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		39C1B51E25EAE4B000D6181C /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		779A78CFFA97A097ACF31340 /* Pods-BosniaRoadTrafficApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTrafficApp.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTrafficApp/Pods-BosniaRoadTrafficApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTrafficApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -454,6 +455,7 @@
 				en,
 				Base,
 				de,
+				bs,
 			);
 			mainGroup = 39BB0B6825A22222000F3E65;
 			productRefGroup = 39BB0B7225A22222000F3E65 /* Products */;
@@ -602,6 +604,7 @@
 			children = (
 				39089E3C25E1A4A8006E5603 /* de */,
 				39089E3D25E1A4A8006E5603 /* en */,
+				39C1B51E25EAE4B000D6181C /* bs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

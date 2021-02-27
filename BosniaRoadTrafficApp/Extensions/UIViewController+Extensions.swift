@@ -53,7 +53,6 @@ extension UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
     public func presentAlert(title: String?, message: String?, buttonTitle: String, type: UIAlertController.Style = .alert, handler: ((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
@@ -63,5 +62,19 @@ extension UIViewController {
                                    handler: handler)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    public func openExternalUrl(urlString: String) {
+        guard
+            let webURL = URL(string: urlString)
+        else {
+            self.presentAlert(title: ERROR_DESCRIPTION,
+                              message: ERROR_URL_MESSAGE,
+                              buttonTitle: OK,
+                              handler: nil)
+            return
+        }
+        
+        UIApplication.shared.open(webURL)
     }
 }

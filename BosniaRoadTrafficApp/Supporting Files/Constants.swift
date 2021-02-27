@@ -24,6 +24,11 @@ final class Constants {
     
     class URLPaths {
         static let roadSignIcon = "https://bihamk.ba/assets/img/road-icons/%@"
+        static let facebookURL = "https://www.facebook.com"
+        static let instagramURL = "https://www.instagram.com"
+        static let twitterURL = "https://www.twitter.com"
+        static let linkedInURL = "https://www.linkedin.com"
+        static let errorURL = "error url"
     }
     
     class ImageTitles {
@@ -37,10 +42,16 @@ final class Constants {
     
     class BorderWidth {
         static let OnePoint: CGFloat = 1.0
+        static let TwoPoints: CGFloat = 2.0
     }
     
     class CornerRadius {
         static let EightPoints: CGFloat = 8.0
+    }
+    
+    class ShadowRadius {
+        static let HalfPoint: CGFloat = 0.5
+        static let ThreePoints: CGFloat = 3.0
     }
     
     class Time {

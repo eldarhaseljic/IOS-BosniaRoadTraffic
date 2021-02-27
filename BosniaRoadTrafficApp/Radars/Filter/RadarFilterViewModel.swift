@@ -40,9 +40,9 @@ class RadarFilterViewModel {
                                               isOn: true))
         }
         
-        if checkRadarType(type: .temporary) {
-            radarTypes.append(RadarTypeOption(type: .temporary,
-                                              numberOfElements: getNumberOfRadarsByType(type: .temporary),
+        if checkRadarType(type: .announced) {
+            radarTypes.append(RadarTypeOption(type: .announced,
+                                              numberOfElements: getNumberOfRadarsByType(type: .announced),
                                               isOn: true))
         }
         

@@ -1,18 +1,17 @@
 /* 
-  Localizable.strings
-  BosniaRoadTrafficApp
-
-  Created by Eldar Haseljic on 1/20/21.
-  Copyright © 2021 Eldar Haseljic. All rights reserved.
-  
-*/
+ Localizable.strings
+ BosniaRoadTrafficApp
+ 
+ Created by Eldar Haseljic on 1/20/21.
+ Copyright © 2021 Eldar Haseljic. All rights reserved.
+ */
 
 bosnia_road_traffic = "Bosnia road traffic";
 announced_radar_controls = "Announced radar controls";
 close = "Close";
 street_name = "Street name: %@";
 stationary = "Stationary";
-temporary = "Temporary";
+announced = "Announced";
 radar_type = "Radar type: %@";
 radar_duration = "Radar active from: %@ \nRadar active until: %@";
 apply = "Apply";
@@ -26,7 +25,7 @@ no_radars_found = "No radars found, please try later";
 ok = "OK";
 error_description = "Error description";
 location_service_disabled = "The location service is disabled, please turn it on so the app can determine your location";
-location_service = "The location service set to %@, please update the location service status so the app can determine your location";
+location_service = "The location service set to '%@', please update the location service status so the app can determine your location";
 unknown = "Unknown";
 database_error = "An error occurred while saving new data to the database.On that occasion, we are showing you old data locations on the map.Thank you for your understanding.";
 can_not_process_data = "An error occurred while processing the data.On that occasion, we are showing you old data locations on the map.Thank you for your understanding.";
@@ -34,3 +33,9 @@ internal_error = "An internal error occurred.On that occasion, we are showing yo
 thank_you_for_understanding = "%@\nOn that occasion, we are showing you old data locations on the map.Thank you for your understanding.";
 request_error = "An request error occurred.";
 element_count = "%@ (%d)";
+error_url_message = "There was an error processing the url from the website try later.";
+authorizedWhenInUse = "Authorized When In Use";
+denied = "Denied";
+notDetermined = "Not Determined";
+restricted = "Restricted";
+authorizedAlways = "Authorized Always";
