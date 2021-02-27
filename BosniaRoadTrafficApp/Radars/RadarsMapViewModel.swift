@@ -24,20 +24,21 @@ enum AuthorizationStatus: String {
 
 final class RadarsMapViewModel: NSObject {
     
-    private var radarsFRC: NSFetchedResultsController<Radar>!
+    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
     private let locationDistance: CLLocationDistance = 50000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
+    
+    private var radarsFRC: NSFetchedResultsController<Radar>!
     private var currentMapTypeID = 1
     
     let radarsArray = PublishSubject<[Radar]>()
     let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
+    
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     var radarsInDatabase: [Radar] = []
-    
-    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
     
     init(manager: MainManager = MainManager.shared,
          persistanceService: PersistanceService = PersistanceService.shared,

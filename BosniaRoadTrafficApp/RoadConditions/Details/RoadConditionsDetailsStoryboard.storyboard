@@ -13,7 +13,7 @@
         <!--Road Conditions Details View Controller-->
         <scene sceneID="hBm-NC-wRz">
             <objects>
-                <viewController storyboardIdentifier="RoadConditionsDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FRt-4V-W9e" customClass="RoadConditionsDetailsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoadConditionsDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FRt-4V-W9e" customClass="RoadConditionsDetailsViewController" customModule="BosniaRoadTrafficApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H3H-lX-PKD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

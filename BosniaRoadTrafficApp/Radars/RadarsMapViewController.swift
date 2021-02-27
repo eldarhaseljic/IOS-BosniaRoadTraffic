@@ -14,11 +14,10 @@ class RadarsMapViewController: UIViewController {
     
     @IBOutlet var reloadMapButton: UIButton!
     @IBOutlet var mapTypeButton: UIButton!
-    
     @IBOutlet var containerView: UIView! {
         didSet {
-            containerView.setRoundedBorder(borderWidth: borderWidth,
-                                           cornerRadius: cornerRadius,
+            containerView.setRoundedBorder(borderWidth: Constants.BorderWidth.OnePoint,
+                                           cornerRadius: Constants.CornerRadius.EightPoints,
                                            borderColor: CustomColor.slateGray.cgColor)
         }
     }
@@ -39,10 +38,6 @@ class RadarsMapViewController: UIViewController {
     }
     
     private let disposeBag = DisposeBag()
-    private let borderWidth: CGFloat = 1.0
-    private let cornerRadius: CGFloat = 8.0
-    private let delayTime: Double = 10.0
-    
     var viewModel: RadarsMapViewModel!
     
     lazy var radarFilterViewController: RadarFilterViewController = {
@@ -138,7 +133,7 @@ class RadarsMapViewController: UIViewController {
         }
         
         loadingIndicatorView.stopAnimating()
-        delay(delayTime) { [weak self] in
+        delay(Constants.Time.TenSeconds) { [weak self] in
             guard let self = self else { return }
             self.reloadMapButton.isEnabled = true
         }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class Constants {
     class StoryboardIdentifiers {
@@ -32,5 +33,17 @@ final class Constants {
         static let zabranaZaTeretnaVozila = "zabrana-za-teretna-vozila.png"
         static let zagusenje = "zagusenje.png"
         static let odron = "odron.png"
+    }
+    
+    class BorderWidth {
+        static let OnePoint: CGFloat = 1.0
+    }
+    
+    class CornerRadius {
+        static let EightPoints: CGFloat = 8.0
+    }
+    
+    class Time {
+        static let TenSeconds: Double = 10.0
     }
 }

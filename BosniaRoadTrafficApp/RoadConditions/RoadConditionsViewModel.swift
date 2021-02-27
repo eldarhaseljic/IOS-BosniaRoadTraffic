@@ -15,16 +15,19 @@ import CoreLocation
 
 final class RoadConditionsViewModel: NSObject {
     
-    private var roadSignFRC: NSFetchedResultsController<RoadSign>!
+    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
     private let locationDistance: CLLocationDistance = 50000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
-    private var mainRoadConditionsDetails: RoadSign? = nil
     private let manager: MainManager!
     
+    private var roadSignFRC: NSFetchedResultsController<RoadSign>!
+    private var mainRoadConditionsDetails: RoadSign? = nil
+    private var currentMapTypeID = 1
     let roadSignsArray = PublishSubject<[RoadSign]>()
     let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
+    
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
     var roadSignsInDatabase: [RoadSign] = []
     
@@ -147,7 +150,7 @@ final class RoadConditionsViewModel: NSObject {
         }
     }
     
-    func fetchRoadConditions(_ completion: ((_ success: [RoadSign]?, _ errorMessage: String?) -> Void)? = nil) {
+    private func fetchRoadConditions(_ completion: ((_ success: [RoadSign]?, _ errorMessage: String?) -> Void)? = nil) {
         manager.getRoadConditions { (response, errorMessage) in
             guard
                 let response = response,
@@ -158,6 +161,16 @@ final class RoadConditionsViewModel: NSObject {
             }
             completion?(response,errorMessage)
         }
+    }
+    
+    var currentMapType: MKMapType {
+        let mapType = mapTypes[currentMapTypeID]
+        if currentMapTypeID + 1 == mapTypes.count {
+            currentMapTypeID = .zero
+        } else {
+            currentMapTypeID += 1
+        }
+        return mapType
     }
 }
 

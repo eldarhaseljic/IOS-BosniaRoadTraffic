@@ -12,6 +12,16 @@ import RxSwift
 
 class RoadConditionsViewController: UIViewController {
     
+    @IBOutlet var reloadMapButton: UIButton!
+    @IBOutlet var mapTypeButton: UIButton!
+    @IBOutlet var containerView: UIView! {
+        didSet {
+            containerView.setRoundedBorder(borderWidth: Constants.BorderWidth.OnePoint,
+                                           cornerRadius: Constants.CornerRadius.EightPoints,
+                                           borderColor: CustomColor.slateGray.cgColor)
+        }
+    }
+    
     @IBOutlet var loadingIndicatorView: UIActivityIndicatorView! {
         didSet {
             loadingIndicatorView.appendBlurredBackground()
@@ -66,17 +76,8 @@ class RoadConditionsViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.roadSignsArray.bind(onNext: { [unowned self] roadSigns in
-            mapView.addAnnotations(roadSigns)
-            
-            if let currentLocation = viewModel.userCurrentLocation {
-                mapView.setRegion(currentLocation, animated: true)
-            }
-            
-            if viewModel.getRoadConditionsInfo() != nil {
-                navigationItem.rightBarButtonItem?.isEnabled = true
-            }
-            
-            loadingIndicatorView.stopAnimating()
+            print("Number of new signs: \(roadSigns.count) \n \(roadSigns)")
+            prepareMap(with: roadSigns)
         })
         .disposed(by: disposeBag)
         
@@ -87,6 +88,40 @@ class RoadConditionsViewController: UIViewController {
                          handler: adviser.isError ? nil : { _ in tapBackButton(self) })
         })
         .disposed(by: disposeBag)
+        
+        reloadMapButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.loadingIndicatorView.startAnimating()
+            self.reloadMapButton.isEnabled = false
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.viewModel.fetchData()
+        }
+        .disposed(by: disposeBag)
+        
+        mapTypeButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.mapView.mapType = self.viewModel.currentMapType
+        }
+        .disposed(by: disposeBag)
+    }
+    
+    private func prepareMap(with roadSigns: [RoadSign]) {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(roadSigns)
+        
+        if let currentLocation = viewModel.userCurrentLocation {
+            mapView.setRegion(currentLocation, animated: true)
+        }
+        
+        if viewModel.getRoadConditionsInfo() != nil {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+        
+        loadingIndicatorView.stopAnimating()
+        delay(Constants.Time.TenSeconds) { [weak self] in
+            guard let self = self else { return }
+            self.reloadMapButton.isEnabled = true
+        }
     }
     
     func setupNavigationBar() {
@@ -97,16 +132,16 @@ class RoadConditionsViewController: UIViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
+    private func setViewModel() {
+        viewModel = RoadConditionsViewModel()
+    }
+    
     @objc
     public func tapInfoButton(_ sender: Any) {
         guard let roadSign = viewModel.getRoadConditionsInfo() else {
             return
         }
-        presentView(viewController: RoadConditionsDetailsViewController.showDetails(for: roadSign)) 
-    }
-    
-    private func setViewModel() {
-        viewModel = RoadConditionsViewModel()
+        presentView(viewController: RoadConditionsDetailsViewController.showDetails(for: roadSign))
     }
 }
 

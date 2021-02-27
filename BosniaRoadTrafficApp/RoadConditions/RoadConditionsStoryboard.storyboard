@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +14,7 @@
         <!--Road Conditions View Controller-->
         <scene sceneID="tcb-mH-Zoq">
             <objects>
-                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2r-RN-LVI" customClass="RoadConditionsViewController" customModule="BosniaRoadConditionsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2r-RN-LVI" customClass="RoadConditionsViewController" customModule="BosniaRoadTrafficApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ruA-29-zgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +25,45 @@
                                     <outlet property="delegate" destination="u2r-RN-LVI" id="Nz6-d5-Nrd"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGn-kb-gRi">
+                                <rect key="frame" x="309" y="812" width="95" height="40"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E1j-KD-qQ1">
+                                        <rect key="frame" x="5" y="0.0" width="85" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDd-jk-ILF">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="KVc-T5-8ik"/>
+                                                    <constraint firstAttribute="width" constant="40" id="UIL-Os-LHn"/>
+                                                </constraints>
+                                                <color key="tintColor" name="DavysGrey"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="arrow.clockwise" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaS-4J-HYJ">
+                                                <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="JiO-Fa-MqU"/>
+                                                    <constraint firstAttribute="height" constant="40" id="fx9-Et-mL6"/>
+                                                </constraints>
+                                                <color key="tintColor" name="DavysGrey"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="map" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="E1j-KD-qQ1" secondAttribute="trailing" constant="5" id="4rq-Qf-3E6"/>
+                                    <constraint firstItem="E1j-KD-qQ1" firstAttribute="top" secondItem="rGn-kb-gRi" secondAttribute="top" id="DPl-8p-QcO"/>
+                                    <constraint firstItem="E1j-KD-qQ1" firstAttribute="leading" secondItem="rGn-kb-gRi" secondAttribute="leading" constant="5" id="Fcj-DH-uI3"/>
+                                    <constraint firstAttribute="bottom" secondItem="E1j-KD-qQ1" secondAttribute="bottom" id="eha-dg-JNQ"/>
+                                </constraints>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6K3-6A-miO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
@@ -39,13 +79,18 @@
                             <constraint firstItem="6K3-6A-miO" firstAttribute="leading" secondItem="efY-Bq-eke" secondAttribute="leading" id="9Hh-J4-8tc"/>
                             <constraint firstItem="6K3-6A-miO" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="EpW-c7-yGr"/>
                             <constraint firstItem="F9r-Lo-3H1" firstAttribute="leading" secondItem="ruA-29-zgj" secondAttribute="leading" id="LKj-sM-Nbt"/>
+                            <constraint firstItem="efY-Bq-eke" firstAttribute="trailing" secondItem="rGn-kb-gRi" secondAttribute="trailing" constant="10" id="Nty-6O-UpQ"/>
                             <constraint firstItem="F9r-Lo-3H1" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="PZ9-fp-CFP"/>
                             <constraint firstItem="6K3-6A-miO" firstAttribute="trailing" secondItem="efY-Bq-eke" secondAttribute="trailing" id="QWA-2N-Hsr"/>
+                            <constraint firstItem="efY-Bq-eke" firstAttribute="bottom" secondItem="rGn-kb-gRi" secondAttribute="bottom" constant="10" id="mGd-jQ-4f7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="rGn-kb-gRi" id="lAn-5N-AyY"/>
                         <outlet property="loadingIndicatorView" destination="6K3-6A-miO" id="iwK-FE-4ok"/>
+                        <outlet property="mapTypeButton" destination="gaS-4J-HYJ" id="780-0x-fwS"/>
                         <outlet property="mapView" destination="F9r-Lo-3H1" id="xRi-bg-Cra"/>
+                        <outlet property="reloadMapButton" destination="NDd-jk-ILF" id="d93-WR-TFv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4Q-fr-yKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -54,6 +99,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" width="12" height="14"/>
+        <image name="map" width="14" height="13"/>
         <namedColor name="DavysGrey">
             <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
