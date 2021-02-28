@@ -1,0 +1,6 @@
+framework module Pods_BosniaRoadTraffic {
+  umbrella header "Pods-BosniaRoadTraffic-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,812 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39089E5325E1A4A8006E5603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E0525E1A4A8006E5603 /* LaunchScreen.storyboard */; };
+		39089E5425E1A4A8006E5603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E0725E1A4A8006E5603 /* Main.storyboard */; };
+		39089E5525E1A4A8006E5603 /* Adviser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E0A25E1A4A8006E5603 /* Adviser.swift */; };
+		39089E5625E1A4A8006E5603 /* myLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 39089E0C25E1A4A8006E5603 /* myLocation.gpx */; };
+		39089E5725E1A4A8006E5603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E0D25E1A4A8006E5603 /* AppDelegate.swift */; };
+		39089E5925E1A4A8006E5603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */; };
+		39089E5A25E1A4A8006E5603 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1025E1A4A8006E5603 /* MainViewController.swift */; };
+		39089E5B25E1A4A8006E5603 /* RadarsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1225E1A4A8006E5603 /* RadarsMapViewController.swift */; };
+		39089E5C25E1A4A8006E5603 /* RadarsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1325E1A4A8006E5603 /* RadarsMapViewModel.swift */; };
+		39089E5D25E1A4A8006E5603 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1425E1A4A8006E5603 /* RadarMarkerView.swift */; };
+		39089E5E25E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E1625E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard */; };
+		39089E5F25E1A4A8006E5603 /* RadarDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1825E1A4A8006E5603 /* RadarDetailsViewCell.swift */; };
+		39089E6025E1A4A8006E5603 /* RadarDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39089E1925E1A4A8006E5603 /* RadarDetailsViewCell.xib */; };
+		39089E6125E1A4A8006E5603 /* RadarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1A25E1A4A8006E5603 /* RadarDetailsViewController.swift */; };
+		39089E6225E1A4A8006E5603 /* Radar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1C25E1A4A8006E5603 /* Radar+CoreDataProperties.swift */; };
+		39089E6325E1A4A8006E5603 /* Radar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E1D25E1A4A8006E5603 /* Radar+CoreDataClass.swift */; };
+		39089E6425E1A4A8006E5603 /* RadarFilterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E1F25E1A4A8006E5603 /* RadarFilterStoryboard.storyboard */; };
+		39089E6525E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39089E2125E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib */; };
+		39089E6625E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2225E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift */; };
+		39089E6725E1A4A8006E5603 /* RadarFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2325E1A4A8006E5603 /* RadarFilterViewController.swift */; };
+		39089E6825E1A4A8006E5603 /* RadarFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2425E1A4A8006E5603 /* RadarFilterViewModel.swift */; };
+		39089E6925E1A4A8006E5603 /* RadarsMapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E2525E1A4A8006E5603 /* RadarsMapStoryboard.storyboard */; };
+		39089E6A25E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2725E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift */; };
+		39089E6B25E1A4A8006E5603 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2825E1A4A8006E5603 /* Array+Extensions.swift */; };
+		39089E6C25E1A4A8006E5603 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */; };
+		39089E6D25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */; };
+		39089E6F25E1A4A8006E5603 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2C25E1A4A8006E5603 /* String+Extensions.swift */; };
+		39089E7025E1A4A8006E5603 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */; };
+		39089E7125E1A4A8006E5603 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */; };
+		39089E7225E1A4A8006E5603 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E2F25E1A4A8006E5603 /* UITableView+Extensions.swift */; };
+		39089E7325E1A4A8006E5603 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E3025E1A4A8006E5603 /* Optional+Extensions.swift */; };
+		39089E7425E1A4A8006E5603 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E3225E1A4A8006E5603 /* Constants.swift */; };
+		39089E7625E1A4A8006E5603 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E3625E1A4A8006E5603 /* ManagedObject.swift */; };
+		39089E7725E1A4A8006E5603 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39089E3825E1A4A8006E5603 /* Colors.xcassets */; };
+		39089E7825E1A4A8006E5603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39089E3925E1A4A8006E5603 /* Assets.xcassets */; };
+		39089E7925E1A4A8006E5603 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39089E3B25E1A4A8006E5603 /* Localizable.strings */; };
+		39089E7A25E1A4A8006E5603 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E3E25E1A4A8006E5603 /* Localization.swift */; };
+		39089E7B25E1A4A8006E5603 /* RoadConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4125E1A4A8006E5603 /* RoadConditionsViewController.swift */; };
+		39089E7C25E1A4A8006E5603 /* RoadConditionsDetailsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E4325E1A4A8006E5603 /* RoadConditionsDetailsStoryboard.storyboard */; };
+		39089E7D25E1A4A8006E5603 /* RoadConditionsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4425E1A4A8006E5603 /* RoadConditionsDetailsViewController.swift */; };
+		39089E7E25E1A4A8006E5603 /* RoadConditionsDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4625E1A4A8006E5603 /* RoadConditionsDetailsViewCell.swift */; };
+		39089E7F25E1A4A8006E5603 /* RoadConditionsDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39089E4725E1A4A8006E5603 /* RoadConditionsDetailsViewCell.xib */; };
+		39089E8025E1A4A8006E5603 /* RoadConditionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4825E1A4A8006E5603 /* RoadConditionsViewModel.swift */; };
+		39089E8125E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39089E4925E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard */; };
+		39089E8225E1A4A8006E5603 /* RoadSign+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4B25E1A4A8006E5603 /* RoadSign+CoreDataClass.swift */; };
+		39089E8325E1A4A8006E5603 /* RoadSign+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4C25E1A4A8006E5603 /* RoadSign+CoreDataProperties.swift */; };
+		39089E8425E1A4A8006E5603 /* RoadSignMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4D25E1A4A8006E5603 /* RoadSignMarkerView.swift */; };
+		39089E8525E1A4A8006E5603 /* TrafficEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E4F25E1A4A8006E5603 /* TrafficEndpoints.swift */; };
+		39089E8625E1A4A8006E5603 /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E5025E1A4A8006E5603 /* MainManager.swift */; };
+		39089E8725E1A4A8006E5603 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E5125E1A4A8006E5603 /* NetworkService.swift */; };
+		39089E8825E1A4A8006E5603 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39089E5225E1A4A8006E5603 /* PersistanceService.swift */; };
+		39089EA825E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39089EA625E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld */; };
+		393A9DAF25E2E42500A3F952 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */; };
+		3949762225EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */; };
+		3949762325EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3933E04325BC6651008ABBB3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3949762325EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTraffic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39089E0625E1A4A8006E5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		39089E0825E1A4A8006E5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		39089E0A25E1A4A8006E5603 /* Adviser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adviser.swift; sourceTree = "<group>"; };
+		39089E0C25E1A4A8006E5603 /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myLocation.gpx; sourceTree = "<group>"; };
+		39089E0D25E1A4A8006E5603 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		39089E0E25E1A4A8006E5603 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		39089E1025E1A4A8006E5603 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		39089E1225E1A4A8006E5603 /* RadarsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarsMapViewController.swift; sourceTree = "<group>"; };
+		39089E1325E1A4A8006E5603 /* RadarsMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarsMapViewModel.swift; sourceTree = "<group>"; };
+		39089E1425E1A4A8006E5603 /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		39089E1625E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RadarDetailsStoryboard.storyboard; sourceTree = "<group>"; };
+		39089E1825E1A4A8006E5603 /* RadarDetailsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarDetailsViewCell.swift; sourceTree = "<group>"; };
+		39089E1925E1A4A8006E5603 /* RadarDetailsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarDetailsViewCell.xib; sourceTree = "<group>"; };
+		39089E1A25E1A4A8006E5603 /* RadarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarDetailsViewController.swift; sourceTree = "<group>"; };
+		39089E1C25E1A4A8006E5603 /* Radar+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Radar+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		39089E1D25E1A4A8006E5603 /* Radar+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Radar+CoreDataClass.swift"; sourceTree = "<group>"; };
+		39089E1F25E1A4A8006E5603 /* RadarFilterStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RadarFilterStoryboard.storyboard; sourceTree = "<group>"; };
+		39089E2125E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarFilterOptionTableViewCell.xib; sourceTree = "<group>"; };
+		39089E2225E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarFilterOptionTableViewCell.swift; sourceTree = "<group>"; };
+		39089E2325E1A4A8006E5603 /* RadarFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarFilterViewController.swift; sourceTree = "<group>"; };
+		39089E2425E1A4A8006E5603 /* RadarFilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarFilterViewModel.swift; sourceTree = "<group>"; };
+		39089E2525E1A4A8006E5603 /* RadarsMapStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RadarsMapStoryboard.storyboard; sourceTree = "<group>"; };
+		39089E2725E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2825E1A4A8006E5603 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2C25E1A4A8006E5603 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		39089E2F25E1A4A8006E5603 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		39089E3025E1A4A8006E5603 /* Optional+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		39089E3225E1A4A8006E5603 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39089E3625E1A4A8006E5603 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
+		39089E3825E1A4A8006E5603 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		39089E3925E1A4A8006E5603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		39089E3C25E1A4A8006E5603 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		39089E3D25E1A4A8006E5603 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		39089E3E25E1A4A8006E5603 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		39089E4125E1A4A8006E5603 /* RoadConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadConditionsViewController.swift; sourceTree = "<group>"; };
+		39089E4325E1A4A8006E5603 /* RoadConditionsDetailsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoadConditionsDetailsStoryboard.storyboard; sourceTree = "<group>"; };
+		39089E4425E1A4A8006E5603 /* RoadConditionsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadConditionsDetailsViewController.swift; sourceTree = "<group>"; };
+		39089E4625E1A4A8006E5603 /* RoadConditionsDetailsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadConditionsDetailsViewCell.swift; sourceTree = "<group>"; };
+		39089E4725E1A4A8006E5603 /* RoadConditionsDetailsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoadConditionsDetailsViewCell.xib; sourceTree = "<group>"; };
+		39089E4825E1A4A8006E5603 /* RoadConditionsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadConditionsViewModel.swift; sourceTree = "<group>"; };
+		39089E4925E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoadConditionsStoryboard.storyboard; sourceTree = "<group>"; };
+		39089E4B25E1A4A8006E5603 /* RoadSign+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RoadSign+CoreDataClass.swift"; sourceTree = "<group>"; };
+		39089E4C25E1A4A8006E5603 /* RoadSign+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RoadSign+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		39089E4D25E1A4A8006E5603 /* RoadSignMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadSignMarkerView.swift; sourceTree = "<group>"; };
+		39089E4F25E1A4A8006E5603 /* TrafficEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEndpoints.swift; sourceTree = "<group>"; };
+		39089E5025E1A4A8006E5603 /* MainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
+		39089E5125E1A4A8006E5603 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		39089E5225E1A4A8006E5603 /* PersistanceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		39089EA725E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BosniaRoadTrafficApp.xcdatamodel; sourceTree = "<group>"; };
+		393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		39BB0B7125A22222000F3E65 /* Bosnia Road Traffic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bosnia Road Traffic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39C1B51E25EAE4B000D6181C /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3E4805181E7025EEB0BA66AC /* Pods-BosniaRoadTraffic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTraffic.release.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic.release.xcconfig"; sourceTree = "<group>"; };
+		A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTrafficApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9DB9F63C6D9C0BEB2CE635 /* Pods-BosniaRoadTraffic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTraffic.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		39BB0B6E25A22222000F3E65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3949762225EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39089DFF25E1A464006E5603 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		39089E0325E1A4A8006E5603 /* BosniaRoadTraffic */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1025E1A4A8006E5603 /* MainViewController.swift */,
+				39089E0B25E1A4A8006E5603 /* AppBackground */,
+				39089E2625E1A4A8006E5603 /* Extensions */,
+				39089E1125E1A4A8006E5603 /* Radars */,
+				39089E4025E1A4A8006E5603 /* RoadConditions */,
+				39089E4E25E1A4A8006E5603 /* Services */,
+				39089E0425E1A4A8006E5603 /* Storyboards */,
+				39089E3125E1A4A8006E5603 /* Supporting Files */,
+			);
+			path = BosniaRoadTraffic;
+			sourceTree = "<group>";
+		};
+		39089E0425E1A4A8006E5603 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				39089E0525E1A4A8006E5603 /* LaunchScreen.storyboard */,
+				39089E0725E1A4A8006E5603 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		39089E0925E1A4A8006E5603 /* Adviser */ = {
+			isa = PBXGroup;
+			children = (
+				39089E0A25E1A4A8006E5603 /* Adviser.swift */,
+			);
+			path = Adviser;
+			sourceTree = "<group>";
+		};
+		39089E0B25E1A4A8006E5603 /* AppBackground */ = {
+			isa = PBXGroup;
+			children = (
+				39089E0C25E1A4A8006E5603 /* myLocation.gpx */,
+				39089E0E25E1A4A8006E5603 /* Info.plist */,
+				39089E0D25E1A4A8006E5603 /* AppDelegate.swift */,
+				39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */,
+			);
+			path = AppBackground;
+			sourceTree = "<group>";
+		};
+		39089E1125E1A4A8006E5603 /* Radars */ = {
+			isa = PBXGroup;
+			children = (
+				39089E2525E1A4A8006E5603 /* RadarsMapStoryboard.storyboard */,
+				39089E1425E1A4A8006E5603 /* RadarMarkerView.swift */,
+				39089E1225E1A4A8006E5603 /* RadarsMapViewController.swift */,
+				39089E1325E1A4A8006E5603 /* RadarsMapViewModel.swift */,
+				39089E1525E1A4A8006E5603 /* Details */,
+				39089E1E25E1A4A8006E5603 /* Filter */,
+				39089E1B25E1A4A8006E5603 /* Model */,
+			);
+			path = Radars;
+			sourceTree = "<group>";
+		};
+		39089E1525E1A4A8006E5603 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1625E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard */,
+				39089E1A25E1A4A8006E5603 /* RadarDetailsViewController.swift */,
+				39089E1725E1A4A8006E5603 /* Cell */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		39089E1725E1A4A8006E5603 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1825E1A4A8006E5603 /* RadarDetailsViewCell.swift */,
+				39089E1925E1A4A8006E5603 /* RadarDetailsViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		39089E1B25E1A4A8006E5603 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1D25E1A4A8006E5603 /* Radar+CoreDataClass.swift */,
+				39089E1C25E1A4A8006E5603 /* Radar+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39089E1E25E1A4A8006E5603 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1F25E1A4A8006E5603 /* RadarFilterStoryboard.storyboard */,
+				39089E2325E1A4A8006E5603 /* RadarFilterViewController.swift */,
+				39089E2425E1A4A8006E5603 /* RadarFilterViewModel.swift */,
+				39089E2025E1A4A8006E5603 /* Cell */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		39089E2025E1A4A8006E5603 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39089E2225E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift */,
+				39089E2125E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		39089E2625E1A4A8006E5603 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				39089E2825E1A4A8006E5603 /* Array+Extensions.swift */,
+				39089E2725E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift */,
+				39089E3025E1A4A8006E5603 /* Optional+Extensions.swift */,
+				39089E2C25E1A4A8006E5603 /* String+Extensions.swift */,
+				39089E2A25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift */,
+				39089E2D25E1A4A8006E5603 /* UIColor+Extensions.swift */,
+				39089E2E25E1A4A8006E5603 /* UIStoryboard+Extensions.swift */,
+				39089E2F25E1A4A8006E5603 /* UITableView+Extensions.swift */,
+				39089E2925E1A4A8006E5603 /* UIViewController+Extensions.swift */,
+				393A9DAE25E2E42500A3F952 /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		39089E3125E1A4A8006E5603 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39089E3225E1A4A8006E5603 /* Constants.swift */,
+				39089E3325E1A4A8006E5603 /* Database */,
+				39089E3725E1A4A8006E5603 /* MaterialDesign */,
+				39089E3A25E1A4A8006E5603 /* Translations */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39089E3325E1A4A8006E5603 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				39089E3625E1A4A8006E5603 /* ManagedObject.swift */,
+				39089EA625E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		39089E3725E1A4A8006E5603 /* MaterialDesign */ = {
+			isa = PBXGroup;
+			children = (
+				39089E3925E1A4A8006E5603 /* Assets.xcassets */,
+				39089E3825E1A4A8006E5603 /* Colors.xcassets */,
+			);
+			path = MaterialDesign;
+			sourceTree = "<group>";
+		};
+		39089E3A25E1A4A8006E5603 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				39089E3E25E1A4A8006E5603 /* Localization.swift */,
+				39089E3B25E1A4A8006E5603 /* Localizable.strings */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
+		39089E4025E1A4A8006E5603 /* RoadConditions */ = {
+			isa = PBXGroup;
+			children = (
+				39089E4925E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard */,
+				39089E4125E1A4A8006E5603 /* RoadConditionsViewController.swift */,
+				39089E4825E1A4A8006E5603 /* RoadConditionsViewModel.swift */,
+				39089E4D25E1A4A8006E5603 /* RoadSignMarkerView.swift */,
+				39089E4225E1A4A8006E5603 /* Details */,
+				39089E4A25E1A4A8006E5603 /* Model */,
+			);
+			path = RoadConditions;
+			sourceTree = "<group>";
+		};
+		39089E4225E1A4A8006E5603 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				39089E4325E1A4A8006E5603 /* RoadConditionsDetailsStoryboard.storyboard */,
+				39089E4425E1A4A8006E5603 /* RoadConditionsDetailsViewController.swift */,
+				39089E4525E1A4A8006E5603 /* Cell */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		39089E4525E1A4A8006E5603 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39089E4625E1A4A8006E5603 /* RoadConditionsDetailsViewCell.swift */,
+				39089E4725E1A4A8006E5603 /* RoadConditionsDetailsViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		39089E4A25E1A4A8006E5603 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39089E4B25E1A4A8006E5603 /* RoadSign+CoreDataClass.swift */,
+				39089E4C25E1A4A8006E5603 /* RoadSign+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39089E4E25E1A4A8006E5603 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				39089E5025E1A4A8006E5603 /* MainManager.swift */,
+				39089E5125E1A4A8006E5603 /* NetworkService.swift */,
+				39089E5225E1A4A8006E5603 /* PersistanceService.swift */,
+				39089E4F25E1A4A8006E5603 /* TrafficEndpoints.swift */,
+				39089E0925E1A4A8006E5603 /* Adviser */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		39BB0B6825A22222000F3E65 = {
+			isa = PBXGroup;
+			children = (
+				39089E0325E1A4A8006E5603 /* BosniaRoadTraffic */,
+				DAAAF1DB7814F250D70DD144 /* Frameworks */,
+				585DFAB00C34C8CA286937FA /* Pods */,
+				39BB0B7225A22222000F3E65 /* Products */,
+				39089DFF25E1A464006E5603 /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		39BB0B7225A22222000F3E65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39BB0B7125A22222000F3E65 /* Bosnia Road Traffic.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		585DFAB00C34C8CA286937FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DB9F63C6D9C0BEB2CE635 /* Pods-BosniaRoadTraffic.debug.xcconfig */,
+				3E4805181E7025EEB0BA66AC /* Pods-BosniaRoadTraffic.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DAAAF1DB7814F250D70DD144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39BB0B7025A22222000F3E65 /* BosniaRoadTraffic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39BB0B8825A22222000F3E65 /* Build configuration list for PBXNativeTarget "BosniaRoadTraffic" */;
+			buildPhases = (
+				B8AD43AE99C08C48027CA97A /* [CP] Check Pods Manifest.lock */,
+				39BB0B6D25A22222000F3E65 /* Sources */,
+				39BB0B6E25A22222000F3E65 /* Frameworks */,
+				39BB0B6F25A22222000F3E65 /* Resources */,
+				D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */,
+				3933E04325BC6651008ABBB3 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BosniaRoadTraffic;
+			productName = BosniaRoadConditionsApp;
+			productReference = 39BB0B7125A22222000F3E65 /* Bosnia Road Traffic.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39BB0B6925A22222000F3E65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = "Eldar Haseljic";
+				TargetAttributes = {
+					39BB0B7025A22222000F3E65 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = 39BB0B6C25A22222000F3E65 /* Build configuration list for PBXProject "BosniaRoadTraffic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+				bs,
+			);
+			mainGroup = 39BB0B6825A22222000F3E65;
+			productRefGroup = 39BB0B7225A22222000F3E65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39BB0B7025A22222000F3E65 /* BosniaRoadTraffic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39BB0B6F25A22222000F3E65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39089E6525E1A4A8006E5603 /* RadarFilterOptionTableViewCell.xib in Resources */,
+				39089E5425E1A4A8006E5603 /* Main.storyboard in Resources */,
+				39089E7925E1A4A8006E5603 /* Localizable.strings in Resources */,
+				39089E5625E1A4A8006E5603 /* myLocation.gpx in Resources */,
+				39089E6425E1A4A8006E5603 /* RadarFilterStoryboard.storyboard in Resources */,
+				39089E7725E1A4A8006E5603 /* Colors.xcassets in Resources */,
+				39089E6025E1A4A8006E5603 /* RadarDetailsViewCell.xib in Resources */,
+				39089E6925E1A4A8006E5603 /* RadarsMapStoryboard.storyboard in Resources */,
+				39089E5E25E1A4A8006E5603 /* RadarDetailsStoryboard.storyboard in Resources */,
+				39089E7C25E1A4A8006E5603 /* RoadConditionsDetailsStoryboard.storyboard in Resources */,
+				39089E7F25E1A4A8006E5603 /* RoadConditionsDetailsViewCell.xib in Resources */,
+				39089E5325E1A4A8006E5603 /* LaunchScreen.storyboard in Resources */,
+				39089E7825E1A4A8006E5603 /* Assets.xcassets in Resources */,
+				39089E8125E1A4A8006E5603 /* RoadConditionsStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8AD43AE99C08C48027CA97A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BosniaRoadTraffic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39BB0B6D25A22222000F3E65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39089E7A25E1A4A8006E5603 /* Localization.swift in Sources */,
+				39089E7E25E1A4A8006E5603 /* RoadConditionsDetailsViewCell.swift in Sources */,
+				39089E7125E1A4A8006E5603 /* UIStoryboard+Extensions.swift in Sources */,
+				39089E7625E1A4A8006E5603 /* ManagedObject.swift in Sources */,
+				39089E7B25E1A4A8006E5603 /* RoadConditionsViewController.swift in Sources */,
+				39089E6725E1A4A8006E5603 /* RadarFilterViewController.swift in Sources */,
+				39089E5C25E1A4A8006E5603 /* RadarsMapViewModel.swift in Sources */,
+				39089E5F25E1A4A8006E5603 /* RadarDetailsViewCell.swift in Sources */,
+				39089E5725E1A4A8006E5603 /* AppDelegate.swift in Sources */,
+				39089E8525E1A4A8006E5603 /* TrafficEndpoints.swift in Sources */,
+				39089E7325E1A4A8006E5603 /* Optional+Extensions.swift in Sources */,
+				39089E5A25E1A4A8006E5603 /* MainViewController.swift in Sources */,
+				39089E6D25E1A4A8006E5603 /* UIActivityIndicatorView+Extensions.swift in Sources */,
+				39089E5D25E1A4A8006E5603 /* RadarMarkerView.swift in Sources */,
+				39089E8825E1A4A8006E5603 /* PersistanceService.swift in Sources */,
+				39089E6325E1A4A8006E5603 /* Radar+CoreDataClass.swift in Sources */,
+				39089EA825E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld in Sources */,
+				39089E8025E1A4A8006E5603 /* RoadConditionsViewModel.swift in Sources */,
+				39089E5B25E1A4A8006E5603 /* RadarsMapViewController.swift in Sources */,
+				39089E8425E1A4A8006E5603 /* RoadSignMarkerView.swift in Sources */,
+				39089E7025E1A4A8006E5603 /* UIColor+Extensions.swift in Sources */,
+				393A9DAF25E2E42500A3F952 /* UIView+Extensions.swift in Sources */,
+				39089E6A25E1A4A8006E5603 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				39089E6225E1A4A8006E5603 /* Radar+CoreDataProperties.swift in Sources */,
+				39089E7425E1A4A8006E5603 /* Constants.swift in Sources */,
+				39089E6F25E1A4A8006E5603 /* String+Extensions.swift in Sources */,
+				39089E7225E1A4A8006E5603 /* UITableView+Extensions.swift in Sources */,
+				39089E6B25E1A4A8006E5603 /* Array+Extensions.swift in Sources */,
+				39089E6825E1A4A8006E5603 /* RadarFilterViewModel.swift in Sources */,
+				39089E8725E1A4A8006E5603 /* NetworkService.swift in Sources */,
+				39089E5925E1A4A8006E5603 /* SceneDelegate.swift in Sources */,
+				39089E6125E1A4A8006E5603 /* RadarDetailsViewController.swift in Sources */,
+				39089E5525E1A4A8006E5603 /* Adviser.swift in Sources */,
+				39089E7D25E1A4A8006E5603 /* RoadConditionsDetailsViewController.swift in Sources */,
+				39089E6625E1A4A8006E5603 /* RadarFilterOptionTableViewCell.swift in Sources */,
+				39089E8325E1A4A8006E5603 /* RoadSign+CoreDataProperties.swift in Sources */,
+				39089E8225E1A4A8006E5603 /* RoadSign+CoreDataClass.swift in Sources */,
+				39089E6C25E1A4A8006E5603 /* UIViewController+Extensions.swift in Sources */,
+				39089E8625E1A4A8006E5603 /* MainManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		39089E0525E1A4A8006E5603 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39089E0625E1A4A8006E5603 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		39089E0725E1A4A8006E5603 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39089E0825E1A4A8006E5603 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		39089E3B25E1A4A8006E5603 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39089E3C25E1A4A8006E5603 /* de */,
+				39089E3D25E1A4A8006E5603 /* en */,
+				39C1B51E25EAE4B000D6181C /* bs */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		39BB0B8625A22222000F3E65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		39BB0B8725A22222000F3E65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39BB0B8925A22222000F3E65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE9DB9F63C6D9C0BEB2CE635 /* Pods-BosniaRoadTraffic.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N79B4JKWQG;
+				INFOPLIST_FILE = BosniaRoadTraffic/AppBackground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosniaroadtraffic.bosniaroadtraffic;
+				PRODUCT_NAME = "Bosnia Road Traffic";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		39BB0B8A25A22222000F3E65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E4805181E7025EEB0BA66AC /* Pods-BosniaRoadTraffic.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N79B4JKWQG;
+				INFOPLIST_FILE = BosniaRoadTraffic/AppBackground/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bosniaroadtraffic.bosniaroadtraffic;
+				PRODUCT_NAME = "Bosnia Road Traffic";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39BB0B6C25A22222000F3E65 /* Build configuration list for PBXProject "BosniaRoadTraffic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BB0B8625A22222000F3E65 /* Debug */,
+				39BB0B8725A22222000F3E65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39BB0B8825A22222000F3E65 /* Build configuration list for PBXNativeTarget "BosniaRoadTraffic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39BB0B8925A22222000F3E65 /* Debug */,
+				39BB0B8A25A22222000F3E65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		39089EA625E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				39089EA725E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodel */,
+			);
+			currentVersion = 39089EA725E1A93F006E5603 /* BosniaRoadTrafficApp.xcdatamodel */;
+			path = BosniaRoadTraffic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 39BB0B6925A22222000F3E65 /* Project object */;
+}

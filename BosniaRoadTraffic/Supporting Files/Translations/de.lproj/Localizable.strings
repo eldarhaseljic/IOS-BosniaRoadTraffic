@@ -1,0 +1,41 @@
+/* 
+ Localizable.strings
+ Bosnia Road Traffic
+ 
+ Created by Eldar Haseljic on 1/20/21.
+ Copyright © 2021 Eldar Haseljic. All rights reserved.
+ */
+
+bosnia_road_traffic = "Straßenverkehr in Bosnien";
+announced_radar_controls = "Angekündigte Radarsteuerunge";
+close = "Schließen";
+street_name = "Straßenname: %@";
+stationary = "Stationär";
+announced = "Angekündigt";
+radar_type = "Radartyp: %@";
+radar_duration = "Radar aktiv von: %@ \nRadar aktiv bis: %@";
+apply = "Anwenden";
+cancel = "Stornieren";
+radar_locations = "Radarstandorte";
+road_conditions = "Straßenzustand";
+road_conditions_duration = "Von: %@ \nBis: %@";
+not_defined = "Nicht definiert";
+radars_info = "Radarinfo";
+no_data_found = "Keine Radargeräte gefunden, bitte versuchen Sie es später";
+ok = "OK";
+error_description = "Fehlerbeschreibung";
+location_service_disabled = "Der Ortungsdienst ist deaktiviert. Bitte aktivieren Sie ihn, damit die App Ihren Standort ermitteln kann";
+location_service = "Der Standortdienst ist auf '%@' eingestellt. Bitte aktualisieren Sie den Standortdienststatus, damit die App Ihren Standort ermitteln kann";
+unknown = "Unbekannt";
+database_error = "Beim Speichern neuer Daten in der Datenbank ist ein Fehler aufgetreten.Bei dieser Gelegenheit zeigen wir Ihnen alte Datenpositionen auf der Karte.Danke für Ihr Verständnis.";
+can_not_process_data = "Bei der Verarbeitung der Daten ist ein Fehler aufgetreten.Bei dieser Gelegenheit zeigen wir Ihnen alte Datenpositionen auf der Karte.Danke für Ihr Verständnis.";
+internal_error = "Ein interner Fehler ist aufgetreten. Bei dieser Gelegenheit werden Ihnen alte Datenpositionen auf einer Karte angezeigt.Danke für Ihr Verständnis.";
+thank_you_for_understanding = "%@\nBei dieser Gelegenheit werden Ihnen alte Datenpositionen auf einer Karte angezeigt.Danke für Ihr Verständnis.";
+request_error = "Ein Anforderungsfehler ist aufgetreten.";
+element_count = "%@ (%d)";
+error_url_message = "TBeim späteren Versuch, die URL von der Website zu verarbeiten, ist ein Fehler aufgetreten.";
+authorizedWhenInUse = "Autorisiert bei Verwendung";
+denied = "verweigert";
+notDetermined = "Nicht bestimmt";
+restricted = "eingeschränkt";
+authorizedAlways = "Autorisiert immer";
