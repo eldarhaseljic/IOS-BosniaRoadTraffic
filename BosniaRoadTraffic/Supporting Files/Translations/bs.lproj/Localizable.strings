@@ -21,6 +21,7 @@ road_conditions = "Uvjeti na cesti";
 road_conditions_duration = "Od: %@ \nDo: %@";
 not_defined = "Nije definirano";
 radars_info = "Podaci o radarima";
+no_road_conditions_found = "Nemamo informacija o stanju na putevima, molimo pokušajte kasnije";
 no_radars_found = "Nisu pronađeni radari, pokušajte kasnije";
 ok = "U redu";
 error_description = "Opis pogreške";

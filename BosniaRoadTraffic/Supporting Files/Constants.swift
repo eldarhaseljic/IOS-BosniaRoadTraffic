@@ -38,6 +38,8 @@ final class Constants {
         static let zabranaZaTeretnaVozila = "zabrana-za-teretna-vozila.png"
         static let zagusenje = "zagusenje.png"
         static let odron = "odron.png"
+        static let saobracajnaNezgoda = "saobracajna-nezgoda.png"
+        static let poledica = "poledica.png"
     }
     
     class BorderWidth {

@@ -24,6 +24,7 @@ let ROAD_ROAD_CONDITIONS_DURATION: String = NSLocalizedString("road_conditions_d
 let NOT_DEFINED: String = NSLocalizedString("not_defined", comment: "Not defined")
 let RADARS_INFO: String = NSLocalizedString("radars_info", comment: "Radars info")
 let NO_RADARS_FOUND: String = NSLocalizedString("no_radars_found", comment: "No radars found, please try later")
+let NO_ROAD_CONDITIONS_FOUND: String = NSLocalizedString("no_road_conditions_found", comment: "No informations about road conditions, please try leater")
 let OK: String = NSLocalizedString("ok", comment: "OK")
 let ERROR_DESCRIPTION: String = NSLocalizedString("error_description", comment: "Error description")
 let LOCATION_SERVICE_DISABLED: String = NSLocalizedString("location_service_disabled", comment: "The location service is disabled, please turn it on so the app can determine your location")

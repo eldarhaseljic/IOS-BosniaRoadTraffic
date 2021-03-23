@@ -99,6 +99,8 @@ enum RoadSignType: String {
     case zabranaZaTeretnaVozila
     case zagusenje
     case odron
+    case saobracajnaNezgoda
+    case poledica
     
     var rawValue: String {
         switch self {
@@ -114,6 +116,10 @@ enum RoadSignType: String {
             return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.zagusenje)
         case .odron:
             return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.odron)
+        case .saobracajnaNezgoda:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.saobracajnaNezgoda)
+        case .poledica:
+            return String(format: Constants.URLPaths.roadSignIcon, Constants.ImageTitles.poledica)
         }
     }
 }

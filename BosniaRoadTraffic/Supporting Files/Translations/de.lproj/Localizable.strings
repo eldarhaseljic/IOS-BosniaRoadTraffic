@@ -21,6 +21,7 @@ road_conditions = "Straßenzustand";
 road_conditions_duration = "Von: %@ \nBis: %@";
 not_defined = "Nicht definiert";
 radars_info = "Radarinfo";
+no_road_conditions_found = "Keine Informationen über den Straßenzustand, bitte versuchen Sie es später";
 no_data_found = "Keine Radargeräte gefunden, bitte versuchen Sie es später";
 ok = "OK";
 error_description = "Fehlerbeschreibung";

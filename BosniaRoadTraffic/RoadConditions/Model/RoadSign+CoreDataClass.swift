@@ -93,6 +93,10 @@ public class RoadSign: NSManagedObject, MKAnnotation {
             return #imageLiteral(resourceName: "zagusenje")
         case title == RoadSignType.odron.rawValue:
             return #imageLiteral(resourceName: "zagusenje")
+        case title == RoadSignType.saobracajnaNezgoda.rawValue:
+            return #imageLiteral(resourceName: "saobracajna-nezgoda")
+        case title == RoadSignType.poledica.rawValue:
+            return #imageLiteral(resourceName: "poledica")
         default:
             guard
                 let url = URL(string: title),
