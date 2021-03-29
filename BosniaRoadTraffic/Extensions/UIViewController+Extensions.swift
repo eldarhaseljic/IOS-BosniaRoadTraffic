@@ -20,7 +20,7 @@ extension UIViewController {
     }
     
     public var backButton: UIBarButtonItem {
-        UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self, action: #selector(tapBackButton))
+        return UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self, action: #selector(tapBackButton))
     }
     
     public var closeButton: UIBarButtonItem {
