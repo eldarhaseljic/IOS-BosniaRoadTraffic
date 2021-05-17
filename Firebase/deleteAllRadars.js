@@ -28,8 +28,6 @@ if (offset < 0) {
 db.collection("Radars").get().then((querySnapshot) => {
     querySnapshot.forEach((radar) => {
                 db.collection("Radars").doc(radar.id).delete().then(() => {
-                    console.log("currentDate:", currentDate)
-                    console.log("validToDate:", validToDate)
                     console.log(radar.data())
                     console.log("Document with id: ", radar.id, ",successfully deleted!");
                 }).catch((error) => {
