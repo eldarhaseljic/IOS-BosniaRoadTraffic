@@ -5,6 +5,8 @@
 //  Created by Eldar Haseljic on 2/5/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
+//  User from:
+//  https://gist.github.com/cozzin/d6c45b51905d56f0bc8b097bb6aa4ce8
 
 import Foundation
 
@@ -14,14 +16,11 @@ public protocol Emptiable {
 }
 
 extension Emptiable {
-    public var isNotEmpty: Bool {
-        return !isEmpty
-    }
+    public var isNotEmpty: Bool { return !isEmpty }
 }
 
-extension Dictionary: Emptiable { }
-extension Set: Emptiable { }
 extension Optional where Wrapped: Emptiable {
+    
     public var isNilOrEmtpy: Bool {
         switch self {
         case .none:
@@ -31,7 +30,5 @@ extension Optional where Wrapped: Emptiable {
         }
     }
     
-    public var isNotNilNotEmpty: Bool {
-        return !isNilOrEmtpy
-    }
+    public var isNotNilNotEmpty: Bool { return !isNilOrEmtpy }
 }

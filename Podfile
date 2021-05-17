@@ -6,12 +6,14 @@ target 'BosniaRoadTraffic' do
   use_frameworks!
   
   # Pods for BosniaRoadTraffic
-  pod 'RxSwift', '~> 4.0' 
-  pod 'RxCocoa', '~> 4.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase'
+  pod 'Firebase/Analytics'
 end
 
 deployment_target = '12.0'
-
 post_install do |installer|
   installer.generated_projects.each do |project|
     project.targets.each do |target|

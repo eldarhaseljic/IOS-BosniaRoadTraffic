@@ -14,6 +14,30 @@ class RadarsMapViewController: UIViewController {
     
     @IBOutlet var reloadMapButton: UIButton!
     @IBOutlet var mapTypeButton: UIButton!
+    @IBOutlet var radarPin: UIImageView!
+    @IBOutlet var reportContainer: UIStackView!
+    @IBOutlet var reportButton: UIButton!
+    
+    @IBOutlet var confirmReportButton: UIButton! {
+        didSet {
+            confirmReportButton.setTitle(REPORT, for: .normal)
+            confirmReportButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                                 borderColor: CustomColor.black.cgColor)
+            confirmReportButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                          shadowRadius: Constants.ShadowRadius.ThreePoints)
+        }
+    }
+    
+    @IBOutlet var cancelButton: UIButton! {
+        didSet {
+            cancelButton.setTitle(CANCEL,for: .normal)
+            cancelButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                          borderColor: CustomColor.black.cgColor)
+            cancelButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                   shadowRadius: Constants.ShadowRadius.ThreePoints)
+        }
+    }
+    
     @IBOutlet var containerView: UIView! {
         didSet {
             containerView.setRoundedBorder(borderWidth: Constants.BorderWidth.OnePoint,
@@ -31,14 +55,13 @@ class RadarsMapViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView! {
         didSet {
-            mapView.register(RadarMarkerView.self,
-                             forAnnotationViewWithReuseIdentifier:
+            mapView.register(RadarMarkerView.self, forAnnotationViewWithReuseIdentifier:
                                 MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
     }
     
     private let disposeBag = DisposeBag()
-    var viewModel: RadarsMapViewModel!
+    private var viewModel: RadarsMapViewModel!
     
     lazy var radarFilterViewController: RadarFilterViewController = {
         return RadarFilterViewController.getViewController()
@@ -46,17 +69,33 @@ class RadarsMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigationBar()
         setupObservers()
         loadingIndicatorView.startAnimating()
         viewModel.checkLocationServices()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
+    @objc
+    func willEnterForeground() {
+        reloadView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func setupObservers() {
         viewModel.userLocationStatus.bind(onNext: { [unowned self] isVisible in
             switch isVisible {
-            case .authorizedWhenInUse, .authorizedAlways:
+            case .authorizedWhenInUse,
+                 .authorizedAlways:
                 mapView.showsUserLocation = true
                 viewModel.fetchData()
             case .denied:
@@ -81,7 +120,7 @@ class RadarsMapViewController: UIViewController {
         
         viewModel.radarsArray.bind(onNext: { [unowned self] radars in
             print("Number of new radars: \(radars.count) \n \(radars)")
-            self.prepareMapAndFilter(with: radars)
+            prepareMapAndFilter(with: radars)
         })
         .disposed(by: disposeBag)
         
@@ -89,7 +128,7 @@ class RadarsMapViewController: UIViewController {
             presentAlert(title: adviser.title,
                          message: adviser.message,
                          buttonTitle: OK,
-                         handler: adviser.isError ? nil : { _ in tapBackButton(self) })
+                         handler: adviser.isError ? { _ in tapBackButton(self) } : nil)
         })
         .disposed(by: disposeBag)
         
@@ -103,20 +142,34 @@ class RadarsMapViewController: UIViewController {
         
         reloadMapButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            self.loadingIndicatorView.startAnimating()
-            self.reloadMapButton.isEnabled = false
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
-            self.viewModel.fetchData()
-        }
-        .disposed(by: disposeBag)
+            self.reloadScreen()
+        }.disposed(by: disposeBag)
         
-        mapTypeButton.rx.tap.bind { [weak self] in
-            guard let self = self else { return }
-            self.mapView.mapType = self.viewModel.currentMapType
-        }
-        .disposed(by: disposeBag)
+        mapTypeButton.rx.tap.bind { [unowned self] in
+            mapView.mapType = viewModel.currentMapType
+        }.disposed(by: disposeBag)
+        
+        reportButton.rx.tap.bind { [unowned self] in
+            setReportPinVisibility(isVisible: true)
+        }.disposed(by: disposeBag)
+        
+        cancelButton.rx.tap.bind { [unowned self] in
+            setReportPinVisibility()
+        }.disposed(by: disposeBag)
+        
+        confirmReportButton.rx.tap.bind { [unowned self] in
+            pushView(viewController: RadarReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView),
+                                                                              delegate: self))
+        }.disposed(by: disposeBag)
     }
     
+    private func reloadScreen() {
+        setReportPinVisibility()
+        loadingIndicatorView.startAnimating()
+        reloadMapButton.isEnabled = false
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        viewModel.fetchData()
+    }
     
     private func prepareMapAndFilter(with radars: [Radar]) {
         mapView.removeAnnotations(mapView.annotations)
@@ -132,6 +185,8 @@ class RadarsMapViewController: UIViewController {
             navigationItem.rightBarButtonItem?.isEnabled = true
         }
         
+        reportButton.isHidden = !Reachability.isConnectedToNetwork()
+        
         loadingIndicatorView.stopAnimating()
         delay(Constants.Time.TenSeconds) { [weak self] in
             guard let self = self else { return }
@@ -142,8 +197,8 @@ class RadarsMapViewController: UIViewController {
     private func setupNavigationBar() {
         title = RADAR_LOCATIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = filterButton(target: self,
-                                                         action: #selector(tapEditButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"), style: .done, target: self,
+                                                            action: #selector(tapEditButton))
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
@@ -154,6 +209,11 @@ class RadarsMapViewController: UIViewController {
     @objc
     public func tapEditButton(_ sender: Any) {
         presentView(viewController: radarFilterViewController)
+    }
+    
+    private func setReportPinVisibility(isVisible: Bool = false) {
+        reportContainer.isHidden = !isVisible
+        radarPin.isHidden = !isVisible
     }
 }
 
@@ -174,6 +234,13 @@ extension RadarsMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let radar = view.annotation as? Radar else { return }
+        setReportPinVisibility()
         presentView(viewController: RadarDetailsViewController.showDetails(for: radar))
     }
+}
+
+extension RadarsMapViewController: RadarReportProtocol {
+    
+    func backButtonTaped() { setReportPinVisibility() }
+    func reloadView() { reloadScreen() }
 }

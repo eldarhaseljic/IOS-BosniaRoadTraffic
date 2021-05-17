@@ -77,8 +77,7 @@ extension RadarFilterViewController: UITableViewDelegate, UITableViewDataSource 
                 self.viewModel.selectRadarType(index: indexPath.row,
                                                selected: isOn)
                 self.contextView.reloadData()
-            }
-            .disposed(by: cell.disposeBag)
+            }.disposed(by: cell.disposeBag)
         return cell
     }
 }

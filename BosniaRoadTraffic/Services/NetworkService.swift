@@ -14,7 +14,7 @@ enum CustomError: LocalizedError {
     case internalError
     case requestError
     
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .dataBaseError:
             return DATABASE_ERROR

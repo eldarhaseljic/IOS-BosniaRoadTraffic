@@ -11,9 +11,9 @@ import UIKit
 
 // Used from
 // https://stackoverflow.com/questions/24034544/dispatch-after-gcd-in-swift
-public func delay(_ delay:Double, closure: @escaping () -> ()) {
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay,
-                                  execute: closure)
+
+public func delay(_ delay: Double, closure: @escaping () -> ()) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: closure)
 }
 
 extension UIView {
@@ -38,5 +38,14 @@ extension UIView {
         layer.shadowOpacity = shadowOpacity
         layer.shadowOffset = shadowOffset
         
+    }
+    
+    public func setCornerRadius(cornerRadius: CGFloat? = nil, masksToBounds: Bool = false){
+        layer.masksToBounds = masksToBounds
+        if let cornerRadius = cornerRadius {
+            layer.cornerRadius = cornerRadius
+        } else {
+            layer.cornerRadius = frame.size.height / 2
+        }
     }
 }

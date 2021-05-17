@@ -16,7 +16,7 @@ extension Radar {
         return NSFetchRequest<Radar>(entityName: entityName)
     }
     
-    class func findOrCreate(_ radarId: NSNumber, context: NSManagedObjectContext) -> Radar {
+    class func findOrCreate(_ radarId: String, context: NSManagedObjectContext) -> Radar {
         let predicate = radarByIdPredicate(for: radarId)
         let program = findOrCreate(in: context, matching: predicate) { $0.id = radarId }
         return program
@@ -56,7 +56,7 @@ extension Radar {
         }
         
         if let title = radarJSON[RadarJSON.title.rawValue] as? String {
-            self.title = self.radarType == .announced ? ANNOUNCED_RADAR_CONTROLS : title
+            self.title = title
         }
     }
     
@@ -80,7 +80,7 @@ extension Radar: Managed {
         return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
     }
     
-    static func radarByIdPredicate(for radarId: NSNumber) -> NSPredicate {
+    static func radarByIdPredicate(for radarId: String) -> NSPredicate {
         return NSPredicate(format: "%K == %@", #keyPath(id), radarId)
     }
     

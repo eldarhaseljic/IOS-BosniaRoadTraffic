@@ -22,9 +22,8 @@ class RadarDetailsViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() { super .viewDidLoad() }
     private var currentRadar: Radar!
-    
-    override func viewDidLoad() { super.viewDidLoad() }
     
     func setData(for radar: Radar) {
         currentRadar = radar

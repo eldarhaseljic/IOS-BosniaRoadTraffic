@@ -119,15 +119,11 @@ final class RoadConditionsViewModel: NSObject {
     }
     
     private func showRoadConditons(roadConditions: [RoadSign], errorAdviser: Adviser? = nil) {
-        if roadConditions.isEmpty {
-            messageTransmitter.onNext(Adviser(title: ROAD_CONDITIONS, message: NO_ROAD_CONDITIONS_FOUND))
-        } else {
-            roadSignsInDatabase = roadConditions
-            roadSignsArray.onNext(roadSignsInDatabase)
-            if let errorAdviser = errorAdviser {
-                messageTransmitter.onNext(errorAdviser)
-            }
+        if let errorAdviser = errorAdviser {
+            messageTransmitter.onNext(errorAdviser)
         }
+        roadSignsInDatabase = roadConditions
+        roadSignsArray.onNext(roadSignsInDatabase)
     }
     
     func fetchData() {

@@ -42,12 +42,12 @@ class RadarDetailsViewCell: UITableViewCell {
         }
         
         if let text = radar.text, text.isNotEmpty {
-            descriptionLabel.text = text.withoutHtmlTags
+            descriptionLabel.text = String(format: DETAILS_DESCRIPTION, text.withoutHtmlTags)
             descriptionLabel.isHidden = false
         }
         
         if let validFrom = radar.validFrom, validFrom.isNotEmpty,
-           let validTo = radar.validTo, validTo.isNotEmpty {
+           let validTo = radar.validTo.isNotNilNotEmpty ? radar.validTo : NOT_DEFINED {
             durationLabel.text = String(format: RADAR_DURATION, validFrom, validTo)
             durationLabel.isHidden = false
         }

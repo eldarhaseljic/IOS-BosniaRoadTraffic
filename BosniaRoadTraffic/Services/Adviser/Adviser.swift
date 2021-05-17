@@ -15,7 +15,7 @@ class Adviser {
     var isError: Bool
     
     init(title: String, message: String, isError: Bool = false) {
-        self.title = title.localizedCapitalized
+        self.title = title.localizedUppercase
         self.message = message
         self.isError = isError
     }

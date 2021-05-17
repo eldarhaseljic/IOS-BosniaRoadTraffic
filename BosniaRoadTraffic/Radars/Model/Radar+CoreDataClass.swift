@@ -25,26 +25,12 @@ enum RadarJSON: String {
     case updatedAt = "updated_at"
 }
 
-enum RadarType: String {
-    case stationary
-    case announced
-    
-    var rawValue: String {
-        switch self {
-        case .stationary:
-            return STATIONARY
-        case .announced:
-            return ANNOUNCED
-        }
-    }
-}
-
 public class Radar: NSManagedObject, MKAnnotation {
     
     @NSManaged public var policeDepartmentID: NSNumber?
     @NSManaged public var policeDepartmentName: String?
     @NSManaged public var coordinates: String?
-    @NSManaged public var id: NSNumber?
+    @NSManaged public var id: String?
     @NSManaged public var road: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?

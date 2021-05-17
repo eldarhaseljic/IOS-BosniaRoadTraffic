@@ -84,8 +84,7 @@ class RoadConditionsViewController: UIViewController {
         viewModel.messageTransmitter.bind(onNext: { [unowned self] adviser in
             presentAlert(title: adviser.title,
                          message: adviser.message,
-                         buttonTitle: OK,
-                         handler: adviser.isError ? nil : { _ in tapBackButton(self) })
+                         buttonTitle: OK)
         })
         .disposed(by: disposeBag)
         
@@ -127,8 +126,10 @@ class RoadConditionsViewController: UIViewController {
     func setupNavigationBar() {
         title = ROAD_CONDITIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = infoButton(target: self,
-                                                         action: #selector(tapInfoButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "info.circle"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(tapInfoButton))
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     

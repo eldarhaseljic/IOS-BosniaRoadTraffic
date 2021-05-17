@@ -41,7 +41,7 @@ enum AuthorizationStatus: String {
 
 final class RadarsMapViewModel: NSObject {
     
-    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
+    private let mapTypes: [MKMapType] = [.standard, .hybrid]
     private let locationDistance: CLLocationDistance = 50000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
@@ -86,7 +86,9 @@ final class RadarsMapViewModel: NSObject {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: LOCATION_SERVICE_DISABLED ))
+            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
+                                              message: LOCATION_SERVICE_DISABLED,
+                                              isError: true))
         }
     }
     
@@ -127,51 +129,36 @@ final class RadarsMapViewModel: NSObject {
     }
     
     func handleRadarsData() {
-        showRadars(radars: radarsFRC.fetchedObjects ?? [])
+        let radars = radarsFRC.fetchedObjects ?? []
+        var errorAdviser: Adviser? = nil
+        if radars.count > radarsInDatabase.count {
+            errorAdviser = Adviser(title: RADARS_INFO, message: NEW_RADARS_FOUND)
+        }
+        showRadars(radars: radars, errorAdviser: errorAdviser)
     }
     
     private func showRadars(radars: [Radar], errorAdviser: Adviser? = nil) {
-        if radars.isEmpty {
-            messageTransmitter.onNext(Adviser(title: RADARS_INFO, message: NO_RADARS_FOUND))
-        } else {
-            radarsInDatabase = radars
-            radarsArray.onNext(radarsInDatabase)
-            if let errorAdviser = errorAdviser {
-                messageTransmitter.onNext(errorAdviser)
-            }
+        radarsInDatabase = radars
+        radarsArray.onNext(radarsInDatabase)
+        if let errorAdviser = errorAdviser {
+            messageTransmitter.onNext(errorAdviser)
         }
     }
     
     func fetchData() {
-        fetchNewRadars() { [weak self] (response,errorMessage) in
+        manager.getRadars { [weak self] (response,errorAdviser) in
             guard
                 let self = self,
                 let response = response,
-                let errorMessage = errorMessage
+                let errorAdviser = errorAdviser
             else {
                 print("Radars updated successfully")
                 return
             }
             
             DispatchQueue.main.async {
-                self.showRadars(radars: response,
-                                errorAdviser: Adviser(title: ERROR_DESCRIPTION,
-                                                      message: errorMessage,
-                                                      isError: true))
+                self.showRadars(radars: response, errorAdviser: errorAdviser)
             }
-        }
-    }
-    
-    private func fetchNewRadars(_ completion: ((_ success: [Radar]?, _ errorMessage: String?) -> Void)? = nil) {
-        manager.getRadars { (response, errorMessage) in
-            guard
-                let response = response,
-                let errorMessage = errorMessage
-            else {
-                completion?(nil, nil)
-                return
-            }
-            completion?(response,errorMessage)
         }
     }
     
@@ -184,6 +171,12 @@ final class RadarsMapViewModel: NSObject {
         }
         return mapType
     }
+    
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
 }
 
 extension RadarsMapViewModel: NSFetchedResultsControllerDelegate {
@@ -193,9 +186,6 @@ extension RadarsMapViewModel: NSFetchedResultsControllerDelegate {
 }
 
 extension RadarsMapViewModel: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != currentAuthorizationStatus {

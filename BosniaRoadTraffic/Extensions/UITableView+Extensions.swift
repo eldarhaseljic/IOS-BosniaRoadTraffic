@@ -5,6 +5,8 @@
 //  Created by Eldar Haseljic on 2/7/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
+//  Used some parts and updated:
+//  https://stackoverflow.com/questions/55964080/register-and-dequeue-uitableviewcell-of-specific-type
 
 import Foundation
 import UIKit

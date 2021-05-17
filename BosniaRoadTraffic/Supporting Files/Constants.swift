@@ -14,6 +14,7 @@ final class Constants {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
         static let RadarDetailsStoryboard = "RadarDetailsStoryboard"
         static let RadarFilterStoryboard = "RadarFilterStoryboard"
+        static let RadarReportStoryboard = "RadarReportStoryboard"
         static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
         static let RoadConditionsDetailsStoryboard = "RoadConditionsDetailsStoryboard"
     }
@@ -48,6 +49,7 @@ final class Constants {
     }
     
     class CornerRadius {
+        static let FourPoints: CGFloat = 4.0
         static let EightPoints: CGFloat = 8.0
     }
     

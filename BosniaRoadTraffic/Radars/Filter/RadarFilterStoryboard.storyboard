@@ -13,7 +13,7 @@
         <!--Radar Filter View Controller-->
         <scene sceneID="7sP-IB-8R5">
             <objects>
-                <viewController storyboardIdentifier="RadarFilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cO9-TP-h5y" customClass="RadarFilterViewController" customModule="BosniaRoadTrafficApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RadarFilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cO9-TP-h5y" customClass="RadarFilterViewController" customModule="Bosnia_Road_Traffic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FLd-4I-GpB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
