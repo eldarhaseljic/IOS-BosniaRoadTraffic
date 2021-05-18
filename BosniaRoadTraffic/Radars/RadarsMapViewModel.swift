@@ -133,6 +133,8 @@ final class RadarsMapViewModel: NSObject {
         var errorAdviser: Adviser? = nil
         if radars.count > radarsInDatabase.count {
             errorAdviser = Adviser(title: RADARS_INFO, message: NEW_RADARS_FOUND)
+        } else if Reachability.isConnectedToNetwork() == false {
+            errorAdviser = Adviser(title: RADARS_INFO, message: YOU_ARE_CURRENTLY_OFFLINE)
         }
         showRadars(radars: radars, errorAdviser: errorAdviser)
     }

@@ -54,3 +54,4 @@ details_description = "Detailed description:\n\n%@";
 done = "Done";
 enter_radar_title = "You need to enter a title for the radar";
 radar_successfully_reported = "Radar successfully reported!";
+you_are_currently_offline = "You are currently offline, please reconnect to fetch new data. Current data is old one.";

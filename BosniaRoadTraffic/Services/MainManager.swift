@@ -57,6 +57,7 @@ class MainManager {
     
     func getRadars(_ completion: ((_ success: [Radar]?, _ errorAdviser: Adviser?) -> Void)?) {
         let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
+        let connectionStatus = Reachability.isConnectedToNetwork()
         firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 errorAdviser.message = err.localizedDescription
@@ -67,38 +68,46 @@ class MainManager {
                 writeManagedObjectContext.perform {
                     let oldRadars = self.fetchRadars(objectContext: writeManagedObjectContext)
                     print("Number of old radars: \(oldRadars.count) \n \(oldRadars)")
-                    guard let radars = querySnapshot?.documents else {
-                        errorAdviser.message = CustomError.canNotProcessData.errorDescription
-                        completion?(oldRadars, errorAdviser)
-                        return
-                    }
                     
-                    var newRadarsIDs: [String] = []
-                    for currentRadar in radars {
-                        guard let radarID = currentRadar[RadarJSON.id.rawValue] as? String else { continue }
-                        newRadarsIDs.append(radarID)
-                        let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
-                        newRadar.fillRadarInfo(currentRadar.data())
-                        if newRadar.isCoordinateZero { writeManagedObjectContext.delete(newRadar) }
-                    }
-                    
-                    for oldRadar in oldRadars {
-                        if let oldRadarID = oldRadar.id,
-                           !newRadarsIDs.contains(oldRadarID) {
-                            writeManagedObjectContext.delete(oldRadar)
+                    switch connectionStatus {
+                    case true:
+                        guard let radars = querySnapshot?.documents else {
+                            errorAdviser.message = CustomError.canNotProcessData.errorDescription
+                            completion?(oldRadars, errorAdviser)
+                            return
                         }
-                    }
-                    
-                    let status = writeManagedObjectContext.saveOrRollback()
-                    if status {
-                        if radars.isEmpty {
-                            errorAdviser.title = RADARS_INFO
-                            errorAdviser.message = NO_RADARS_FOUND
+                        
+                        var newRadarsIDs: [String] = []
+                        for currentRadar in radars {
+                            guard let radarID = currentRadar[RadarJSON.id.rawValue] as? String else { continue }
+                            newRadarsIDs.append(radarID)
+                            let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
+                            newRadar.fillRadarInfo(currentRadar.data())
+                            if newRadar.isCoordinateZero { writeManagedObjectContext.delete(newRadar) }
+                        }
+                        
+                        for oldRadar in oldRadars {
+                            if let oldRadarID = oldRadar.id,
+                               !newRadarsIDs.contains(oldRadarID) {
+                                writeManagedObjectContext.delete(oldRadar)
+                            }
+                        }
+                        
+                        let status = writeManagedObjectContext.saveOrRollback()
+                        if status {
+                            if radars.isEmpty {
+                                errorAdviser.title = RADARS_INFO
+                                errorAdviser.message = NO_RADARS_FOUND
+                                completion?(oldRadars, errorAdviser)
+                            }
+                            completion?(nil, nil)
+                        } else {
+                            errorAdviser.message = CustomError.dataBaseError.errorDescription
                             completion?(oldRadars, errorAdviser)
                         }
-                        completion?(nil, nil)
-                    } else {
-                        errorAdviser.message = CustomError.dataBaseError.errorDescription
+                    case false:
+                        errorAdviser.title = RADARS_INFO
+                        errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
                         completion?(oldRadars, errorAdviser)
                     }
                 }

@@ -56,14 +56,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8CA2B001-F334-464A-B1F5-443F3953D048"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "getRadars(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "getRadars(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,19 +88,19 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EB2F0105-DE65-429F-8205-72C3807B85B4"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "fetchData()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "EB2F0105-DE65-429F-8205-72C3807B85B4 - 5b8b2080147877b"
+                  uuid = "EB2F0105-DE65-429F-8205-72C3807B85B4 - 5b8b208014787ff"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -110,12 +110,12 @@
                   urlString = "file:///Users/eldar.haseljic/Desktop/IOS/BosniaRoadTraffic/BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "158"
-                  endingLineNumber = "158"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
                   offsetFromSymbolStart = "508">
                </Location>
                <Location
-                  uuid = "EB2F0105-DE65-429F-8205-72C3807B85B4 - 4c9024b5a606049a"
+                  uuid = "EB2F0105-DE65-429F-8205-72C3807B85B4 - 4c9024b5a606041e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -125,8 +125,8 @@
                   urlString = "file:///Users/eldar.haseljic/Desktop/IOS/BosniaRoadTraffic/BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
                   offsetFromSymbolStart = "44">
                </Location>
             </Locations>
@@ -142,41 +142,9 @@
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "controllerDidChangeContent(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "715DDC1B-FF6A-4455-851E-9F685AEE51BB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "getRadars(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FA5BA6B7-3E6A-4809-AEB0-FC3FB80DCB7B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "getRadars(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -190,72 +158,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "getRadars(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "14EEF47C-1017-4D37-AEE4-754581016E9E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "getRadars(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "81B8E11E-C7D7-43A4-9088-9663D224B94E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "getRadars(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DEFFA445-22AC-4DB7-BC2D-D866A48F96FD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "getRadars(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AB1BF751-4F37-4F54-BB88-5D837BC5E661"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "getRadars(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +174,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "getRadars(_:)"
             landmarkType = "7">
             <Locations>
@@ -344,14 +248,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A44A80E2-65E9-4725-B40C-CE108106092E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "fetchData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +286,8 @@
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "controllerDidChangeContent(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,10 +302,10 @@
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "handleRadarsData()"
-            landmarkType = "7">
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "RadarsMapViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,10 +318,10 @@
             filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "handleRadarsData()"
-            landmarkType = "7">
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "RadarsMapViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -558,8 +462,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "addNewRadar(radarParameters:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,8 +478,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "addNewRadar(radarParameters:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -590,8 +494,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "addNewRadar(radarParameters:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -606,8 +510,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "getRoadConditions(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -622,8 +526,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "getRoadConditions(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -638,8 +542,8 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "getRoadConditions(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,9 +558,73 @@
             filePath = "BosniaRoadTraffic/Services/MainManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "getRoadConditions(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59A4E80E-613F-4A42-8FF9-149A39AC6B4E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "getRadars(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6641377-072A-4281-8DC9-C5C2A828198D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BosniaRoadTraffic/Services/MainManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getRadars(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "071FE6D6-BB07-449A-A872-C13C62540CC5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E0BA471-4668-49FC-94FD-B0DB348A53EA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BosniaRoadTraffic/Radars/RadarsMapViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "handleRadarsData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
