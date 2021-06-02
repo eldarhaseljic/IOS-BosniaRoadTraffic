@@ -93,21 +93,25 @@ class RadarReportViewCell: UITableViewCell {
     }
     
     private func handleApplyButton() {
-        if let radarType = self.viewModel.getRadarTypeId(for: self.radarTypePickerField.text) {
-            if let title = self.radarTitleContext.text, title.isNotEmpty {
-                self.loaderStatus.onNext(true)
-                self.viewModel.addNewRadar(policeDepartmentName: self.MUPTypePickerField.text, road: self.radarStreetContext.text, text: self.radarDetailContext.text, title: title, type: radarType) { [weak self] status,error in
+        if let radarType = viewModel.getRadarType(for: radarTypePickerField.text) {
+            if let title = radarTitleContext.text, title.isNotEmpty {
+                loaderStatus.onNext(true)
+                viewModel.addNewRadar(policeDepartmentName: MUPTypePickerField.text,
+                                      road: radarStreetContext.text,
+                                      text: radarDetailContext.text,
+                                      title: title,
+                                      type: radarType) { [weak self] status,error in
                     self?.messageTransmitter.onNext(Adviser(title: RADARS_INFO, message: error, isError: true))
                     self?.loaderStatus.onNext(false)
                 }
             } else {
-                self.messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: ENTER_RADAR_TITLE))
-                self.loaderStatus.onNext(false)
+                messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: ENTER_RADAR_TITLE))
+                loaderStatus.onNext(false)
                 return
             }
         } else {
-            self.messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: SELECT_RADAR_TYPE))
-            self.loaderStatus.onNext(false)
+            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: SELECT_RADAR_TYPE))
+            loaderStatus.onNext(false)
             return
         }
     }

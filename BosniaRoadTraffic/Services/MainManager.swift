@@ -11,6 +11,52 @@ import CoreData
 import FirebaseFirestore
 import UIKit
 
+enum CustomError: LocalizedError {
+    case canNotProcessData
+    case dataBaseError
+    case internalError
+    case requestError
+    
+    var errorDescription: String {
+        switch self {
+        case .dataBaseError:
+            return DATABASE_ERROR
+        case .canNotProcessData:
+            return CAN_NOT_PROCESS_DATA
+        case .internalError:
+            return INTERNAL_ERROR
+        case .requestError:
+            return REQUEST_ERROR
+        }
+    }
+}
+
+enum AuthorizationStatus: String {
+    case authorizedWhenInUse
+    case denied
+    case notDetermined
+    case restricted
+    case authorizedAlways
+    case error
+    
+    var translation: String {
+        switch self {
+        case .authorizedWhenInUse:
+            return AUTHORIZED_WHEN_IN_USE
+        case .denied:
+            return DENIED
+        case .notDetermined:
+            return NOT_DETERMINED
+        case .restricted:
+            return RESTRICTED
+        case .authorizedAlways:
+            return AUTHORIZED_ALWAYS
+        case .error:
+            return UNKNOWN
+        }
+    }
+}
+
 struct RadarParameters {
     var policeDepartmentID: Int?
     var policeDepartmentName: String?
@@ -24,10 +70,23 @@ struct RadarParameters {
     var updatedAt: String?
 }
 
+
+struct RoadConditionParameters {
+    var icon: String
+    var coordinates: String
+    var road: String?
+    var text: String?
+    var title: String
+    var validFrom: String?
+    var validTo: String?
+    var roadTypeID: Int
+    var roadTypeName: String
+    var updatedAt: String?
+}
+
 class MainManager {
     
     static let shared = MainManager()
-    private let networkService = NetworkService.shared
     private let persistanceService = PersistanceService.shared
     private let firestoreDataBase = Firestore.firestore()
     
@@ -55,22 +114,35 @@ class MainManager {
         return roadSigns
     }
     
+    private func fetchRoadFullReport(objectContext: NSManagedObjectContext) -> [RoadConditionDetails] {
+        let fetchRequest = NSFetchRequest<RoadConditionDetails>(entityName: RoadConditionDetails.entityName)
+        
+        var roadConditionDetailss = [RoadConditionDetails]()
+        do {
+            roadConditionDetailss = try objectContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+        return roadConditionDetailss
+    }
+    
     func getRadars(_ completion: ((_ success: [Radar]?, _ errorAdviser: Adviser?) -> Void)?) {
         let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
         let connectionStatus = Reachability.isConnectedToNetwork()
-        firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                errorAdviser.message = err.localizedDescription
-                completion?([], errorAdviser)
-                return
-            } else {
-                let writeManagedObjectContext = self.persistanceService.backgroundContext
-                writeManagedObjectContext.perform {
-                    let oldRadars = self.fetchRadars(objectContext: writeManagedObjectContext)
-                    print("Number of old radars: \(oldRadars.count) \n \(oldRadars)")
+        let writeManagedObjectContext = persistanceService.backgroundContext
+        let oldRadars = fetchRadars(objectContext: writeManagedObjectContext)
+        print("Number of old radars: \(oldRadars.count) \n \(oldRadars)")
+        switch connectionStatus {
+        case true:
+            firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    errorAdviser.message = err.localizedDescription
+                    completion?([], errorAdviser)
+                    return
+                } else {
                     
-                    switch connectionStatus {
-                    case true:
+                    writeManagedObjectContext.perform {
+                        
                         guard let radars = querySnapshot?.documents else {
                             errorAdviser.message = CustomError.canNotProcessData.errorDescription
                             completion?(oldRadars, errorAdviser)
@@ -105,42 +177,46 @@ class MainManager {
                             errorAdviser.message = CustomError.dataBaseError.errorDescription
                             completion?(oldRadars, errorAdviser)
                         }
-                    case false:
-                        errorAdviser.title = RADARS_INFO
-                        errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
-                        completion?(oldRadars, errorAdviser)
                     }
                 }
             }
+        case false:
+            errorAdviser.title = RADARS_INFO
+            errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
+            completion?(oldRadars, errorAdviser)
         }
     }
     
-    func getRoadConditions(_ completion: ((_ success: [RoadSign]?, _ error: String?) -> Void)?) {
-        networkService.request(TrafficEndponins.rodarInfo.endpoint) { [weak self] (result) in
-            guard let self = self else {
-                completion?([], CustomError.internalError.errorDescription)
-                return
-            }
-            
-            let writeManagedObjectContext = self.persistanceService.backgroundContext
-            
-            writeManagedObjectContext.perform {
-                let oldRoadSigns = self.fetchRoadSigns(objectContext: writeManagedObjectContext)
-                print("Number of old radars: \(oldRoadSigns.count) \n \(oldRoadSigns)")
-                switch result {
-                case .success(let data):
-                    do {
-                        guard let roadSigns = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
-                            completion?(oldRoadSigns, CustomError.canNotProcessData.errorDescription)
+    func getRoadConditions(_ completion: ((_ success: [RoadSign]?, _ errorAdviser: Adviser?) -> Void)?) {
+        let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
+        let connectionStatus = Reachability.isConnectedToNetwork()
+        let writeManagedObjectContext = persistanceService.backgroundContext
+        let oldRoadSigns = fetchRoadSigns(objectContext: writeManagedObjectContext)
+        print("Number of old radars: \(oldRoadSigns.count) \n \(oldRoadSigns)")
+        switch connectionStatus {
+        case true:
+            firestoreDataBase.collection("RoadConditions").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    errorAdviser.message = err.localizedDescription
+                    completion?([], errorAdviser)
+                    return
+                } else {
+                    
+                    writeManagedObjectContext.perform {
+                        
+                        guard let roadSigns = querySnapshot?.documents else {
+                            errorAdviser.message = CustomError.canNotProcessData.errorDescription
+                            completion?(oldRoadSigns, errorAdviser)
                             return
                         }
                         
-                        var newRoadSignsIDs: [NSNumber] = []
+                        var newRoadSignsIDs: [String] = []
                         for currentSign in roadSigns {
-                            guard let signID = currentSign[RoadSignJSON.id.rawValue] as? NSNumber else { continue }
+                            guard let signID = currentSign[RoadSignJSON.id.rawValue] as? String else { continue }
                             newRoadSignsIDs.append(signID)
                             let newSign = RoadSign.findOrCreate(signID, context: writeManagedObjectContext)
-                            newSign.fillSignInfo(currentSign)
+                            newSign.fillSignInfo(currentSign.data())
+                            if newSign.isCoordinateZero || newSign.hasNoIcon { writeManagedObjectContext.delete(newSign) }
                         }
                         
                         for oldSign in oldRoadSigns {
@@ -152,21 +228,64 @@ class MainManager {
                         
                         let status = writeManagedObjectContext.saveOrRollback()
                         if status {
+                            if roadSigns.isEmpty {
+                                errorAdviser.title = ROAD_CONDITIONS_INFO
+                                errorAdviser.message = NO_ROAD_CONDITIONS_FOUND
+                                completion?(oldRoadSigns, errorAdviser)
+                            }
                             completion?(nil, nil)
                         } else {
-                            completion?(oldRoadSigns, CustomError.dataBaseError.errorDescription)
+                            errorAdviser.message = CustomError.dataBaseError.errorDescription
+                            completion?(oldRoadSigns, errorAdviser)
                         }
-                    } catch {
-                        completion?(oldRoadSigns, String(format: THANK_YOU_FOR_UNDERSTANDING, error.localizedDescription))
                     }
-                case .failure(let error):
-                    completion?(oldRoadSigns, String(format: THANK_YOU_FOR_UNDERSTANDING, error.localizedDescription))
                 }
             }
+        case false:
+            errorAdviser.title = ROAD_CONDITIONS_INFO
+            errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
+            completion?(oldRoadSigns, errorAdviser)
         }
     }
     
-    func addNewRadar(radarParameters: RadarParameters, _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
+    func getRoadConditionFullReport(_ completion: (() -> Void)?) {
+        let writeManagedObjectContext = persistanceService.backgroundContext
+        let connectionStatus = Reachability.isConnectedToNetwork()
+        let oldRoadSigns = fetchRoadFullReport(objectContext: writeManagedObjectContext)
+        switch connectionStatus {
+        case true:
+            firestoreDataBase.collection("RoadConditionReport").getDocuments() { (querySnapshot, _) in
+                guard let roadConditionFullReports = querySnapshot?.documents else {
+                    completion?()
+                    return
+                }
+            
+                writeManagedObjectContext.perform {
+                    if roadConditionFullReports.isEmpty {
+                        oldRoadSigns.forEach({
+                            writeManagedObjectContext.delete($0)
+                        })
+                    } else {
+                        for roadConditionFullReport in roadConditionFullReports {
+                            guard let roadConditionFullReportID = roadConditionFullReport[RoadConditionDetailsJSON.id.rawValue] as? String else { continue }
+                            let newReport = RoadConditionDetails.findOrCreate(roadConditionFullReportID,
+                                                                              context: writeManagedObjectContext)
+                            newReport.fillInfo(roadConditionFullReport.data())
+                        }
+                    }
+                    
+                    let _ = writeManagedObjectContext.saveOrRollback()
+                    completion?()
+                }
+            }
+        case false:
+            completion?()
+            return
+        }
+    }
+    
+    func addNewRadar(radarParameters: RadarParameters,
+                     _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
         let ref = firestoreDataBase.collection("Radars")
         let docId = "RadarID-\(ref.document().documentID)"
         
@@ -187,6 +306,32 @@ class MainManager {
                 completion?(false, err.localizedDescription)
             } else {
                 completion?(true, RADAR_SUCCESSFULLY_REPORTED)
+            }
+        }
+    }
+    
+    func addNewRoadCondition(roadConditions: RoadConditionParameters,
+                             _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
+        let ref = firestoreDataBase.collection("RoadConditions")
+        let docId = "RoadConditionID-\(ref.document().documentID)"
+        
+        firestoreDataBase.collection("RoadConditions").document(docId).setData([
+            "id": docId,
+            "title": roadConditions.title ,
+            "coordinates": roadConditions.coordinates,
+            "icon": roadConditions.icon,
+            "road": roadConditions.road ?? NSNull(),
+            "valid_from": roadConditions.validFrom ?? NSNull(),
+            "valid_to": roadConditions.validTo ?? NSNull(),
+            "text": roadConditions.text ?? NSNull(),
+            "category_id": roadConditions.roadTypeID,
+            "category_name": roadConditions.roadTypeName,
+            "updated_at": roadConditions.updatedAt ?? NSNull()
+        ], merge: true) { err in
+            if let err = err {
+                completion?(false, err.localizedDescription)
+            } else {
+                completion?(true, ROAD_CONDITION_SUCCESSFULLY_REPORTED)
             }
         }
     }

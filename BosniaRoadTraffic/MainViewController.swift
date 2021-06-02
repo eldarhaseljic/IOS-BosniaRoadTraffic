@@ -9,6 +9,11 @@
 import RxSwift
 import RxCocoa
 
+protocol ReportProtocol: AnyObject {
+    func backButtonTaped()
+    func reloadView()
+}
+
 class MainViewController: UIViewController {
     
     @IBOutlet var facebookButton: UIButton!
@@ -20,8 +25,8 @@ class MainViewController: UIViewController {
         didSet {
             radarsButton.setTitle(RADAR_LOCATIONS, for: .normal)
             radarsButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                          borderColor: CustomColor.black.cgColor)
-            radarsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                          borderColor: AppColor.black.cgColor)
+            radarsButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
                                    shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
@@ -30,8 +35,8 @@ class MainViewController: UIViewController {
         didSet {
             roadConditionsButton.setTitle(ROAD_CONDITIONS, for: .normal)
             roadConditionsButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                                  borderColor: CustomColor.black.cgColor)
-            roadConditionsButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                                  borderColor: AppColor.black.cgColor)
+            roadConditionsButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
                                            shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
@@ -74,4 +79,3 @@ class MainViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
 }
-

@@ -22,8 +22,8 @@ class RadarsMapViewController: UIViewController {
         didSet {
             confirmReportButton.setTitle(REPORT, for: .normal)
             confirmReportButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                                 borderColor: CustomColor.black.cgColor)
-            confirmReportButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                                 borderColor: AppColor.black.cgColor)
+            confirmReportButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
                                           shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
@@ -32,8 +32,8 @@ class RadarsMapViewController: UIViewController {
         didSet {
             cancelButton.setTitle(CANCEL,for: .normal)
             cancelButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                          borderColor: CustomColor.black.cgColor)
-            cancelButton.setShadow(shadowColor: CustomColor.davysGrey.cgColor,
+                                          borderColor: AppColor.black.cgColor)
+            cancelButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
                                    shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
@@ -42,7 +42,7 @@ class RadarsMapViewController: UIViewController {
         didSet {
             containerView.setRoundedBorder(borderWidth: Constants.BorderWidth.OnePoint,
                                            cornerRadius: Constants.CornerRadius.EightPoints,
-                                           borderColor: CustomColor.slateGray.cgColor)
+                                           borderColor: AppColor.slateGray.cgColor)
         }
     }
     
@@ -69,6 +69,7 @@ class RadarsMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavigationBar()
         setupObservers()
         loadingIndicatorView.startAnimating()
@@ -145,8 +146,9 @@ class RadarsMapViewController: UIViewController {
             self.reloadScreen()
         }.disposed(by: disposeBag)
         
-        mapTypeButton.rx.tap.bind { [unowned self] in
-            mapView.mapType = viewModel.currentMapType
+        mapTypeButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.mapView.mapType = self.viewModel.currentMapType
         }.disposed(by: disposeBag)
         
         reportButton.rx.tap.bind { [unowned self] in
@@ -197,7 +199,9 @@ class RadarsMapViewController: UIViewController {
     private func setupNavigationBar() {
         title = RADAR_LOCATIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"), style: .done, target: self,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"),
+                                                            style: .done,
+                                                            target: self,
                                                             action: #selector(tapEditButton))
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
@@ -235,11 +239,11 @@ extension RadarsMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let radar = view.annotation as? Radar else { return }
         setReportPinVisibility()
-        presentView(viewController: RadarDetailsViewController.showDetails(for: radar))
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(radar: radar)))
     }
 }
 
-extension RadarsMapViewController: RadarReportProtocol {
+extension RadarsMapViewController: ReportProtocol {
     
     func backButtonTaped() { setReportPinVisibility() }
     func reloadView() { reloadScreen() }

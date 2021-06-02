@@ -10,21 +10,20 @@ import Foundation
 import UIKit
 
 final class Constants {
-    class StoryboardIdentifiers {
+    struct StoryboardIdentifiers {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
-        static let RadarDetailsStoryboard = "RadarDetailsStoryboard"
+        static let DetailsStoryboard = "DetailsStoryboard"
         static let RadarFilterStoryboard = "RadarFilterStoryboard"
         static let RadarReportStoryboard = "RadarReportStoryboard"
         static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
-        static let RoadConditionsDetailsStoryboard = "RoadConditionsDetailsStoryboard"
+        static let RoadConditionReportStoryboard = "RoadConditionReportStoryboard"
     }
     
-    class Identifiers {
+    struct Identifiers {
         static let Radar = "Radar"
     }
     
-    class URLPaths {
-        static let roadSignIcon = "https://bihamk.ba/assets/img/road-icons/%@"
+    struct URLPaths {
         static let facebookURL = "https://www.facebook.com"
         static let instagramURL = "https://www.instagram.com"
         static let twitterURL = "https://www.twitter.com"
@@ -32,33 +31,34 @@ final class Constants {
         static let errorURL = "error url"
     }
     
-    class ImageTitles {
-        static let carina = "carina.png"
-        static let sanacijaKolovoza = "sanacija-kolovoza.png"
-        static let potpunaObustava = "potpuna-obustava.png"
-        static let zabranaZaTeretnaVozila = "zabrana-za-teretna-vozila.png"
-        static let zagusenje = "zagusenje.png"
-        static let odron = "odron.png"
-        static let saobracajnaNezgoda = "saobracajna-nezgoda.png"
-        static let poledica = "poledica.png"
+    struct ImageTitles {
+        static let border_crossings = "carina.png"
+        static let road_rehabilitation = "sanacija_kolovoza.png"
+        static let complete_suspension = "potpuna_obustava.png"
+        static let prohibition_for_trucks = "zabrana_za_teretna_vozila.png"
+        static let congestion = "zagusenje.png"
+        static let landslide = "odron.png"
+        static let traffic_accident = "saobracajna_nezgoda.png"
+        static let glaze = "poledica.png"
+        static let danger = "opasnost.png"
     }
     
-    class BorderWidth {
+    struct BorderWidth {
         static let OnePoint: CGFloat = 1.0
         static let TwoPoints: CGFloat = 2.0
     }
     
-    class CornerRadius {
+    struct CornerRadius {
         static let FourPoints: CGFloat = 4.0
         static let EightPoints: CGFloat = 8.0
     }
     
-    class ShadowRadius {
+    struct ShadowRadius {
         static let HalfPoint: CGFloat = 0.5
         static let ThreePoints: CGFloat = 3.0
     }
     
-    class Time {
+    struct Time {
         static let TenSeconds: Double = 10.0
     }
 }

@@ -5,6 +5,8 @@
 //  Created by Eldar Haseljic on 5/15/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
+//  Used form:
+//  https://stackoverflow.com/a/39782859
 
 import Foundation
 import SystemConfiguration

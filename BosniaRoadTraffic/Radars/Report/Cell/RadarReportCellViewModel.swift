@@ -14,7 +14,7 @@ class RadarReportCellViewModel {
     private var location: CLLocation!
     private let manager: MainManager!
     private var radarTypes: [RadarType] = [.announced, .stationary]
-    private var MUPs: [PoliceDepartmentType] = [
+    private var MUPs: [PoliceDepartment] = [
         .bosansko_podrinjski_kanton,
         .brcko_distrikt,
         .hercegovacko_neretvanski_kanton,
@@ -56,15 +56,15 @@ class RadarReportCellViewModel {
     }
     
     func getMUPType(for row: Int) -> String? {
-        return MUPs[safeIndex: row]?.policeDepartmentName
+        return MUPs[safeIndex: row]?.name
     }
     
-    func getRadarTypeId(for radarTypeString: String?) -> RadarType? {
+    func getRadarType(for radarTypeString: String?) -> RadarType? {
         return radarTypes.first(where: { $0.rawValue == radarTypeString })
     }
     
     private func getPoliceDepartmentID(for MUPTypeString: String?) -> Int? {
-        return MUPs.first(where: { $0.policeDepartmentName == MUPTypeString })?.policeDepartmentID
+        return MUPs.first(where: { $0.name == MUPTypeString })?.id
     }
     
     func addNewRadar(policeDepartmentName: String?, road: String?, text: String?, title: String, type: RadarType, _ completion: ((_ success: Bool, _ error: String) -> Void)?) {

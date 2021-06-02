@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Road Condition Report View Controller-->
+        <scene sceneID="et6-ZG-Ym7">
+            <objects>
+                <viewController storyboardIdentifier="RoadConditionReportViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rmf-31-MY9" customClass="RoadConditionReportViewController" customModule="Bosnia_Road_Traffic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZHu-Fb-MqY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8oS-2C-1D8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="CadetBlueCrayola"/>
+                                <color key="tintColor" name="DarkGrey"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Rmf-31-MY9" id="h1s-N3-xXl"/>
+                                    <outlet property="delegate" destination="Rmf-31-MY9" id="sFT-i0-6gZ"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DRa-kF-hsA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
+                                <color key="color" name="DavysGrey"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y5A-kV-IKh"/>
+                        <color key="backgroundColor" name="CadetBlueCrayola"/>
+                        <constraints>
+                            <constraint firstItem="8oS-2C-1D8" firstAttribute="top" secondItem="ZHu-Fb-MqY" secondAttribute="top" id="BFM-jC-Qhn"/>
+                            <constraint firstAttribute="bottom" secondItem="8oS-2C-1D8" secondAttribute="bottom" id="Nc5-2g-Yuv"/>
+                            <constraint firstItem="DRa-kF-hsA" firstAttribute="trailing" secondItem="y5A-kV-IKh" secondAttribute="trailing" id="Rwp-oB-UjY"/>
+                            <constraint firstItem="8oS-2C-1D8" firstAttribute="leading" secondItem="y5A-kV-IKh" secondAttribute="leading" id="lGS-Aa-sHb"/>
+                            <constraint firstItem="DRa-kF-hsA" firstAttribute="top" secondItem="ZHu-Fb-MqY" secondAttribute="top" id="n7D-NW-0t8"/>
+                            <constraint firstItem="DRa-kF-hsA" firstAttribute="leading" secondItem="y5A-kV-IKh" secondAttribute="leading" id="pDI-yI-1h6"/>
+                            <constraint firstAttribute="bottom" secondItem="DRa-kF-hsA" secondAttribute="bottom" id="x7Q-76-06N"/>
+                            <constraint firstItem="8oS-2C-1D8" firstAttribute="trailing" secondItem="y5A-kV-IKh" secondAttribute="trailing" id="yzp-Vl-nx3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contextView" destination="8oS-2C-1D8" id="CuJ-Jz-dBr"/>
+                        <outlet property="loadingIndicatorView" destination="DRa-kF-hsA" id="usX-tm-iwp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgN-px-Lrd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4306" y="-393"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="CadetBlueCrayola">
+            <color red="0.67799997329711914" green="0.70999997854232788" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGrey">
+            <color red="0.1289999932050705" green="0.14499999582767487" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DavysGrey">
+            <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

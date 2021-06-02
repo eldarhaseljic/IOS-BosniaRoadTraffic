@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-public protocol Managed: AnyObject, NSFetchRequestResult {
+public protocol Managed: NSFetchRequestResult {
     static var entity: NSEntityDescription { get }
     static var entityName: String { get }
 }

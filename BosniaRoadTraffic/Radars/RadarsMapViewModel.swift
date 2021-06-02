@@ -13,32 +13,6 @@ import CoreData
 import Foundation
 import CoreLocation
 
-enum AuthorizationStatus: String {
-    case authorizedWhenInUse
-    case denied
-    case notDetermined
-    case restricted
-    case authorizedAlways
-    case error
-    
-    var translation: String {
-        switch self {
-        case .authorizedWhenInUse:
-            return AUTHORIZED_WHEN_IN_USE
-        case .denied:
-            return DENIED
-        case .notDetermined:
-            return NOT_DETERMINED
-        case .restricted:
-            return RESTRICTED
-        case .authorizedAlways:
-            return AUTHORIZED_ALWAYS
-        case .error:
-            return UNKNOWN
-        }
-    }
-}
-
 final class RadarsMapViewModel: NSObject {
     
     private let mapTypes: [MKMapType] = [.standard, .hybrid]

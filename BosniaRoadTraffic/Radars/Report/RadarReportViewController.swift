@@ -10,11 +10,6 @@ import UIKit
 import RxSwift
 import MapKit
 
-protocol RadarReportProtocol: AnyObject {
-    func backButtonTaped()
-    func reloadView()
-}
-
 class RadarReportViewController: UIViewController {
     
     @IBOutlet var contextView: UITableView! {
@@ -32,7 +27,7 @@ class RadarReportViewController: UIViewController {
     
     private var location: CLLocation!
     private var disposeBag: DisposeBag = DisposeBag()
-    weak var delegate: RadarReportProtocol?
+    weak var delegate: ReportProtocol?
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -54,7 +49,7 @@ class RadarReportViewController: UIViewController {
     }
     
     
-    func setData(location: CLLocation, delegate: RadarReportProtocol? = nil) {
+    func setData(location: CLLocation, delegate: ReportProtocol? = nil) {
         self.location = location
         self.delegate = delegate
     }
@@ -91,7 +86,7 @@ extension RadarReportViewController {
             .instantiateViewControllerWithIdentifier(RadarReportViewController.self)!
     }
     
-    static func showReportPage(for location: CLLocation, delegate: RadarReportProtocol? = nil) -> RadarReportViewController {
+    static func showReportPage(for location: CLLocation, delegate: ReportProtocol? = nil) -> RadarReportViewController {
         let radarReportViewController = RadarReportViewController.getViewController()
         radarReportViewController.setData(location: location, delegate: delegate)
         return radarReportViewController

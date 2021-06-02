@@ -14,11 +14,36 @@ class RoadConditionsViewController: UIViewController {
     
     @IBOutlet var reloadMapButton: UIButton!
     @IBOutlet var mapTypeButton: UIButton!
+    @IBOutlet var roadConditionPin: UIImageView!
+    @IBOutlet var reportContainer: UIStackView!
+    @IBOutlet var reportButton: UIButton!
+    
+    @IBOutlet var confirmReportButton: UIButton! {
+        didSet {
+            confirmReportButton.setTitle(REPORT,
+                                         for: .normal)
+            confirmReportButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                                 borderColor: AppColor.black.cgColor)
+            confirmReportButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
+                                          shadowRadius: Constants.ShadowRadius.ThreePoints)
+        }
+    }
+    
+    @IBOutlet var cancelButton: UIButton! {
+        didSet {
+            cancelButton.setTitle(CANCEL,for: .normal)
+            cancelButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                          borderColor: AppColor.black.cgColor)
+            cancelButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
+                                   shadowRadius: Constants.ShadowRadius.ThreePoints)
+        }
+    }
+    
     @IBOutlet var containerView: UIView! {
         didSet {
             containerView.setRoundedBorder(borderWidth: Constants.BorderWidth.OnePoint,
                                            cornerRadius: Constants.CornerRadius.EightPoints,
-                                           borderColor: CustomColor.slateGray.cgColor)
+                                           borderColor: AppColor.slateGray.cgColor)
         }
     }
     
@@ -38,7 +63,7 @@ class RoadConditionsViewController: UIViewController {
     }
     
     private let disposeBag = DisposeBag()
-    var viewModel: RoadConditionsViewModel!
+    private var viewModel: RoadConditionsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +74,27 @@ class RoadConditionsViewController: UIViewController {
         viewModel.checkLocationServices()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(willEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
+    @objc
+    func willEnterForeground() {
+        reloadView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func setupObservers() {
         viewModel.userLocationStatus.bind(onNext: { [unowned self] isVisible in
             switch isVisible {
-            case .authorizedWhenInUse, .authorizedAlways:
+            case .authorizedWhenInUse,
+                 .authorizedAlways:
                 mapView.showsUserLocation = true
                 viewModel.fetchData()
             case .denied:
@@ -84,24 +126,41 @@ class RoadConditionsViewController: UIViewController {
         viewModel.messageTransmitter.bind(onNext: { [unowned self] adviser in
             presentAlert(title: adviser.title,
                          message: adviser.message,
-                         buttonTitle: OK)
+                         buttonTitle: OK,
+                         handler: adviser.isError ? { _ in
+                            tapBackButton(self) } : nil)
         })
         .disposed(by: disposeBag)
         
         reloadMapButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            self.loadingIndicatorView.startAnimating()
-            self.reloadMapButton.isEnabled = false
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
-            self.viewModel.fetchData()
-        }
-        .disposed(by: disposeBag)
+            self.reloadScreen()
+        }.disposed(by: disposeBag)
         
         mapTypeButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.mapView.mapType = self.viewModel.currentMapType
-        }
-        .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
+        
+        reportButton.rx.tap.bind { [unowned self] in
+            setReportPinVisibility(isVisible: true)
+        }.disposed(by: disposeBag)
+        
+        cancelButton.rx.tap.bind { [unowned self] in
+            setReportPinVisibility()
+        }.disposed(by: disposeBag)
+        
+        confirmReportButton.rx.tap.bind { [unowned self] in
+            pushView(viewController: RoadConditionReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView), delegate: self))
+        }.disposed(by: disposeBag)
+    }
+    
+    private func reloadScreen() {
+        setReportPinVisibility()
+        loadingIndicatorView.startAnimating()
+        reloadMapButton.isEnabled = false
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        viewModel.fetchData()
     }
     
     private func prepareMap(with roadSigns: [RoadSign]) {
@@ -112,9 +171,11 @@ class RoadConditionsViewController: UIViewController {
             mapView.setRegion(currentLocation, animated: true)
         }
         
-        if viewModel.getRoadConditionsInfo() != nil {
+        if viewModel.getRoadConditionsDetails() != nil {
             navigationItem.rightBarButtonItem?.isEnabled = true
         }
+        
+        reportButton.isHidden = !Reachability.isConnectedToNetwork()
         
         loadingIndicatorView.stopAnimating()
         delay(Constants.Time.TenSeconds) { [weak self] in
@@ -139,10 +200,13 @@ class RoadConditionsViewController: UIViewController {
     
     @objc
     public func tapInfoButton(_ sender: Any) {
-        guard let roadSign = viewModel.getRoadConditionsInfo() else {
-            return
-        }
-        presentView(viewController: RoadConditionsDetailsViewController.showDetails(for: roadSign))
+        guard let roadDetails = viewModel.getRoadConditionsDetails() else { return }
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(roadDetails: roadDetails)))
+    }
+    
+    private func setReportPinVisibility(isVisible: Bool = false) {
+        reportContainer.isHidden = !isVisible
+        roadConditionPin.isHidden = !isVisible
     }
 }
 
@@ -163,6 +227,17 @@ extension RoadConditionsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let roadSign = view.annotation as? RoadSign else { return }
-        presentView(viewController: RoadConditionsDetailsViewController.showDetails(for: roadSign))
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(roadSign: roadSign)))
+    }
+}
+
+extension RoadConditionsViewController: ReportProtocol {
+    
+    func backButtonTaped() {
+        setReportPinVisibility()
+    }
+    
+    func reloadView() {
+        reloadScreen()
     }
 }

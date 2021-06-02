@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="735" id="4x4-Ak-2k0" customClass="RoadConditionReportViewCell" customModule="Bosnia_Road_Traffic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="735"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4x4-Ak-2k0" id="6pj-MA-05U">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="735"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RFl-P7-UPb">
+                        <rect key="frame" x="16" y="32" width="323" height="668"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbN-7e-WF2">
+                                <rect key="frame" x="0.0" y="0.0" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="D9C-KK-TGV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CI-1r-3WW">
+                                <rect key="frame" x="0.0" y="39" width="323" height="34"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="zPv-53-boS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
+                                <color key="textColor" name="White"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-YF-ilG">
+                                <rect key="frame" x="0.0" y="88" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="dYW-wd-Kra"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Label" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jfz-hG-PYj">
+                                <rect key="frame" x="0.0" y="127" width="323" height="34"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <color key="tintColor" name="SlateGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="qMp-DY-WuK"/>
+                                </constraints>
+                                <color key="textColor" name="White"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6pj-MA-05U" id="3Y5-kh-W9f"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LK-er-V5K">
+                                <rect key="frame" x="0.0" y="176" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="okt-f9-cVN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LWa-bc-lxX">
+                                <rect key="frame" x="0.0" y="215" width="323" height="64"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <color key="tintColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="gdZ-dr-qb5"/>
+                                </constraints>
+                                <color key="textColor" name="White"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSD-VP-aIL">
+                                <rect key="frame" x="0.0" y="294" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="RCq-kx-E1r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-mq-g4G">
+                                <rect key="frame" x="0.0" y="333" width="323" height="64"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <color key="tintColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="6oT-Sy-9es"/>
+                                </constraints>
+                                <color key="textColor" name="White"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEP-Ie-SFJ">
+                                <rect key="frame" x="0.0" y="412" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="RZf-IE-IXe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Label" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kLp-ER-O2T">
+                                <rect key="frame" x="0.0" y="451" width="323" height="34"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <color key="tintColor" name="SlateGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="B6S-Ym-1s5"/>
+                                </constraints>
+                                <color key="textColor" name="White"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="organization"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6pj-MA-05U" id="Z7c-Pm-ppD"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh3-2K-FR7">
+                                <rect key="frame" x="0.0" y="500" width="323" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="qOZ-gC-6w8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GeO-FR-RZa">
+                                <rect key="frame" x="0.0" y="539" width="323" height="64"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <color key="tintColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="RTf-kX-CPc"/>
+                                </constraints>
+                                <color key="textColor" name="White"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-dF-csw">
+                                <rect key="frame" x="0.0" y="618" width="323" height="50"/>
+                                <color key="backgroundColor" name="SlateGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="icI-u7-E1n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RFl-P7-UPb" secondAttribute="bottom" constant="32" id="5Zd-zd-DUb"/>
+                    <constraint firstAttribute="trailing" secondItem="RFl-P7-UPb" secondAttribute="trailing" constant="16" id="7s1-6y-epi"/>
+                    <constraint firstItem="RFl-P7-UPb" firstAttribute="leading" secondItem="6pj-MA-05U" secondAttribute="leading" constant="16" id="bxN-or-vmV"/>
+                    <constraint firstItem="RFl-P7-UPb" firstAttribute="top" secondItem="6pj-MA-05U" secondAttribute="top" constant="32" id="xpd-Zc-UyU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Ywc-lP-292"/>
+            <color key="backgroundColor" name="CadetBlueCrayola"/>
+            <connections>
+                <outlet property="applyButton" destination="yRT-dF-csw" id="Npb-fX-Mph"/>
+                <outlet property="conditionSingLabel" destination="CEP-Ie-SFJ" id="jeH-Y1-wY3"/>
+                <outlet property="conditionSingPickerField" destination="kLp-ER-O2T" id="4xR-Iw-VAF"/>
+                <outlet property="roadConditionCoordinatesTitle" destination="kbN-7e-WF2" id="Gi9-7n-6Pv"/>
+                <outlet property="roadConditionCordinatesContext" destination="9CI-1r-3WW" id="S8i-39-paq"/>
+                <outlet property="roadConditionDetailContext" destination="GeO-FR-RZa" id="nDa-6E-EeD"/>
+                <outlet property="roadConditionDetailLabel" destination="mh3-2K-FR7" id="TWS-TR-KJ3"/>
+                <outlet property="roadConditionStreetContext" destination="qzR-mq-g4G" id="Xb2-Ex-oQV"/>
+                <outlet property="roadConditionStreetLabel" destination="rSD-VP-aIL" id="yaQ-e7-bsW"/>
+                <outlet property="roadConditionTitleContext" destination="LWa-bc-lxX" id="AOk-lX-Pg7"/>
+                <outlet property="roadConditionTitleLabel" destination="3LK-er-V5K" id="oEV-Se-6Wc"/>
+                <outlet property="roadTypeLabel" destination="ahh-YF-ilG" id="3CD-PF-TtL"/>
+                <outlet property="roadTypePickerField" destination="Jfz-hG-PYj" id="qZM-2S-txD"/>
+            </connections>
+            <point key="canvasLocation" x="63.04347826086957" y="388.72767857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="CadetBlueCrayola">
+            <color red="0.67799997329711914" green="0.70999997854232788" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SlateGray">
+            <color red="0.42399999499320984" green="0.45899999141693115" blue="0.49000000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
