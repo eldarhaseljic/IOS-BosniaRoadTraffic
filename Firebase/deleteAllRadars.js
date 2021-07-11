@@ -27,11 +27,11 @@ if (offset < 0) {
 
 db.collection("Radars").get().then((querySnapshot) => {
     querySnapshot.forEach((radar) => {
-                db.collection("Radars").doc(radar.id).delete().then(() => {
-                    console.log(radar.data())
-                    console.log("Document with id: ", radar.id, ",successfully deleted!");
-                }).catch((error) => {
-                    console.error("Error removing document: ", error);
-                });
+        db.collection("Radars").doc(radar.id).delete().then(() => {
+            console.log(radar.data())
+            console.log("Document with id: ", radar.id, ",successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
     });
 });

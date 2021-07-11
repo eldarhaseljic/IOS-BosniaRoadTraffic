@@ -22,6 +22,7 @@ enum RoadSignJSON: String {
     case text
     case categoryID = "category_id"
     case categoryName = "category_name"
+    case numberOfDeletions
     case updatedAt = "updated_at"
 }
 
@@ -37,6 +38,7 @@ public class RoadSign: NSManagedObject, MKAnnotation {
     @NSManaged public var title: String?
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
+    @NSManaged public var numberOfDeletions: NSNumber
     
     public var locationName: String? {
         if text.isNotNilNotEmpty {
@@ -60,6 +62,10 @@ public class RoadSign: NSManagedObject, MKAnnotation {
         return iconTitle.isNilOrEmtpy
     }
     
+    var shouldDeleteRoadSing: Bool {
+        return isCoordinateZero || hasNoIcon || numberOfDeletions.intValue > 5
+    }
+    
     public var coordinate: CLLocationCoordinate2D {
         guard
             let latitudeAndLongitude = coordinates?.split(separator: ","),
@@ -74,9 +80,7 @@ public class RoadSign: NSManagedObject, MKAnnotation {
     }
     
     var image: UIImage {
-        guard let title = iconTitle else { return #imageLiteral(resourceName: "opasnost") }
-        
-        switch title {
+        switch iconTitle {
         case SignIcon.border_crossings.icon:
             return #imageLiteral(resourceName: "carina")
         case SignIcon.road_rehabilitation.icon:
@@ -88,15 +92,36 @@ public class RoadSign: NSManagedObject, MKAnnotation {
         case SignIcon.congestion.icon:
             return #imageLiteral(resourceName: "zagusenje")
         case SignIcon.landslide.icon:
-            return #imageLiteral(resourceName: "zagusenje")
+            return #imageLiteral(resourceName: "odron")
         case SignIcon.traffic_accident.icon:
             return #imageLiteral(resourceName: "saobracajna_nezgoda")
         case SignIcon.glaze.icon:
             return #imageLiteral(resourceName: "poledica")
-        case SignIcon.danger.icon:
-            return #imageLiteral(resourceName: "opasnost")
         default:
             return #imageLiteral(resourceName: "opasnost")
+        }
+    }
+    
+    var roadSignType: SignIcon {
+        switch iconTitle {
+        case Constants.ImageTitles.border_crossings:
+            return .border_crossings
+        case Constants.ImageTitles.road_rehabilitation:
+            return .road_rehabilitation
+        case Constants.ImageTitles.complete_suspension:
+            return .complete_suspension
+        case Constants.ImageTitles.prohibition_for_trucks:
+            return .prohibition_for_trucks
+        case Constants.ImageTitles.congestion:
+            return .congestion
+        case Constants.ImageTitles.landslide:
+            return .landslide
+        case Constants.ImageTitles.traffic_accident:
+            return .traffic_accident
+        case Constants.ImageTitles.glaze:
+            return .glaze
+        default:
+            return .danger
         }
     }
     
@@ -109,6 +134,7 @@ public class RoadSign: NSManagedObject, MKAnnotation {
             + "\t'longitude':\(coordinate.longitude.description),\n"
             + "\t'road':'\(String(describing: road))',\n"
             + "\t'valid_from':\(String(describing: validFrom)),\n"
+            + "\t'numberOfDeletions':'\(String(describing: numberOfDeletions))',\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"
             + "\t'category_id':\(String(describing: roadID)),\n"

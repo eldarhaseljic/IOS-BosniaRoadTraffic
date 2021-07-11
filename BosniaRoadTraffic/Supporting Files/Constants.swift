@@ -13,7 +13,7 @@ final class Constants {
     struct StoryboardIdentifiers {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
         static let DetailsStoryboard = "DetailsStoryboard"
-        static let RadarFilterStoryboard = "RadarFilterStoryboard"
+        static let FilterStoryboard = "FilterStoryboard"
         static let RadarReportStoryboard = "RadarReportStoryboard"
         static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
         static let RoadConditionReportStoryboard = "RoadConditionReportStoryboard"
@@ -61,4 +61,6 @@ final class Constants {
     struct Time {
         static let TenSeconds: Double = 10.0
     }
+    
+    static let ReportPinSize: CGSize = CGSize(width: 45.0, height: 45.0)
 }

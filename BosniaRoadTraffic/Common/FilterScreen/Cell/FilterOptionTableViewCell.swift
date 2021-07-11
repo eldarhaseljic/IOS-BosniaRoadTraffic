@@ -1,5 +1,5 @@
 //
-//  RadarFilterOptionTableViewCell.swift
+//  FilterOptionTableViewCell.swift
 //  Bosnia Road Traffic 
 //
 //  Created by Eldar Haseljic on 2/10/21.
@@ -9,8 +9,8 @@
 import UIKit
 import RxSwift
 
-class RadarFilterOptionTableViewCell: UITableViewCell {
-
+class FilterOptionTableViewCell: UITableViewCell {
+    
     @IBOutlet var optionName: UILabel!
     @IBOutlet var optionSwitch: UISwitch!
     var disposeBag = DisposeBag()
@@ -20,8 +20,10 @@ class RadarFilterOptionTableViewCell: UITableViewCell {
         clear()
     }
     
-    func configureCell(radarOption: RadarTypeOption) {
-        optionName.text = String(format: NUMBER_OF_TYPE, radarOption.type.rawValue, radarOption.numberOfElements)
+    func configureCell(radarOption: TypeOption) {
+        optionName.text = String(format: NUMBER_OF_TYPE,
+                                 radarOption.typeValue,
+                                 radarOption.numberOfElements)
         optionSwitch.isOn = radarOption.isOn
     }
     

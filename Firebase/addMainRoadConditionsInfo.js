@@ -29,9 +29,10 @@ fs.readFile(process.argv[2], (err, data) => {
             id: "RoadConditionReport-1111111",
             title: obj.title,
             startDate: obj.startDate,
+            numberOfDeletions: obj.numberOfDeletions,
             endDate: obj.endDate,
             text: obj.text,
-            category_id:1111111,
+            category_id: 1111111,
             category_name: "Op\u0161te informacije",
         })
         console.log(obj)

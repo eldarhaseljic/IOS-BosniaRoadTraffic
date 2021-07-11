@@ -16,6 +16,7 @@ class DetailsViewCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var typeLabel: UILabel!
+    @IBOutlet var deleteLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +28,7 @@ class DetailsViewCell: UITableViewCell {
         clear()
     }
     
-    func configure(for data: DetailsData) {
+    func configure(for data: DetailsViewModel) {
         titleLabel.text = data.title
        
         if let subtitle = data.subtitle {
@@ -56,6 +57,14 @@ class DetailsViewCell: UITableViewCell {
             typeLabel.text = String(format: RADAR_TYPE, type)
             typeLabel.isHidden = false
         }
+        
+        if data.detailsType != .roadDetails {
+            deleteLabel.text = String(format: NUMBER_OF_REPORTS,
+                                      data.detailsType == .radar ? RADAR : ROAD_CONDITION,
+                                      data.numberOfDeletions,
+                                      data.detailsType == .radar ? RADAR : ROAD_CONDITION)
+            deleteLabel.isHidden = false
+        }
     }
     
     private func clear() {
@@ -70,5 +79,7 @@ class DetailsViewCell: UITableViewCell {
         durationLabel.isHidden = true
         typeLabel.text = String()
         typeLabel.isHidden = true
+        deleteLabel.text = String()
+        deleteLabel.isHidden = true
     }
 }

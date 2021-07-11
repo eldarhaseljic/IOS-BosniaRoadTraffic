@@ -55,16 +55,18 @@ class RadarsMapViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView! {
         didSet {
-            mapView.register(RadarMarkerView.self, forAnnotationViewWithReuseIdentifier:
+            mapView.register(RadarMarkerView.self,
+                             forAnnotationViewWithReuseIdentifier:
                                 MKMapViewDefaultAnnotationViewReuseIdentifier)
+            mapView.userTrackingMode = .followWithHeading
         }
     }
     
     private let disposeBag = DisposeBag()
     private var viewModel: RadarsMapViewModel!
     
-    lazy var radarFilterViewController: RadarFilterViewController = {
-        return RadarFilterViewController.getViewController()
+    lazy var filterViewController: FilterViewController = {
+        return FilterViewController.getViewController()
     }()
     
     override func viewDidLoad() {
@@ -133,7 +135,7 @@ class RadarsMapViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        radarFilterViewController.filteredRadarsArray.bind(onNext: { [unowned self] radars in
+        filterViewController.filteredRadarsArray.bind(onNext: { [unowned self] radars in
             loadingIndicatorView.startAnimating()
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations(radars)
@@ -149,6 +151,7 @@ class RadarsMapViewController: UIViewController {
         mapTypeButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.mapView.mapType = self.viewModel.currentMapType
+            self.mapView.showsTraffic = self.mapView.mapType == .hybrid
         }.disposed(by: disposeBag)
         
         reportButton.rx.tap.bind { [unowned self] in
@@ -181,9 +184,10 @@ class RadarsMapViewController: UIViewController {
             mapView.setRegion(currentLocation, animated: true)
         }
         
-        let filterViewModel = RadarFilterViewModel(radars: radars)
+        let filterViewModel = FilterViewModel(radars: radars)
         if filterViewModel.numberOfFilters != 1 {
-            radarFilterViewController.setData(viewModel: filterViewModel)
+            filterViewController.setData(viewModel: filterViewModel,
+                                         filterType: .radars)
             navigationItem.rightBarButtonItem?.isEnabled = true
         }
         
@@ -212,12 +216,18 @@ class RadarsMapViewController: UIViewController {
     
     @objc
     public func tapEditButton(_ sender: Any) {
-        presentView(viewController: radarFilterViewController)
+        presentView(viewController: filterViewController)
     }
     
     private func setReportPinVisibility(isVisible: Bool = false) {
         reportContainer.isHidden = !isVisible
         radarPin.isHidden = !isVisible
+        
+        guard
+            isVisible == true,
+            let userCurrentLocation = viewModel.userCurrentLocation
+        else { return }
+        mapView.setRegion(userCurrentLocation, animated: true)
     }
 }
 
@@ -239,11 +249,11 @@ extension RadarsMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let radar = view.annotation as? Radar else { return }
         setReportPinVisibility()
-        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(radar: radar)))
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(radar: radar), delegate: self))
     }
 }
 
-extension RadarsMapViewController: ReportProtocol {
+extension RadarsMapViewController: ViewProtocol {
     
     func backButtonTaped() { setReportPinVisibility() }
     func reloadView() { reloadScreen() }

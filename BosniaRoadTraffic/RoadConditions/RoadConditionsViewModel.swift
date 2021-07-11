@@ -16,7 +16,7 @@ import CoreLocation
 final class RoadConditionsViewModel: NSObject {
     
     private let mapTypes: [MKMapType] = [.standard, .hybrid]
-    private let locationDistance: CLLocationDistance = 50000
+    private let locationDistance: CLLocationDistance = 20000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
     private let manager: MainManager!

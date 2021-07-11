@@ -2,7 +2,7 @@
 //  RoadConditionReportViewController.swift
 //  BosniaRoadTraffic
 //
-//  Created by Eldar Haseljic on 1. 6. 2021..
+//  Created by Eldar Haseljic on 1/6/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
@@ -27,7 +27,7 @@ class RoadConditionReportViewController: UIViewController {
     
     private var location: CLLocation!
     private var disposeBag: DisposeBag = DisposeBag()
-    weak var delegate: ReportProtocol?
+    weak var delegate: ViewProtocol?
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -49,7 +49,7 @@ class RoadConditionReportViewController: UIViewController {
     }
     
     
-    func setData(location: CLLocation, delegate: ReportProtocol? = nil) {
+    func setData(location: CLLocation, delegate: ViewProtocol? = nil) {
         self.location = location
         self.delegate = delegate
     }
@@ -86,7 +86,7 @@ extension RoadConditionReportViewController {
             .instantiateViewControllerWithIdentifier(RoadConditionReportViewController.self)!
     }
     
-    static func showReportPage(for location: CLLocation, delegate: ReportProtocol? = nil) -> RoadConditionReportViewController {
+    static func showReportPage(for location: CLLocation, delegate: ViewProtocol? = nil) -> RoadConditionReportViewController {
         let roadConditionReportViewController = RoadConditionReportViewController.getViewController()
         roadConditionReportViewController.setData(location: location, delegate: delegate)
         return roadConditionReportViewController

@@ -63,6 +63,12 @@
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-WS-z5Y">
+                                <rect key="frame" x="0.0" y="87" width="333" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="16"/>
+                                <color key="textColor" name="Black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -76,6 +82,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="deleteLabel" destination="Thc-WS-z5Y" id="yCZ-OY-Zom"/>
                 <outlet property="descriptionLabel" destination="VR2-No-FiG" id="5Eg-6a-G8Q"/>
                 <outlet property="durationLabel" destination="61z-2Q-YX2" id="Slz-tC-RdO"/>
                 <outlet property="roadLabel" destination="hPu-kH-EJR" id="w4h-4e-rcK"/>

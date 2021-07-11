@@ -2,7 +2,7 @@
 //  RoadConditionDetails+CoreDataProperties.swift
 //  BosniaRoadTraffic
 //
-//  Created by Eldar Haseljic on 1. 6. 2021..
+//  Created by Eldar Haseljic on  1/6/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 //
@@ -44,6 +44,8 @@ extension RoadConditionDetails {
             self.text = text
         }
         
+        self.numberOfDeletions = roadConditionDetailsJSON[RoadConditionDetailsJSON.numberOfDeletions.rawValue] as? NSNumber ?? 0
+        
         if let title = roadConditionDetailsJSON[RoadConditionDetailsJSON.title.rawValue] as? String {
             self.title = title.capitalized
         }
@@ -57,7 +59,8 @@ extension RoadConditionDetails {
             lhs.roadConditionType == rhs.roadConditionType &&
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
-            lhs.text == rhs.text
+            lhs.text == rhs.text &&
+            lhs.numberOfDeletions == rhs.numberOfDeletions
     }
 }
 

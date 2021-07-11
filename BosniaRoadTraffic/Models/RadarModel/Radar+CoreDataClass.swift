@@ -23,6 +23,7 @@ enum RadarJSON: String {
     case categoryID = "category_id"
     case categoryName = "category_name"
     case updatedAt = "updated_at"
+    case numberOfDeletions
 }
 
 public class Radar: NSManagedObject, MKAnnotation {
@@ -37,6 +38,7 @@ public class Radar: NSManagedObject, MKAnnotation {
     @NSManaged public var type: NSNumber?
     @NSManaged public var validFrom: String?
     @NSManaged public var validTo: String?
+    @NSManaged public var numberOfDeletions: NSNumber
     
     public var locationName: String? {
         if text.isNotNilNotEmpty {
@@ -87,8 +89,8 @@ public class Radar: NSManagedObject, MKAnnotation {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    public var isCoordinateZero: Bool {
-        return coordinate.latitude.isZero && coordinate.latitude.isZero
+    public var shouldDeleteRadar: Bool {
+        return (coordinate.latitude.isZero && coordinate.latitude.isZero) || numberOfDeletions.intValue >= 5
     }
     
     public override var description: String {
@@ -100,6 +102,7 @@ public class Radar: NSManagedObject, MKAnnotation {
             + "\t'type':\(String(describing: type)),\n"
             + "\t'convertedType':\(String(describing: radarType.rawValue)),\n"
             + "\t'road':'\(String(describing: road))',\n"
+            + "\t'numberOfDeletions':'\(String(describing: numberOfDeletions))',\n"
             + "\t'valid_from':\(String(describing: validFrom)),\n"
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"

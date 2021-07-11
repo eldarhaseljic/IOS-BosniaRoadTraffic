@@ -2,7 +2,7 @@
 //  RoadConditionReportCellViewModel.swift
 //  BosniaRoadTraffic
 //
-//  Created by Eldar Haseljic on 1. 6. 2021..
+//  Created by Eldar Haseljic on  1/6/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 

@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-protocol ReportProtocol: AnyObject {
+protocol ViewProtocol: AnyObject {
     func backButtonTaped()
     func reloadView()
 }

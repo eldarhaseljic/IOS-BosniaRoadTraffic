@@ -31,6 +31,12 @@ enum CustomError: LocalizedError {
     }
 }
 
+enum FirestoreStatus {
+    case updated
+    case deleted
+    case error
+}
+
 enum AuthorizationStatus: String {
     case authorizedWhenInUse
     case denied
@@ -155,13 +161,16 @@ class MainManager {
                             newRadarsIDs.append(radarID)
                             let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
                             newRadar.fillRadarInfo(currentRadar.data())
-                            if newRadar.isCoordinateZero { writeManagedObjectContext.delete(newRadar) }
+                            if newRadar.shouldDeleteRadar {
+                                writeManagedObjectContext.delete(newRadar)
+                            }
                         }
                         
                         for oldRadar in oldRadars {
                             if let oldRadarID = oldRadar.id,
                                !newRadarsIDs.contains(oldRadarID) {
                                 writeManagedObjectContext.delete(oldRadar)
+                                self.deleteElement(elementId: oldRadarID, type: .radar)
                             }
                         }
                         
@@ -216,13 +225,16 @@ class MainManager {
                             newRoadSignsIDs.append(signID)
                             let newSign = RoadSign.findOrCreate(signID, context: writeManagedObjectContext)
                             newSign.fillSignInfo(currentSign.data())
-                            if newSign.isCoordinateZero || newSign.hasNoIcon { writeManagedObjectContext.delete(newSign) }
+                            if newSign.shouldDeleteRoadSing {
+                                writeManagedObjectContext.delete(newSign)
+                            }
                         }
                         
                         for oldSign in oldRoadSigns {
                             if let oldSignID = oldSign.id,
                                !newRoadSignsIDs.contains(oldSignID) {
                                 writeManagedObjectContext.delete(oldSign)
+                                self.deleteElement(elementId: oldSignID, type: .roadSign)
                             }
                         }
                         
@@ -259,7 +271,7 @@ class MainManager {
                     completion?()
                     return
                 }
-            
+                
                 writeManagedObjectContext.perform {
                     if roadConditionFullReports.isEmpty {
                         oldRoadSigns.forEach({
@@ -298,6 +310,7 @@ class MainManager {
             "valid_from": radarParameters.validFrom ?? NSNull(),
             "valid_to": radarParameters.validTo ?? NSNull(),
             "text": radarParameters.text ?? NSNull(),
+            "numberOfDeletions": 0,
             "category_id": radarParameters.policeDepartmentID ?? NSNull(),
             "category_name": radarParameters.policeDepartmentName ?? NSNull(),
             "updated_at": radarParameters.updatedAt ?? NSNull()
@@ -325,6 +338,7 @@ class MainManager {
             "valid_to": roadConditions.validTo ?? NSNull(),
             "text": roadConditions.text ?? NSNull(),
             "category_id": roadConditions.roadTypeID,
+            "numberOfDeletions": 0,
             "category_name": roadConditions.roadTypeName,
             "updated_at": roadConditions.updatedAt ?? NSNull()
         ], merge: true) { err in
@@ -333,6 +347,77 @@ class MainManager {
             } else {
                 completion?(true, ROAD_CONDITION_SUCCESSFULLY_REPORTED)
             }
+        }
+    }
+    
+    func deleteElement(elementId: String?,
+                       type: DetailsType,
+                       _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)? = nil) {
+        guard let elementId = elementId else { return }
+        switch type {
+        case .roadSign:
+            firestoreDataBase.collection("RoadConditions").document(elementId).delete() { err in
+                if let err = err {
+                    completion?(.error, err.localizedDescription)
+                } else {
+                    completion?(.deleted, THANKS)
+                }
+            }
+        case .radar:
+            firestoreDataBase.collection("Radars").document(elementId).delete() { err in
+                if let err = err {
+                    completion?(.error, err.localizedDescription)
+                } else {
+                    completion?(.deleted, THANKS)
+                }
+            }
+        case .roadDetails:
+            break
+        }
+    }
+    
+    func updateOrDelete(detailsViewModel: DetailsViewModel,
+                        _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)?) {
+        guard let id = detailsViewModel.dataId else {
+            completion?(.error, WRONG_ID)
+            return
+        }
+        detailsViewModel.numberOfDeletions += 1
+        
+        if detailsViewModel.numberOfDeletions >= 5 {
+            deleteElement(elementId: id, type: detailsViewModel.detailsType, completion)
+        } else {
+            updateVisibility(id: id, detailsViewModel: detailsViewModel, completion)
+        }
+    }
+    
+    func updateVisibility(id: String,
+                          detailsViewModel: DetailsViewModel,
+                          _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)?) {
+        
+        switch detailsViewModel.detailsType {
+        case .roadSign:
+            firestoreDataBase.collection("RoadConditions").document(id).setData([
+                "numberOfDeletions": detailsViewModel.numberOfDeletions,
+            ], merge: true) { err in
+                if let err = err {
+                    completion?(.error, err.localizedDescription)
+                } else {
+                    completion?(.updated, THANKS)
+                }
+            }
+        case .radar:
+            firestoreDataBase.collection("Radars").document(id).setData([
+                "numberOfDeletions": detailsViewModel.numberOfDeletions,
+            ], merge: true) { err in
+                if let err = err {
+                    completion?(.error, err.localizedDescription)
+                } else {
+                    completion?(.updated, THANKS)
+                }
+            }
+        case .roadDetails:
+            break
         }
     }
 }

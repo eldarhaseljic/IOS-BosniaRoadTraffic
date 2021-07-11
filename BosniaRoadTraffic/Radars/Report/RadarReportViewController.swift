@@ -27,7 +27,7 @@ class RadarReportViewController: UIViewController {
     
     private var location: CLLocation!
     private var disposeBag: DisposeBag = DisposeBag()
-    weak var delegate: ReportProtocol?
+    weak var delegate: ViewProtocol?
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -49,7 +49,7 @@ class RadarReportViewController: UIViewController {
     }
     
     
-    func setData(location: CLLocation, delegate: ReportProtocol? = nil) {
+    func setData(location: CLLocation, delegate: ViewProtocol? = nil) {
         self.location = location
         self.delegate = delegate
     }
@@ -86,7 +86,7 @@ extension RadarReportViewController {
             .instantiateViewControllerWithIdentifier(RadarReportViewController.self)!
     }
     
-    static func showReportPage(for location: CLLocation, delegate: ReportProtocol? = nil) -> RadarReportViewController {
+    static func showReportPage(for location: CLLocation, delegate: ViewProtocol? = nil) -> RadarReportViewController {
         let radarReportViewController = RadarReportViewController.getViewController()
         radarReportViewController.setData(location: location, delegate: delegate)
         return radarReportViewController

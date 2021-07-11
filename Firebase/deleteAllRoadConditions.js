@@ -27,11 +27,11 @@ if (offset < 0) {
 
 db.collection("RoadConditions").get().then((querySnapshot) => {
     querySnapshot.forEach((roadConditions) => {
-                db.collection("RoadConditions").doc(roadConditions.id).delete().then(() => {
-                    console.log(roadConditions.data())
-                    console.log("Document with id: ", roadConditions.id, ",successfully deleted!");
-                }).catch((error) => {
-                    console.error("Error removing document: ", error);
-                });
+        db.collection("RoadConditions").doc(roadConditions.id).delete().then(() => {
+            console.log(roadConditions.data())
+            console.log("Document with id: ", roadConditions.id, ",successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
     });
 });

@@ -29,7 +29,7 @@ db.collection("Radars").get().then((querySnapshot) => {
     querySnapshot.forEach((radar) => {
         if (radar.data().valid_to != null) {
             var validToDate = date.parse(radar.data().valid_to, 'YYYY-MM-DD hh:mm:ss', true);
-            if (currentDate > validToDate) {
+            if (currentDate > validToDate || radar.data().numberOfDeletions >= 5) {
                 db.collection("Radars").doc(radar.id).delete().then(() => {
                     console.log("currentDate:", currentDate)
                     console.log("validToDate:", validToDate)

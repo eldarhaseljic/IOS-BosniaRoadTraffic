@@ -1,5 +1,5 @@
 //
-//  RadarFilterViewController.swift
+//  FilterViewController.swift
 //  Bosnia Road Traffic 
 //
 //  Created by Eldar Haseljic on 2/9/21.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class RadarFilterViewController: UIViewController {
+class FilterViewController: UIViewController {
     
     @IBOutlet var navigationBarItem: UINavigationItem! {
         didSet {
@@ -20,62 +20,67 @@ class RadarFilterViewController: UIViewController {
     
     @IBOutlet var contextView: UITableView! {
         didSet {
-            contextView.registerCell(cellType: RadarFilterOptionTableViewCell.self)
+            contextView.registerCell(cellType: FilterOptionTableViewCell.self)
         }
     }
     
-    private var viewModel: RadarFilterViewModel!
+    private var viewModel: FilterViewModel!
+    private var filterType: FilterType = .radars
+    
     let filteredRadarsArray = PublishSubject<[Radar]>()
+    let filteredRoadSignArray = PublishSubject<[RoadSign]>()
+    
     override func viewDidLoad() { super .viewDidLoad() }
     
     @objc
     private func tapCancelButton(_ sender: Any) {
         viewModel.resetFilters()
         contextView.reloadData()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @objc
     private func tapApplyButton(_ sender: Any) {
-        filteredRadarsArray.onNext(viewModel.filterRadars())
-        dismiss(animated: true, completion: nil)
+        switch filterType {
+        case .radars:
+            filteredRadarsArray.onNext(viewModel.filterRadars())
+        case .roadConditions:
+            filteredRoadSignArray.onNext(viewModel.filterRoadSigns())
+        }
+        
+        dismiss(animated: true)
     }
     
-    func setData(viewModel: RadarFilterViewModel) {
+    func setData(viewModel: FilterViewModel, filterType: FilterType) {
         self.viewModel = viewModel
+        self.filterType = filterType
         if let view = contextView { view.reloadData() }
     }
 }
 
-extension RadarFilterViewController {
-    static func getViewController() -> RadarFilterViewController {
-        return UIStoryboard(name: Constants.StoryboardIdentifiers.RadarFilterStoryboard, bundle: nil)
-            .instantiateViewControllerWithIdentifier(RadarFilterViewController.self)!
-    }
-    
-    static func showFilters(for viewModel: RadarFilterViewModel) -> RadarFilterViewController {
-        let radarFilterViewController = RadarFilterViewController.getViewController()
-        radarFilterViewController.setData(viewModel: viewModel)
-        return radarFilterViewController
+extension FilterViewController {
+    static func getViewController() -> FilterViewController {
+        return UIStoryboard(name: Constants.StoryboardIdentifiers.FilterStoryboard, bundle: nil)
+            .instantiateViewControllerWithIdentifier(FilterViewController.self)!
     }
 }
 
-extension RadarFilterViewController: UITableViewDelegate, UITableViewDataSource {
+extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfFilters
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(with: RadarFilterOptionTableViewCell.self,
+        let cell = tableView.dequeueReusableCell(with: FilterOptionTableViewCell.self,
                                                  for: indexPath)
-        cell.configureCell(radarOption: viewModel.getRadarOption(index: indexPath.row))
+        cell.configureCell(radarOption: viewModel.getOption(index: indexPath.row))
         cell.optionSwitch.rx.isOn
             .changed
             .distinctUntilChanged()
             .bind { [weak self] isOn in
                 guard let self = self else { return }
-                self.viewModel.selectRadarType(index: indexPath.row,
-                                               selected: isOn)
+                self.viewModel.selectType(index: indexPath.row,
+                                          selected: isOn)
                 self.contextView.reloadData()
             }.disposed(by: cell.disposeBag)
         return cell

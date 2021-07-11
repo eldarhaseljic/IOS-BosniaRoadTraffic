@@ -2,7 +2,7 @@
 //  RoadSing+Enums.swift
 //  BosniaRoadTraffic
 //
-//  Created by Eldar Haseljic on 31. 5. 2021..
+//  Created by Eldar Haseljic on 31/5/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 
@@ -46,7 +46,7 @@ enum SignIcon: String {
     var name: String {
         switch self {
         case .border_crossings:
-            return "Granični prijelazi"
+            return "Granični prijelaz"
         case .road_rehabilitation:
             return "Sanacija kolovoza"
         case .complete_suspension:
@@ -93,15 +93,15 @@ enum RoadType: String {
     var name: String {
         switch self {
         case .border_crossings:
-            return "Granični prijelazi"
+            return "Granični prijelaz"
         case .highways:
-            return "Autoceste"
+            return "Autocesta"
         case .mainways:
-            return "Magistralne ceste"
+            return "Magistralna cesta"
         case .regional_roads:
-            return "Regionalne ceste"
+            return "Regionalna cesta"
         case .city_roads:
-            return "Gradske ceste"
+            return "Gradska cesta"
         }
     }
 }

@@ -59,8 +59,13 @@ class RoadConditionsViewController: UIViewController {
             mapView.register(RoadSignMarkerView.self,
                              forAnnotationViewWithReuseIdentifier:
                                 MKMapViewDefaultAnnotationViewReuseIdentifier)
+            mapView.userTrackingMode = .followWithHeading
         }
     }
+    
+    lazy var filterViewController: FilterViewController = {
+        return FilterViewController.getViewController()
+    }()
     
     private let disposeBag = DisposeBag()
     private var viewModel: RoadConditionsViewModel!
@@ -132,6 +137,14 @@ class RoadConditionsViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
+        filterViewController.filteredRoadSignArray.bind(onNext: { [unowned self] roadConditions in
+            loadingIndicatorView.startAnimating()
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.addAnnotations(roadConditions)
+            loadingIndicatorView.stopAnimating()
+        })
+        .disposed(by: disposeBag)
+        
         reloadMapButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.reloadScreen()
@@ -140,6 +153,7 @@ class RoadConditionsViewController: UIViewController {
         mapTypeButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.mapView.mapType = self.viewModel.currentMapType
+            self.mapView.showsTraffic = self.mapView.mapType == .hybrid
         }.disposed(by: disposeBag)
         
         reportButton.rx.tap.bind { [unowned self] in
@@ -159,7 +173,7 @@ class RoadConditionsViewController: UIViewController {
         setReportPinVisibility()
         loadingIndicatorView.startAnimating()
         reloadMapButton.isEnabled = false
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = false }
         viewModel.fetchData()
     }
     
@@ -172,7 +186,13 @@ class RoadConditionsViewController: UIViewController {
         }
         
         if viewModel.getRoadConditionsDetails() != nil {
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItems?.first?.isEnabled = true
+        }
+        
+        let filterViewModel = FilterViewModel(roadSigns: roadSigns)
+        if filterViewModel.numberOfFilters != 1 {
+            filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
+            navigationItem.rightBarButtonItems?.last?.isEnabled = true
         }
         
         reportButton.isHidden = !Reachability.isConnectedToNetwork()
@@ -187,11 +207,18 @@ class RoadConditionsViewController: UIViewController {
     func setupNavigationBar() {
         title = ROAD_CONDITIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "info.circle"),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(tapInfoButton))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        let infoButton = UIBarButtonItem(image: #imageLiteral(resourceName: "info.circle"),
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(tapInfoButton))
+        let editButton = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"),
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(tapEditButton))
+        infoButton.imageInsets = UIEdgeInsets(top: 0.0, left: -15, bottom: 0, right: 0)
+        editButton.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: -15)
+        navigationItem.rightBarButtonItems = [infoButton, editButton]
+        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = false }
     }
     
     private func setViewModel() {
@@ -201,12 +228,24 @@ class RoadConditionsViewController: UIViewController {
     @objc
     public func tapInfoButton(_ sender: Any) {
         guard let roadDetails = viewModel.getRoadConditionsDetails() else { return }
-        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(roadDetails: roadDetails)))
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadDetails: roadDetails),
+                                                                      delegate: self))
+    }
+    
+    @objc
+    public func tapEditButton(_ sender: Any) {
+        presentView(viewController: filterViewController)
     }
     
     private func setReportPinVisibility(isVisible: Bool = false) {
         reportContainer.isHidden = !isVisible
         roadConditionPin.isHidden = !isVisible
+        
+        guard
+            isVisible == true,
+            let userCurrentLocation = viewModel.userCurrentLocation
+        else { return }
+        mapView.setRegion(userCurrentLocation, animated: true)
     }
 }
 
@@ -227,17 +266,13 @@ extension RoadConditionsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let roadSign = view.annotation as? RoadSign else { return }
-        presentView(viewController: DetailsViewController.showDetails(for: DetailsData(roadSign: roadSign)))
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadSign: roadSign),
+                                                                      delegate: self))
     }
 }
 
-extension RoadConditionsViewController: ReportProtocol {
+extension RoadConditionsViewController: ViewProtocol {
     
-    func backButtonTaped() {
-        setReportPinVisibility()
-    }
-    
-    func reloadView() {
-        reloadScreen()
-    }
+    func backButtonTaped() { setReportPinVisibility() }
+    func reloadView() { reloadScreen() }
 }

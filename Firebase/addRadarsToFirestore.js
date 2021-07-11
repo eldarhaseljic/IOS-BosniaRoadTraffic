@@ -21,7 +21,7 @@ var db = firebase.firestore();
 var newRadarsIDs = [];
 var offset = new Date().getTimezoneOffset();
 var currentDate = new Date()
-if (offset < 0) { 
+if (offset < 0) {
    currentDate = date.addHours(currentDate, offset / -60);
 } else {
    currentDate = date.addHours(currentDate, offset / 60);
@@ -42,6 +42,7 @@ fs.readFile(process.argv[2], (err, data) => {
          valid_from: obj.valid_from,
          valid_to: obj.valid_to,
          text: obj.text,
+         numberOfDeletions: obj.numberOfDeletions,
          category_id: obj.category_id,
          category_name: obj.category_name,
          updated_at: obj.updated_at
@@ -52,7 +53,7 @@ fs.readFile(process.argv[2], (err, data) => {
    // Delete stationary radars
    db.collection("Radars").get().then((querySnapshot) => {
       querySnapshot.forEach((radar) => {
-         if (radar.data().valid_to == null && newRadarsIDs.includes(radar.id) == false) {
+         if ((radar.data().valid_to == null && newRadarsIDs.includes(radar.id) == false) || radar.data().numberOfDeletions >= 5) {
             db.collection("Radars").doc(radar.id).delete().then(() => {
                console.log("Document with id: ", radar.id, ",successfully deleted!");
             }).catch((error) => {

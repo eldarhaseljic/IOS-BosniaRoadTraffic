@@ -44,6 +44,8 @@ extension RoadSign {
             self.validFrom = validFrom
         }
         
+        self.numberOfDeletions = roadSignJSON[RoadSignJSON.numberOfDeletions.rawValue] as? NSNumber ?? 0
+        
         if let validTo = roadSignJSON[RoadSignJSON.validTo.rawValue] as? String {
             self.validTo = validTo
         }
@@ -71,6 +73,7 @@ extension RoadSign {
             lhs.road == rhs.road &&
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
+            lhs.numberOfDeletions == rhs.numberOfDeletions &&
             lhs.text == rhs.text &&
             lhs.iconTitle == rhs.iconTitle
     }

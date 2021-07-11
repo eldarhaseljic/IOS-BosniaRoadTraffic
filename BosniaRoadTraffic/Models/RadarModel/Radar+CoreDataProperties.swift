@@ -55,6 +55,8 @@ extension Radar {
             self.type = type
         }
         
+        self.numberOfDeletions = radarJSON[RadarJSON.numberOfDeletions.rawValue] as? NSNumber ?? 0
+        
         if let title = radarJSON[RadarJSON.title.rawValue] as? String {
             self.title = title
         }
@@ -71,6 +73,7 @@ extension Radar {
             lhs.validFrom == rhs.validFrom &&
             lhs.validTo == rhs.validTo &&
             lhs.text == rhs.text &&
+            lhs.numberOfDeletions == rhs.numberOfDeletions &&
             lhs.type == rhs.type
     }
 }

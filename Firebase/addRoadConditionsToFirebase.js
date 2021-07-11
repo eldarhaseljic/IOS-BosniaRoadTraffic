@@ -41,6 +41,7 @@ fs.readFile(process.argv[2], (err, data) => {
             road: obj.road,
             valid_from: obj.valid_from,
             valid_to: obj.valid_to,
+            numberOfDeletions: obj.numberOfDeletions,
             text: obj.text,
             category_id: obj.category_id,
             category_name: obj.category_name,
@@ -54,7 +55,7 @@ fs.readFile(process.argv[2], (err, data) => {
     // Delete resloved road problems
     db.collection("RoadConditions").get().then((querySnapshot) => {
         querySnapshot.forEach((roadCondition) => {
-            if (roadCondition.data().valid_to == null && newRoadConditionsIDs.includes(roadCondition.id) == false) {
+            if ((roadCondition.data().valid_to == null && newRoadConditionsIDs.includes(roadCondition.id) == false) || roadCondition.data().numberOfDeletions >= 5) {
                 db.collection("RoadConditions").doc(roadCondition.id).delete().then(() => {
                     console.log("Document with id: ", roadCondition.id, ",successfully deleted!");
                 }).catch((error) => {

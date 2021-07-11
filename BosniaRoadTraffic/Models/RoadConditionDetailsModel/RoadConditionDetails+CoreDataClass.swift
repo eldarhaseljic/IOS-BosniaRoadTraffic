@@ -2,7 +2,7 @@
 //  RoadConditionDetails+CoreDataClass.swift
 //  BosniaRoadTraffic
 //
-//  Created by Eldar Haseljic on 1. 6. 2021..
+//  Created by Eldar Haseljic on 1/6/21.
 //  Copyright © 2021 Eldar Haseljic. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ enum RoadConditionDetailsJSON: String {
     case text
     case categoryID = "category_id"
     case categoryName = "category_name"
+    case numberOfDeletions
 }
 
 @objc(RoadConditionDetails)
@@ -30,6 +31,7 @@ public class RoadConditionDetails: NSManagedObject {
     @NSManaged public var text: String?
     @NSManaged public var roadConditionID: NSNumber?
     @NSManaged public var roadConditionType: String?
+    @NSManaged public var numberOfDeletions: NSNumber
     
     public override var description: String {
         return "{ \n\t'id':\(String(describing: id)),\n"
@@ -38,6 +40,7 @@ public class RoadConditionDetails: NSManagedObject {
             + "\t'valid_to':\(String(describing: validTo)),\n"
             + "\t'text':\(String(describing: text)),\n"
             + "\t'category_id':\(String(describing: roadConditionID)),\n"
-            + "\t'category_name':'\(String(describing: roadConditionType))'\n }"
+            + "\t'category_name':'\(String(describing: roadConditionType))'\n"
+            +  "\t'numberOfDeletions':'\(String(describing: numberOfDeletions))'\n }"
     }
 }
