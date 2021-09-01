@@ -163,8 +163,7 @@ class RadarsMapViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         confirmReportButton.rx.tap.bind { [unowned self] in
-            pushView(viewController: RadarReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView),
-                                                                              delegate: self))
+            pushView(viewController: ReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView), reportType: .radarReport,delegate: self))
         }.disposed(by: disposeBag)
     }
     
@@ -185,7 +184,7 @@ class RadarsMapViewController: UIViewController {
         }
         
         let filterViewModel = FilterViewModel(radars: radars)
-        if filterViewModel.numberOfFilters != 1 {
+        if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel,
                                          filterType: .radars)
             navigationItem.rightBarButtonItem?.isEnabled = true

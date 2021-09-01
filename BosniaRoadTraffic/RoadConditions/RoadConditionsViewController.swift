@@ -165,7 +165,7 @@ class RoadConditionsViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         confirmReportButton.rx.tap.bind { [unowned self] in
-            pushView(viewController: RoadConditionReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView), delegate: self))
+            pushView(viewController: ReportViewController.showReportPage(for: viewModel.getCenterLocation(for: mapView), reportType: .roadConditionReport, delegate: self))
         }.disposed(by: disposeBag)
     }
     
@@ -190,7 +190,7 @@ class RoadConditionsViewController: UIViewController {
         }
         
         let filterViewModel = FilterViewModel(roadSigns: roadSigns)
-        if filterViewModel.numberOfFilters != 1 {
+        if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
             navigationItem.rightBarButtonItems?.last?.isEnabled = true
         }

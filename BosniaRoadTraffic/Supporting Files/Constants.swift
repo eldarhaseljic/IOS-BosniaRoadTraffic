@@ -14,7 +14,7 @@ final class Constants {
         static let RadarsMapStoryboard = "RadarsMapStoryboard"
         static let DetailsStoryboard = "DetailsStoryboard"
         static let FilterStoryboard = "FilterStoryboard"
-        static let RadarReportStoryboard = "RadarReportStoryboard"
+        static let ReportStoryboard = "ReportStoryboard"
         static let RoadConditionsStoryboard = "RoadConditionsStoryboard"
         static let RoadConditionReportStoryboard = "RoadConditionReportStoryboard"
     }

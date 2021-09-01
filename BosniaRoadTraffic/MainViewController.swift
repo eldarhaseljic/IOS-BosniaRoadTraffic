@@ -9,11 +9,6 @@
 import RxSwift
 import RxCocoa
 
-protocol ViewProtocol: AnyObject {
-    func backButtonTaped()
-    func reloadView()
-}
-
 class MainViewController: UIViewController {
     
     @IBOutlet var facebookButton: UIButton!

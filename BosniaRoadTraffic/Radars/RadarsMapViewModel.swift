@@ -8,7 +8,6 @@
 
 import MapKit
 import RxSwift
-import RxCocoa
 import CoreData
 import Foundation
 import CoreLocation

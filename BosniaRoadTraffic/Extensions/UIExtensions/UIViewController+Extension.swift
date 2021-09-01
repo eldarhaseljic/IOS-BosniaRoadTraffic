@@ -72,7 +72,6 @@ extension UIViewController {
                               handler: nil)
             return
         }
-        
         UIApplication.shared.open(webURL)
     }
     

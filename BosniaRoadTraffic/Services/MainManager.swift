@@ -63,6 +63,11 @@ enum AuthorizationStatus: String {
     }
 }
 
+protocol ViewProtocol: AnyObject {
+    func backButtonTaped()
+    func reloadView()
+}
+
 struct RadarParameters {
     var policeDepartmentID: Int?
     var policeDepartmentName: String?

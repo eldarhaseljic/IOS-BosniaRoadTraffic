@@ -59,10 +59,11 @@ class DetailsViewCell: UITableViewCell {
         }
         
         if data.detailsType != .roadDetails {
+            let detailsType = data.detailsType == .radar ? RADAR : ROAD_CONDITION
             deleteLabel.text = String(format: NUMBER_OF_REPORTS,
-                                      data.detailsType == .radar ? RADAR : ROAD_CONDITION,
+                                      detailsType,
                                       data.numberOfDeletions,
-                                      data.detailsType == .radar ? RADAR : ROAD_CONDITION)
+                                      detailsType)
             deleteLabel.isHidden = false
         }
     }
