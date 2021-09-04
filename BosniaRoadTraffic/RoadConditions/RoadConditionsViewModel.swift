@@ -153,7 +153,7 @@ final class RoadConditionsViewModel: NSObject {
     
     func fetchData() {
         manager.getRoadConditionFullReport() { [weak self] in
-            self?.manager.getRoadConditions { [weak self] (response,errorAdviser) in
+            self?.manager.getRoadConditions { [weak self] (response, errorAdviser) in
                 guard
                     let self = self,
                     let response = response,
@@ -164,7 +164,8 @@ final class RoadConditionsViewModel: NSObject {
                 }
                 
                 DispatchQueue.main.async {
-                    self.showRoadConditons(roadConditions: response, errorAdviser: errorAdviser)
+                    self.showRoadConditons(roadConditions: response,
+                                           errorAdviser: errorAdviser)
                 }
             }
         }

@@ -21,7 +21,6 @@ enum RoadConditionDetailsJSON: String {
     case numberOfDeletions
 }
 
-@objc(RoadConditionDetails)
 public class RoadConditionDetails: NSManagedObject {
     
     @NSManaged public var id: String?

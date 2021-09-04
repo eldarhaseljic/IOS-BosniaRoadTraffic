@@ -13,7 +13,7 @@ class RoadConditionReportCellViewModel {
     
     private var location: CLLocation!
     private let manager: MainManager!
-    private var conditionSings: [SignIcon] = [.border_crossings,
+    private var conditionTypes: [ConditionType] = [.border_crossings,
                                               .road_rehabilitation,
                                               .complete_suspension,
                                               .prohibition_for_trucks,
@@ -30,12 +30,12 @@ class RoadConditionReportCellViewModel {
     
     init(for location: CLLocation, manager: MainManager = MainManager.shared) {
         self.location = location
-        self.currentConditionSing = SELECT_CONDITION_SIGN
+        self.currentConditionType = SELECT_CONDITION_SIGN
         self.currentRoadType = SELECT_ROAD_TYPE
         self.manager = manager
     }
     
-    var currentConditionSing: String?
+    var currentConditionType: String?
     var currentRoadType: String?
     
     var locationString: String {
@@ -44,24 +44,24 @@ class RoadConditionReportCellViewModel {
             .appending(location.coordinate.longitude.description)
     }
     
-    var numberOfConditionSings: Int {
-        return conditionSings.count
+    var numberOfConditionTypes: Int {
+        return conditionTypes.count
     }
     
     var numberOfRoadTypes: Int {
         return roadTypes.count
     }
     
-    func getConditionSingName(for row: Int) -> String? {
-        return conditionSings[safeIndex: row]?.name
+    func getConditionTypeName(for row: Int) -> String? {
+        return conditionTypes[safeIndex: row]?.name
     }
     
     func getRoadTypeName(for row: Int) -> String? {
         return roadTypes[safeIndex: row]?.name
     }
     
-    func getConditionSing(for conditionSingString: String?) -> SignIcon? {
-        return conditionSings.first(where: { $0.name == conditionSingString })
+    func getConditionType(for conditionTypeString: String?) -> ConditionType? {
+        return conditionTypes.first(where: { $0.name == conditionTypeString })
     }
     
     func getRoadType(for roadString: String?) -> RoadType? {
@@ -72,14 +72,14 @@ class RoadConditionReportCellViewModel {
                              road: String?,
                              text: String?,
                              title: String,
-                             signIcon: SignIcon,
+                             conditionType: ConditionType,
                              _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDate = Date()
         let startDate = dateFormatter.string(from: currentDate)
         let endDate = dateFormatter.string(from: currentDate.dateByAddingDays(1))
-        let roadConditionParameters: RoadConditionParameters = RoadConditionParameters(icon: signIcon.icon,
+        let roadConditionParameters: RoadConditionParameters = RoadConditionParameters(icon: conditionType.icon,
                                                                                        coordinates: locationString,
                                                                                        road: road,
                                                                                        text: text,

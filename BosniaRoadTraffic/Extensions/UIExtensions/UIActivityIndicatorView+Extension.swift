@@ -14,6 +14,7 @@ extension UIActivityIndicatorView {
     public func appendBlurredBackground() {
         let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurEffectView.frame = frame
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         insertSubview(blurEffectView, at: .zero)
     }
 }

@@ -11,14 +11,14 @@ import RxSwift
 
 class RoadConditionReportViewCell: UITableViewCell {
     
-    @IBOutlet var conditionSingPickerField: UITextField! {
+    @IBOutlet var conditionTypePickerField: UITextField! {
         didSet {
-            conditionSingPickerView.delegate = self
-            conditionSingPickerView.dataSource = self
-            conditionSingPickerView.toolbarDelegate = self
-            conditionSingPickerField.inputView = conditionSingPickerView
-            conditionSingPickerField.inputAccessoryView = conditionSingPickerView.toolbar
-            conditionSingPickerField.delegate = self
+            conditionTypePickerView.delegate = self
+            conditionTypePickerView.dataSource = self
+            conditionTypePickerView.toolbarDelegate = self
+            conditionTypePickerField.inputView = conditionTypePickerView
+            conditionTypePickerField.inputAccessoryView = conditionTypePickerView.toolbar
+            conditionTypePickerField.delegate = self
         }
     }
     
@@ -35,7 +35,7 @@ class RoadConditionReportViewCell: UITableViewCell {
     
     @IBOutlet var roadConditionCoordinatesTitle: UILabel!
     @IBOutlet var roadConditionTitleLabel: UILabel!
-    @IBOutlet var conditionSingLabel: UILabel!
+    @IBOutlet var conditionTypeLabel: UILabel!
     @IBOutlet var roadConditionStreetLabel: UILabel!
     @IBOutlet var roadTypeLabel: UILabel!
     @IBOutlet var roadConditionDetailLabel: UILabel!
@@ -75,7 +75,7 @@ class RoadConditionReportViewCell: UITableViewCell {
         }
     }
     
-    private var conditionSingPickerView = ToolbarPickerView()
+    private var conditionTypePickerView = ToolbarPickerView()
     private var roadTypePickerView = ToolbarPickerView()
     private var viewModel: RoadConditionReportCellViewModel!
     let messageTransmitter = PublishSubject<Adviser>()
@@ -98,14 +98,14 @@ class RoadConditionReportViewCell: UITableViewCell {
     
     private func handleApplyButton() {
         if let roadType = viewModel.getRoadType(for: roadTypePickerField.text) {
-            if let conditionSing = viewModel.getConditionSing(for: conditionSingPickerField.text) {
+            if let conditionType = viewModel.getConditionType(for: conditionTypePickerField.text) {
                 if let title = roadConditionTitleContext.text, title.isNotEmpty {
                     loaderStatus.onNext(true)
                     viewModel.addNewRoadCondition(roadType: roadType,
                                                   road: roadConditionStreetContext.text,
                                                   text: roadConditionDetailContext.text,
                                                   title: title,
-                                                  signIcon: conditionSing) { [weak self] status,error in
+                                                  conditionType: conditionType) { [weak self] status,error in
                         self?.messageTransmitter.onNext(Adviser(title: ROAD_CONDITIONS_INFO, message: error, isError: true))
                         self?.loaderStatus.onNext(false)
                     }
@@ -133,8 +133,8 @@ class RoadConditionReportViewCell: UITableViewCell {
         roadTypePickerField.text = viewModel.currentRoadType
         roadConditionTitleLabel.text = INSERT_ROAD_CONDITION_TITLE
         roadConditionStreetLabel.text = STREET
-        conditionSingLabel.text = TYPE_OF_ROAD_CONDITION
-        conditionSingPickerField.text = viewModel.currentConditionSing
+        conditionTypeLabel.text = TYPE_OF_ROAD_CONDITION
+        conditionTypePickerField.text = viewModel.currentConditionType
         roadConditionDetailLabel.text = DETAILS
     }
     
@@ -151,12 +151,12 @@ class RoadConditionReportViewCell: UITableViewCell {
     private func clear() {
         roadConditionCordinatesContext.text = String()
         roadTypePickerField.text = String()
-        conditionSingPickerField.text = String()
+        conditionTypePickerField.text = String()
         roadConditionTitleContext.text = String()
         roadConditionTitleLabel.text = String()
         roadTypeLabel.text = String()
         roadConditionStreetLabel.text = String()
-        conditionSingLabel.text = String()
+        conditionTypeLabel.text = String()
         roadConditionDetailLabel.text = String()
         roadConditionCordinatesContext.text = String()
         roadConditionTitleContext.text = String()
@@ -172,8 +172,8 @@ extension RoadConditionReportViewCell: UIPickerViewDelegate, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
-        case conditionSingPickerView:
-            return viewModel.numberOfConditionSings
+        case conditionTypePickerView:
+            return viewModel.numberOfConditionTypes
         case roadTypePickerView:
             return viewModel.numberOfRoadTypes
         default:
@@ -183,8 +183,8 @@ extension RoadConditionReportViewCell: UIPickerViewDelegate, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-        case conditionSingPickerView:
-            return viewModel.getConditionSingName(for: row)
+        case conditionTypePickerView:
+            return viewModel.getConditionTypeName(for: row)
         case roadTypePickerView:
             return viewModel.getRoadTypeName(for: row)
         default:
@@ -196,7 +196,7 @@ extension RoadConditionReportViewCell: UIPickerViewDelegate, UIPickerViewDataSou
 extension RoadConditionReportViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
-        case conditionSingPickerView,
+        case conditionTypePickerView,
              roadTypePickerView:
             return false
         default:
@@ -209,10 +209,10 @@ extension RoadConditionReportViewCell: ToolbarPickerViewDelegate {
     
     func didTapDone(_ picker: ToolbarPickerView) {
         switch picker {
-        case conditionSingPickerView:
-            viewModel.currentConditionSing = viewModel.getConditionSingName(for: conditionSingPickerView.selectedRow(inComponent: .zero))
-            conditionSingPickerField.text = viewModel.currentConditionSing
-            conditionSingPickerField.resignFirstResponder()
+        case conditionTypePickerView:
+            viewModel.currentConditionType = viewModel.getConditionTypeName(for: conditionTypePickerView.selectedRow(inComponent: .zero))
+            conditionTypePickerField.text = viewModel.currentConditionType
+            conditionTypePickerField.resignFirstResponder()
         case roadTypePickerView:
             viewModel.currentRoadType = viewModel.getRoadTypeName(for: roadTypePickerView.selectedRow(inComponent: .zero))
             roadTypePickerField.text = viewModel.currentRoadType
@@ -224,11 +224,11 @@ extension RoadConditionReportViewCell: ToolbarPickerViewDelegate {
     
     func didTapCancel(_ picker: ToolbarPickerView) {
         switch picker {
-        case conditionSingPickerView:
-            if conditionSingPickerField.text != viewModel.currentConditionSing {
-                conditionSingPickerField.text = viewModel.currentConditionSing
+        case conditionTypePickerView:
+            if conditionTypePickerField.text != viewModel.currentConditionType {
+                conditionTypePickerField.text = viewModel.currentConditionType
             }
-            conditionSingPickerField.resignFirstResponder()
+            conditionTypePickerField.resignFirstResponder()
         case roadTypePickerView:
             if roadTypePickerField.text != viewModel.currentRoadType {
                 roadTypePickerField.text = viewModel.currentRoadType

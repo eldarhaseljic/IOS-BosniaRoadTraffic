@@ -41,20 +41,20 @@ class RadarTypeOption: TypeOption {
     }
 }
 
-class SignTypeOption: TypeOption {
-    func copy(with zone: NSZone? = nil) -> SignTypeOption {
-        return SignTypeOption(type: type, numberOfElements: numberOfElements, isOn: isOn)
+class ConditionTypeOption: TypeOption {
+    func copy(with zone: NSZone? = nil) -> ConditionTypeOption {
+        return ConditionTypeOption(type: type, numberOfElements: numberOfElements, isOn: isOn)
     }
     
     var numberOfElements: Int
-    var type: SignIcon
+    var type: ConditionType
     var isOn: Bool
     
     var typeValue: String {
         return type.name
     }
     
-    init(type: SignIcon,
+    init(type: ConditionType,
          numberOfElements: Int,
          isOn: Bool = true) {
         self.type = type
@@ -69,8 +69,8 @@ class FilterViewModel {
     private var radarTypes: [RadarTypeOption] = []
     private var radarsInDatabase: [Radar] = []
     
-    private var backupSignFilters: [SignTypeOption] = []
-    private var signTypes: [SignTypeOption] = []
+    private var backupConditionFilters: [ConditionTypeOption] = []
+    private var conditionTypes: [ConditionTypeOption] = []
     private var roadConditionsInDatabase: [RoadCondition] = []
     
     private var filterType: FilterType
@@ -107,7 +107,7 @@ class FilterViewModel {
     
     func filterRoadConditions() -> [RoadCondition] {
         var roadConditions: [RoadCondition] = []
-        signTypes.forEach { option in
+        conditionTypes.forEach { option in
             if option.isOn {
                 roadConditionsInDatabase.forEach { roadCondition in
                     if roadCondition.roadConditionType == option.type {
@@ -126,7 +126,7 @@ class FilterViewModel {
         case .radars:
             radarTypes = backupRadarFilters.compactMap { $0.copy() }
         case .roadConditions:
-            signTypes = backupSignFilters.compactMap { $0.copy() }
+            conditionTypes = backupConditionFilters.compactMap { $0.copy() }
         }
     }
     
@@ -135,7 +135,7 @@ class FilterViewModel {
         case .radars:
             backupRadarFilters = radarTypes.compactMap { $0.copy() }
         case .roadConditions:
-            backupSignFilters = signTypes.compactMap { $0.copy() }
+            backupConditionFilters = conditionTypes.compactMap { $0.copy() }
         }
     }
     
@@ -151,7 +151,7 @@ class FilterViewModel {
                 }
             }
         case .roadConditions:
-            let defaultsignTypes: [SignIcon] = [.danger,
+            let defaultConditionTypes: [ConditionType] = [.danger,
                                                 .border_crossings,
                                                 .road_rehabilitation,
                                                 .complete_suspension,
@@ -160,9 +160,9 @@ class FilterViewModel {
                                                 .landslide,
                                                 .traffic_accident,
                                                 .glaze]
-            defaultsignTypes.forEach { type in
+            defaultConditionTypes.forEach { type in
                 if roadConditionsInDatabase.contains(where: { $0.roadConditionType == type }) {
-                    signTypes.append(SignTypeOption(type: type,
+                    conditionTypes.append(ConditionTypeOption(type: type,
                                                     numberOfElements: getNumberOfElementsByType(type: type.rawValue),
                                                     isOn: true))
                 }
@@ -197,18 +197,18 @@ class FilterViewModel {
                 radarTypes.first?.isOn = true
             }
         case .roadConditions:
-            signTypes[safeIndex: index]?.isOn = selected
-            if !signTypes.contains(where: { $0.isOn == true }) {
-                signTypes.first?.isOn = true
+            conditionTypes[safeIndex: index]?.isOn = selected
+            if !conditionTypes.contains(where: { $0.isOn == true }) {
+                conditionTypes.first?.isOn = true
             }
         }
     }
     
     func getOption(index: Int) -> TypeOption {
-        return filterType == .radars ? radarTypes[index] : signTypes[index]
+        return filterType == .radars ? radarTypes[index] : conditionTypes[index]
     }
     
     var numberOfFilters: Int {
-        return filterType == .radars ? radarTypes.count : signTypes.count
+        return filterType == .radars ? radarTypes.count : conditionTypes.count
     }
 }

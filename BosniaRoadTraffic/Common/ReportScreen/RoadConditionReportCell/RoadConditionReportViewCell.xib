@@ -171,8 +171,8 @@
             <color key="backgroundColor" name="CadetBlueCrayola"/>
             <connections>
                 <outlet property="applyButton" destination="yRT-dF-csw" id="Npb-fX-Mph"/>
-                <outlet property="conditionSingLabel" destination="CEP-Ie-SFJ" id="jeH-Y1-wY3"/>
-                <outlet property="conditionSingPickerField" destination="kLp-ER-O2T" id="4xR-Iw-VAF"/>
+                <outlet property="conditionTypeLabel" destination="CEP-Ie-SFJ" id="cec-34-jy8"/>
+                <outlet property="conditionTypePickerField" destination="kLp-ER-O2T" id="7VB-Pf-S2w"/>
                 <outlet property="roadConditionCoordinatesTitle" destination="kbN-7e-WF2" id="Gi9-7n-6Pv"/>
                 <outlet property="roadConditionCordinatesContext" destination="9CI-1r-3WW" id="S8i-39-paq"/>
                 <outlet property="roadConditionDetailContext" destination="GeO-FR-RZa" id="nDa-6E-EeD"/>

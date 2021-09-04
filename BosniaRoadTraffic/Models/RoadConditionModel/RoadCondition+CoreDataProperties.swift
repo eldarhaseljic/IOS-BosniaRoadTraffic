@@ -19,11 +19,11 @@ extension RoadCondition {
     
     class func findOrCreate(_ roadConditionId: String, context: NSManagedObjectContext) -> RoadCondition {
         let predicate = roadConditionByIdPredicate(for: roadConditionId)
-        let sign = findOrCreate(in: context, matching: predicate) { $0.id = roadConditionId }
-        return sign
+        let condition = findOrCreate(in: context, matching: predicate) { $0.id = roadConditionId }
+        return condition
     }
     
-    func fillSignInfo(_ roadConditionJSON: [String: Any]) {
+    func fillConditionInfo(_ roadConditionJSON: [String: Any]) {
         if let roadConditionID = roadConditionJSON[RoadConditionJSON.categoryID.rawValue] as? NSNumber {
             self.roadID = roadConditionID
         }

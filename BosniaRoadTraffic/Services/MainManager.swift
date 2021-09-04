@@ -225,21 +225,21 @@ class MainManager {
                         }
                         
                         var newRoadConditionsIDs: [String] = []
-                        for currentSign in roadConditions {
-                            guard let signID = currentSign[RoadConditionJSON.id.rawValue] as? String else { continue }
-                            newRoadConditionsIDs.append(signID)
-                            let newSign = RoadCondition.findOrCreate(signID, context: writeManagedObjectContext)
-                            newSign.fillSignInfo(currentSign.data())
-                            if newSign.shouldDeleteRoadSing {
-                                writeManagedObjectContext.delete(newSign)
+                        for currentCondition in roadConditions {
+                            guard let conditionID = currentCondition[RoadConditionJSON.id.rawValue] as? String else { continue }
+                            newRoadConditionsIDs.append(conditionID)
+                            let newCondition = RoadCondition.findOrCreate(conditionID, context: writeManagedObjectContext)
+                            newCondition.fillConditionInfo(currentCondition.data())
+                            if newCondition.shouldDeleteRoadCondition {
+                                writeManagedObjectContext.delete(newCondition)
                             }
                         }
                         
-                        for oldSign in oldRoadConditions {
-                            if let oldSignID = oldSign.id,
-                               !newRoadConditionsIDs.contains(oldSignID) {
-                                writeManagedObjectContext.delete(oldSign)
-                                self.deleteElement(elementId: oldSignID, type: .roadCondition)
+                        for oldCondition in oldRoadConditions {
+                            if let oldConditionID = oldCondition.id,
+                               !newRoadConditionsIDs.contains(oldConditionID) {
+                                writeManagedObjectContext.delete(oldCondition)
+                                self.deleteElement(elementId: oldConditionID, type: .roadCondition)
                             }
                         }
                         

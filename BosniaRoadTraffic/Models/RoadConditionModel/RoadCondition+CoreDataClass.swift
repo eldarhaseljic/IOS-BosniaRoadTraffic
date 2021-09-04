@@ -62,7 +62,7 @@ public class RoadCondition: NSManagedObject, MKAnnotation {
         return iconTitle.isNilOrEmtpy
     }
     
-    var shouldDeleteRoadSing: Bool {
+    var shouldDeleteRoadCondition: Bool {
         return isCoordinateZero || hasNoIcon || numberOfDeletions.intValue > 5
     }
     
@@ -81,28 +81,28 @@ public class RoadCondition: NSManagedObject, MKAnnotation {
     
     var image: UIImage {
         switch iconTitle {
-        case SignIcon.border_crossings.icon:
+        case ConditionType.border_crossings.icon:
             return #imageLiteral(resourceName: "carina")
-        case SignIcon.road_rehabilitation.icon:
+        case ConditionType.road_rehabilitation.icon:
             return #imageLiteral(resourceName: "sanacija_kolovoza")
-        case SignIcon.complete_suspension.icon:
+        case ConditionType.complete_suspension.icon:
             return #imageLiteral(resourceName: "potpuna_obustava")
-        case SignIcon.prohibition_for_trucks.icon:
+        case ConditionType.prohibition_for_trucks.icon:
             return #imageLiteral(resourceName: "zabrana_za_teretna_vozila")
-        case SignIcon.congestion.icon:
+        case ConditionType.congestion.icon:
             return #imageLiteral(resourceName: "zagusenje")
-        case SignIcon.landslide.icon:
+        case ConditionType.landslide.icon:
             return #imageLiteral(resourceName: "odron")
-        case SignIcon.traffic_accident.icon:
+        case ConditionType.traffic_accident.icon:
             return #imageLiteral(resourceName: "saobracajna_nezgoda")
-        case SignIcon.glaze.icon:
+        case ConditionType.glaze.icon:
             return #imageLiteral(resourceName: "poledica")
         default:
             return #imageLiteral(resourceName: "opasnost")
         }
     }
     
-    var roadConditionType: SignIcon {
+    var roadConditionType: ConditionType {
         switch iconTitle {
         case Constants.ImageTitles.border_crossings:
             return .border_crossings

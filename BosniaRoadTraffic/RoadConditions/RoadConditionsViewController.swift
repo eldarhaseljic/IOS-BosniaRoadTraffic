@@ -123,7 +123,7 @@ class RoadConditionsViewController: UIViewController {
         .disposed(by: disposeBag)
         
         viewModel.roadConditionsArray.bind(onNext: { [unowned self] roadConditions in
-            print("Number of new signs: \(roadConditions.count) \n \(roadConditions)")
+            print("Number of new conditions: \(roadConditions.count) \n \(roadConditions)")
             prepareMap(with: roadConditions)
         })
         .disposed(by: disposeBag)

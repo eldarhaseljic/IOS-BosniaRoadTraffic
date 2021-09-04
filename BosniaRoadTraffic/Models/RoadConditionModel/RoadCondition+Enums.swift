@@ -1,5 +1,5 @@
 //
-//  RoadSing+Enums.swift
+//  RoadCondition+Enums.swift
 //  BosniaRoadTraffic
 //
 //  Created by Eldar Haseljic on 31/5/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SignIcon: String {
+enum ConditionType: String {
     
     case border_crossings
     case road_rehabilitation
