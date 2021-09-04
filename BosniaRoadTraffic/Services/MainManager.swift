@@ -113,16 +113,16 @@ class MainManager {
         return radars
     }
     
-    private func fetchRoadSigns(objectContext: NSManagedObjectContext) -> [RoadSign] {
-        let fetchRequest = NSFetchRequest<RoadSign>(entityName: RoadSign.entityName)
+    private func fetchRoadConditions(objectContext: NSManagedObjectContext) -> [RoadCondition] {
+        let fetchRequest = NSFetchRequest<RoadCondition>(entityName: RoadCondition.entityName)
         
-        var roadSigns = [RoadSign]()
+        var roadConditions = [RoadCondition]()
         do {
-            roadSigns = try objectContext.fetch(fetchRequest)
+            roadConditions = try objectContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
         }
-        return roadSigns
+        return roadConditions
     }
     
     private func fetchRoadFullReport(objectContext: NSManagedObjectContext) -> [RoadConditionDetails] {
@@ -201,12 +201,12 @@ class MainManager {
         }
     }
     
-    func getRoadConditions(_ completion: ((_ success: [RoadSign]?, _ errorAdviser: Adviser?) -> Void)?) {
+    func getRoadConditions(_ completion: ((_ success: [RoadCondition]?, _ errorAdviser: Adviser?) -> Void)?) {
         let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
         let connectionStatus = Reachability.isConnectedToNetwork()
         let writeManagedObjectContext = persistanceService.backgroundContext
-        let oldRoadSigns = fetchRoadSigns(objectContext: writeManagedObjectContext)
-        print("Number of old radars: \(oldRoadSigns.count) \n \(oldRoadSigns)")
+        let oldRoadConditions = fetchRoadConditions(objectContext: writeManagedObjectContext)
+        print("Number of old radars: \(oldRoadConditions.count) \n \(oldRoadConditions)")
         switch connectionStatus {
         case true:
             firestoreDataBase.collection("RoadConditions").getDocuments() { (querySnapshot, err) in
@@ -218,42 +218,42 @@ class MainManager {
                     
                     writeManagedObjectContext.perform {
                         
-                        guard let roadSigns = querySnapshot?.documents else {
+                        guard let roadConditions = querySnapshot?.documents else {
                             errorAdviser.message = CustomError.canNotProcessData.errorDescription
-                            completion?(oldRoadSigns, errorAdviser)
+                            completion?(oldRoadConditions, errorAdviser)
                             return
                         }
                         
-                        var newRoadSignsIDs: [String] = []
-                        for currentSign in roadSigns {
-                            guard let signID = currentSign[RoadSignJSON.id.rawValue] as? String else { continue }
-                            newRoadSignsIDs.append(signID)
-                            let newSign = RoadSign.findOrCreate(signID, context: writeManagedObjectContext)
+                        var newRoadConditionsIDs: [String] = []
+                        for currentSign in roadConditions {
+                            guard let signID = currentSign[RoadConditionJSON.id.rawValue] as? String else { continue }
+                            newRoadConditionsIDs.append(signID)
+                            let newSign = RoadCondition.findOrCreate(signID, context: writeManagedObjectContext)
                             newSign.fillSignInfo(currentSign.data())
                             if newSign.shouldDeleteRoadSing {
                                 writeManagedObjectContext.delete(newSign)
                             }
                         }
                         
-                        for oldSign in oldRoadSigns {
+                        for oldSign in oldRoadConditions {
                             if let oldSignID = oldSign.id,
-                               !newRoadSignsIDs.contains(oldSignID) {
+                               !newRoadConditionsIDs.contains(oldSignID) {
                                 writeManagedObjectContext.delete(oldSign)
-                                self.deleteElement(elementId: oldSignID, type: .roadSign)
+                                self.deleteElement(elementId: oldSignID, type: .roadCondition)
                             }
                         }
                         
                         let status = writeManagedObjectContext.saveOrRollback()
                         if status {
-                            if roadSigns.isEmpty {
+                            if roadConditions.isEmpty {
                                 errorAdviser.title = ROAD_CONDITIONS_INFO
                                 errorAdviser.message = NO_ROAD_CONDITIONS_FOUND
-                                completion?(oldRoadSigns, errorAdviser)
+                                completion?(oldRoadConditions, errorAdviser)
                             }
                             completion?(nil, nil)
                         } else {
                             errorAdviser.message = CustomError.dataBaseError.errorDescription
-                            completion?(oldRoadSigns, errorAdviser)
+                            completion?(oldRoadConditions, errorAdviser)
                         }
                     }
                 }
@@ -261,14 +261,14 @@ class MainManager {
         case false:
             errorAdviser.title = ROAD_CONDITIONS_INFO
             errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
-            completion?(oldRoadSigns, errorAdviser)
+            completion?(oldRoadConditions, errorAdviser)
         }
     }
     
     func getRoadConditionFullReport(_ completion: (() -> Void)?) {
         let writeManagedObjectContext = persistanceService.backgroundContext
         let connectionStatus = Reachability.isConnectedToNetwork()
-        let oldRoadSigns = fetchRoadFullReport(objectContext: writeManagedObjectContext)
+        let oldRoadConditions = fetchRoadFullReport(objectContext: writeManagedObjectContext)
         switch connectionStatus {
         case true:
             firestoreDataBase.collection("RoadConditionReport").getDocuments() { (querySnapshot, _) in
@@ -279,7 +279,7 @@ class MainManager {
                 
                 writeManagedObjectContext.perform {
                     if roadConditionFullReports.isEmpty {
-                        oldRoadSigns.forEach({
+                        oldRoadConditions.forEach({
                             writeManagedObjectContext.delete($0)
                         })
                     } else {
@@ -360,7 +360,7 @@ class MainManager {
                        _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)? = nil) {
         guard let elementId = elementId else { return }
         switch type {
-        case .roadSign:
+        case .roadCondition:
             firestoreDataBase.collection("RoadConditions").document(elementId).delete() { err in
                 if let err = err {
                     completion?(.error, err.localizedDescription)
@@ -401,7 +401,7 @@ class MainManager {
                           _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)?) {
         
         switch detailsViewModel.detailsType {
-        case .roadSign:
+        case .roadCondition:
             firestoreDataBase.collection("RoadConditions").document(id).setData([
                 "numberOfDeletions": detailsViewModel.numberOfDeletions,
             ], merge: true) { err in

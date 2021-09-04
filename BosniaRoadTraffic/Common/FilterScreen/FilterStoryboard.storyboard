@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,15 +35,14 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4Eg-3q-ggd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GNT-1i-VZm" firstAttribute="leading" secondItem="4Eg-3q-ggd" secondAttribute="leading" id="7g9-5O-TQI"/>
+                            <constraint firstItem="GNT-1i-VZm" firstAttribute="leading" secondItem="FLd-4I-GpB" secondAttribute="leading" id="7g9-5O-TQI"/>
                             <constraint firstItem="GNT-1i-VZm" firstAttribute="top" secondItem="tNf-wl-3I7" secondAttribute="bottom" id="L6f-uN-NPD"/>
                             <constraint firstAttribute="trailing" secondItem="tNf-wl-3I7" secondAttribute="trailing" id="R55-Zn-RdS"/>
                             <constraint firstAttribute="bottom" secondItem="GNT-1i-VZm" secondAttribute="bottom" id="gyc-hX-oLv"/>
                             <constraint firstItem="tNf-wl-3I7" firstAttribute="leading" secondItem="FLd-4I-GpB" secondAttribute="leading" id="jMg-Wd-YG9"/>
                             <constraint firstItem="tNf-wl-3I7" firstAttribute="top" secondItem="FLd-4I-GpB" secondAttribute="top" id="pV0-Tm-vyi"/>
-                            <constraint firstItem="GNT-1i-VZm" firstAttribute="trailing" secondItem="4Eg-3q-ggd" secondAttribute="trailing" id="ucu-CS-0YF"/>
+                            <constraint firstItem="GNT-1i-VZm" firstAttribute="trailing" secondItem="FLd-4I-GpB" secondAttribute="trailing" id="ucu-CS-0YF"/>
                         </constraints>
                     </view>
                     <connections>
@@ -64,8 +62,5 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

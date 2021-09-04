@@ -56,7 +56,7 @@ class RoadConditionsViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView! {
         didSet {
-            mapView.register(RoadSignMarkerView.self,
+            mapView.register(RoadConditionMarkerView.self,
                              forAnnotationViewWithReuseIdentifier:
                                 MKMapViewDefaultAnnotationViewReuseIdentifier)
             mapView.userTrackingMode = .followWithHeading
@@ -122,9 +122,9 @@ class RoadConditionsViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        viewModel.roadSignsArray.bind(onNext: { [unowned self] roadSigns in
-            print("Number of new signs: \(roadSigns.count) \n \(roadSigns)")
-            prepareMap(with: roadSigns)
+        viewModel.roadConditionsArray.bind(onNext: { [unowned self] roadConditions in
+            print("Number of new signs: \(roadConditions.count) \n \(roadConditions)")
+            prepareMap(with: roadConditions)
         })
         .disposed(by: disposeBag)
         
@@ -137,7 +137,7 @@ class RoadConditionsViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         
-        filterViewController.filteredRoadSignArray.bind(onNext: { [unowned self] roadConditions in
+        filterViewController.filteredRoadConditionsArray.bind(onNext: { [unowned self] roadConditions in
             loadingIndicatorView.startAnimating()
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotations(roadConditions)
@@ -177,9 +177,9 @@ class RoadConditionsViewController: UIViewController {
         viewModel.fetchData()
     }
     
-    private func prepareMap(with roadSigns: [RoadSign]) {
+    private func prepareMap(with roadConditions: [RoadCondition]) {
         mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotations(roadSigns)
+        mapView.addAnnotations(roadConditions)
         
         if let currentLocation = viewModel.userCurrentLocation {
             mapView.setRegion(currentLocation, animated: true)
@@ -189,7 +189,7 @@ class RoadConditionsViewController: UIViewController {
             navigationItem.rightBarButtonItems?.first?.isEnabled = true
         }
         
-        let filterViewModel = FilterViewModel(roadSigns: roadSigns)
+        let filterViewModel = FilterViewModel(roadConditions: roadConditions)
         if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
             navigationItem.rightBarButtonItems?.last?.isEnabled = true
@@ -265,8 +265,8 @@ extension RoadConditionsViewController {
 extension RoadConditionsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        guard let roadSign = view.annotation as? RoadSign else { return }
-        presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadSign: roadSign),
+        guard let roadCondition = view.annotation as? RoadCondition else { return }
+        presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadCondition: roadCondition),
                                                                       delegate: self))
     }
 }

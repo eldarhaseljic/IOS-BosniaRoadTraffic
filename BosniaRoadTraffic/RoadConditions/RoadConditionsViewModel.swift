@@ -21,17 +21,17 @@ final class RoadConditionsViewModel: NSObject {
     private let manager: MainManager!
     
     private var roadInfoFRC: NSFetchedResultsController<RoadConditionDetails>!
-    private var roadSignFRC: NSFetchedResultsController<RoadSign>!
+    private var roadConditionFRC: NSFetchedResultsController<RoadCondition>!
     private var mainRoadConditionsDetails: RoadConditionDetails? = nil
     private var currentMapTypeID = 1
     
     let roadInfoArray = PublishSubject<RoadConditionDetails?>()
-    let roadSignsArray = PublishSubject<[RoadSign]>()
+    let roadConditionsArray = PublishSubject<[RoadCondition]>()
     let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
-    var roadSignsInDatabase: [RoadSign] = []
+    var roadConditionsInDatabase: [RoadCondition] = []
     
     init(manager: MainManager = MainManager.shared,
          persistanceService: PersistanceService = PersistanceService.shared,
@@ -47,17 +47,17 @@ final class RoadConditionsViewModel: NSObject {
     
     private func setupFetchControllers() {
         setupFetchRoadInfoController()
-        setupFetchRoadSignController()
+        setupFetchRoadConditionController()
     }
     
-    private func setupFetchRoadSignController() {
-        roadSignFRC = NSFetchedResultsController(fetchRequest: RoadSign.sortedFetchRequest,
+    private func setupFetchRoadConditionController() {
+        roadConditionFRC = NSFetchedResultsController(fetchRequest: RoadCondition.sortedFetchRequest,
                                                  managedObjectContext: persistanceService.mainContext,
                                                  sectionNameKeyPath: nil,
                                                  cacheName: nil)
-        roadSignFRC.delegate = self
+        roadConditionFRC.delegate = self
         do {
-            try roadSignFRC.performFetch()
+            try roadConditionFRC.performFetch()
         } catch {
             fatalError("Road Conditions fetch request failed")
         }
@@ -123,10 +123,10 @@ final class RoadConditionsViewModel: NSObject {
                                   longitudinalMeters: locationDistance)
     }
     
-    private func handleRoadSignData() {
-        let roadData = roadSignFRC.fetchedObjects ?? []
+    private func handleRoadConditionData() {
+        let roadData = roadConditionFRC.fetchedObjects ?? []
         var errorAdviser: Adviser? = nil
-        if roadData.count > roadSignsInDatabase.count {
+        if roadData.count > roadConditionsInDatabase.count {
             errorAdviser = Adviser(title: ROAD_CONDITIONS_INFO, message: NEW_ROAD_CONDITIONS_FOUND)
         } else if Reachability.isConnectedToNetwork() == false {
             errorAdviser = Adviser(title: ROAD_CONDITIONS_INFO, message: YOU_ARE_CURRENTLY_OFFLINE)
@@ -143,9 +143,9 @@ final class RoadConditionsViewModel: NSObject {
         return mainRoadConditionsDetails
     }
     
-    private func showRoadConditons(roadConditions: [RoadSign], errorAdviser: Adviser? = nil) {
-        roadSignsInDatabase = roadConditions
-        roadSignsArray.onNext(roadSignsInDatabase)
+    private func showRoadConditons(roadConditions: [RoadCondition], errorAdviser: Adviser? = nil) {
+        roadConditionsInDatabase = roadConditions
+        roadConditionsArray.onNext(roadConditionsInDatabase)
         if let errorAdviser = errorAdviser {
             messageTransmitter.onNext(errorAdviser)
         }
@@ -190,8 +190,8 @@ final class RoadConditionsViewModel: NSObject {
 extension RoadConditionsViewModel: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        if controller == roadSignFRC {
-            handleRoadSignData()
+        if controller == roadConditionFRC {
+            handleRoadConditionData()
         } else if controller == roadInfoFRC {
             handleRoadDetailsData()
         }

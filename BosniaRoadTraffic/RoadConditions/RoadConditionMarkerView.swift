@@ -1,5 +1,5 @@
 //
-//  RoadSignMarkerView.swift
+//  RoadConditionMarkerView.swift
 //  Bosnia Road Traffic 
 //
 //  Created by Eldar Haseljic on 2/16/21.
@@ -9,16 +9,16 @@
 import Foundation
 import MapKit
 
-class RoadSignMarkerView: MKAnnotationView {
+class RoadConditionMarkerView: MKAnnotationView {
    
     override var annotation: MKAnnotation? {
         willSet {
-            guard let roadSign = newValue as? RoadSign else { return }
+            guard let roadCondition = newValue as? RoadCondition else { return }
             canShowCallout = true
             calloutOffset = CGPoint(x: 0, y: -2)
-            detailCalloutAccessoryView = getDescriptionLabel(text: roadSign.subtitle)
+            detailCalloutAccessoryView = getDescriptionLabel(text: roadCondition.subtitle)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            image = roadSign.image
+            image = roadCondition.image
         }
     }
     

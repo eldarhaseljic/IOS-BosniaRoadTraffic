@@ -1,5 +1,5 @@
 //
-//  RoadSign+CoreDataClass.swift
+//  RoadCondition+CoreDataClass.swift
 //  Bosnia Road Traffic 
 //
 //  Created by Eldar Haseljic on 2/14/21.
@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 import MapKit
 
-enum RoadSignJSON: String {
+enum RoadConditionJSON: String {
     case id
     case icon
     case title
@@ -26,7 +26,7 @@ enum RoadSignJSON: String {
     case updatedAt = "updated_at"
 }
 
-public class RoadSign: NSManagedObject, MKAnnotation {
+public class RoadCondition: NSManagedObject, MKAnnotation {
     
     @NSManaged public var roadID: NSNumber?
     @NSManaged public var roadType: String?
@@ -102,7 +102,7 @@ public class RoadSign: NSManagedObject, MKAnnotation {
         }
     }
     
-    var roadSignType: SignIcon {
+    var roadConditionType: SignIcon {
         switch iconTitle {
         case Constants.ImageTitles.border_crossings:
             return .border_crossings

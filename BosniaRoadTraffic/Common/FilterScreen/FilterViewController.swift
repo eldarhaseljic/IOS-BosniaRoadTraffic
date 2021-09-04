@@ -28,7 +28,7 @@ class FilterViewController: UIViewController {
     private var filterType: FilterType = .radars
     
     let filteredRadarsArray = PublishSubject<[Radar]>()
-    let filteredRoadSignArray = PublishSubject<[RoadSign]>()
+    let filteredRoadConditionsArray = PublishSubject<[RoadCondition]>()
     
     override func viewDidLoad() { super .viewDidLoad() }
     
@@ -45,7 +45,7 @@ class FilterViewController: UIViewController {
         case .radars:
             filteredRadarsArray.onNext(viewModel.filterRadars())
         case .roadConditions:
-            filteredRoadSignArray.onNext(viewModel.filterRoadSigns())
+            filteredRoadConditionsArray.onNext(viewModel.filterRoadConditions())
         }
         
         dismiss(animated: true)

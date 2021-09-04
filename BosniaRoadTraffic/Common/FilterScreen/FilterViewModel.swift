@@ -71,7 +71,7 @@ class FilterViewModel {
     
     private var backupSignFilters: [SignTypeOption] = []
     private var signTypes: [SignTypeOption] = []
-    private var roadSignsInDatabase: [RoadSign] = []
+    private var roadConditionsInDatabase: [RoadCondition] = []
     
     private var filterType: FilterType
     
@@ -82,8 +82,8 @@ class FilterViewModel {
         updateFilters()
     }
     
-    init(roadSigns: [RoadSign]) {
-        roadSignsInDatabase = roadSigns
+    init(roadConditions: [RoadCondition]) {
+        roadConditionsInDatabase = roadConditions
         filterType = .roadConditions
         checkTypes()
         updateFilters()
@@ -105,20 +105,20 @@ class FilterViewModel {
         return radars
     }
     
-    func filterRoadSigns() -> [RoadSign] {
-        var roadSigns: [RoadSign] = []
+    func filterRoadConditions() -> [RoadCondition] {
+        var roadConditions: [RoadCondition] = []
         signTypes.forEach { option in
             if option.isOn {
-                roadSignsInDatabase.forEach { roadsign in
-                    if roadsign.roadSignType == option.type {
-                        roadSigns.append(roadsign)
+                roadConditionsInDatabase.forEach { roadCondition in
+                    if roadCondition.roadConditionType == option.type {
+                        roadConditions.append(roadCondition)
                     }
                 }
             }
         }
         
         updateFilters()
-        return roadSigns
+        return roadConditions
     }
     
     func resetFilters() {
@@ -161,7 +161,7 @@ class FilterViewModel {
                                                 .traffic_accident,
                                                 .glaze]
             defaultsignTypes.forEach { type in
-                if roadSignsInDatabase.contains(where: { $0.roadSignType == type }) {
+                if roadConditionsInDatabase.contains(where: { $0.roadConditionType == type }) {
                     signTypes.append(SignTypeOption(type: type,
                                                     numberOfElements: getNumberOfElementsByType(type: type.rawValue),
                                                     isOn: true))
@@ -180,8 +180,8 @@ class FilterViewModel {
                 }
             }
         case .roadConditions:
-            roadSignsInDatabase.forEach { roadSign in
-                if roadSign.roadSignType.rawValue == type {
+            roadConditionsInDatabase.forEach { roadCondition in
+                if roadCondition.roadConditionType.rawValue == type {
                     numberOfType += 1
                 }
             }

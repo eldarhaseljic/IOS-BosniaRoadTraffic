@@ -9,7 +9,7 @@
 import Foundation
 
 enum DetailsType: String {
-    case roadSign
+    case roadCondition
     case roadDetails
     case radar
 }
@@ -28,17 +28,17 @@ class DetailsViewModel {
     var numberOfDeletions: Int
     let manager: MainManager
     
-    init(roadSign: RoadSign,
+    init(roadCondition: RoadCondition,
          manager: MainManager = MainManager.shared) {
-        self.detailsType = .roadSign
-        self.title = roadSign.title
-        self.subtitle = roadSign.roadType
-        self.road = roadSign.road
-        self.validFrom = roadSign.validFrom
-        self.validTo = roadSign.validTo
-        self.text = roadSign.text
-        self.numberOfDeletions = roadSign.numberOfDeletions.intValue
-        self.dataId = roadSign.id
+        self.detailsType = .roadCondition
+        self.title = roadCondition.title
+        self.subtitle = roadCondition.roadType
+        self.road = roadCondition.road
+        self.validFrom = roadCondition.validFrom
+        self.validTo = roadCondition.validTo
+        self.text = roadCondition.text
+        self.numberOfDeletions = roadCondition.numberOfDeletions.intValue
+        self.dataId = roadCondition.id
         self.manager = manager
     }
     

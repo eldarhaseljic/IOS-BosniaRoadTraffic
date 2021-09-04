@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +45,6 @@
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VSW-Io-trp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="exi-0w-Ias" firstAttribute="top" secondItem="Q63-qj-PfO" secondAttribute="top" id="0HU-de-aFh"/>
                             <constraint firstItem="vEz-c0-pXq" firstAttribute="top" secondItem="exi-0w-Ias" secondAttribute="bottom" id="Esx-mb-uyx"/>
@@ -55,8 +53,8 @@
                             <constraint firstItem="exi-0w-Ias" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="Oy3-vE-sU9"/>
                             <constraint firstAttribute="bottom" secondItem="vEz-c0-pXq" secondAttribute="bottom" id="arj-R6-xPs"/>
                             <constraint firstAttribute="trailing" secondItem="exi-0w-Ias" secondAttribute="trailing" id="bbd-TZ-0Wv"/>
-                            <constraint firstItem="vEz-c0-pXq" firstAttribute="trailing" secondItem="VSW-Io-trp" secondAttribute="trailing" id="lHe-0O-2kb"/>
-                            <constraint firstItem="vEz-c0-pXq" firstAttribute="leading" secondItem="VSW-Io-trp" secondAttribute="leading" id="sNX-Lc-u9c"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="trailing" secondItem="Q63-qj-PfO" secondAttribute="trailing" id="lHe-0O-2kb"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="sNX-Lc-u9c"/>
                         </constraints>
                     </view>
                     <connections>
@@ -80,8 +78,5 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
