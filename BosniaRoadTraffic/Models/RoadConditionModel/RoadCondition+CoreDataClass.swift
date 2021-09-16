@@ -81,7 +81,7 @@ public class RoadCondition: NSManagedObject, MKAnnotation {
     
     var image: UIImage {
         switch iconTitle {
-        case ConditionType.border_crossings.icon:
+        case ConditionType.border_crossing.icon:
             return #imageLiteral(resourceName: "carina")
         case ConditionType.road_rehabilitation.icon:
             return #imageLiteral(resourceName: "sanacija_kolovoza")
@@ -104,8 +104,8 @@ public class RoadCondition: NSManagedObject, MKAnnotation {
     
     var roadConditionType: ConditionType {
         switch iconTitle {
-        case Constants.ImageTitles.border_crossings:
-            return .border_crossings
+        case Constants.ImageTitles.border_crossing:
+            return .border_crossing
         case Constants.ImageTitles.road_rehabilitation:
             return .road_rehabilitation
         case Constants.ImageTitles.complete_suspension:

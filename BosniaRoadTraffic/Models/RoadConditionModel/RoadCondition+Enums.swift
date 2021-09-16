@@ -10,7 +10,7 @@ import Foundation
 
 enum ConditionType: String {
     
-    case border_crossings
+    case border_crossing
     case road_rehabilitation
     case complete_suspension
     case prohibition_for_trucks
@@ -22,8 +22,8 @@ enum ConditionType: String {
     
     var icon: String {
         switch self {
-        case .border_crossings:
-            return Constants.ImageTitles.border_crossings
+        case .border_crossing:
+            return Constants.ImageTitles.border_crossing
         case .road_rehabilitation:
             return Constants.ImageTitles.road_rehabilitation
         case .complete_suspension:
@@ -43,65 +43,80 @@ enum ConditionType: String {
         }
     }
     
-    var name: String {
+    var presentValue: String {
         switch self {
-        case .border_crossings:
-            return "Granični prijelaz"
+        case .border_crossing:
+            return BORDER_CROSSING
         case .road_rehabilitation:
-            return "Sanacija kolovoza"
+            return ROAD_REHABILITATION
         case .complete_suspension:
-            return "Potpuna obustava prometa"
+            return COMPLETE_SUSPENSION
         case .prohibition_for_trucks:
-            return "Zabrana za teretna vozila"
+            return PROHIBITION_FOR_TRUCKS
         case .congestion:
-            return "Zagušenje"
+            return CONGESTION
         case .landslide:
-            return "Odron"
+            return LANDSIDE
         case .traffic_accident:
-            return "Saobraćajna nezgoda"
+            return TRAFFIC_ACCIDENT
         case .glaze:
-            return "Poledica"
+            return GLAZE
         case .danger:
-            return "Opasnost"
+            return DANGER
         }
     }
 }
 
 enum RoadType: String {
     
-    case border_crossings
-    case highways
-    case mainways
-    case regional_roads
-    case city_roads
+    case border_crossing
+    case highway
+    case mainway
+    case regional_road
+    case city_road
         
     var id: Int {
         switch self {
-        case .border_crossings:
+        case .border_crossing:
             return 39
-        case .highways:
+        case .highway:
             return 40
-        case .mainways:
+        case .mainway:
             return 41
-        case .regional_roads:
+        case .regional_road:
             return 42
-        case .city_roads:
+        case .city_road:
             return 43
+        }
+    }
+    
+    var presentValue: String {
+        switch self {
+        case .border_crossing:
+            return BORDER_CROSSING
+        case .highway:
+            return HIGHWAY
+        case .mainway:
+            return MAINWAY
+        case .regional_road:
+            return REGIONAL_ROAD
+        case .city_road:
+            return CITY_ROAD
         }
     }
     
     var name: String {
         switch self {
-        case .border_crossings:
-            return "Granični prijelaz"
-        case .highways:
-            return "Autocesta"
-        case .mainways:
-            return "Magistralna cesta"
-        case .regional_roads:
-            return "Regionalna cesta"
-        case .city_roads:
-            return "Gradska cesta"
+        case .border_crossing:
+            return "Border crossing"
+        case .highway:
+            return "Highway"
+        case .mainway:
+            return "Mainway"
+        case .regional_road:
+            return "Regional road"
+        case .city_road:
+            return "City road"
         }
     }
 }

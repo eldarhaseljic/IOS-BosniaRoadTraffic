@@ -40,7 +40,9 @@ class RadarReportCellViewModel {
     var currentMUP: String?
     
     var locationString: String {
-        return String(location.coordinate.latitude.description).appending(",").appending(location.coordinate.longitude.description)
+        return String(location.coordinate.latitude.description)
+            .appending(",")
+            .appending(location.coordinate.longitude.description)
     }
     
     var numberOfRadarTypes: Int {

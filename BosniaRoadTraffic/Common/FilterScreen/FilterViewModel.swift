@@ -51,7 +51,7 @@ class ConditionTypeOption: TypeOption {
     var isOn: Bool
     
     var typeValue: String {
-        return type.name
+        return type.presentValue
     }
     
     init(type: ConditionType,
@@ -152,7 +152,7 @@ class FilterViewModel {
             }
         case .roadConditions:
             let defaultConditionTypes: [ConditionType] = [.danger,
-                                                .border_crossings,
+                                                .border_crossing,
                                                 .road_rehabilitation,
                                                 .complete_suspension,
                                                 .prohibition_for_trucks,

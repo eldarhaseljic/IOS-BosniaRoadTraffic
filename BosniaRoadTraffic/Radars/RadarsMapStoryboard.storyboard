@@ -138,7 +138,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="Eut-HJ-vgu" id="XqD-C2-2Vf"/>
+                        <outlet property="cancelReportButton" destination="Eut-HJ-vgu" id="Ih5-Nq-rGb"/>
                         <outlet property="confirmReportButton" destination="5XV-hO-Wlg" id="9kd-yM-WG7"/>
                         <outlet property="containerView" destination="pkY-Lk-o7G" id="rM6-iV-c1z"/>
                         <outlet property="loadingIndicatorView" destination="eGh-qM-MQx" id="ZL7-SR-qQ1"/>

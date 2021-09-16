@@ -13,8 +13,8 @@ class FilterViewController: UIViewController {
     
     @IBOutlet var navigationBarItem: UINavigationItem! {
         didSet {
-            navigationBarItem.leftBarButtonItem = cancelButton(action: #selector(tapCancelButton))
-            navigationBarItem.rightBarButtonItem = applyButton(action: #selector(tapApplyButton))
+            navigationBarItem.leftBarButtonItem = cancelButton
+            navigationBarItem.rightBarButtonItem = applyButton
         }
     }
     
@@ -33,21 +33,20 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() { super .viewDidLoad() }
     
     @objc
-    private func tapCancelButton(_ sender: Any) {
+    override func tapCancelButton(_ sender: Any) {
         viewModel.resetFilters()
         contextView.reloadData()
         dismiss(animated: true)
     }
     
     @objc
-    private func tapApplyButton(_ sender: Any) {
+    override func tapApplyButton(_ sender: Any) {
         switch filterType {
         case .radars:
             filteredRadarsArray.onNext(viewModel.filterRadars())
         case .roadConditions:
             filteredRoadConditionsArray.onNext(viewModel.filterRoadConditions())
         }
-        
         dismiss(animated: true)
     }
     

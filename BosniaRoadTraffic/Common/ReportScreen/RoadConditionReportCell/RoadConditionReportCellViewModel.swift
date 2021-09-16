@@ -13,7 +13,7 @@ class RoadConditionReportCellViewModel {
     
     private var location: CLLocation!
     private let manager: MainManager!
-    private var conditionTypes: [ConditionType] = [.border_crossings,
+    private var conditionTypes: [ConditionType] = [.border_crossing,
                                               .road_rehabilitation,
                                               .complete_suspension,
                                               .prohibition_for_trucks,
@@ -22,11 +22,11 @@ class RoadConditionReportCellViewModel {
                                               .traffic_accident,
                                               .glaze,
                                               .danger]
-    private var roadTypes: [RoadType] = [.border_crossings,
-                                         .city_roads,
-                                         .highways,
-                                         .mainways,
-                                         .regional_roads]
+    private var roadTypes: [RoadType] = [.border_crossing,
+                                         .city_road,
+                                         .highway,
+                                         .mainway,
+                                         .regional_road]
     
     init(for location: CLLocation, manager: MainManager = MainManager.shared) {
         self.location = location
@@ -53,19 +53,19 @@ class RoadConditionReportCellViewModel {
     }
     
     func getConditionTypeName(for row: Int) -> String? {
-        return conditionTypes[safeIndex: row]?.name
+        return conditionTypes[safeIndex: row]?.presentValue
     }
     
     func getRoadTypeName(for row: Int) -> String? {
-        return roadTypes[safeIndex: row]?.name
+        return roadTypes[safeIndex: row]?.presentValue
     }
     
     func getConditionType(for conditionTypeString: String?) -> ConditionType? {
-        return conditionTypes.first(where: { $0.name == conditionTypeString })
+        return conditionTypes.first(where: { $0.presentValue == conditionTypeString })
     }
     
     func getRoadType(for roadString: String?) -> RoadType? {
-        return roadTypes.first(where: { $0.name == roadString })
+        return roadTypes.first(where: { $0.presentValue == roadString })
     }
     
     func addNewRoadCondition(roadType: RoadType,

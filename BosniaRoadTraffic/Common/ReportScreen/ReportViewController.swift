@@ -66,13 +66,13 @@ class ReportViewController: UIViewController {
     
     private func setupNavigationBar() {
         title = reportType == .radarReport ? REPORT_RADAR : REPORT_ROAD_CONDITION
-        navigationItem.leftBarButtonItem = backButton(action: #selector(tapBack))
+        navigationItem.leftBarButtonItem = backButton
     }
     
     @objc
-    public func tapBack(_ sender: Any) {
+    override func tapBackButton(_ sender: Any) {
         delegate?.backButtonTaped()
-        tapBackButton(sender)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -96,9 +96,7 @@ extension ReportViewController {
             .instantiateViewControllerWithIdentifier(ReportViewController.self)!
     }
     
-    static func showReportPage(for location: CLLocation,
-                               reportType: ReportType,
-                               delegate: ViewProtocol? = nil) -> ReportViewController {
+    static func showReportPage(for location: CLLocation, reportType: ReportType, delegate: ViewProtocol? = nil) -> ReportViewController {
         let reportViewController = ReportViewController.getViewController()
         reportViewController.setData(location: location,
                                      reportType: reportType,

@@ -32,7 +32,7 @@ final class Constants {
     }
     
     struct ImageTitles {
-        static let border_crossings = "carina.png"
+        static let border_crossing = "carina.png"
         static let road_rehabilitation = "sanacija_kolovoza.png"
         static let complete_suspension = "potpuna_obustava.png"
         static let prohibition_for_trucks = "zabrana_za_teretna_vozila.png"

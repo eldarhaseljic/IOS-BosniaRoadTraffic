@@ -23,13 +23,19 @@ extension RoadCondition {
         return condition
     }
     
+    private static var roadTypes: [RoadType] = [.border_crossing,
+                                                .city_road,
+                                                .highway,
+                                                .mainway,
+                                                .regional_road]
+    
     func fillConditionInfo(_ roadConditionJSON: [String: Any]) {
         if let roadConditionID = roadConditionJSON[RoadConditionJSON.categoryID.rawValue] as? NSNumber {
             self.roadID = roadConditionID
-        }
-        
-        if let roadConditionType = roadConditionJSON[RoadConditionJSON.categoryName.rawValue] as? String {
-            self.roadType = roadConditionType
+            let tempType = RoadCondition.roadTypes.first(where: { $0.id == roadConditionID.intValue })?.presentValue
+            if let roadConditionType = roadConditionJSON[RoadConditionJSON.categoryName.rawValue] as? String {
+                self.roadType = tempType.isNotNilNotEmpty ? tempType : roadConditionType
+            }
         }
         
         if let coordinates = roadConditionJSON[RoadConditionJSON.coordinates.rawValue] as? String {

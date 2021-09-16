@@ -27,21 +27,54 @@ extension UIViewController {
         return UIBarButtonItem(title: CLOSE, style: .done, target: self, action: #selector(tapCloseButton))
     }
     
-    public func cancelButton(action: Selector = #selector(tapCloseButton)) -> UIBarButtonItem {
-        return UIBarButtonItem(title: CANCEL, style: .done, target: self, action: action)
+    public var applyButton: UIBarButtonItem {
+        return UIBarButtonItem(title: APPLY, style: .done, target: self, action: #selector(tapApplyButton))
     }
     
-    public func backButton(action: Selector) -> UIBarButtonItem {
-        return UIBarButtonItem(image: #imageLiteral(resourceName: "chevron.backward"), style: .done, target: self, action: action)
+    public var infoButton: UIBarButtonItem {
+        let infoButton = UIBarButtonItem(image: #imageLiteral(resourceName: "info.circle"),
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(tapInfoButton))
+        infoButton.imageInsets = UIEdgeInsets(top: 0.0, left: -15, bottom: 0, right: 0)
+        return infoButton
     }
     
-    public func applyButton(action: Selector) -> UIBarButtonItem {
-        return UIBarButtonItem(title: APPLY, style: .done, target: self, action: action)
+    public var cancelButton: UIBarButtonItem {
+        return UIBarButtonItem(title: CANCEL, style: .done, target: self, action: #selector(tapCancelButton))
+    }
+    
+    public var filterButton: UIBarButtonItem {
+        let filterButton = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"),
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(tapFilterButton))
+        return filterButton
     }
     
     @objc
     public func tapCloseButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    public func tapCancelButton(_ sender: Any) {
+        
+    }
+    
+    @objc
+    public func tapInfoButton(_ sender: Any) {
+        
+    }
+    
+    @objc
+    public func tapFilterButton(_ sender: Any) {
+        
+    }
+    
+    @objc
+    public func tapApplyButton(_ sender: Any) {
+        
     }
     
     @objc

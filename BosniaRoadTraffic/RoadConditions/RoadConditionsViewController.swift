@@ -29,13 +29,13 @@ class RoadConditionsViewController: UIViewController {
         }
     }
     
-    @IBOutlet var cancelButton: UIButton! {
+    @IBOutlet var cancelReportButton: UIButton! {
         didSet {
-            cancelButton.setTitle(CANCEL,for: .normal)
-            cancelButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                          borderColor: AppColor.black.cgColor)
-            cancelButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
-                                   shadowRadius: Constants.ShadowRadius.ThreePoints)
+            cancelReportButton.setTitle(CANCEL,for: .normal)
+            cancelReportButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                                borderColor: AppColor.black.cgColor)
+            cancelReportButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
+                                         shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
     
@@ -124,7 +124,7 @@ class RoadConditionsViewController: UIViewController {
         
         viewModel.roadConditionsArray.bind(onNext: { [unowned self] roadConditions in
             print("Number of new conditions: \(roadConditions.count) \n \(roadConditions)")
-            prepareMap(with: roadConditions)
+            prepareMapAndFilter(with: roadConditions)
         })
         .disposed(by: disposeBag)
         
@@ -160,7 +160,7 @@ class RoadConditionsViewController: UIViewController {
             setReportPinVisibility(isVisible: true)
         }.disposed(by: disposeBag)
         
-        cancelButton.rx.tap.bind { [unowned self] in
+        cancelReportButton.rx.tap.bind { [unowned self] in
             setReportPinVisibility()
         }.disposed(by: disposeBag)
         
@@ -173,11 +173,11 @@ class RoadConditionsViewController: UIViewController {
         setReportPinVisibility()
         loadingIndicatorView.startAnimating()
         reloadMapButton.isEnabled = false
-        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = false }
+        navigationItem.rightBarButtonItems = []
         viewModel.fetchData()
     }
     
-    private func prepareMap(with roadConditions: [RoadCondition]) {
+    private func prepareMapAndFilter(with roadConditions: [RoadCondition]) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(roadConditions)
         
@@ -186,13 +186,15 @@ class RoadConditionsViewController: UIViewController {
         }
         
         if viewModel.getRoadConditionsDetails() != nil {
-            navigationItem.rightBarButtonItems?.first?.isEnabled = true
+            navigationItem.rightBarButtonItems?.append(infoButton)
         }
         
         let filterViewModel = FilterViewModel(roadConditions: roadConditions)
         if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
-            navigationItem.rightBarButtonItems?.last?.isEnabled = true
+            let button = filterButton
+            button.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: -15)
+            navigationItem.rightBarButtonItems?.append(button)
         }
         
         reportButton.isHidden = !Reachability.isConnectedToNetwork()
@@ -207,18 +209,7 @@ class RoadConditionsViewController: UIViewController {
     func setupNavigationBar() {
         title = ROAD_CONDITIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        let infoButton = UIBarButtonItem(image: #imageLiteral(resourceName: "info.circle"),
-                                         style: .done,
-                                         target: self,
-                                         action: #selector(tapInfoButton))
-        let editButton = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"),
-                                         style: .done,
-                                         target: self,
-                                         action: #selector(tapEditButton))
-        infoButton.imageInsets = UIEdgeInsets(top: 0.0, left: -15, bottom: 0, right: 0)
-        editButton.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: -15)
-        navigationItem.rightBarButtonItems = [infoButton, editButton]
-        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = false }
+        navigationItem.rightBarButtonItems = []
     }
     
     private func setViewModel() {
@@ -226,14 +217,14 @@ class RoadConditionsViewController: UIViewController {
     }
     
     @objc
-    public func tapInfoButton(_ sender: Any) {
+    override func tapInfoButton(_ sender: Any) {
         guard let roadDetails = viewModel.getRoadConditionsDetails() else { return }
         presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadDetails: roadDetails),
                                                                       delegate: self))
     }
     
     @objc
-    public func tapEditButton(_ sender: Any) {
+    override func tapFilterButton(_ sender: Any) {
         presentView(viewController: filterViewController)
     }
     

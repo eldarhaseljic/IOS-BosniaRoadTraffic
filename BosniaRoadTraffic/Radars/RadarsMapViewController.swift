@@ -28,13 +28,13 @@ class RadarsMapViewController: UIViewController {
         }
     }
     
-    @IBOutlet var cancelButton: UIButton! {
+    @IBOutlet var cancelReportButton: UIButton! {
         didSet {
-            cancelButton.setTitle(CANCEL,for: .normal)
-            cancelButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
-                                          borderColor: AppColor.black.cgColor)
-            cancelButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
-                                   shadowRadius: Constants.ShadowRadius.ThreePoints)
+            cancelReportButton.setTitle(CANCEL,for: .normal)
+            cancelReportButton.setRoundedBorder(borderWidth: Constants.BorderWidth.TwoPoints,
+                                                borderColor: AppColor.black.cgColor)
+            cancelReportButton.setShadow(shadowColor: AppColor.davysGrey.cgColor,
+                                         shadowRadius: Constants.ShadowRadius.ThreePoints)
         }
     }
     
@@ -158,7 +158,7 @@ class RadarsMapViewController: UIViewController {
             setReportPinVisibility(isVisible: true)
         }.disposed(by: disposeBag)
         
-        cancelButton.rx.tap.bind { [unowned self] in
+        cancelReportButton.rx.tap.bind { [unowned self] in
             setReportPinVisibility()
         }.disposed(by: disposeBag)
         
@@ -171,7 +171,7 @@ class RadarsMapViewController: UIViewController {
         setReportPinVisibility()
         loadingIndicatorView.startAnimating()
         reloadMapButton.isEnabled = false
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem = nil
         viewModel.fetchData()
     }
     
@@ -187,6 +187,7 @@ class RadarsMapViewController: UIViewController {
         if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel,
                                          filterType: .radars)
+            navigationItem.rightBarButtonItem = filterButton
             navigationItem.rightBarButtonItem?.isEnabled = true
         }
         
@@ -202,11 +203,6 @@ class RadarsMapViewController: UIViewController {
     private func setupNavigationBar() {
         title = RADAR_LOCATIONS.localizedUppercase
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image:  #imageLiteral(resourceName: "slider.horizontal"),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(tapEditButton))
-        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func setViewModel() {
@@ -214,7 +210,7 @@ class RadarsMapViewController: UIViewController {
     }
     
     @objc
-    public func tapEditButton(_ sender: Any) {
+    override func tapFilterButton(_ sender: Any) {
         presentView(viewController: filterViewController)
     }
     
