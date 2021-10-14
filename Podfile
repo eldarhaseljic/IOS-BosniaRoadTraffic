@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 target 'BosniaRoadTraffic' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,7 +13,7 @@ target 'BosniaRoadTraffic' do
   pod 'Firebase/Analytics'
 end
 
-deployment_target = '12.0'
+deployment_target = '13.0'
 post_install do |installer|
   installer.generated_projects.each do |project|
     project.targets.each do |target|
