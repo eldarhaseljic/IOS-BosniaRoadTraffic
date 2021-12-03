@@ -59,7 +59,6 @@
 		392E0E1E2666AE5600C33CB7 /* RoadConditionReportViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 392E0E1D2666AE5600C33CB7 /* RoadConditionReportViewCell.xib */; };
 		393A9DAF25E2E42500A3F952 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A9DAE25E2E42500A3F952 /* UIView+Extension.swift */; };
 		3949762225EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */; };
-		3949762325EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3952937D264693C600234394 /* ToolbarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952937C264693C600234394 /* ToolbarPickerView.swift */; };
 		3952937F26469AFC00234394 /* RadarReportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952937E26469AFC00234394 /* RadarReportCellViewModel.swift */; };
 		395293822646DE8700234394 /* Radar+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395293812646DE8700234394 /* Radar+Enums.swift */; };
@@ -74,20 +73,6 @@
 		39DB2CD1262B3E310074FDD8 /* ReportStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39DB2CD0262B3E310074FDD8 /* ReportStoryboard.storyboard */; };
 		39DB2CD6262B469E0074FDD8 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB2CD5262B469E0074FDD8 /* ReportViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3933E04325BC6651008ABBB3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3949762325EBB904006A17B9 /* Pods_BosniaRoadTraffic.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2A3B8ABFC3859D25D8D4B745 /* Pods_BosniaRoadTraffic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTraffic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -496,7 +481,6 @@
 				39BB0B6E25A22222000F3E65 /* Frameworks */,
 				39BB0B6F25A22222000F3E65 /* Resources */,
 				D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */,
-				3933E04325BC6651008ABBB3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

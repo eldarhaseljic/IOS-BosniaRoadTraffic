@@ -93,7 +93,7 @@ final class RoadConditionsViewModel: NSObject {
     }
     
     private func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
+        switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             userLocationStatus.onNext(.authorizedWhenInUse)
             currentAuthorizationStatus = .authorizedWhenInUse
