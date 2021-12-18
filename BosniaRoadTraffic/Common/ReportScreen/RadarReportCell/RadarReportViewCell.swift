@@ -11,7 +11,7 @@ import RxSwift
 
 class RadarReportViewCell: UITableViewCell {
     
-    @IBOutlet var radarTypePickerField: UITextField! {
+    @IBOutlet var radarTypePickerField: DesignableUITextField! {
         didSet {
             radarTypePickerView.delegate = self
             radarTypePickerView.dataSource = self
@@ -22,7 +22,7 @@ class RadarReportViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet var MUPTypePickerField: UITextField! {
+    @IBOutlet var MUPTypePickerField: DesignableUITextField! {
         didSet {
             MUPTypePickerView.delegate = self
             MUPTypePickerView.dataSource = self

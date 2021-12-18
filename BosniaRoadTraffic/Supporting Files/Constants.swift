@@ -27,8 +27,7 @@ final class Constants {
         static let facebookURL = "https://www.facebook.com"
         static let instagramURL = "https://www.instagram.com"
         static let twitterURL = "https://www.twitter.com"
-        static let linkedInURL = "https://www.linkedin.com"
-        static let errorURL = "error url"
+        static let linkedInURL = "https://www.linkedin.com/"
     }
     
     struct ImageTitles {

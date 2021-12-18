@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
         
         linkedInButton.rx.tap.bind {  [weak self] in
             guard let self = self else { return }
-            self.openExternalUrl(urlString: Constants.URLPaths.errorURL)
+            self.openExternalUrl(urlString: Constants.URLPaths.linkedInURL)
         }.disposed(by: disposeBag)
     }
 }

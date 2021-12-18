@@ -11,7 +11,7 @@ import RxSwift
 
 class RoadConditionReportViewCell: UITableViewCell {
     
-    @IBOutlet var conditionTypePickerField: UITextField! {
+    @IBOutlet var conditionTypePickerField: DesignableUITextField! {
         didSet {
             conditionTypePickerView.delegate = self
             conditionTypePickerView.dataSource = self
@@ -22,7 +22,7 @@ class RoadConditionReportViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet var roadTypePickerField: UITextField! {
+    @IBOutlet var roadTypePickerField: DesignableUITextField! {
         didSet {
             roadTypePickerView.delegate = self
             roadTypePickerView.dataSource = self
