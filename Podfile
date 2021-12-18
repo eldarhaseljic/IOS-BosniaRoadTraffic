@@ -6,9 +6,10 @@ target 'BosniaRoadTraffic' do
   use_frameworks!
   
   # Pods for BosniaRoadTraffic
+  pod 'RxDataSources'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Firestore'
   pod 'Firebase'
   pod 'Firebase/Analytics'
 end

@@ -65,7 +65,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" name="SlateGray"/>
+                                        <color key="value" name="White"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -134,7 +134,10 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="chevron.down" catalog="system"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" name="SlateGray"/>
+                                        <color key="value" name="White"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -204,10 +207,10 @@
     </objects>
     <designables>
         <designable name="0dN-rS-tkS">
-            <size key="intrinsicContentSize" width="80" height="34"/>
+            <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="Bmj-PY-gcj">
-            <size key="intrinsicContentSize" width="80" height="34"/>
+            <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
     </designables>
     <resources>

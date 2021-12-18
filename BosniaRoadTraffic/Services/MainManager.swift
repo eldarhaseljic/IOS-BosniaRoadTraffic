@@ -142,7 +142,7 @@ class MainManager {
         let connectionStatus = Reachability.isConnectedToNetwork()
         let writeManagedObjectContext = persistanceService.backgroundContext
         let oldRadars = fetchRadars(objectContext: writeManagedObjectContext)
-        print("Number of old radars: \(oldRadars.count) \n \(oldRadars)")
+        print("Number of old radars: \(oldRadars.count) \n")
         switch connectionStatus {
         case true:
             firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
@@ -206,7 +206,7 @@ class MainManager {
         let connectionStatus = Reachability.isConnectedToNetwork()
         let writeManagedObjectContext = persistanceService.backgroundContext
         let oldRoadConditions = fetchRoadConditions(objectContext: writeManagedObjectContext)
-        print("Number of old radars: \(oldRoadConditions.count) \n \(oldRoadConditions)")
+        print("Number of old road conditions: \(oldRoadConditions.count) \n")
         switch connectionStatus {
         case true:
             firestoreDataBase.collection("RoadConditions").getDocuments() { (querySnapshot, err) in
