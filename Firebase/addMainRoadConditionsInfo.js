@@ -18,24 +18,36 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
+if (process.argv[2] != null) {
+    fs.readFile(process.argv[2], (err, data) => {
+        if (err) throw err;
+        console.log(process.argv[2])
+        let roadConditions = JSON.parse(data)
 
-fs.readFile(process.argv[2], (err, data) => {
-    if (err) throw err;
-    console.log(process.argv[2])
-    let roadConditions = JSON.parse(data)
-
-    roadConditions.forEach(function (obj) {
-        db.collection("RoadConditionReport").doc(obj.id).set({
-            id: "RoadConditionReport-1111111",
-            title: obj.title,
-            startDate: obj.startDate,
-            numberOfDeletions: obj.numberOfDeletions,
-            endDate: obj.endDate,
-            text: obj.text,
-            category_id: 1111111,
-            category_name: "Op\u0161te informacije",
-        })
-        console.log(obj)
-        console.log("Document with id: ", obj.id, ",successfully added!");
+        roadConditions.forEach(function (obj) {
+            db.collection("RoadConditionReport").doc(obj.id).set({
+                id: "RoadConditionReport-1111111",
+                title: obj.title,
+                startDate: obj.startDate,
+                numberOfDeletions: obj.numberOfDeletions,
+                endDate: obj.endDate,
+                text: obj.text,
+                category_id: 1111111,
+                category_name: "Op\u0161te informacije",
+            })
+            console.log(obj)
+            console.log("Document with id: ", obj.id, ",successfully added!");
+        });
     });
-});
+} else {
+    db.collection("RoadConditionReport").get().then((querySnapshot) => {
+        querySnapshot.forEach((obj) => {
+            db.collection("RoadConditionReport").doc(obj.id).delete().then(() => {
+                console.log(obj.data())
+                console.log("Document with id: ", obj.id, ",successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+        });
+    });
+}

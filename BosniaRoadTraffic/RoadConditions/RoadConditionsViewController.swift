@@ -185,7 +185,8 @@ class RoadConditionsViewController: UIViewController {
             mapView.setRegion(currentLocation, animated: true)
         }
         
-        if viewModel.getRoadConditionsDetails() != nil {
+        let roadConditionsDetails = viewModel.getRoadConditionsDetails()
+        if roadConditionsDetails != nil {
             navigationItem.rightBarButtonItems?.append(infoButton)
         }
         
@@ -193,7 +194,7 @@ class RoadConditionsViewController: UIViewController {
         if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
             let button = filterButton
-            button.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: -15)
+            button.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: roadConditionsDetails != nil ? -15 : 0)
             navigationItem.rightBarButtonItems?.append(button)
         }
         
