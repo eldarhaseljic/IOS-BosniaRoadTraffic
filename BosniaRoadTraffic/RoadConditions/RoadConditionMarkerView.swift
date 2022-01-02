@@ -15,7 +15,7 @@ class RoadConditionMarkerView: MKAnnotationView {
         willSet {
             guard let roadCondition = newValue as? RoadCondition else { return }
             canShowCallout = true
-            calloutOffset = CGPoint(x: 0, y: -2)
+            calloutOffset = CGPoint(x: .zero, y: -2)
             detailCalloutAccessoryView = getDescriptionLabel(text: roadCondition.subtitle)
             rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             image = roadCondition.image

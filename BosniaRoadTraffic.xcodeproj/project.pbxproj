@@ -73,6 +73,7 @@
 		39BBCD1326501A6900BBEDA1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BBCD1226501A6900BBEDA1 /* Reachability.swift */; };
 		39DB2CD1262B3E310074FDD8 /* ReportStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39DB2CD0262B3E310074FDD8 /* ReportStoryboard.storyboard */; };
 		39DB2CD6262B469E0074FDD8 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DB2CD5262B469E0074FDD8 /* ReportViewController.swift */; };
+		39DEC0992782157E0053F455 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DEC0982782157E0053F455 /* DispatchQueue+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		39C1B51E25EAE4B000D6181C /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39DB2CD0262B3E310074FDD8 /* ReportStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReportStoryboard.storyboard; sourceTree = "<group>"; };
 		39DB2CD5262B469E0074FDD8 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		39DEC0982782157E0053F455 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		3E4805181E7025EEB0BA66AC /* Pods-BosniaRoadTraffic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTraffic.release.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic.release.xcconfig"; sourceTree = "<group>"; };
 		A3AB469444D2B0F94AD4EFEB /* Pods_BosniaRoadTrafficApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BosniaRoadTrafficApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9DB9F63C6D9C0BEB2CE635 /* Pods-BosniaRoadTraffic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BosniaRoadTraffic.debug.xcconfig"; path = "Target Support Files/Pods-BosniaRoadTraffic/Pods-BosniaRoadTraffic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				399EB2F126482E4700A38C0D /* Date+Extension.swift */,
 				39089E3025E1A4A8006E5603 /* Optional+Extension.swift */,
 				39089E2C25E1A4A8006E5603 /* String+Extension.swift */,
+				39DEC0982782157E0053F455 /* DispatchQueue+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				39089E5925E1A4A8006E5603 /* SceneDelegate.swift in Sources */,
 				39089E6125E1A4A8006E5603 /* DetailsViewController.swift in Sources */,
 				39089E5525E1A4A8006E5603 /* Adviser.swift in Sources */,
+				39DEC0992782157E0053F455 /* DispatchQueue+Extension.swift in Sources */,
 				39BBCD1326501A6900BBEDA1 /* Reachability.swift in Sources */,
 				399EB2F226482E4700A38C0D /* Date+Extension.swift in Sources */,
 				3952937D264693C600234394 /* ToolbarPickerView.swift in Sources */,

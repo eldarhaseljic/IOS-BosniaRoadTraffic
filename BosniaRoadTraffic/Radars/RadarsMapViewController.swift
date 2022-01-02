@@ -211,6 +211,7 @@ class RadarsMapViewController: UIViewController {
     
     @objc
     override func tapFilterButton(_ sender: Any) {
+        setReportPinVisibility()
         presentView(viewController: filterViewController)
     }
     

@@ -74,6 +74,7 @@ class RadarReportViewCell: UITableViewCell {
     private var radarTypePickerView = ToolbarPickerView()
     private var MUPTypePickerView = ToolbarPickerView()
     private var viewModel: RadarReportCellViewModel!
+    let selectedTexView = PublishSubject<CGRect>()
     let messageTransmitter = PublishSubject<Adviser>()
     let loaderStatus = PublishSubject<Bool>()
     let disposeBag: DisposeBag = DisposeBag()
@@ -152,6 +153,21 @@ class RadarReportViewCell: UITableViewCell {
         radarTitleContext.text = String()
         radarStreetContext.text = String()
         radarDetailContext.text = String()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    }
+    
+    @objc
+    func keyboardWillAppear(_ notification: Notification) {
+        if radarDetailContext.isFirstResponder {
+            selectedTexView.onNext(radarDetailContext.frame)
+        } else if radarStreetContext.isFirstResponder {
+            selectedTexView.onNext(radarStreetContext.frame)
+        } else if radarTitleContext.isFirstResponder {
+            selectedTexView.onNext(radarTitleContext.frame)
+        }
     }
 }
 

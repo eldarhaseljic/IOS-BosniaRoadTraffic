@@ -78,6 +78,7 @@ class RoadConditionReportViewCell: UITableViewCell {
     private var conditionTypePickerView = ToolbarPickerView()
     private var roadTypePickerView = ToolbarPickerView()
     private var viewModel: RoadConditionReportCellViewModel!
+    let selectedTexView = PublishSubject<CGRect>()
     let messageTransmitter = PublishSubject<Adviser>()
     let loaderStatus = PublishSubject<Bool>()
     let disposeBag: DisposeBag = DisposeBag()
@@ -162,6 +163,21 @@ class RoadConditionReportViewCell: UITableViewCell {
         roadConditionTitleContext.text = String()
         roadConditionStreetContext.text = String()
         roadConditionDetailContext.text = String()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    }
+    
+    @objc
+    func keyboardWillAppear(_ notification: Notification) {
+        if roadConditionDetailContext.isFirstResponder {
+            selectedTexView.onNext(roadConditionDetailContext.frame)
+        } else if roadConditionStreetContext.isFirstResponder {
+            selectedTexView.onNext(roadConditionStreetContext.frame)
+        } else if roadConditionTitleContext.isFirstResponder {
+            selectedTexView.onNext(roadConditionTitleContext.frame)
+        }
     }
 }
 

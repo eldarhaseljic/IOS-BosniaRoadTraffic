@@ -138,219 +138,279 @@ class MainManager {
     }
     
     func getRadars(_ completion: ((_ success: [Radar]?, _ errorAdviser: Adviser?) -> Void)?) {
-        let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
-        let connectionStatus = Reachability.isConnectedToNetwork()
-        let writeManagedObjectContext = persistanceService.backgroundContext
-        let oldRadars = fetchRadars(objectContext: writeManagedObjectContext)
-        print("Number of old radars: \(oldRadars.count) \n")
-        switch connectionStatus {
-        case true:
-            firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    errorAdviser.message = err.localizedDescription
+        DispatchQueue.background { [weak self] in
+            let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    errorAdviser.message = CustomError.canNotProcessData.errorDescription
                     completion?([], errorAdviser)
-                    return
-                } else {
-                    
-                    writeManagedObjectContext.perform {
-                        
-                        guard let radars = querySnapshot?.documents else {
-                            errorAdviser.message = CustomError.canNotProcessData.errorDescription
-                            completion?(oldRadars, errorAdviser)
-                            return
+                }
+                return
+            }
+            let connectionStatus = Reachability.isConnectedToNetwork()
+            let writeManagedObjectContext = self.persistanceService.backgroundContext
+            let oldRadars = self.fetchRadars(objectContext: writeManagedObjectContext)
+            print("Number of old radars: \(oldRadars.count) \n")
+            switch connectionStatus {
+            case true:
+                self.firestoreDataBase.collection("Radars").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        DispatchQueue.main.async {
+                            errorAdviser.message = err.localizedDescription
+                            completion?([], errorAdviser)
                         }
+                    } else {
                         
-                        var newRadarsIDs: [String] = []
-                        for currentRadar in radars {
-                            guard let radarID = currentRadar[RadarJSON.id.rawValue] as? String else { continue }
-                            newRadarsIDs.append(radarID)
-                            let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
-                            newRadar.fillRadarInfo(currentRadar.data())
-                            if newRadar.shouldDeleteRadar {
-                                writeManagedObjectContext.delete(newRadar)
+                        writeManagedObjectContext.perform {
+                            
+                            guard let radars = querySnapshot?.documents else {
+                                DispatchQueue.main.async {
+                                    errorAdviser.message = CustomError.canNotProcessData.errorDescription
+                                    completion?(oldRadars, errorAdviser)
+                                }
+                                return
                             }
-                        }
-                        
-                        for oldRadar in oldRadars {
-                            if let oldRadarID = oldRadar.id,
-                               !newRadarsIDs.contains(oldRadarID) {
-                                writeManagedObjectContext.delete(oldRadar)
-                                self.deleteElement(elementId: oldRadarID, type: .radar)
+                            
+                            var newRadarsIDs: [String] = []
+                            for currentRadar in radars {
+                                guard let radarID = currentRadar[RadarJSON.id.rawValue] as? String else { continue }
+                                newRadarsIDs.append(radarID)
+                                let newRadar = Radar.findOrCreate(radarID, context: writeManagedObjectContext)
+                                newRadar.fillRadarInfo(currentRadar.data())
+                                if newRadar.shouldDeleteRadar {
+                                    writeManagedObjectContext.delete(newRadar)
+                                }
                             }
-                        }
-                        
-                        let status = writeManagedObjectContext.saveOrRollback()
-                        if status {
-                            if radars.isEmpty {
-                                errorAdviser.title = RADARS_INFO
-                                errorAdviser.message = NO_RADARS_FOUND
-                                completion?(oldRadars, errorAdviser)
+                            
+                            for oldRadar in oldRadars {
+                                if let oldRadarID = oldRadar.id,
+                                   !newRadarsIDs.contains(oldRadarID) {
+                                    writeManagedObjectContext.delete(oldRadar)
+                                    self.deleteElement(elementId: oldRadarID, type: .radar)
+                                }
                             }
-                            completion?(nil, nil)
-                        } else {
-                            errorAdviser.message = CustomError.dataBaseError.errorDescription
-                            completion?(oldRadars, errorAdviser)
+                            
+                            let status = writeManagedObjectContext.saveOrRollback()
+                            if status {
+                                DispatchQueue.main.async {
+                                    if radars.isEmpty {
+                                        errorAdviser.title = RADARS_INFO
+                                        errorAdviser.message = NO_RADARS_FOUND
+                                        completion?(oldRadars, errorAdviser)
+                                    }
+                                    completion?(nil, nil)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    errorAdviser.message = CustomError.dataBaseError.errorDescription
+                                    completion?(oldRadars, errorAdviser)
+                                }
+                            }
                         }
                     }
                 }
+            case false:
+                DispatchQueue.main.async {
+                    errorAdviser.title = RADARS_INFO
+                    errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
+                    completion?(oldRadars, errorAdviser)
+                }
             }
-        case false:
-            errorAdviser.title = RADARS_INFO
-            errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
-            completion?(oldRadars, errorAdviser)
         }
     }
     
     func getRoadConditions(_ completion: ((_ success: [RoadCondition]?, _ errorAdviser: Adviser?) -> Void)?) {
-        let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
-        let connectionStatus = Reachability.isConnectedToNetwork()
-        let writeManagedObjectContext = persistanceService.backgroundContext
-        let oldRoadConditions = fetchRoadConditions(objectContext: writeManagedObjectContext)
-        print("Number of old road conditions: \(oldRoadConditions.count) \n")
-        switch connectionStatus {
-        case true:
-            firestoreDataBase.collection("RoadConditions").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    errorAdviser.message = err.localizedDescription
+        DispatchQueue.background { [weak self] in
+            let errorAdviser: Adviser = Adviser(title: ERROR_DESCRIPTION, message: String())
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    errorAdviser.message = CustomError.canNotProcessData.errorDescription
                     completion?([], errorAdviser)
-                    return
-                } else {
-                    
-                    writeManagedObjectContext.perform {
-                        
-                        guard let roadConditions = querySnapshot?.documents else {
-                            errorAdviser.message = CustomError.canNotProcessData.errorDescription
-                            completion?(oldRoadConditions, errorAdviser)
-                            return
+                }
+                return
+            }
+            
+            let connectionStatus = Reachability.isConnectedToNetwork()
+            let writeManagedObjectContext = self.persistanceService.backgroundContext
+            let oldRoadConditions = self.fetchRoadConditions(objectContext: writeManagedObjectContext)
+            print("Number of old road conditions: \(oldRoadConditions.count) \n")
+            switch connectionStatus {
+            case true:
+                self.firestoreDataBase.collection("RoadConditions").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        DispatchQueue.main.async {
+                            errorAdviser.message = err.localizedDescription
+                            completion?([], errorAdviser)
                         }
+                    } else {
                         
-                        var newRoadConditionsIDs: [String] = []
-                        for currentCondition in roadConditions {
-                            guard let conditionID = currentCondition[RoadConditionJSON.id.rawValue] as? String else { continue }
-                            newRoadConditionsIDs.append(conditionID)
-                            let newCondition = RoadCondition.findOrCreate(conditionID, context: writeManagedObjectContext)
-                            newCondition.fillConditionInfo(currentCondition.data())
-                            if newCondition.shouldDeleteRoadCondition {
-                                writeManagedObjectContext.delete(newCondition)
+                        writeManagedObjectContext.perform {
+                            
+                            guard let roadConditions = querySnapshot?.documents else {
+                                DispatchQueue.main.async {
+                                    errorAdviser.message = CustomError.canNotProcessData.errorDescription
+                                    completion?(oldRoadConditions, errorAdviser)
+                                }
+                                return
                             }
-                        }
-                        
-                        for oldCondition in oldRoadConditions {
-                            if let oldConditionID = oldCondition.id,
-                               !newRoadConditionsIDs.contains(oldConditionID) {
-                                writeManagedObjectContext.delete(oldCondition)
-                                self.deleteElement(elementId: oldConditionID, type: .roadCondition)
+                            
+                            var newRoadConditionsIDs: [String] = []
+                            for currentCondition in roadConditions {
+                                guard let conditionID = currentCondition[RoadConditionJSON.id.rawValue] as? String else { continue }
+                                newRoadConditionsIDs.append(conditionID)
+                                let newCondition = RoadCondition.findOrCreate(conditionID, context: writeManagedObjectContext)
+                                newCondition.fillConditionInfo(currentCondition.data())
+                                if newCondition.shouldDeleteRoadCondition {
+                                    writeManagedObjectContext.delete(newCondition)
+                                }
                             }
-                        }
-                        
-                        let status = writeManagedObjectContext.saveOrRollback()
-                        if status {
-                            if roadConditions.isEmpty {
-                                errorAdviser.title = ROAD_CONDITIONS_INFO
-                                errorAdviser.message = NO_ROAD_CONDITIONS_FOUND
-                                completion?(oldRoadConditions, errorAdviser)
+                            
+                            for oldCondition in oldRoadConditions {
+                                if let oldConditionID = oldCondition.id,
+                                   !newRoadConditionsIDs.contains(oldConditionID) {
+                                    writeManagedObjectContext.delete(oldCondition)
+                                    self.deleteElement(elementId: oldConditionID, type: .roadCondition)
+                                }
                             }
-                            completion?(nil, nil)
-                        } else {
-                            errorAdviser.message = CustomError.dataBaseError.errorDescription
-                            completion?(oldRoadConditions, errorAdviser)
+                            
+                            let status = writeManagedObjectContext.saveOrRollback()
+                            if status {
+                                DispatchQueue.main.async {
+                                    if roadConditions.isEmpty {
+                                        errorAdviser.title = ROAD_CONDITIONS_INFO
+                                        errorAdviser.message = NO_ROAD_CONDITIONS_FOUND
+                                        completion?(oldRoadConditions, errorAdviser)
+                                    }
+                                    completion?(nil, nil)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    errorAdviser.message = CustomError.dataBaseError.errorDescription
+                                    completion?(oldRoadConditions, errorAdviser)
+                                }
+                            }
                         }
                     }
                 }
+            case false:
+                DispatchQueue.main.async {
+                    errorAdviser.title = ROAD_CONDITIONS_INFO
+                    errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
+                    completion?(oldRoadConditions, errorAdviser)
+                }
             }
-        case false:
-            errorAdviser.title = ROAD_CONDITIONS_INFO
-            errorAdviser.message = YOU_ARE_CURRENTLY_OFFLINE
-            completion?(oldRoadConditions, errorAdviser)
         }
     }
     
     func getRoadConditionFullReport(_ completion: (() -> Void)?) {
-        let writeManagedObjectContext = persistanceService.backgroundContext
-        let connectionStatus = Reachability.isConnectedToNetwork()
-        let oldRoadConditions = fetchRoadFullReport(objectContext: writeManagedObjectContext)
-        switch connectionStatus {
-        case true:
-            firestoreDataBase.collection("RoadConditionReport").getDocuments() { (querySnapshot, _) in
-                guard let roadConditionFullReports = querySnapshot?.documents else {
+        DispatchQueue.background { [weak self] in
+            guard let self = self else {
+                DispatchQueue.main.async {
                     completion?()
-                    return
                 }
-                
-                writeManagedObjectContext.perform {
-                    if roadConditionFullReports.isEmpty {
-                        oldRoadConditions.forEach({
-                            writeManagedObjectContext.delete($0)
-                        })
-                    } else {
-                        for roadConditionFullReport in roadConditionFullReports {
-                            guard let roadConditionFullReportID = roadConditionFullReport[RoadConditionDetailsJSON.id.rawValue] as? String else { continue }
-                            let newReport = RoadConditionDetails.findOrCreate(roadConditionFullReportID,
-                                                                              context: writeManagedObjectContext)
-                            newReport.fillInfo(roadConditionFullReport.data())
-                        }
+                return
+            }
+            let writeManagedObjectContext = self.persistanceService.backgroundContext
+            let connectionStatus = Reachability.isConnectedToNetwork()
+            let oldRoadConditions = self.fetchRoadFullReport(objectContext: writeManagedObjectContext)
+            switch connectionStatus {
+            case true:
+                self.firestoreDataBase.collection("RoadConditionReport").getDocuments() { (querySnapshot, _) in
+                    guard let roadConditionFullReports = querySnapshot?.documents else {
+                        DispatchQueue.main.async { completion?() }
+                        return
                     }
                     
-                    let _ = writeManagedObjectContext.saveOrRollback()
-                    completion?()
+                    writeManagedObjectContext.perform {
+                        if roadConditionFullReports.isEmpty {
+                            oldRoadConditions.forEach { writeManagedObjectContext.delete($0) }
+                        } else {
+                            for roadConditionFullReport in roadConditionFullReports {
+                                guard let roadConditionFullReportID = roadConditionFullReport[RoadConditionDetailsJSON.id.rawValue] as? String else { continue }
+                                let newReport = RoadConditionDetails.findOrCreate(roadConditionFullReportID,
+                                                                                  context: writeManagedObjectContext)
+                                newReport.fillInfo(roadConditionFullReport.data())
+                            }
+                        }
+                        
+                        let _ = writeManagedObjectContext.saveOrRollback()
+                        DispatchQueue.main.async { completion?() }
+                    }
                 }
+            case false:
+                DispatchQueue.main.async { completion?() }
+                return
             }
-        case false:
-            completion?()
-            return
         }
     }
     
     func addNewRadar(radarParameters: RadarParameters,
                      _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
-        let ref = firestoreDataBase.collection("Radars")
-        let docId = "RadarID-\(ref.document().documentID)"
-        
-        firestoreDataBase.collection("Radars").document(docId).setData([
-            "id": docId,
-            "title": radarParameters.title ,
-            "coordinates": radarParameters.coordinates,
-            "type": radarParameters.type,
-            "road": radarParameters.road ?? NSNull(),
-            "valid_from": radarParameters.validFrom ?? NSNull(),
-            "valid_to": radarParameters.validTo ?? NSNull(),
-            "text": radarParameters.text ?? NSNull(),
-            "numberOfDeletions": 0,
-            "category_id": radarParameters.policeDepartmentID ?? NSNull(),
-            "category_name": radarParameters.policeDepartmentName ?? NSNull(),
-            "updated_at": radarParameters.updatedAt ?? NSNull()
-        ], merge: true) { err in
-            if let err = err {
-                completion?(false, err.localizedDescription)
-            } else {
-                completion?(true, RADAR_SUCCESSFULLY_REPORTED)
+        DispatchQueue.background { [weak self] in
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    completion?(false, CustomError.canNotProcessData.errorDescription)
+                }
+                return
+            }
+            
+            let ref = self.firestoreDataBase.collection("Radars")
+            let docId = "RadarID-\(ref.document().documentID)"
+            
+            self.firestoreDataBase.collection("Radars").document(docId).setData([
+                "id": docId,
+                "title": radarParameters.title ,
+                "coordinates": radarParameters.coordinates,
+                "type": radarParameters.type,
+                "road": radarParameters.road ?? NSNull(),
+                "valid_from": radarParameters.validFrom ?? NSNull(),
+                "valid_to": radarParameters.validTo ?? NSNull(),
+                "text": radarParameters.text ?? NSNull(),
+                "numberOfDeletions": 0,
+                "category_id": radarParameters.policeDepartmentID ?? NSNull(),
+                "category_name": radarParameters.policeDepartmentName ?? NSNull(),
+                "updated_at": radarParameters.updatedAt ?? NSNull()
+            ], merge: true) { err in
+                if let err = err {
+                    DispatchQueue.main.async { completion?(false, err.localizedDescription) }
+                } else {
+                    DispatchQueue.main.async { completion?(true, RADAR_SUCCESSFULLY_REPORTED) }
+                }
             }
         }
     }
     
     func addNewRoadCondition(roadConditions: RoadConditionParameters,
                              _ completion: ((_ success: Bool, _ error: String) -> Void)?) {
-        let ref = firestoreDataBase.collection("RoadConditions")
-        let docId = "RoadConditionID-\(ref.document().documentID)"
-        
-        firestoreDataBase.collection("RoadConditions").document(docId).setData([
-            "id": docId,
-            "title": roadConditions.title ,
-            "coordinates": roadConditions.coordinates,
-            "icon": roadConditions.icon,
-            "road": roadConditions.road ?? NSNull(),
-            "valid_from": roadConditions.validFrom ?? NSNull(),
-            "valid_to": roadConditions.validTo ?? NSNull(),
-            "text": roadConditions.text ?? NSNull(),
-            "category_id": roadConditions.roadTypeID,
-            "numberOfDeletions": 0,
-            "category_name": roadConditions.roadTypeName,
-            "updated_at": roadConditions.updatedAt ?? NSNull()
-        ], merge: true) { err in
-            if let err = err {
-                completion?(false, err.localizedDescription)
-            } else {
-                completion?(true, ROAD_CONDITION_SUCCESSFULLY_REPORTED)
+        DispatchQueue.background { [weak self] in
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    completion?(false, CustomError.canNotProcessData.errorDescription)
+                }
+                return
+            }
+            let ref = self.firestoreDataBase.collection("RoadConditions")
+            let docId = "RoadConditionID-\(ref.document().documentID)"
+            
+            self.firestoreDataBase.collection("RoadConditions").document(docId).setData([
+                "id": docId,
+                "title": roadConditions.title ,
+                "coordinates": roadConditions.coordinates,
+                "icon": roadConditions.icon,
+                "road": roadConditions.road ?? NSNull(),
+                "valid_from": roadConditions.validFrom ?? NSNull(),
+                "valid_to": roadConditions.validTo ?? NSNull(),
+                "text": roadConditions.text ?? NSNull(),
+                "category_id": roadConditions.roadTypeID,
+                "numberOfDeletions": 0,
+                "category_name": roadConditions.roadTypeName,
+                "updated_at": roadConditions.updatedAt ?? NSNull()
+            ], merge: true) { err in
+                if let err = err {
+                    DispatchQueue.main.async { completion?(false, err.localizedDescription) }
+                } else {
+                    DispatchQueue.main.async {  completion?(true, ROAD_CONDITION_SUCCESSFULLY_REPORTED) }
+                }
             }
         }
     }
@@ -358,71 +418,95 @@ class MainManager {
     func deleteElement(elementId: String?,
                        type: DetailsType,
                        _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)? = nil) {
-        guard let elementId = elementId else { return }
-        switch type {
-        case .roadCondition:
-            firestoreDataBase.collection("RoadConditions").document(elementId).delete() { err in
-                if let err = err {
-                    completion?(.error, err.localizedDescription)
-                } else {
-                    completion?(.deleted, THANKS)
+        DispatchQueue.background { [weak self] in
+            guard
+                let self = self,
+                let elementId = elementId
+            else {
+                DispatchQueue.main.async {
+                    completion?(.error, WRONG_ID)
                 }
+                return
             }
-        case .radar:
-            firestoreDataBase.collection("Radars").document(elementId).delete() { err in
-                if let err = err {
-                    completion?(.error, err.localizedDescription)
-                } else {
-                    completion?(.deleted, THANKS)
+            switch type {
+            case .roadCondition:
+                self.firestoreDataBase.collection("RoadConditions").document(elementId).delete() { err in
+                    if let err = err {
+                        DispatchQueue.main.async { completion?(.error, err.localizedDescription) }
+                    } else {
+                        DispatchQueue.main.async { completion?(.deleted, THANKS)}
+                    }
                 }
+            case .radar:
+                self.firestoreDataBase.collection("Radars").document(elementId).delete() { err in
+                    if let err = err {
+                        DispatchQueue.main.async { completion?(.error, err.localizedDescription) }
+                    } else {
+                        DispatchQueue.main.async { completion?(.deleted, THANKS) }
+                    }
+                }
+            case .roadDetails:
+                break
             }
-        case .roadDetails:
-            break
         }
     }
     
     func updateOrDelete(detailsViewModel: DetailsViewModel,
                         _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)?) {
-        guard let id = detailsViewModel.dataId else {
-            completion?(.error, WRONG_ID)
-            return
-        }
-        detailsViewModel.numberOfDeletions += 1
-        
-        if detailsViewModel.numberOfDeletions >= 5 {
-            deleteElement(elementId: id, type: detailsViewModel.detailsType, completion)
-        } else {
-            updateVisibility(id: id, detailsViewModel: detailsViewModel, completion)
+        DispatchQueue.background { [weak self] in
+            guard
+                let self = self,
+                let id = detailsViewModel.dataId
+            else {
+                DispatchQueue.main.async {
+                    completion?(.error, WRONG_ID)
+                }
+                return
+            }
+            detailsViewModel.numberOfDeletions += 1
+            
+            if detailsViewModel.numberOfDeletions >= 5 {
+                self.deleteElement(elementId: id, type: detailsViewModel.detailsType, completion)
+            } else {
+                self.updateVisibility(id: id, detailsViewModel: detailsViewModel, completion)
+            }
         }
     }
     
     func updateVisibility(id: String,
                           detailsViewModel: DetailsViewModel,
                           _ completion: ((_ success: FirestoreStatus, _ error: String) -> Void)?) {
-        
-        switch detailsViewModel.detailsType {
-        case .roadCondition:
-            firestoreDataBase.collection("RoadConditions").document(id).setData([
-                "numberOfDeletions": detailsViewModel.numberOfDeletions,
-            ], merge: true) { err in
-                if let err = err {
-                    completion?(.error, err.localizedDescription)
-                } else {
-                    completion?(.updated, THANKS)
+        DispatchQueue.background { [weak self] in
+            guard let self = self else {
+                DispatchQueue.main.async {
+                    completion?(.error, CustomError.canNotProcessData.errorDescription)
                 }
+                return
             }
-        case .radar:
-            firestoreDataBase.collection("Radars").document(id).setData([
-                "numberOfDeletions": detailsViewModel.numberOfDeletions,
-            ], merge: true) { err in
-                if let err = err {
-                    completion?(.error, err.localizedDescription)
-                } else {
-                    completion?(.updated, THANKS)
+            switch detailsViewModel.detailsType {
+            case .roadCondition:
+                self.firestoreDataBase.collection("RoadConditions").document(id).setData([
+                    "numberOfDeletions": detailsViewModel.numberOfDeletions,
+                ], merge: true) { err in
+                    if let err = err {
+                        DispatchQueue.main.async { completion?(.error, err.localizedDescription) }
+                    } else {
+                        DispatchQueue.main.async { completion?(.deleted, THANKS) }
+                    }
                 }
+            case .radar:
+                self.firestoreDataBase.collection("Radars").document(id).setData([
+                    "numberOfDeletions": detailsViewModel.numberOfDeletions,
+                ], merge: true) { err in
+                    if let err = err {
+                        DispatchQueue.main.async { completion?(.error, err.localizedDescription) }
+                    } else {
+                        DispatchQueue.main.async { completion?(.deleted, THANKS) }
+                    }
+                }
+            case .roadDetails:
+                break
             }
-        case .roadDetails:
-            break
         }
     }
 }

@@ -135,6 +135,11 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             })
             .disposed(by: disposeBag)
+            
+            cell.selectedTexView.bind(onNext: { [unowned self] textViewFrame in
+                contextView.scrollRectToVisible(textViewFrame, animated: true)
+            })
+            .disposed(by: disposeBag)
             return cell
         case .roadConditionReport:
             let cell = tableView.dequeueReusableCell(with: RoadConditionReportViewCell.self, for: indexPath)
@@ -156,6 +161,11 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
                 } else {
                     loadingIndicatorView.stopAnimating()
                 }
+            })
+            .disposed(by: disposeBag)
+            
+            cell.selectedTexView.bind(onNext: { [unowned self] textViewFrame in
+                contextView.scrollRectToVisible(textViewFrame, animated: true)
             })
             .disposed(by: disposeBag)
             return cell

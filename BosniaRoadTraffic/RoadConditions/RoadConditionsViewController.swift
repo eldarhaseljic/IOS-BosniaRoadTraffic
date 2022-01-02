@@ -194,7 +194,7 @@ class RoadConditionsViewController: UIViewController {
         if filterViewModel.numberOfFilters > 1 {
             filterViewController.setData(viewModel: filterViewModel, filterType: .roadConditions)
             let button = filterButton
-            button.imageInsets = UIEdgeInsets(top: 0.0, left: 15, bottom: 0, right: roadConditionsDetails != nil ? -15 : 0)
+            button.imageInsets = UIEdgeInsets(top: .zero, left: 15, bottom: .zero, right: roadConditionsDetails != nil ? -15 : .zero)
             navigationItem.rightBarButtonItems?.append(button)
         }
         
@@ -220,12 +220,14 @@ class RoadConditionsViewController: UIViewController {
     @objc
     override func tapInfoButton(_ sender: Any) {
         guard let roadDetails = viewModel.getRoadConditionsDetails() else { return }
+        setReportPinVisibility()
         presentView(viewController: DetailsViewController.showDetails(for: DetailsViewModel(roadDetails: roadDetails),
                                                                       delegate: self))
     }
     
     @objc
     override func tapFilterButton(_ sender: Any) {
+        setReportPinVisibility()
         presentView(viewController: filterViewController)
     }
     
