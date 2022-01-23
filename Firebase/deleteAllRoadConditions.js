@@ -1,5 +1,3 @@
-// https://www.npmjs.com/package/date-and-time
-const date = require('date-and-time');
 // Required for side-effects
 const firebase = require("firebase");
 require("firebase/firestore");
@@ -17,13 +15,6 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
-var offset = new Date().getTimezoneOffset();
-var currentDate = new Date()
-if (offset < 0) {
-    currentDate = date.addHours(currentDate, offset / -60);
-} else {
-    currentDate = date.addHours(currentDate, offset / 60);
-}
 
 db.collection("RoadConditions").get().then((querySnapshot) => {
     querySnapshot.forEach((roadConditions) => {

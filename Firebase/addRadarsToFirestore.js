@@ -18,14 +18,11 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
-var newRadarsIDs = [];
-var offset = new Date().getTimezoneOffset();
 var currentDate = new Date()
-if (offset < 0) {
-   currentDate = date.addHours(currentDate, offset / -60);
-} else {
-   currentDate = date.addHours(currentDate, offset / 60);
-}
+const offset = currentDate.getTimezoneOffset()
+currentDate = new Date(currentDate.getTime() - (offset*60*1000))
+var validDateString = currentDate.toISOString().split('T')[0] + ' ' + currentDate.toLocaleTimeString('en-GB')
+var validToDate = date.parse(validDateString, 'YYYY-MM-DD hh:mm:ss', true);
 
 fs.readFile(process.argv[2], (err, data) => {
    if (err) throw err;
@@ -45,21 +42,7 @@ fs.readFile(process.argv[2], (err, data) => {
          numberOfDeletions: obj.numberOfDeletions,
          category_id: obj.category_id,
          category_name: obj.category_name,
-         updated_at: obj.updated_at
+         updated_at: validToDate
       })
-      newRadarsIDs.push(obj.id)
-   });
-
-   // Delete stationary radars
-   db.collection("Radars").get().then((querySnapshot) => {
-      querySnapshot.forEach((radar) => {
-         if ((radar.data().valid_to == null && newRadarsIDs.includes(radar.id) == false) || radar.data().numberOfDeletions >= 5) {
-            db.collection("Radars").doc(radar.id).delete().then(() => {
-               console.log("Document with id: ", radar.id, ",successfully deleted!");
-            }).catch((error) => {
-               console.error("Error removing document: ", error);
-            });
-         }
-      });
    });
 });

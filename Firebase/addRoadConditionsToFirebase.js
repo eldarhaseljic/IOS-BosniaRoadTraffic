@@ -18,14 +18,11 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
-var newRoadConditionsIDs = [];
-var offset = new Date().getTimezoneOffset();
 var currentDate = new Date()
-if (offset < 0) {
-    currentDate = date.addHours(currentDate, offset / -60);
-} else {
-    currentDate = date.addHours(currentDate, offset / 60);
-}
+const offset = currentDate.getTimezoneOffset()
+currentDate = new Date(currentDate.getTime() - (offset*60*1000))
+var validDateString = currentDate.toISOString().split('T')[0] + ' ' + currentDate.toLocaleTimeString('en-GB')
+var validToDate = date.parse(validDateString, 'YYYY-MM-DD hh:mm:ss', true);
 
 fs.readFile(process.argv[2], (err, data) => {
     if (err) throw err;
@@ -45,23 +42,9 @@ fs.readFile(process.argv[2], (err, data) => {
             text: obj.text,
             category_id: obj.category_id,
             category_name: obj.category_name,
-            updated_at: obj.updated_at
+            updated_at: validToDate
         })
-        newRoadConditionsIDs.push(obj.id)
         console.log(obj)
         console.log("Document with id: ", obj.id, ",successfully added!");
-    });
-
-    // Delete resloved road problems
-    db.collection("RoadConditions").get().then((querySnapshot) => {
-        querySnapshot.forEach((roadCondition) => {
-            if ((roadCondition.data().valid_to == null && newRoadConditionsIDs.includes(roadCondition.id) == false) || roadCondition.data().numberOfDeletions >= 5) {
-                db.collection("RoadConditions").doc(roadCondition.id).delete().then(() => {
-                    console.log("Document with id: ", roadCondition.id, ",successfully deleted!");
-                }).catch((error) => {
-                    console.error("Error removing document: ", error);
-                });
-            }
-        });
     });
 });

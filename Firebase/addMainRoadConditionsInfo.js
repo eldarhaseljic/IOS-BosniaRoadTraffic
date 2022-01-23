@@ -18,6 +18,12 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
+var currentDate = new Date()
+const offset = currentDate.getTimezoneOffset()
+currentDate = new Date(currentDate.getTime() - (offset*60*1000))
+var validDateString = currentDate.toISOString().split('T')[0] + ' ' + currentDate.toLocaleTimeString('en-GB')
+var validToDate = date.parse(validDateString, 'YYYY-MM-DD hh:mm:ss', true);
+
 if (process.argv[2] != null) {
     fs.readFile(process.argv[2], (err, data) => {
         if (err) throw err;
@@ -25,18 +31,19 @@ if (process.argv[2] != null) {
         let roadConditions = JSON.parse(data)
 
         roadConditions.forEach(function (obj) {
-            db.collection("RoadConditionReport").doc(obj.id).set({
-                id: "RoadConditionReport-1111111",
-                title: obj.title,
-                startDate: obj.startDate,
-                numberOfDeletions: obj.numberOfDeletions,
-                endDate: obj.endDate,
+            db.collection("RoadConditionReport").doc('RoadConditionReport-1111111').set({
+                id: 'RoadConditionReport-1111111',
+                title: "Stanje na cestama " + validDateString,
+                startDate: validToDate,
+                numberOfDeletions: null,
+                endDate: null,
                 text: obj.text,
                 category_id: 1111111,
                 category_name: "Op\u0161te informacije",
             })
             console.log(obj)
             console.log("Document with id: ", obj.id, ",successfully added!");
+            console.log(validDateString)
         });
     });
 } else {

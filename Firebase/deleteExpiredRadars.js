@@ -17,13 +17,11 @@ firebase.initializeApp({
 });
 
 var db = firebase.firestore();
-var offset = new Date().getTimezoneOffset();
 var currentDate = new Date()
-if (offset < 0) {
-    currentDate = date.addHours(currentDate, offset / -60);
-} else {
-    currentDate = date.addHours(currentDate, offset / 60);
-}
+const offset = currentDate.getTimezoneOffset()
+currentDate = new Date(currentDate.getTime() - (offset*60*1000))
+var validDateString = currentDate.toISOString().split('T')[0] + ' ' + currentDate.toLocaleTimeString('en-GB')
+currentDate = date.parse(validDateString, 'YYYY-MM-DD hh:mm:ss', true);
 
 db.collection("Radars").get().then((querySnapshot) => {
     querySnapshot.forEach((radar) => {
