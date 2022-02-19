@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>882903880990-qduodc1bckl2r12kfb2ugovjl3gan6su.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.882903880990-qduodc1bckl2r12kfb2ugovjl3gan6su</string>
+	<key>API_KEY</key>
+	<string>AIzaSyApAvHWCOryjcyS5SH6_nQSmGIkNW_R4q4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>882903880990</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bosniaroadtraffic.bosniaroadtraffic</string>
+	<key>PROJECT_ID</key>
+	<string>bosnia-road-traffic-fire-d6422</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bosnia-road-traffic-fire-d6422.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:882903880990:ios:06c308ceba6a9bbfd8250f</string>
+	<key>DATABASE_URL</key>
+	<string>https://bosnia-road-traffic-fire-d6422-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

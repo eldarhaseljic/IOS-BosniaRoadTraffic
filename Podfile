@@ -1,17 +1,20 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '14.0'
 
 target 'BosniaRoadTraffic' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
   # Pods for BosniaRoadTraffic
-  pod 'RxSwift', '~> 4.0' 
-  pod 'RxCocoa', '~> 4.0'
+  pod 'RxDataSources'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'Firebase/Firestore'
+  pod 'Firebase'
+  pod 'Firebase/Analytics'
 end
 
-deployment_target = '12.0'
-
+deployment_target = '14.0'
 post_install do |installer|
   installer.generated_projects.each do |project|
     project.targets.each do |target|

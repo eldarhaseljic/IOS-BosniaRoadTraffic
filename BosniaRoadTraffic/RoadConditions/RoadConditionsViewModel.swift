@@ -8,28 +8,30 @@
 
 import MapKit
 import RxSwift
-import RxCocoa
 import CoreData
 import Foundation
 import CoreLocation
 
 final class RoadConditionsViewModel: NSObject {
     
-    private let mapTypes: [MKMapType] = [.standard, .hybrid, .hybridFlyover]
-    private let locationDistance: CLLocationDistance = 50000
+    private let mapTypes: [MKMapType] = [.standard, .hybrid]
+    private let locationDistance: CLLocationDistance = 20000
     private let persistanceService: PersistanceService!
     private let locationManager: CLLocationManager!
     private let manager: MainManager!
     
-    private var roadSignFRC: NSFetchedResultsController<RoadSign>!
-    private var mainRoadConditionsDetails: RoadSign? = nil
+    private var roadInfoFRC: NSFetchedResultsController<RoadConditionDetails>!
+    private var roadConditionFRC: NSFetchedResultsController<RoadCondition>!
+    private var mainRoadConditionsDetails: RoadConditionDetails? = nil
     private var currentMapTypeID = 1
-    let roadSignsArray = PublishSubject<[RoadSign]>()
+    
+    let roadInfoArray = PublishSubject<RoadConditionDetails?>()
+    let roadConditionsArray = PublishSubject<[RoadCondition]>()
     let messageTransmitter = PublishSubject<Adviser>()
     let userLocationStatus = PublishSubject<AuthorizationStatus>()
     
     var currentAuthorizationStatus: CLAuthorizationStatus = .notDetermined
-    var roadSignsInDatabase: [RoadSign] = []
+    var roadConditionsInDatabase: [RoadCondition] = []
     
     init(manager: MainManager = MainManager.shared,
          persistanceService: PersistanceService = PersistanceService.shared,
@@ -40,18 +42,37 @@ final class RoadConditionsViewModel: NSObject {
         self.locationManager = locationManager
         
         super.init()
-        setupFetchController()
+        setupFetchControllers()
     }
     
-    private func setupFetchController() {
-        roadSignFRC = NSFetchedResultsController(fetchRequest: RoadSign.sortedFetchRequest,
+    private func setupFetchControllers() {
+        setupFetchRoadInfoController()
+        setupFetchRoadConditionController()
+    }
+    
+    private func setupFetchRoadConditionController() {
+        roadConditionFRC = NSFetchedResultsController(fetchRequest: RoadCondition.sortedFetchRequest,
                                                  managedObjectContext: persistanceService.mainContext,
-                                                 sectionNameKeyPath: nil, cacheName: nil)
-        roadSignFRC.delegate = self
+                                                 sectionNameKeyPath: nil,
+                                                 cacheName: nil)
+        roadConditionFRC.delegate = self
         do {
-            try roadSignFRC.performFetch()
+            try roadConditionFRC.performFetch()
         } catch {
-            fatalError("Radars fetch request failed")
+            fatalError("Road Conditions fetch request failed")
+        }
+    }
+    
+    private func setupFetchRoadInfoController() {
+        roadInfoFRC = NSFetchedResultsController(fetchRequest: RoadConditionDetails.sortedFetchRequest,
+                                                 managedObjectContext: persistanceService.mainContext,
+                                                 sectionNameKeyPath: nil,
+                                                 cacheName: nil)
+        roadInfoFRC.delegate = self
+        do {
+            try roadInfoFRC.performFetch()
+        } catch {
+            fatalError("Road Condition Details fetch request failed")
         }
     }
     
@@ -60,7 +81,9 @@ final class RoadConditionsViewModel: NSObject {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION, message: LOCATION_SERVICE_DISABLED ))
+            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
+                                              message: LOCATION_SERVICE_DISABLED,
+                                              isError: true))
         }
     }
     
@@ -70,7 +93,7 @@ final class RoadConditionsViewModel: NSObject {
     }
     
     private func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
+        switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             userLocationStatus.onNext(.authorizedWhenInUse)
             currentAuthorizationStatus = .authorizedWhenInUse
@@ -100,66 +123,51 @@ final class RoadConditionsViewModel: NSObject {
                                   longitudinalMeters: locationDistance)
     }
     
-    private func handleRoadSignData() {
-        var roadData = roadSignFRC.fetchedObjects ?? []
-        
-        mainRoadConditionsDetails = roadData.first(where: { sign in
-            sign.isCoordinateZero || sign.hasNoIcon
-        })
-        
-        roadData.removeAll(where: { sign in
-            sign.isCoordinateZero || sign.hasNoIcon
-        })
-        
-        showRoadConditons(roadConditions: roadData)
+    private func handleRoadConditionData() {
+        let roadData = roadConditionFRC.fetchedObjects ?? []
+        var errorAdviser: Adviser? = nil
+        if roadData.count > roadConditionsInDatabase.count {
+            errorAdviser = Adviser(title: ROAD_CONDITIONS_INFO, message: NEW_ROAD_CONDITIONS_FOUND)
+        } else if Reachability.isConnectedToNetwork() == false {
+            errorAdviser = Adviser(title: ROAD_CONDITIONS_INFO, message: YOU_ARE_CURRENTLY_OFFLINE)
+        }
+        showRoadConditons(roadConditions: roadData, errorAdviser: errorAdviser)
     }
     
-    func getRoadConditionsInfo() -> RoadSign? {
+    private func handleRoadDetailsData() {
+        let roadDetails = roadInfoFRC.fetchedObjects ?? []
+        mainRoadConditionsDetails = roadDetails.first
+    }
+    
+    func getRoadConditionsDetails() -> RoadConditionDetails? {
         return mainRoadConditionsDetails
     }
     
-    private func showRoadConditons(roadConditions: [RoadSign], errorAdviser: Adviser? = nil) {
-        if roadConditions.isEmpty {
-            messageTransmitter.onNext(Adviser(title: ROAD_CONDITIONS, message: NO_ROAD_CONDITIONS_FOUND))
-        } else {
-            roadSignsInDatabase = roadConditions
-            roadSignsArray.onNext(roadSignsInDatabase)
-            if let errorAdviser = errorAdviser {
-                messageTransmitter.onNext(errorAdviser)
-            }
+    private func showRoadConditons(roadConditions: [RoadCondition], errorAdviser: Adviser? = nil) {
+        roadConditionsInDatabase = roadConditions
+        roadConditionsArray.onNext(roadConditionsInDatabase)
+        if let errorAdviser = errorAdviser {
+            messageTransmitter.onNext(errorAdviser)
         }
     }
     
     func fetchData() {
-        fetchRoadConditions() { [weak self] (response,errorMessage) in
-            guard
-                let self = self,
-                let response = response,
-                let errorMessage = errorMessage
-            else {
-                print("Road Conditons updated successfully")
-                return
+        manager.getRoadConditionFullReport() { [weak self] in
+            self?.manager.getRoadConditions { [weak self] (response, errorAdviser) in
+                guard
+                    let self = self,
+                    let response = response,
+                    let errorAdviser = errorAdviser
+                else {
+                    print("Road Conditons updated successfully")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.showRoadConditons(roadConditions: response,
+                                           errorAdviser: errorAdviser)
+                }
             }
-            
-            DispatchQueue.main.async {
-                self.showRoadConditons(roadConditions: response,
-                                       errorAdviser: Adviser(title: ERROR_DESCRIPTION,
-                                                             message: errorMessage,
-                                                             isError: true))
-            }
-        }
-    }
-    
-    private func fetchRoadConditions(_ completion: ((_ success: [RoadSign]?, _ errorMessage: String?) -> Void)? = nil) {
-        manager.getRoadConditions { (response, errorMessage) in
-            guard
-                let response = response,
-                let errorMessage = errorMessage
-            else {
-                completion?(nil, nil)
-                return
-            }
-            completion?(response,errorMessage)
         }
     }
     
@@ -172,19 +180,26 @@ final class RoadConditionsViewModel: NSObject {
         }
         return mapType
     }
+    
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
 }
 
 extension RoadConditionsViewModel: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        handleRoadSignData()
+        if controller == roadConditionFRC {
+            handleRoadConditionData()
+        } else if controller == roadInfoFRC {
+            handleRoadDetailsData()
+        }
     }
 }
 
 extension RoadConditionsViewModel: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != currentAuthorizationStatus {

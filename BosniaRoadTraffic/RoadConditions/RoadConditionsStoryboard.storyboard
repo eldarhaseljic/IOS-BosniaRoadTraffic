@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,12 +14,12 @@
         <!--Road Conditions View Controller-->
         <scene sceneID="tcb-mH-Zoq">
             <objects>
-                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2r-RN-LVI" customClass="RoadConditionsViewController" customModule="BosniaRoadTrafficApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoadConditionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u2r-RN-LVI" customClass="RoadConditionsViewController" customModule="Bosnia_Road_Traffic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ruA-29-zgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9r-Lo-3H1">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9r-Lo-3H1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
                                     <outlet property="delegate" destination="u2r-RN-LVI" id="Nz6-d5-Nrd"/>
@@ -40,6 +40,17 @@
                                                 <color key="tintColor" name="DavysGrey"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="arrow.clockwise" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ez-Po-Mid">
+                                                <rect key="frame" x="42.5" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Sp1-Nt-64V"/>
+                                                    <constraint firstAttribute="height" constant="40" id="hYK-PY-F16"/>
+                                                </constraints>
+                                                <color key="tintColor" name="DavysGrey"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="report" symbolScale="large"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaS-4J-HYJ">
@@ -69,6 +80,43 @@
                                 <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
                                 <color key="color" name="DavysGrey"/>
                             </activityIndicatorView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="road_condition_pin" translatesAutoresizingMaskIntoConstraints="NO" id="HET-Bp-M4W">
+                                <rect key="frame" x="184.5" y="425.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="FPB-YS-iPl"/>
+                                    <constraint firstAttribute="height" constant="45" id="km6-ue-Idr"/>
+                                </constraints>
+                            </imageView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-D5-g5a">
+                                <rect key="frame" x="264" y="672" width="140" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZL-aa-Fas">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
+                                        <color key="backgroundColor" name="White"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="6Ii-1o-wke"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="SlateGray"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAT-pQ-PZW">
+                                        <rect key="frame" x="0.0" y="70" width="140" height="50"/>
+                                        <color key="backgroundColor" name="White"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="97m-2x-hjR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="SlateGray"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="uaG-Oq-UpX"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="efY-Bq-eke"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,20 +125,29 @@
                             <constraint firstAttribute="trailing" secondItem="F9r-Lo-3H1" secondAttribute="trailing" id="6fA-19-oPt"/>
                             <constraint firstAttribute="bottom" secondItem="F9r-Lo-3H1" secondAttribute="bottom" id="85n-Uf-S5s"/>
                             <constraint firstItem="6K3-6A-miO" firstAttribute="leading" secondItem="efY-Bq-eke" secondAttribute="leading" id="9Hh-J4-8tc"/>
+                            <constraint firstItem="rGn-kb-gRi" firstAttribute="top" secondItem="wdG-D5-g5a" secondAttribute="bottom" constant="20" id="AbX-Ge-ca4"/>
+                            <constraint firstItem="HET-Bp-M4W" firstAttribute="centerY" secondItem="ruA-29-zgj" secondAttribute="centerY" id="ECg-dk-xjj"/>
                             <constraint firstItem="6K3-6A-miO" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="EpW-c7-yGr"/>
                             <constraint firstItem="F9r-Lo-3H1" firstAttribute="leading" secondItem="ruA-29-zgj" secondAttribute="leading" id="LKj-sM-Nbt"/>
                             <constraint firstItem="efY-Bq-eke" firstAttribute="trailing" secondItem="rGn-kb-gRi" secondAttribute="trailing" constant="10" id="Nty-6O-UpQ"/>
                             <constraint firstItem="F9r-Lo-3H1" firstAttribute="top" secondItem="ruA-29-zgj" secondAttribute="top" id="PZ9-fp-CFP"/>
                             <constraint firstItem="6K3-6A-miO" firstAttribute="trailing" secondItem="efY-Bq-eke" secondAttribute="trailing" id="QWA-2N-Hsr"/>
+                            <constraint firstItem="efY-Bq-eke" firstAttribute="trailing" secondItem="wdG-D5-g5a" secondAttribute="trailing" constant="10" id="XUt-Pb-U9V"/>
                             <constraint firstItem="efY-Bq-eke" firstAttribute="bottom" secondItem="rGn-kb-gRi" secondAttribute="bottom" constant="10" id="mGd-jQ-4f7"/>
+                            <constraint firstItem="HET-Bp-M4W" firstAttribute="centerX" secondItem="ruA-29-zgj" secondAttribute="centerX" id="wSJ-hy-YPo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelReportButton" destination="AAT-pQ-PZW" id="Bc1-fk-oCY"/>
+                        <outlet property="confirmReportButton" destination="FZL-aa-Fas" id="rFW-qa-Rla"/>
                         <outlet property="containerView" destination="rGn-kb-gRi" id="lAn-5N-AyY"/>
                         <outlet property="loadingIndicatorView" destination="6K3-6A-miO" id="iwK-FE-4ok"/>
                         <outlet property="mapTypeButton" destination="gaS-4J-HYJ" id="780-0x-fwS"/>
                         <outlet property="mapView" destination="F9r-Lo-3H1" id="xRi-bg-Cra"/>
                         <outlet property="reloadMapButton" destination="NDd-jk-ILF" id="d93-WR-TFv"/>
+                        <outlet property="reportButton" destination="1ez-Po-Mid" id="eIg-Nc-Yf5"/>
+                        <outlet property="reportContainer" destination="wdG-D5-g5a" id="cta-dq-Tkg"/>
+                        <outlet property="roadConditionPin" destination="HET-Bp-M4W" id="f2U-NP-21k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4Q-fr-yKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -99,10 +156,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" width="12" height="14"/>
-        <image name="map" width="14" height="13"/>
+        <image name="arrow.clockwise" width="15" height="18"/>
+        <image name="map" width="18" height="17"/>
+        <image name="report" width="20" height="19"/>
+        <image name="road_condition_pin" width="100" height="100"/>
         <namedColor name="DavysGrey">
             <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SlateGray">
+            <color red="0.42399999499320984" green="0.45899999141693115" blue="0.49000000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

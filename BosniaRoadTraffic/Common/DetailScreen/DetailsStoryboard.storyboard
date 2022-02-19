@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Details View Controller-->
+        <scene sceneID="Adx-Zu-dsk">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jc0-cm-9bU" customClass="DetailsViewController" customModule="Bosnia_Road_Traffic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q63-qj-PfO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exi-0w-Ias">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="tintColor" name="White"/>
+                                <color key="barTintColor" name="SlateGray"/>
+                                <items>
+                                    <navigationItem id="jo8-it-9S2"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vEz-c0-pXq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jc0-cm-9bU" id="OXQ-4P-uy5"/>
+                                    <outlet property="delegate" destination="Jc0-cm-9bU" id="Jci-w8-5dm"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eCm-Tn-I3r">
+                                <rect key="frame" x="184.5" y="425.5" width="45" height="45"/>
+                                <rect key="contentStretch" x="0.5" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SF2-Qz-27R"/>
+                                    <constraint firstAttribute="width" constant="45" id="xO3-0a-EMy"/>
+                                </constraints>
+                                <color key="color" name="DavysGrey"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VSW-Io-trp"/>
+                        <constraints>
+                            <constraint firstItem="exi-0w-Ias" firstAttribute="top" secondItem="Q63-qj-PfO" secondAttribute="top" id="0HU-de-aFh"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="top" secondItem="exi-0w-Ias" secondAttribute="bottom" id="Esx-mb-uyx"/>
+                            <constraint firstItem="eCm-Tn-I3r" firstAttribute="centerY" secondItem="Q63-qj-PfO" secondAttribute="centerY" id="LrM-X5-a8F"/>
+                            <constraint firstItem="eCm-Tn-I3r" firstAttribute="centerX" secondItem="vEz-c0-pXq" secondAttribute="centerX" id="O87-ii-jAk"/>
+                            <constraint firstItem="exi-0w-Ias" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="Oy3-vE-sU9"/>
+                            <constraint firstAttribute="bottom" secondItem="vEz-c0-pXq" secondAttribute="bottom" id="arj-R6-xPs"/>
+                            <constraint firstAttribute="trailing" secondItem="exi-0w-Ias" secondAttribute="trailing" id="bbd-TZ-0Wv"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="trailing" secondItem="Q63-qj-PfO" secondAttribute="trailing" id="lHe-0O-2kb"/>
+                            <constraint firstItem="vEz-c0-pXq" firstAttribute="leading" secondItem="Q63-qj-PfO" secondAttribute="leading" id="sNX-Lc-u9c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contextView" destination="vEz-c0-pXq" id="JAy-7a-HdA"/>
+                        <outlet property="loadingIndicatorView" destination="eCm-Tn-I3r" id="VYq-jY-az8"/>
+                        <outlet property="navigationBarItem" destination="jo8-it-9S2" id="kUw-rf-j1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W2p-K5-aZi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-181.15942028985509" y="82.366071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="DavysGrey">
+            <color red="0.28600001335144043" green="0.31400001049041748" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SlateGray">
+            <color red="0.42399999499320984" green="0.45899999141693115" blue="0.49000000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

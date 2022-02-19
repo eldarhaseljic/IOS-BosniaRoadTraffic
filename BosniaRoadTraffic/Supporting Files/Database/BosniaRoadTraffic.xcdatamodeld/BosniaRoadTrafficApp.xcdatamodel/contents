@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Radar" representedClassName=".Radar" syncable="YES">
         <attribute name="coordinates" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="numberOfDeletions" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="policeDepartmentID" optional="YES" attributeType="Integer 32" usesScalarValueType="NO"/>
         <attribute name="policeDepartmentName" optional="YES" attributeType="String"/>
         <attribute name="road" optional="YES" attributeType="String"/>
@@ -12,20 +13,32 @@
         <attribute name="validFrom" optional="YES" attributeType="String"/>
         <attribute name="validTo" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="RoadSign" representedClassName=".RoadSign" syncable="YES">
-        <attribute name="categoryID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="categoryName" optional="YES" attributeType="String"/>
+    <entity name="RoadCondition" representedClassName=".RoadCondition" syncable="YES">
         <attribute name="coordinates" optional="YES" attributeType="String"/>
         <attribute name="iconTitle" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="numberOfDeletions" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="road" optional="YES" attributeType="String"/>
+        <attribute name="roadID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="roadType" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="validFrom" optional="YES" attributeType="String"/>
+        <attribute name="validTo" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="RoadConditionDetails" representedClassName=".RoadConditionDetails" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="numberOfDeletions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="roadConditionID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="roadConditionType" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="validFrom" optional="YES" attributeType="String"/>
         <attribute name="validTo" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Radar" positionX="-54" positionY="-9" width="128" height="193"/>
-        <element name="RoadSign" positionX="-54" positionY="72" width="128" height="193"/>
+        <element name="Radar" positionX="-54" positionY="-9" width="128" height="194"/>
+        <element name="RoadConditionDetails" positionX="-54" positionY="108" width="128" height="149"/>
+        <element name="RoadCondition" positionX="-54" positionY="72" width="128" height="194"/>
     </elements>
 </model>
