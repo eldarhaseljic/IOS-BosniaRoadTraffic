@@ -55,14 +55,21 @@ final class RadarsMapViewModel: NSObject {
     }
     
     func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
-                                              message: LOCATION_SERVICE_DISABLED,
-                                              isError: true))
+        Task { [weak self] in
+            guard let self = self else { return }
+            if await self.locationServicesEnabled() {
+                self.setupLocationManager()
+                self.checkLocationAuthorization()
+            } else {
+                self.messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
+                                                       message: LOCATION_SERVICE_DISABLED,
+                                                       isError: true))
+            }
         }
+    }
+    
+    private func locationServicesEnabled() async -> Bool {
+        return CLLocationManager.locationServicesEnabled()
     }
     
     private func setupLocationManager() {

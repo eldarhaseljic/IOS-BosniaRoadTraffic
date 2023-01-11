@@ -99,24 +99,33 @@ class RoadConditionsViewController: UIViewController {
         viewModel.userLocationStatus.bind(onNext: { [unowned self] isVisible in
             switch isVisible {
             case .authorizedWhenInUse,
-                 .authorizedAlways:
+                    .authorizedAlways:
                 mapView.showsUserLocation = true
                 viewModel.fetchData()
             case .denied:
                 presentAlert(title: ERROR_DESCRIPTION,
                              message: String(format: LOCATION_SERVICE, AuthorizationStatus.denied.translation),
                              buttonTitle: OK,
-                             handler: { _ in tapBackButton(self) })
+                             handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.tapBackButton(self)
+                })
             case .restricted:
                 presentAlert(title: ERROR_DESCRIPTION,
                              message: String(format: LOCATION_SERVICE, AuthorizationStatus.restricted.translation),
                              buttonTitle: OK,
-                             handler: { _ in tapBackButton(self) })
+                             handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.tapBackButton(self)
+                })
             case .error:
                 presentAlert(title: ERROR_DESCRIPTION,
                              message: String(format: LOCATION_SERVICE, UNKNOWN),
                              buttonTitle: OK,
-                             handler: { _ in tapBackButton(self) })
+                             handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.tapBackButton(self)
+                })
             case .notDetermined: break
             }
         })
@@ -132,8 +141,10 @@ class RoadConditionsViewController: UIViewController {
             presentAlert(title: adviser.title,
                          message: adviser.message,
                          buttonTitle: OK,
-                         handler: adviser.isError ? { _ in
-                            tapBackButton(self) } : nil)
+                         handler: adviser.isError ? { [weak self] _ in
+                guard let self = self else { return }
+                self.tapBackButton(self)
+            } : nil)
         })
         .disposed(by: disposeBag)
         

@@ -81,7 +81,7 @@
 		39089E0625E1A4A8006E5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39089E0825E1A4A8006E5603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		39089E0A25E1A4A8006E5603 /* Adviser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adviser.swift; sourceTree = "<group>"; };
-		39089E0C25E1A4A8006E5603 /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myLocation.gpx; sourceTree = "<group>"; };
+		39089E0C25E1A4A8006E5603 /* myLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = myLocation.gpx; sourceTree = "<group>"; };
 		39089E0D25E1A4A8006E5603 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39089E0E25E1A4A8006E5603 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,39 +176,13 @@
 		39089E0325E1A4A8006E5603 /* BosniaRoadTraffic */ = {
 			isa = PBXGroup;
 			children = (
-				39089E1025E1A4A8006E5603 /* MainViewController.swift */,
-				39089E0B25E1A4A8006E5603 /* AppBackground */,
-				3952938026469FF200234394 /* Common */,
-				39089E2625E1A4A8006E5603 /* Extensions */,
-				392E0E112666AA0100C33CB7 /* Models */,
-				39089E1125E1A4A8006E5603 /* Radars */,
-				39089E4025E1A4A8006E5603 /* RoadConditions */,
-				39089E4E25E1A4A8006E5603 /* Services */,
-				39089E0425E1A4A8006E5603 /* Storyboards */,
+				397D09ED296EDB0F00236C09 /* Data */,
+				397D09EE296EDB1800236C09 /* Domain */,
+				397D09EF296EDB1F00236C09 /* Presetation */,
+				397D09F2296EDD4000236C09 /* RootData */,
 				39089E3125E1A4A8006E5603 /* Supporting Files */,
 			);
 			path = BosniaRoadTraffic;
-			sourceTree = "<group>";
-		};
-		39089E0425E1A4A8006E5603 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				39089E0525E1A4A8006E5603 /* LaunchScreen.storyboard */,
-				39089E0725E1A4A8006E5603 /* Main.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		39089E0B25E1A4A8006E5603 /* AppBackground */ = {
-			isa = PBXGroup;
-			children = (
-				39089E0C25E1A4A8006E5603 /* myLocation.gpx */,
-				396E8ABE2616647F009EC0A0 /* GoogleService-Info.plist */,
-				39089E0E25E1A4A8006E5603 /* Info.plist */,
-				39089E0D25E1A4A8006E5603 /* AppDelegate.swift */,
-				39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */,
-			);
-			path = AppBackground;
 			sourceTree = "<group>";
 		};
 		39089E1125E1A4A8006E5603 /* Radars */ = {
@@ -271,6 +245,7 @@
 			children = (
 				39089E3225E1A4A8006E5603 /* Constants.swift */,
 				39089E3325E1A4A8006E5603 /* Database */,
+				39089E2625E1A4A8006E5603 /* Extensions */,
 				39089E3725E1A4A8006E5603 /* MaterialDesign */,
 				39089E3A25E1A4A8006E5603 /* Translations */,
 			);
@@ -280,6 +255,7 @@
 		39089E3325E1A4A8006E5603 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				39089E5225E1A4A8006E5603 /* PersistanceService.swift */,
 				39089E3625E1A4A8006E5603 /* ManagedObject.swift */,
 				39089EA625E1A93F006E5603 /* BosniaRoadTraffic.xcdatamodeld */,
 			);
@@ -328,10 +304,7 @@
 		39089E4E25E1A4A8006E5603 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				39089E0A25E1A4A8006E5603 /* Adviser.swift */,
 				39089E5025E1A4A8006E5603 /* MainManager.swift */,
-				39089E5225E1A4A8006E5603 /* PersistanceService.swift */,
-				39BBCD1226501A6900BBEDA1 /* Reachability.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -359,6 +332,7 @@
 		392E0E112666AA0100C33CB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				39089E0A25E1A4A8006E5603 /* Adviser.swift */,
 				392E0E122666AA5100C33CB7 /* RoadConditionModel */,
 				39089E4A25E1A4A8006E5603 /* RoadConditionDetailsModel */,
 				39089E1B25E1A4A8006E5603 /* RadarModel */,
@@ -439,6 +413,56 @@
 			path = NSExtensions;
 			sourceTree = "<group>";
 		};
+		397D09ED296EDB0F00236C09 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				39089E4E25E1A4A8006E5603 /* Services */,
+				392E0E112666AA0100C33CB7 /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		397D09EE296EDB1800236C09 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		397D09EF296EDB1F00236C09 /* Presetation */ = {
+			isa = PBXGroup;
+			children = (
+				397D09F1296EDC1600236C09 /* Main */,
+				39089E4025E1A4A8006E5603 /* RoadConditions */,
+				39089E1125E1A4A8006E5603 /* Radars */,
+				3952938026469FF200234394 /* Common */,
+			);
+			path = Presetation;
+			sourceTree = "<group>";
+		};
+		397D09F1296EDC1600236C09 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				39089E1025E1A4A8006E5603 /* MainViewController.swift */,
+				39089E0525E1A4A8006E5603 /* LaunchScreen.storyboard */,
+				39089E0725E1A4A8006E5603 /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		397D09F2296EDD4000236C09 /* RootData */ = {
+			isa = PBXGroup;
+			children = (
+				39BBCD1226501A6900BBEDA1 /* Reachability.swift */,
+				39089E0D25E1A4A8006E5603 /* AppDelegate.swift */,
+				39089E0F25E1A4A8006E5603 /* SceneDelegate.swift */,
+				39089E0C25E1A4A8006E5603 /* myLocation.gpx */,
+				396E8ABE2616647F009EC0A0 /* GoogleService-Info.plist */,
+				39089E0E25E1A4A8006E5603 /* Info.plist */,
+			);
+			path = RootData;
+			sourceTree = "<group>";
+		};
 		39BB0B6825A22222000F3E65 = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +511,7 @@
 				39BB0B6E25A22222000F3E65 /* Frameworks */,
 				39BB0B6F25A22222000F3E65 /* Resources */,
 				D304C4DD718E994A9C7DACB3 /* [CP] Embed Pods Frameworks */,
+				397D09EC296ECE8C00236C09 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -559,6 +584,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		397D09EC296ECE8C00236C09 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		B8AD43AE99C08C48027CA97A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -816,7 +858,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = BosniaRoadTraffic/AppBackground/Info.plist;
+				INFOPLIST_FILE = BosniaRoadTraffic/RootData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -837,7 +879,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N79B4JKWQG;
-				INFOPLIST_FILE = BosniaRoadTraffic/AppBackground/Info.plist;
+				INFOPLIST_FILE = BosniaRoadTraffic/RootData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

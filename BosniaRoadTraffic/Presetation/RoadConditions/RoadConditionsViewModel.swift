@@ -52,9 +52,9 @@ final class RoadConditionsViewModel: NSObject {
     
     private func setupFetchRoadConditionController() {
         roadConditionFRC = NSFetchedResultsController(fetchRequest: RoadCondition.sortedFetchRequest,
-                                                 managedObjectContext: persistanceService.mainContext,
-                                                 sectionNameKeyPath: nil,
-                                                 cacheName: nil)
+                                                      managedObjectContext: persistanceService.mainContext,
+                                                      sectionNameKeyPath: nil,
+                                                      cacheName: nil)
         roadConditionFRC.delegate = self
         do {
             try roadConditionFRC.performFetch()
@@ -77,14 +77,21 @@ final class RoadConditionsViewModel: NSObject {
     }
     
     func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
-                                              message: LOCATION_SERVICE_DISABLED,
-                                              isError: true))
+        Task { [weak self] in
+            guard let self = self else { return }
+            if await self.locationServicesEnabled() {
+                self.setupLocationManager()
+                self.checkLocationAuthorization()
+            } else {
+                self.messageTransmitter.onNext(Adviser(title: ERROR_DESCRIPTION,
+                                                       message: LOCATION_SERVICE_DISABLED,
+                                                       isError: true))
+            }
         }
+    }
+    
+    private func locationServicesEnabled() async -> Bool {
+        return CLLocationManager.locationServicesEnabled()
     }
     
     private func setupLocationManager() {

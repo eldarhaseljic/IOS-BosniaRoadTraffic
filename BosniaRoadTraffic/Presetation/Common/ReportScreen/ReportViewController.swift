@@ -49,7 +49,7 @@ class ReportViewController: UIViewController {
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
@@ -83,7 +83,7 @@ class ReportViewController: UIViewController {
             contextView.contentInset.bottom = keyboardHeight
         }
     }
-
+    
     @objc
     func keyboardWillDisappear() {
         contextView.contentInset.bottom = .zero
@@ -120,10 +120,11 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
                 presentAlert(title: adviser.title,
                              message: adviser.message,
                              buttonTitle: OK,
-                             handler: adviser.isError ? { _ in
-                                delegate?.reloadView()
-                                tapBackButton(self)
-                             } : nil)
+                             handler: adviser.isError ? { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.reloadView()
+                    self.tapBackButton(self)
+                } : nil)
             })
             .disposed(by: disposeBag)
             
@@ -148,10 +149,11 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
                 presentAlert(title: adviser.title,
                              message: adviser.message,
                              buttonTitle: OK,
-                             handler: adviser.isError ? { _ in
-                                delegate?.reloadView()
-                                tapBackButton(self)
-                             } : nil)
+                             handler: adviser.isError ? { [weak self] _ in
+                    guard let self = self else { return }
+                    self.delegate?.reloadView()
+                    self.tapBackButton(self)
+                } : nil)
             })
             .disposed(by: disposeBag)
             

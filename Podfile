@@ -26,4 +26,10 @@ post_install do |installer|
       bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deployment_target
     end
   end
+  installer.pods_project.build_configurations.each do |config|
+      config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
+      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ''
+      config.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+      config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+  end
 end
